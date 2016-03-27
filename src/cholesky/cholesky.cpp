@@ -73,35 +73,26 @@ double* cholesky2(Matriz* m,double *b){
     L->setVal(cantFilas-1,cantFilas-1,sqrt(m->getVal(cantFilas-1,cantFilas-1)-acum));
     // ACA TERMINE DE GENERAR L
     // en L tengo la matriz diagonal inferior de cholesky
-    
-    L->printM();
+
+    // pasos 8 y 9 del burden L*y= b
     y[0]= b[0]/L->getVal(0,0);
 
     for (i = 1; i < cantFilas; i++) {
-        // cout << " para y" << i << endl;
         double acum=0.0;
         for (j = 0; j < i; j++) {
-            acum = y[j]*L->getVal(i,j);
-        cout << "y" << j << "= " << y[j]<<endl;
-        cout << "L" << i<<"," <<j << "= " << L->getVal(i,j)<<endl;
+            acum += y[j]*L->getVal(i,j);
         }
+
         y[i] =( b[i]- acum)/L->getVal(i,i);
-        cout << "L" << i<<"," <<i << "= " << L->getVal(i,i)<<endl;
-        cout << "resultado y" << i << "= " << y[i]<<endl;
-        // cout << "y" << i << "= " << y[i]<<endl;
     }
 
-    for (i = 0; i < cantFilas; i++) {
-
-        cout << "y" << i << "= " << y[i]<<endl;
-
-    }
+    // aca genero x para la salida
     rank[cantFilas-1]= y[cantFilas-1]/L->getVal(cantFilas-1,cantFilas-1);
 
     for (i = cantFilas-2; i >-1; i--) {
         double acum=0.0;
         for (j = i+1; j < cantFilas; j++) {
-            acum = rank[j]*L->getVal(j,i);
+            acum += rank[j]*L->getVal(j,i);
         }
         rank[i] =( y[i]- acum)/L->getVal(i,i);
     }
