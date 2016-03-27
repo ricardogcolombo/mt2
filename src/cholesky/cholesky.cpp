@@ -6,25 +6,7 @@
 #include <math.h>
 using namespace std;
 
-double* cholesky(double *matriz, int n){
-    double *L = (double*)calloc(n * n, sizeof(double));
-
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < (i+1); j++) {
-            double s = 0;
-            for (int k = 0; k < j; k++)
-                s += L[i * n + k] * L[j * n + k];
-            L[i * n + j] = (i == j) ?
-                sqrt(matriz[i * n + i] - s) :
-                (1.0 / L[j * n + j] * (matriz[i * n + j] - s));
-        }
-
-
-    return L;
-};
-
-
-double* cholesky2(Matriz* m,double *b){
+double* cholesky(Matriz* m,double *b){
     int cantFilas = m->getN();
     int i,k,j;
     double *rank = new double[cantFilas];
