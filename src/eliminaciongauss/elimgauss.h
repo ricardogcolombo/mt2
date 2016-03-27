@@ -1,7 +1,7 @@
 #ifndef __Gauss_H_INCLUDED__   
 #define __Gauss_H_INCLUDED__   
 
-#include "../Matriz/Matriz.h"
+#include "../matriz/matriz.h"
 #include <iostream>
 using namespace std;
 
