@@ -1,0 +1,9 @@
+src/main.o
+src/.deps
+src/cholesky/cholesky.o
+src/wp/wp.o
+src/scripts/__init__.pyc
+src/scripts/fabricate.pyc
+src/scripts/settings.pyc
+src/scripts/utils.pyc
+src/tp
