@@ -1,9 +1,8 @@
-#include "eliminacionGauss/elimGauss.h"
+#include "eliminaciongauss/elimgauss.h"
 #include "matriz/matriz.h"
 #include "instancia/instancia.h"
 #include "wp/wp.h"
 #include "cholesky/cholesky.h"
-#include "eliminacionGauss/elimGauss.h"
 
 #include <iostream>
 #include <fstream>
