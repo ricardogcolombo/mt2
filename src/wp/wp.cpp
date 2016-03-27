@@ -1,4 +1,4 @@
-#include "WP.h"
+#include "wp.h"
 using namespace std;
 
 double* wp(instancia* ins){

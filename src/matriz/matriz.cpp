@@ -1,4 +1,4 @@
-#include "Matriz.h"
+#include "matriz.h"
 
 #include <algorithm>
 #include <iostream>

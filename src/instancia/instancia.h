@@ -1,7 +1,7 @@
 #ifndef __instancia_H_INCLUDED__   //   #define this so the compiler knows it has been included
 #define __instancia_H_INCLUDED__   //   #define this so the compiler knows it has been included
 
-#include "../Matriz/Matriz.h"
+#include "../matriz/matriz.h"
 #include <iostream>
 using namespace std;
 
