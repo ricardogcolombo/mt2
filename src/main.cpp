@@ -64,47 +64,10 @@ int main(int argc, char *argv[]) {
         respuesta =gauss(CMM,ins->getVectorB());
 
     }
-    ins->print();
     // metodo Metodo CMM Con CHOLESKY
     if (strcmp(argv[3], "2") == 0) {
         cout << "Corriendo Metodo Cholesky..." << endl;
-        /*int n = CMM->getN();
-          double input [n*n];
-
-        //double *L = (double*)calloc(n * n, sizeof(double));
-        for (int i = 0; i < n; i++){
-        for (int j = 0; j < n; j++){
-        input[i*n+j]= CMM->getVal(i, j);
-        }
-        }
-
-        respuesta =  cholesky(input, n);
-        */
-        respuesta = cholesky2(CMM,ins->getVectorB());
-        printVector(respuesta,CMM->getN());
-        /*
-
-           for (int i = 0; i < n; i++)
-           for (int j = 0; j < (i+1); j++) {
-           double s = 0;
-           for (int k = 0; k < j; k++)
-           s += L[i * n + k] * L[j * n + k];
-           L[i * n + j] = (i == j) ?
-           sqrt(A[i * n + i] - s) :
-           (1.0 / L[j * n + j] * (A[i * n + j] - s));
-           }
-
-
-           for (int i = 0; i < n; i++) {
-           for (int j = 0; j < n; j++)
-           printf("%2.5f ", L[i * n + j]);
-    //   printf("%2.5f ", CMM->getVal(i ,j));
-    printf("\n");
-    }
-
-*/
-
-        // respuesta = wp(in);
+        respuesta = cholesky(CMM,ins->getVectorB());
     }
 
     //para imprimir una instancia (Matriz resultados, Vector totales y matriz CMM)
