@@ -48,28 +48,28 @@ int main(int argc, char *argv[]) {
         respuesta[i] = 0.0;
     }
 
-    // metodo WP
-    if (strcmp(argv[3], "0") == 0) {
-        cout << "Corriendo Metodo WP..." << endl;
-
-        respuesta = wp(ins);
-    }
 
     Matriz * CMM = ins->getCMM();
 
     // metodo Metodo CMM Con Gauss
-    if (strcmp(argv[3], "1") == 0) {
+    if (strcmp(argv[3], "0") == 0) {
         cout << "Corriendo Metodo Gauss..." << endl;
 
         respuesta =gauss(CMM,ins->getVectorB());
 
     }
     // metodo Metodo CMM Con CHOLESKY
-    if (strcmp(argv[3], "2") == 0) {
+    if (strcmp(argv[3], "1") == 0) {
         cout << "Corriendo Metodo Cholesky..." << endl;
         respuesta = cholesky(CMM,ins->getVectorB());
     }
 
+    // metodo WP
+    if (strcmp(argv[3], "2") == 0) {
+        cout << "Corriendo Metodo WP..." << endl;
+
+        respuesta = wp(ins);
+    }
     //para imprimir una instancia (Matriz resultados, Vector totales y matriz CMM)
     // ins->print();
 
