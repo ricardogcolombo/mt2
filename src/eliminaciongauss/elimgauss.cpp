@@ -30,14 +30,14 @@ double* gauss(Matriz *m,double * b) {
         for (int fila = pivot+1  ; fila < m->getN() ; fila++) {
 
             //si el valor de la diagonal es cero paso a la siguiente columna
-            if (! son_iguales(m->getVal(fila, fila-1), 0.0)) {
+            if (! son_iguales(m->getVal(pivot, fila), 0.0)) {
 
                 // genero el valor que va a multiplicar la fila pivot (a_i_pivot / a_pivot_pivot)
                 double valor_pivot = m->getVal(fila, pivot) / m->getVal(pivot, pivot) ;
+				
+                //cout<<"valor pivot = "<<valor_pivot<<" : getval("<< fila<<","<<pivot <<") = " << m->getVal(fila, pivot) << " / getval("<< pivot<<","<< pivot<<")" <<m->getVal(pivot,pivot) <<endl;
 
-                //(BORRAR LUEGO!!!)cout<<"valor pivot : getval("<< fila<<","<<pivot <<") = " << m->getVal(fila, pivot) << " / getval("<< pivot<<","<< pivot<<")" <<m->getVal(pivot,pivot) <<endl;
-
-                b[fila] = b[fila] - b[pivot] * valor_pivot;
+                b[fila] = b[fila] - (b[pivot] * valor_pivot);
                 // Teniendo el valor_pivot , resto toda las columnas de esa fila
                 for (int columna = pivot ; columna < m->getN() ; columna++) {
 
