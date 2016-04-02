@@ -18,6 +18,15 @@ void printVector(double * ,int );
 
 //El programa requiere 3 parametros, un archivo de entrada, uno de salida y el modo a ejecutar.
 int main(int argc, char *argv[]) {
+    timeval startGauss, endGauss;
+    timeval startCholesky, endCholesky;
+    timeval startWP, endWP;
+    long elapsed_mtime; /* elapsed time in milliseconds */
+    long elapsed_seconds; /* diff between seconds counter */
+    long elapsed_useconds; /* diff between microseconds counter */
+
+
+
     int i;
     // argumentos
     // 0 - main
@@ -34,6 +43,7 @@ int main(int argc, char *argv[]) {
 
     //preparo archivo salida para escritura
     ofstream archivoDeSalida;
+	ofstream archivoTiempos;
     archivoDeSalida.setf(ios::fixed, ios::floatfield); // tipo salida
     archivoDeSalida.precision(6); // cant decimales
     archivoDeSalida.open(argv[2]);
@@ -55,20 +65,45 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[3], "0") == 0) {
         cout << "Corriendo Metodo Gauss..." << endl;
 
+        gettimeofday(&startGauss, NULL);
         respuesta =gauss(CMM,ins->getVectorB());
+        gettimeofday(&endGauss, NULL);
 
+        elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
+        elapsed_useconds = endGauss.tv_usec - startGauss.tv_usec;
+        double timeGauss =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+        archivoTiempos.open("tiempos/tiempos0.txt", std::ofstream::out | std::ofstream::app);
+        archivoTiempos << timeGauss<< endl;
+        archivoTiempos.close();
     }
     // metodo Metodo CMM Con CHOLESKY
     if (strcmp(argv[3], "1") == 0) {
         cout << "Corriendo Metodo Cholesky..." << endl;
+        gettimeofday(&startCholesky, NULL);
         respuesta = cholesky(CMM,ins->getVectorB());
+        gettimeofday(&endCholesky, NULL);
+        elapsed_seconds = endCholesky.tv_sec - startCholesky.tv_sec;
+        elapsed_useconds = endCholesky.tv_usec - startCholesky.tv_usec;
+        double timeCholesky =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+        archivoTiempos.open("tiempos/tiempos1.txt", std::ofstream::out | std::ofstream::app);
+        archivoTiempos << timeCholesky<< endl;
+        archivoTiempos.close();
     }
 
     // metodo WP
     if (strcmp(argv[3], "2") == 0) {
         cout << "Corriendo Metodo WP..." << endl;
 
+        gettimeofday(&startWP, NULL);
         respuesta = wp(ins);
+        gettimeofday(&endWP, NULL);
+        elapsed_seconds = endWP.tv_sec - startWP.tv_sec;
+        elapsed_useconds = endWP.tv_usec - startWP.tv_usec;
+        double timeWP =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+        archivoTiempos.open("tiempos/tiempos2.txt", std::ofstream::out | std::ofstream::app);
+        archivoTiempos << timeWP<< endl;
+        archivoTiempos.close();
+
     }
     //para imprimir una instancia (Matriz resultados, Vector totales y matriz CMM)
     // ins->print();
