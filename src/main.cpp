@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sstream>
 #include <fstream>
 #include <string.h>
@@ -14,6 +15,7 @@
 using namespace std;
 
 instancia * generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada);
+instancia * generarInstanciaVacia(ifstream &archivoDeEntrada);
 void printVector(double * ,int );
 
 //El programa requiere 3 parametros, un archivo de entrada, uno de salida y el modo a ejecutar.
@@ -43,8 +45,10 @@ int main(int argc, char *argv[]) {
 
     //preparo archivo salida para escritura
     ofstream archivoDeSalida;
-	ofstream archivoTiempos;
+    ofstream archivoTiempos;
     archivoDeSalida.setf(ios::fixed, ios::floatfield); // tipo salida
+    archivoTiempos.setf(ios::fixed, ios::floatfield); // tipo salida
+    archivoTiempos.precision(6); // cant decimales
     archivoDeSalida.precision(6); // cant decimales
     archivoDeSalida.open(argv[2]);
 
@@ -58,8 +62,8 @@ int main(int argc, char *argv[]) {
         respuesta[i] = 0.0;
     }
 
-
     Matriz * CMM = ins->getCMM();
+    string totales= to_string(ins->getTotalEquipos()) + " " +to_string(ins->getTotalPartidos()) + " ";
 
     // metodo Metodo CMM Con Gauss
     if (strcmp(argv[3], "0") == 0) {
@@ -72,21 +76,27 @@ int main(int argc, char *argv[]) {
         elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
         elapsed_useconds = endGauss.tv_usec - startGauss.tv_usec;
         double timeGauss =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+
         archivoTiempos.open("tiempos/tiempos0.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos << timeGauss<< endl;
+        archivoTiempos << totales <<timeGauss<< endl;
         archivoTiempos.close();
     }
     // metodo Metodo CMM Con CHOLESKY
-    if (strcmp(argv[3], "1") == 0) {
+    if (strcmp(argv[3], "1") == 0  ||strcmp(argv[3], "3") == 0 ) {
         cout << "Corriendo Metodo Cholesky..." << endl;
         gettimeofday(&startCholesky, NULL);
+
+        //LLAMO CHOLESKy
         respuesta = cholesky(CMM,ins->getVectorB());
+
         gettimeofday(&endCholesky, NULL);
         elapsed_seconds = endCholesky.tv_sec - startCholesky.tv_sec;
         elapsed_useconds = endCholesky.tv_usec - startCholesky.tv_usec;
+        // aca se guarda el tiempo
         double timeCholesky =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+
         archivoTiempos.open("tiempos/tiempos1.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos << timeCholesky<< endl;
+        archivoTiempos <<  totales<<timeCholesky<< endl;
         archivoTiempos.close();
     }
 
@@ -101,13 +111,48 @@ int main(int argc, char *argv[]) {
         elapsed_useconds = endWP.tv_usec - startWP.tv_usec;
         double timeWP =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
         archivoTiempos.open("tiempos/tiempos2.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos << timeWP<< endl;
+        archivoTiempos <<totales<< timeWP<< endl;
         archivoTiempos.close();
 
     }
+
+    if (strcmp(argv[3], "3") == 0) {
+
+        ofstream archivoModificadoCHOLESKY;
+
+        // aca se escupe el ranking // base para el resultado
+        double* respuestaModificada = new double[ins->getTotalEquipos()];
+        for (i = 0; i < ins->getTotalEquipos(); ++i) {
+            respuestaModificada[i] = 0.0;
+        }
+
+        cout << "Corriendo Metodo CHOLESKY RANDOM 1000 partidos..." << endl;
+        // aa se modifican los partidos ganados
+        for (i = 0; i < 100; ++i) {
+            // agarro uno random
+            int e1 = rand() % ins->getTotalEquipos();
+            // le hago ganar un perder contra uno que haya ganado
+            ins->ganaPartido(e1);
+        }
+        // genero el nuevo B
+        ins->generarVectorB();
+
+        //LLAMO CHOLESKy
+        respuestaModificada = cholesky(CMM,ins->getVectorB());
+
+        // Aca saco los tiempos al archivo tiempos4
+        archivoModificadoCHOLESKY.open("tests/resultadosCholeskyModificado.out", std::ofstream::out | std::ofstream::app);
+        // archivoTiempos <<totales<< timeWP<< endl;
+        // archivoTiempos.close();
+
+        for (int w = 0; w < ins->getTotalEquipos(); w++) {
+            archivoModificadoCHOLESKY<< respuestaModificada[w] << endl;
+        }
+        archivoModificadoCHOLESKY.close();
+    }
+
     //para imprimir una instancia (Matriz resultados, Vector totales y matriz CMM)
     // ins->print();
-
     for (int w = 0; w < ins->getTotalEquipos(); w++) {
         archivoDeSalida << respuesta[w] << endl;
     }
@@ -116,6 +161,32 @@ int main(int argc, char *argv[]) {
     archivoDeEntrada.close();
     return 0;
 }
+
+// generar instancia
+// instancia *generarInstanciaVacia(ifstream &archivoDeEntrada){
+// int n,k,i,fecha;
+// int equipo1,equipo2,goles1,goles2;
+
+// //leo cantidad de equipos
+// archivoDeEntrada >> n;
+// //leo cantidad de partidos
+// archivoDeEntrada >> k;
+// // creo la tabla de resultados ganadores
+// Matriz * tablaResultados  =  new Matriz(n,n);
+// // creo la tabla de partidos totales
+// int* totales = new int[n];
+// for (i = 0; i < n; ++i) {
+// totales[i]=0;
+// }
+
+// instancia *res =new instancia();
+// res->setTotalPartidos(k);
+// res->setGanados(tablaResultados);
+// res->setTotales(totales);
+// res->generarCMM();
+// res->generarVectorB();
+// return res;
+// };
 
 instancia *generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada){
     int n,k,i,fecha;
@@ -165,6 +236,7 @@ instancia *generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada){
         archivoDeEntrada.close();
     }
     instancia *res =new instancia();
+    res->setTotalPartidos(k);
     res->setGanados(tablaResultados);
     res->setTotales(totales);
     res->generarCMM();
