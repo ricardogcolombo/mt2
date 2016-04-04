@@ -1,1 +1,24 @@
-\subsection{Análisis de tiempos en función de los parámetros de entrada}
+\subsection{Análisis}
+
+Para analizar la efectividad y ecuanimidad de esta nueva forma de calcular el ranking vamos a realizar una serie de test a fin de obtener un analisis cuantitativo y cualitativo que nos permita compararlo con el clasico metodo de $WP$.
+Con los test esperamos encontrar ventajas y desventajas de esta forma de medición, particularmente en escenarios donde no todos los participantes juegen la misma cantidad de partidos.
+\\
+Además realizaremos una comparación de los métodos de $Eliminación Gaussiana$ y $Cholesky$ para ver cual de los dos computa los rankings de manera mas eficiente.
+
+
+\subsubsection{No importa contra quien se pierde!}
+
+Para verificar si importa contra que equipo se juega, proponemos el test de tomar un equipo que se encuentra por la mitad de la tabla. Por notación denominamos a este equipo como $medio$.
+Para lograrlo calculamos un ranking a partir de un set de datos. Y luego generamos una nueva instancia enfrentando a $medio$ contra el actual puntero y calculamos el nuevo ranking. Volvemos a tomar la primer instancia y lo enfrentamos contra el último, calculamos nuevamente el ranking y luego 
+comparamos los tres rankings obtenidos. La premisa que tenemos del experimento es que el ranking del equipo $medio$ no debería ser afectado por el rival contra el que perdió.
+\\
+A continuación presentamos los graficos obtenidos.
+\\
+
+
+******Aca van los graficos
+
+\\
+
+
+Como podemos observar nuestra hipótesis es cierta, el ranking del jugador prefijado no fue modificado.
