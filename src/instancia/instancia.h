@@ -16,6 +16,7 @@ class instancia{
 
         // este tiene para cada equipo los partidos totales
         int * totales ;
+        int  totalPartidos;
 
         double * b;
 
@@ -27,6 +28,10 @@ class instancia{
         // igual la cant de columnas de ganados
         int getTotalEquipos();
 
+        int getTotalPartidos();
+        // el primero siempre es el que gana el partido
+        bool ganaPartido(int);
+        void setTotalPartidos(int);
         // esta funcion te dice cuantos partidos GANADOS tiene el equipo q recibe por parametro
         double getTotalGanados(int);
 

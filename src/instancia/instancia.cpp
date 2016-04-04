@@ -28,6 +28,14 @@ void instancia::print(){
 
 }
 
+void instancia::setTotalPartidos(int _totales){
+    this->totalPartidos = _totales;
+};
+
+int instancia::getTotalPartidos(){
+    return this->totalPartidos;
+};
+
 int instancia::getTotalEquipos(){
     return ganados->getN();
 }
@@ -106,6 +114,24 @@ void instancia::generarVectorB(){
         b[i]= 1.0+((double)getTotalGanados(i)-(double)getTotalPerdidos(i))/2.0;
     }
 
+}
+
+bool instancia::ganaPartido(int equipo1){
+    bool encontroUno = false;
+    int i;
+    for (i = 0; i < this->getTotalEquipos(); i++) {
+        if(this->ganados->getVal(equipo1,i)!=0 && i!=equipo1){
+            // agarro el valor viejo
+            int valor = this->ganados->getVal(equipo1,i);
+            // le cambio el resultado al partido
+            this->ganados->setVal(equipo1,i,valor-1);
+            // le hago ganar al otro equipo
+            int valor2 = this->ganados->getVal(i,equipo1);
+            this->ganados->setVal(i,equipo1,valor2+1);
+            encontroUno = true;
+        }
+    }
+    return encontroUno;
 }
 
 double* instancia::getVectorB(){
