@@ -12,6 +12,7 @@
 #include <fstream>
 #include <string.h>
 #include <sys/time.h>
+
 using namespace std;
 
 instancia * generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada);
@@ -63,22 +64,31 @@ int main(int argc, char *argv[]) {
     }
 
     Matriz * CMM = ins->getCMM();
-    string totales= to_string(ins->getTotalEquipos()) + " " +to_string(ins->getTotalPartidos()) + " ";
+    string totales =  to_string(ins->getTotalEquipos()) + " " + to_string(ins->getTotalPartidos()) + " ";
 
     // metodo Metodo CMM Con Gauss
     if (strcmp(argv[3], "0") == 0) {
         cout << "Corriendo Metodo Gauss..." << endl;
 
-        gettimeofday(&startGauss, NULL);
-        respuesta =gauss(CMM,ins->getVectorB());
-        gettimeofday(&endGauss, NULL);
+		double timeGauss= 0.0;
+		for (int iteraciones = 0; iteraciones<5; iteraciones++){
+	        gettimeofday(&startGauss, NULL);
+	        
+	        respuesta =gauss(CMM,ins->getVectorB());
+	        
+	        gettimeofday(&endGauss, NULL);
 
-        elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
-        elapsed_useconds = endGauss.tv_usec - startGauss.tv_usec;
-        double timeGauss =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+	        elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
+	        elapsed_useconds = endGauss.tv_usec - startGauss.tv_usec;
+        	
+			//if (((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5 < timeGauss){
+			timeGauss+= ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+			//}  
+		}
+		timeGauss= timeGauss/5;
 
         archivoTiempos.open("tiempos/tiempos0.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos << totales <<timeGauss<< endl;
+        archivoTiempos << ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " <<timeGauss<< endl;
         archivoTiempos.close();
     }
     // metodo Metodo CMM Con CHOLESKY
@@ -96,7 +106,7 @@ int main(int argc, char *argv[]) {
         double timeCholesky =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
 
         archivoTiempos.open("tiempos/tiempos1.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos <<  totales<<timeCholesky<< endl;
+        archivoTiempos <<  ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " <<timeCholesky<< endl;
         archivoTiempos.close();
     }
 
@@ -111,7 +121,7 @@ int main(int argc, char *argv[]) {
         elapsed_useconds = endWP.tv_usec - startWP.tv_usec;
         double timeWP =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
         archivoTiempos.open("tiempos/tiempos2.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos <<totales<< timeWP<< endl;
+        archivoTiempos <<ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " << timeWP<< endl;
         archivoTiempos.close();
 
     }
