@@ -103,6 +103,16 @@ Matriz *instancia::getGanados(){
 };
 
 Matriz *instancia::getCMM(){
+    int i, j;
+
+    Matriz * newCMM = new Matriz(this->getTotalEquipos(),this->getTotalEquipos());
+
+    for (i = 0; i < this->getTotalEquipos(); i++) {
+        for (j = 0; j < this->getTotalEquipos(); j++) {
+            newCMM->setVal(i,j,this->CMM->getVal(i,j));
+        }
+    }
+
     return CMM;
 };
 

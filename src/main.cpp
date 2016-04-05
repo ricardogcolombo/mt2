@@ -72,22 +72,22 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[3], "0") == 0) {
         cout << "Corriendo Metodo Gauss..." << endl;
 
-		double timeGauss= 0.0;
-		for (int iteraciones = 0; iteraciones<5; iteraciones++){
-	        gettimeofday(&startGauss, NULL);
-	        
-	        respuesta =gauss(CMM,ins->getVectorB());
-	        
-	        gettimeofday(&endGauss, NULL);
+        double timeGauss= 0.0;
+        for (int iteraciones = 0; iteraciones<5; iteraciones++){
+            gettimeofday(&startGauss, NULL);
 
-	        elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
-	        elapsed_useconds = endGauss.tv_usec - startGauss.tv_usec;
-        	
-			//if (((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5 < timeGauss){
-			timeGauss+= ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
-			//}  
-		}
-		timeGauss= timeGauss/5;
+            respuesta =gauss(CMM,ins->getVectorB());
+
+            gettimeofday(&endGauss, NULL);
+
+            elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
+            elapsed_useconds = endGauss.tv_usec - startGauss.tv_usec;
+
+            //if (((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5 < timeGauss){
+            timeGauss+= ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
+            //}
+        }
+        timeGauss= timeGauss/5;
 
         archivoTiempos.open("tiempos/tiempos0.txt", std::ofstream::out | std::ofstream::app);
         archivoTiempos << ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " <<timeGauss<< endl;
@@ -151,9 +151,9 @@ int main(int argc, char *argv[]) {
 
         gettimeofday(&startModificado, NULL);
         //LLAMO CHOLESKy
-        respuestaModificada = cholesky(CMM,ins->getVectorB());
+        respuestaModificada = cholesky(ins->getCMM(),ins->getVectorB());
 
-	gettimeofday(&endModificado, NULL);
+        gettimeofday(&endModificado, NULL);
         elapsed_seconds = endModificado.tv_sec - startModificado.tv_sec;
         elapsed_useconds = endModificado.tv_usec - startModificado.tv_usec;
         // aca se guarda el tiempo
@@ -209,9 +209,9 @@ int main(int argc, char *argv[]) {
 
 string intToString(int pNumber)
 {
- ostringstream oOStrStream;
- oOStrStream << pNumber;
- return oOStrStream.str();
+    ostringstream oOStrStream;
+    oOStrStream << pNumber;
+    return oOStrStream.str();
 }
 
 instancia *generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada){
