@@ -57,6 +57,13 @@ Por ejemplo: El participante A con ranking 0,5819 y el participante B con rankin
 Para evitar esta situacion nuestra implementación usa el tipo de datos float con con 5 decimales despues de la coma.\\
 
 
+\subsubsubsection{Empates}
+
+Encontramos que los empates pueden modelarse en el caso de \textbf{WP}, asignando un puntaje al partido empatado y continuando con el procedimiento normal.
+
+En el caso de \textbf{CMM} nos resulto muy díficil tratar de modelarlo, como alternativa a este resultado proponemos modelarlo como si ambos equipos perdieran. Esto nos permite reutilizar el método y de alguna forma penar a ambos equipos por no haber ganado su partido.
+
+
 
 
 
