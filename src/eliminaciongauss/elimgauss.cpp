@@ -1,5 +1,5 @@
 #include <cmath>
-#include "elimGauss.h"
+#include "elimgauss.h"
 
 using namespace std;
 /**
