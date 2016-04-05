@@ -1,0 +1,66 @@
+Analisis cuantitativo
+Para esta prueba se generaron schedules variando la cantidad de equipos en 10, 20, 50, 100, 500, 1000 y 2000. Adicionalmente se vario la cantidad de partidos
+jugados por cada equipo. Dado el analisis de complejidad de los algoritmos implementados, solo varian el tiempo de calculo en funcion del tamaño de la matriz definida
+por la cantidad de equipos, por lo cual al variar la cantidad de partidos no esperamos encontrarnos con variaciones en el tiempo. 
+
+Grafico de tiempos con funcion de aproximacion (utilizar los archivos de Ricardo)
+
+
+
+
+
+
+Analisis cualitativo
+Se utilizaron los datos del ATP2007 provisto por datahub. En este caso se corrieron los algoritmos de WP y CMM y los resultados son los siguientes:
+
+//////Comparativa WP- CMM todos.png//////
+
+El grafico elegido para graficar es un grafico de dispersion, que muestra:
+	-en el eje X el valor obtenido al ejecutar el algoritmo WP
+	-en el eje Y el valor obtenido al ejecutar CMM (Cholesky)
+	-el tamaño de la burbuja es la cantidad de partidos jugados
+	
+Lo que se observa en el grafico es que el ranking CMM parece darle relevancia a la cantidad de partidos jugados ya que las burbujas de los top 10 son mas grandes.
+Esto esta dado en principio por la caracteristica del deporte (tenis) que permite a los que ganan jugar mas partidos en los torneos. 
+Lo que nos llamo la atencion es que si observamos el rank arrojado por WP, se observa que el primero es fnisk. El mismo es un jugador que solo jugo 1 partido y lo gano, 
+por lo cual tiene un 100% de efectividad y figura como primero. 
+Ademas, si observamos los top 10 del rank WP, observamos algunas burbujas de tamaño pequeño. Esto es porque en algunos casos, este ranking beneficia jugar pocos 
+partidos pero ganarlos.
+
+Hemos realizado un zoom dentro del grafico para corroborar el nombre y posicion de ambos rankings.
+
+//////Comparativa WP- CMM zoom.png//////
+
+
+Para entender si el metodo es justo, hemos planteado el siguiente escenario de pruebas:
+Tomamos el ranking original y graficamos mediante un grafico de dispersion con las siguientes propiedades:
+ 	-en el eje X el valor obtenido al ejecutar CMM (Cholesky)
+	-en el eje Y el valor obtenido al ejecutar CMM (Cholesky)
+	-el tamaño de la burbuja es la cantidad de partidos jugados
+	
+Es logico que se observe una diagonal ya que ambos ejes son la misma metrica de CMM
+
+//////comparativa cmm -cmm foto 0.png//////
+
+Luego el experimento realizado fue agregar partidos al schedule, de manera que el ultimo le gane a los 10 primeros y entender que tipo de reaccion tiene el algoritmo CMM.
+Para ello se realizaron 10 schedules distintos (ATP2007_n.in) de tal forma que en cada uno de esos archivos de entrada exista un partido mas que en el caso anterior y
+el mismo sea una victoria del ultimo jugador del ranking vs alguno de los top 10.
+//////comparativa cmm -cmm foto 10.png//////
+
+En el grafico se observa mediante una flecha cual es la ganancia en Ranking que tiene el ultimo jugador al ganarle a los top 10. Se observa que el crecimiento va
+reduciendo su velocidad, mientras que al principio al ganar se subia mucho de ranking con el pasar de los partidos, el aumento es mas lento.
+
+Por ultimo y para entender si el ultimo podia llegar a ser primero en algun momento, hemos agregado al archivo un total de 100 partidos ganados por el ultimo contra 
+los top 10.
+//////comparativa cmm -cmm foto 100.png//////
+Y tal como vemos, si es posible pero a un costo altisimo (jugar alrededor de 100 partidos)
+
+Lo interesante es que aquellos equipos contra los que el ultimo jugador jugo tambien sufrieron modificaciones en su ranking. A continuacion se observa un zoom dentro
+del grafico para observar este comportamiento.
+ 
+El ultimo jugador del ranking se llama Verkerk M., sus partidos fueron los siguientes:
+//////tabla de jugados contra Verkerk//////
+
+En el siguiente grafico se observa el movimiento de ranking de los que le ganaron partidos a Verkerk
+//////partidos jugados vs verkerk grafico.png//////
+
