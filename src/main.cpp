@@ -15,6 +15,7 @@
 
 using namespace std;
 
+string intToString(int pNumber);
 instancia * generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada);
 instancia * generarInstanciaVacia(ifstream &archivoDeEntrada);
 void printVector(double * ,int );
@@ -23,6 +24,7 @@ void printVector(double * ,int );
 int main(int argc, char *argv[]) {
     timeval startGauss, endGauss;
     timeval startCholesky, endCholesky;
+    timeval startModificado, endModificado;
     timeval startWP, endWP;
     long elapsed_mtime; /* elapsed time in milliseconds */
     long elapsed_seconds; /* diff between seconds counter */
@@ -64,7 +66,7 @@ int main(int argc, char *argv[]) {
     }
 
     Matriz * CMM = ins->getCMM();
- //   string totales =  to_string(ins->getTotalEquipos()) + " " + to_string(ins->getTotalPartidos()) + " ";
+    string totales =  intToString(ins->getTotalEquipos()) + " " + intToString(ins->getTotalPartidos()) + " ";
 
     // metodo Metodo CMM Con Gauss
     if (strcmp(argv[3], "0") == 0) {
@@ -147,14 +149,21 @@ int main(int argc, char *argv[]) {
         // genero el nuevo B
         ins->generarVectorB();
 
+        gettimeofday(&startModificado, NULL);
         //LLAMO CHOLESKy
         respuestaModificada = cholesky(CMM,ins->getVectorB());
 
-        // Aca saco los tiempos al archivo tiempos4
-        archivoModificadoCHOLESKY.open("tests/resultadosCholeskyModificado.out", std::ofstream::out | std::ofstream::app);
-        // archivoTiempos <<totales<< timeWP<< endl;
-        // archivoTiempos.close();
+	gettimeofday(&endModificado, NULL);
+        elapsed_seconds = endModificado.tv_sec - startModificado.tv_sec;
+        elapsed_useconds = endModificado.tv_usec - startModificado.tv_usec;
+        // aca se guarda el tiempo
+        double timeModificado =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
 
+        archivoTiempos.open("tiempos/tiempos4.txt", std::ofstream::out | std::ofstream::app);
+        archivoTiempos <<  ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " <<timeModificado<< endl;
+        archivoTiempos.close();
+
+        archivoModificadoCHOLESKY.open("tests/resultadosCholeskyModificado.out", std::ofstream::out | std::ofstream::app);
         for (int w = 0; w < ins->getTotalEquipos(); w++) {
             archivoModificadoCHOLESKY<< respuestaModificada[w] << endl;
         }
@@ -197,6 +206,13 @@ int main(int argc, char *argv[]) {
 // res->generarVectorB();
 // return res;
 // };
+
+string intToString(int pNumber)
+{
+ ostringstream oOStrStream;
+ oOStrStream << pNumber;
+ return oOStrStream.str();
+}
 
 instancia *generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada){
     int n,k,i,fecha;
