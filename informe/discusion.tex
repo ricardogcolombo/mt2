@@ -35,3 +35,39 @@ Poner resultados
 \subsubsubsection{Agregando partidos}
 
 Poner resultados
+
+
+
+\subsubsubsection{Análisis Cuantitativo}
+
+Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecian los datos de la instancia fue lineal.
+
+En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue mas eficiente para las mismas instancias, y relativamente mejor a medida que se incrementaban los datos. Esto es esperado ya que nuestras implementaciones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume \frac{1}{3} n^3 flops y \textbf{Eliminación Gaussiana} \frac{2}{3} n^3 flops.
+
+
+\subsubsubsection{La aritmética importa}
+
+De los experimentos realizados notamos que es importante el tipo de datos utilizados. Principalmente cuando se utiliza \textbf{CMM}.
+\\
+
+Los errores de redondeo pueden derivar en un mal cálculo del ranking. Es decir, no considerar los suficientes decimales puede derivar en que un participante con un ranking decimalmente menor quede mejor rankeado que otro con mayor puntaje.\\
+
+Por ejemplo: El participante A con ranking 0,5819 y el participante B con ranking 0,5816 si se consideran solo dos decimales ambos tienen 0,58 y esto podria afectar su orden en el ranking global. \\
+
+Para evitar esta situacion nuestra implementación usa el tipo de datos float con con 5 decimales despues de la coma.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

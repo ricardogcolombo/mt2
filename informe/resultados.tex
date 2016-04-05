@@ -80,7 +80,18 @@ En este escenario el torneo se encuentra finalizado y los resultados no pueden m
 
 En este caso vamoa a analizar si podemos influir positivamente en el ranking a favor de un equipo, minimizando la cantidad de partidos ganados. \\
 
-Nuestra teoría es que tomando el conjunto de equipos que perdio contra el seleccionado y haciendolos jugar y ganar a los principales del ranking, vamos a lograr que nuestro equipo mejore en la tabla de posiciones.
+Nuestra teoría es que tomando el conjunto de equipos que perdio contra el seleccionado y haciendolos jugar y ganar a los principales del ranking, vamos a lograr que nuestro equipo mejore en la tabla de posiciones. \\
+
+
+
+\subsubsubsection{Análisis Cuantitativo}
+
+
+Vamos a estudiar la eficiencia de ambas tecnicas incrementando y variando los volúmenes de datos. La idea es repetir el cómputo de los rankings para la misma instancia de datos al azar, y posteriormente ir incrementando la cantidad de datos.
+
+Nuestra hipótesis es el que método de basado en \textbf{WP} va a tardar lo mismo para instancias de datos iguales, y se irá incrementando de forma casi lineal a medida que incrementemos los datos. En cambio con \textbf{CMM} basando en \textbf{Eliminación Gaussiana} y \textbf{Cholesky} esperamos que difieran en para las mismas intancias. Nuestra hipótesis sobre esto es que la implementación de \textbf{Cholesky} va a demorar menos tiempo.
+
+
  
 
 
