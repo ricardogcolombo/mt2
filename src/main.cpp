@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     }
 
     Matriz * CMM = ins->getCMM();
-    string totales =  to_string(ins->getTotalEquipos()) + " " + to_string(ins->getTotalPartidos()) + " ";
+ //   string totales =  to_string(ins->getTotalEquipos()) + " " + to_string(ins->getTotalPartidos()) + " ";
 
     // metodo Metodo CMM Con Gauss
     if (strcmp(argv[3], "0") == 0) {
