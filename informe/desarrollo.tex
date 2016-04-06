@@ -30,6 +30,20 @@ por ultimo el modo. Los modos solicitados por la catedra son:
         2+n_i & \quad \text{si } \text{ i \eq j }\\
     \end{cases}
     \]
+Esta matriz es simetrica y definida positiva y ademas es estrictamente diagonal domimante.
+Por lo tanto es posible hallar la factorizacion de Cholesky , que no es mas que un caso
+de factorizacion LU , esto nos permite asegurar que a la hora de hacer eliminacion 
+gaussiana no vamos a hallar 0 en la diagonal , con lo cual no hace faltar considerar
+pivoteo parcial en la eliminacion Gaussiana.  
+
+%Las Caracteristicas de esta matriz son -La Matriz es Simetrica y definida positiva
+%-Es estrictamente Diagonal Domimante  
+%-Por lo tanto se le puede hacer la factorizacion de Cholesky que no es mas que
+%un caso particular de Factorizacion LU
+%-Si se le puede hallar la factorizacion LU , eso significa que la eliminaion gausiana
+%no va a hallar 0 en la diagonal , con lo cual no hace falta considerar pivoteo en el algoritmo
+%-El metodo para crear la matriz esta basado en la regla de metodos sucesivos de LaPlace
+    
 
 \subsection{Método Matriz de Colley}
 
