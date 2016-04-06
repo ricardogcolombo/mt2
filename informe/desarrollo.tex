@@ -31,8 +31,25 @@ por ultimo el modo. Los modos solicitados por la catedra son:
     \end{cases}
     \]
 
+\subsection{Método Matriz de Colley}
+
+Para la implementación de esta técnica nos basamos en el paper \textbf{The Colley Matrix Explained}. La cual consiste en plantear un sistema de ecuaciones
+
+
+\subsection{Porcentaje de Victorias}
+
+La primer técnica es \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en tomar el promedio de partidos ganados / partidos jugados. Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados. \\
+
+En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking. \\
+
+Esta técnica a priori no aporta mucha informacion respectoa la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado. Ya que todos los partidos valen lo mismo. \\
+
+La implementación consiste en calcular: \sum_{i=1}^n{} \frac{G_i}{T} donde \textbf{n} es la cantidad de partidos jugados, \textbf{G_i} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
+
+
 \subsection{Eliminacion Gaussiana(EG)}
 
 \subsection{Factorizacion de Cholesky(CL)}
 
 \subsection{Implementacion}
+
