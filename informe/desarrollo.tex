@@ -29,7 +29,23 @@ r1 cantidad de anotaciones del equipo 1 y sus equivalentes con e2, r2 respectiva
         n_{i,j}       & \quad \text{si }  \text{i $\neq$ j}\\
         2+n_i & \quad \text{si } \text{ i $\eq$ j }\\
     \end{cases}
-\]
+
+    \]
+Esta matriz es simetrica y definida positiva y ademas es estrictamente diagonal domimante.
+Por lo tanto es posible hallar la factorizacion de Cholesky , que no es mas que un caso
+de factorizacion LU , esto nos permite asegurar que a la hora de hacer eliminacion 
+gaussiana no vamos a hallar 0 en la diagonal , con lo cual no hace faltar considerar
+pivoteo parcial en la eliminacion Gaussiana.  
+
+%Las Caracteristicas de esta matriz son -La Matriz es Simetrica y definida positiva
+%-Es estrictamente Diagonal Domimante  
+%-Por lo tanto se le puede hacer la factorizacion de Cholesky que no es mas que
+%un caso particular de Factorizacion LU
+%-Si se le puede hallar la factorizacion LU , eso significa que la eliminaion gausiana
+%no va a hallar 0 en la diagonal , con lo cual no hace falta considerar pivoteo en el algoritmo
+%-El metodo para crear la matriz esta basado en la regla de metodos sucesivos de LaPlace
+    
+
 
 \subsection{Método Matriz de Colley}
 
@@ -62,7 +78,7 @@ La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos 
 \end{algorithm}
 
 Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posiciones 4 a 6 se ejecuta n veces y el ciclo de las lineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos n^2 iteraciones en el peor caso y finalizando con el ciclo de las lineas 1 a 6 que se ejecuta otras n veces.
-Luego en las lineas 7 a 10 se realiza el backgward substitution  que tiene en el peor caso se ejecuta n^2 veces.
+Luego en las lineas 7 a 10 se realiza el backgward substitution  que tiene en el peor caso se ejecuta $n^2$ veces.
 
 \subsubsection{Cholesky}
 
@@ -93,6 +109,7 @@ Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sis
         \STATE{devolver x}
     \end{algorithmic}
 \end{algorithm}\\
+
 
 \subsection{Porcentaje de Victorias}
 
