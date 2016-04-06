@@ -4,32 +4,32 @@ Dados los requirimientos de la catedra el programa toma como parametros 3 argume
 por ultimo el modo. Los modos solicitados por la catedra son:
 \begin{enumerate}
     \item Eliminacion Gaussiana(EG)
-\item Factorizacion de Cholesky(CL)
+    \item Factorizacion de Cholesky(CL)
     \item WP
     \item Cholesky con modificacion de partidos jugados
     \item Cholesky haciendo ganar al ultimo
-    \end{enumerate}
-    Ademas de los 3 modos solicitados por la materia agregamos 2 mas.
-    Este modo corre cholesky y luego busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky
-    Este modo corre cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido ultimo llegue al primer puesto ganandole
-    al que tiene por arriba inmediato en el ranking. En cada paso agrega un partido mas y vuelve a calcular cholesky para la nueva matriz.
-    En el momento que llega al primer puesto retorna por stdout la cantidad de partidos que ejecuto hasta llegar al primer puesto.
+\end{enumerate}
+Ademas de los 3 modos solicitados por la materia agregamos 2 mas.
+Este modo corre cholesky y luego busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky
+Este modo corre cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido ultimo llegue al primer puesto ganandole
+al que tiene por arriba inmediato en el ranking. En cada paso agrega un partido mas y vuelve a calcular cholesky para la nueva matriz.
+En el momento que llega al primer puesto retorna por stdout la cantidad de partidos que ejecuto hasta llegar al primer puesto.
 
-    Tanto el formato de entrada y de salida del programa son los solicitados por la catedra, para el archivo de entrada la primer linea tiene 2 valores n,
-    que representa la cantidad de equipos  y k que representa la cantidad de partidos,
-    luego se tienen k lineas donde esta el resultado de cada partido representado por 5 parametros f,e1,r1,e2,r2.
-    f contiene es una fecha de caracter opcional, en nuestos experimentos esta fecha no fue utilizada, luego se tienen e1 , numero de equipo 1,
-    r1 cantidad de anotaciones del equipo 1 y sus equivalentes con e2, r2 respectivamente para el equipo 2.
+Tanto el formato de entrada y de salida del programa son los solicitados por la catedra, para el archivo de entrada la primer linea tiene 2 valores n,
+que representa la cantidad de equipos  y k que representa la cantidad de partidos,
+luego se tienen k lineas donde esta el resultado de cada partido representado por 5 parametros f,e1,r1,e2,r2.
+f contiene es una fecha de caracter opcional, en nuestos experimentos esta fecha no fue utilizada, luego se tienen e1 , numero de equipo 1,
+r1 cantidad de anotaciones del equipo 1 y sus equivalentes con e2, r2 respectivamente para el equipo 2.
 
 
 \subsection{Sistema a resolver}
 
-    \[ C_{i,j} =
+\[ C_{i,j} =
     \begin{cases}
-        n_{i,j}       & \quad \text{si }  \text{i\neqj}\\
-        2+n_i & \quad \text{si } \text{ i \eq j }\\
+        n_{i,j}       & \quad \text{si }  \text{i $\neq$ j}\\
+        2+n_i & \quad \text{si } \text{ i $\eq$ j }\\
     \end{cases}
-    \]
+\]
 
 \subsection{Método Matriz de Colley}
 
@@ -39,54 +39,71 @@ La principal fortaleza de este método es que es útil para obtener rankings en 
 
 La principal desventaja y que hace que no sea aplicable a muchos de los deportes es que los empates no pueden ser modelados. \\
 
-Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resolucion del sistema de ecuaciones obtenido. \\
+Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resolucion del sistema de ecuaciones solicitado. \\
 
 \subsubsection{Eliminación Gaussiana}
-
-La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden}. \\
-
+La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backgward substitution para obtener el vector de la ecuacion Cr=b.
 
 \begin{algorithm}
-\begin{algorithmic}[1]\parskip=1mm
-\caption{void Gauss(matriz A, vector b)}
-  \STATE{Para k=$1...n$}
-  \STATE{\quad Tomo el elemento $a_{k,k}$ como pivot}
-  \STATE{\quad Para $i = k+1,...k+p$}  
-  \STATE{\quad \quad Para $j = k+1,...i+p$}
-  \STATE{\quad \quad \quad $a_{i,j}  = a_{i,j} - a_{k,j} * (a_{i,k} / a_{k,k})$}
-  \STATE{\quad \quad $a_{i,k} = 0$}
-\end{algorithmic}
+    \begin{algorithmic}[1]\parskip=1mm
+        \caption{vector Gauss(matriz A, vector b)}
+        \STATE{Para k=$1...n-1$}\\
+        \STATE{\quad Para i=$1...n-1$}\\
+        \STATE{\quad\quad Tomo el elemento $a_{k,k}$ como pivot}\\
+        \STATE{\quad\quad Para $j = i+1,...n$}\\
+        \STATE{\quad \quad \quad $a_{i,j}  = a_{i,j} - a_{i,j} * (a_{i,k} / a_{k,k})$}\\
+        \STATE{\quad \quad \quad $b_{i}  = b_{i} - a_{i,j} * (a_{i,k} / a_{k,k})$}\\
+        \STATE{$x_{n} = a_{n,n+1}/a_{n,n}$}\\
+        \STATE{para $i=n-1..1$}\\
+        \STATE{\quad para $j=i+1..n$}\\
+        \STATE{\quad\quad $ sum +=a_{i,j}*x_{j}$}\\
+        \STATE{devolver x}
+    \end{algorithmic}
 \end{algorithm}
 
+Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posiciones 4 a 6 se ejecuta n veces y el ciclo de las lineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos n^2 iteraciones en el peor caso y finalizando con el ciclo de las lineas 1 a 6 que se ejecuta otras n veces.
+Luego en las lineas 7 a 10 se realiza el backgward substitution  que tiene en el peor caso se ejecuta n^2 veces.
 
 \subsubsection{Cholesky}
 
-La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden}. \\
-
+La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden}.
+Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sistema Cr=b.
 
 \begin{algorithm}
-\begin{algorithmic}[1]\parskip=1mm
-\caption{void Cholesky(matriz A, vector b)}
-  \STATE{l_{1,1} = \sqrt{a_{1,1}}}
-  \STATE{Para $j = 2,...n$}
-  \STATE{\quad l_{j,1} = a_{j,1} / l_{1,1}}  
-  \STATE{\quad Para $i = 2,...n-1$}
-  \STATE{\quad \quad $l_{i,i}  = (a_{i,i} - \sum_{k=1}^{i-1}{l^2_{i,k}}^{1/2})$}
-  \STATE{\quad \quad Para $j = i+1,...n1$}
-  \STATE{\quad \quad \quad $l_{j,i}  = (a_{j,i} - \sum_{k=1}^{i-1}{l_{j,k} l_{i,k}} / l_{i,i})$}
-  \STATE{\quad $l_{n,n}  = (a_{n,n} - \sum_{k=1}^{n-1}{l^2_{n,k}}$}
-\end{algorithmic}
-\end{algorithm}
-
+    \begin{algorithmic}[1]\parskip=1mm
+        \caption{vector Cholesky(matriz A, vector b)}
+        \STATE{$l_{1,1} = \sqrt{a_{1,1}$}}\\
+        \STATE{Para $j = 2,...n$}\\
+        \STATE{\quad $ l_{j,1} = a_{j,1} / l_{1,1}$}\\
+        \STATE{Para $i = 2,...n-1$}\\
+        \STATE{\quad $l_{i,i}  = (a_{i,i} - \sum_{k=1}^{i-1}{l^2_{i,k}}^{1/2})$}\\
+        \STATE{\quad Para $j = i+1,...n1$}\\
+        \STATE{\quad\quad $l_{j,i}  = (a_{j,i} - \sum_{k=1}^{i-1}{l_{j,k} l_{i,k}} / l_{i,i})$}\\
+        \STATE{$l_{n,n}  = (a_{n,n} - $\sum_{k=1}^{n-1}{l^2_{n,k}}}\\
+        \STATE{y_1$=$b_1\l_{1,1}\\
+        \STATE{Para i$=$2..n}\\
+        \STATE{\quad Para j$=$1..i-1}\\
+        \STATE{\quad\quad sum$=$l_{i,j}*y_j}\\
+        \STATE{\quad\quad y_i$=$(b_i-sum)\l_{i,i}}\\
+        \STATE{x_n$=$y_n\l_{n,n}\\
+        \STATE{Para i$=$n-1..1}\\
+        \STATE{\quad Para j$=$i+1..n}\\
+        \STATE{\quad\quad sum$=l_{i,j}*x_j$}\\
+        \STATE{\quad\quad x_i$=$(y_i-sum)\l_{i,i}}\\
+        \STATE{devolver x}
+    \end{algorithmic}
+\end{algorithm}\\
 
 \subsection{Porcentaje de Victorias}
 
-La primer técnica es \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en tomar el promedio de partidos ganados / partidos jugados. Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados. \\
+La primer técnica es \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en tomar el promedio de partidos ganados / partidos jugados. 
+Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados en base a partidos ganados. \\
 
 En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking. \\
 
-Esta técnica a priori no aporta mucha informacion respectoa la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado. Ya que todos los partidos valen lo mismo. \\
+Esta técnica a priori no aporta mucha informacion respectoa la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado.
+Ya que todos los partidos valen lo mismo. \\
 
-La implementación consiste en calcular: \sum_{i=1}^n{} \frac{G_i}{T} \\
+La implementación consiste en calcular: $\sum_{i=1}^n{} \frac{G_i}{T}$ \\
 
 Sonde \textbf{n} es la cantidad de partidos jugados, \textbf{G} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
