@@ -1,21 +1,21 @@
-\subsection{Experimentos}
-
 Para analizar la efectividad y ecuanimidad de esta nueva forma de calcular el ranking vamos a realizar una serie de test a fin de obtener un analisis cuantitativo y cualitativo que nos permita compararlo con el clásico método de \textbf{WP}. \\
 Con los test esperamos encontrar ventajas y desventajas de esta forma de medición, particularmente en escenarios donde no todos los participantes juegen la misma cantidad de partidos.
 \\
+
 Además realizaremos una comparación de los métodos de \textbf{Eliminación Gaussiana} y \textbf{Cholesky} para ver cual de los dos computa los rankings de manera mas eficiente.
 \\
+
 En esta sección solo presentaremos los experimentos realizados y los resultados obtenidos. Las conclusiones de cada experimento
-las presentaremos en la seguiente sección. \\
+las presentaremos en la seguiente sección. 
 
 
-\subsubsection{Ranking}
+\subsection{Ranking}
 
 Vamos a comparar la tabla de ranking obtenida a partir de un set de datos de la \textbf{ATP 2007}. Es decir calculamos el ranking a partir de la técnica \textbf{WP}, considerando partidos ganado / partidos jugados, a pesar de que no todos los jugadores hayan participado de la misma cantidad de partidos. Comparandolo con el \textbf{CMM} implementado con \textbf{Eliminación Gaussiana} y \textbf{Cholesky}
 
 
 
-\subsubsection{¿Importa a quien se le gana?}
+\subsection{¿Importa a quien se le gana?}
 
 
 En el escenario que se utilize \textbf{WP} realmente no importa a que equipo se le gane, ya que todos los partidos tienen la misma importancia y se les asigna el mismo puntaje. Pero en el caso de \textbf{CMM} resulta mas interesante plantearse esta pregunta. \\
@@ -36,7 +36,7 @@ Presentamos los resultados obtenidos.
 
 
 
-\subsubsection{¿Importa contra quien se pierde?}
+\subsection{¿Importa contra quien se pierde?}
 
 Para verificar si importa contra que equipo se juega, proponemos el test de tomar un equipo que se encuentra por la mitad de la tabla. Por notación denominamos a este equipo como \textbf{medio}. \\
 
@@ -56,7 +56,7 @@ A continuación presentamos los graficos obtenidos.
 
 
 
-\subsubsection{Racha ganadora}
+\subsection{Racha ganadora}
 
 Realizamos un experimento tomando al participante del \textbf{ATP 2007} que se encontraba en el último puesto y le asignamos una racha ganadora contra los primeros diez jugadores del ranking. \\
 
@@ -66,17 +66,17 @@ En los siguientes graficos podemos ver la evolución del ranking: \\
 
 
 
-\subsubsection{Escalando Posiciones}
+\subsection{Escalando Posiciones}
 
 Una de las consignas del trabajo era encontrar una tecnica para hacer escalar en el ranking a un \textbf{equipo}, para lograr esto tenemos dos alternativas. \\
 
 
-\subsubsubsection{El torneo ya finalizo}
+\subsubsection{El torneo ya finalizo}
 
 En este escenario el torneo se encuentra finalizado y los resultados no pueden modificarse. Lo que proponemos es ver si modificando el orden de los partidos podemos influir en el ranking de un equipo. Para esto vamos a modificar el orden de sus victorias de forma tal de encontrar una que resulte en una mejoría de su ranking. \\
 
 
-\subsubsubsection{Agregando partidos}
+\subsubsection{Agregando partidos}
 
 En este caso vamoa a analizar si podemos influir positivamente en el ranking a favor de un equipo, minimizando la cantidad de partidos ganados. \\
 
@@ -84,7 +84,7 @@ Nuestra teoría es que tomando el conjunto de equipos que perdio contra el selec
 
 
 
-\subsubsubsection{Análisis Cuantitativo}
+\subsection{Análisis Cuantitativo}
 
 
 Vamos a estudiar la eficiencia de ambas tecnicas incrementando y variando los volúmenes de datos. La idea es repetir el cómputo de los rankings para la misma instancia de datos al azar, y posteriormente ir incrementando la cantidad de datos.

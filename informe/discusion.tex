@@ -1,7 +1,6 @@
-\subsection{Discusión}
+En esta sección presentamos nuestras conclusiones sobre los resultados obtenidos de los experimentos del punto anterior. \\
 
-
-\subsubsection{Ranking}
+\subsection{Ranking}
 
 De los resultados obtenidos podemos ver que el ranking obtenido con \textbf{WP} no es muy realista, ya que la primer posición es ocupada por un participante que jugo y gano un solo partido. \\
 
@@ -10,7 +9,7 @@ El ranking obtenido por \textbf{CMM} refleja de forma mucho mas realista el dese
 En un escenario donde tenemos participantes que jugaron una cantidad distinta de partidos pensamos que refleja mejor la realidad del torneo el metodo de \textbf{CMM}. \\
 
 
-\subsubsection{¿Importa contra quien se pierde?}
+\subsection{¿Importa contra quien se pierde?}
 
 Como podemos observar realmente importa contra quien se pierde, del experimento realizado observamos que perder contra el participante último afecta mas el puntaje del ranking que perdiendo 
 contra el primero. \\
@@ -19,7 +18,7 @@ La hipótesis con la que calculamos el experimento resulto ser falsa. Analizando
 es mas esperable que un equipo de mitad de tabla tenga un resultado adverso contra los primeros, por lo cual la perdida de ranking es menor. \\
 
 
-\subsubsection{Racha ganadora}
+\subsection{Racha ganadora}
 
 Por lo visto el jugador escalo rapidamente en la tabla de posiciones, y ademas mejoro el ranking de los participantes que lo vencieron a el.\\
 
@@ -28,29 +27,28 @@ a un participante, la capacidad que tiene para crecer en el ranking esta limitad
 
 
 
-\subsubsection{Escalando Posiciones}
+\subsection{Escalando Posiciones}
 
-\subsubsubsection{El torneo ya finalizo}
-
-Poner resultados
-
-
-\subsubsubsection{Agregando partidos}
+\subsubsection{El torneo ya finalizo}
 
 Poner resultados
 
 
+\subsubsection{Agregando partidos}
 
-\subsubsubsection{Análisis Cuantitativo}
+Poner resultados
+
+
+
+\subsection{Análisis Cuantitativo}
 
 Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecian los datos de la instancia fue lineal.
 
 En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue mas eficiente para las mismas instancias, y relativamente mejor a medida que se incrementaban los datos. 
-Esto es esperado ya que nuestras implementaciones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume \frac{1}{3} n^3 flops y 
-\textbf{Eliminación Gaussiana} \frac{2}{3} n^3 flops.
+Esto es esperado ya que nuestras implementaciones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume 1/3 {n^3} flops y \textbf{Eliminación Gaussiana} 2/3 {n^3} flops.
 
 
-\subsubsubsection{La aritmética importa}
+\subsection{La aritmética importa}
 
 De los experimentos realizados notamos que es importante el tipo de datos utilizados. Principalmente cuando se utiliza \textbf{CMM}.
 \\
@@ -64,7 +62,7 @@ en el ranking global. \\
 Para evitar esta situacion nuestra implementación usa el tipo de datos float con con 5 decimales despues de la coma.\\
 
 
-\subsubsubsection{Empates}
+\subsection{Empates}
 
 Encontramos que los empates pueden modelarse en el caso de \textbf{WP}, asignando un puntaje al partido empatado y continuando con el procedimiento normal.
 

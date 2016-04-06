@@ -35,6 +35,49 @@ por ultimo el modo. Los modos solicitados por la catedra son:
 
 Para la implementación de esta técnica nos basamos en el paper \textbf{The Colley Matrix Explained}. La cual consiste en plantear un sistema de ecuaciones
 
+La principal fortaleza de este método es que es útil para obtener rankings en torneos donde los participantes no juegan la misma cantidad de partidos. Además de que al armar el sistema en base a los resultados pasados, da relevancia al calendario de juegos de cada participante. Como se intentará demostrar en la sección de experimentos, utilizando esta tecnica importa contra quien se gana y contra quien se pierde. Además tiene el atractivo de que da una idea sobre la posibilidad de victoria en el siguiente partido, considerando los partidos anteriores. \\
+
+La principal desventaja y que hace que no sea aplicable a muchos de los deportes es que los empates no pueden ser modelados. \\
+
+Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resolucion del sistema de ecuaciones obtenido. \\
+
+\subsubsection{Eliminación Gaussiana}
+
+La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden}. \\
+
+
+\begin{algorithm}
+\begin{algorithmic}[1]\parskip=1mm
+\caption{void Gauss(matriz A, vector b)}
+  \STATE{Para k=$1...n$}
+  \STATE{\quad Tomo el elemento $a_{k,k}$ como pivot}
+  \STATE{\quad Para $i = k+1,...k+p$}  
+  \STATE{\quad \quad Para $j = k+1,...i+p$}
+  \STATE{\quad \quad \quad $a_{i,j}  = a_{i,j} - a_{k,j} * (a_{i,k} / a_{k,k})$}
+  \STATE{\quad \quad $a_{i,k} = 0$}
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsubsection{Cholesky}
+
+La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden}. \\
+
+
+\begin{algorithm}
+\begin{algorithmic}[1]\parskip=1mm
+\caption{void Cholesky(matriz A, vector b)}
+  \STATE{l_{1,1} = \sqrt{a_{1,1}}}
+  \STATE{Para $j = 2,...n$}
+  \STATE{\quad l_{j,1} = a_{j,1} / l_{1,1}}  
+  \STATE{\quad Para $i = 2,...n-1$}
+  \STATE{\quad \quad $l_{i,i}  = (a_{i,i} - \sum_{k=1}^{i-1}{l^2_{i,k}}^{1/2})$}
+  \STATE{\quad \quad Para $j = i+1,...n1$}
+  \STATE{\quad \quad \quad $l_{j,i}  = (a_{j,i} - \sum_{k=1}^{i-1}{l_{j,k} l_{i,k}} / l_{i,i})$}
+  \STATE{\quad $l_{n,n}  = (a_{n,n} - \sum_{k=1}^{n-1}{l^2_{n,k}}$}
+\end{algorithmic}
+\end{algorithm}
+
 
 \subsection{Porcentaje de Victorias}
 
@@ -44,12 +87,6 @@ En este caso el score de un equipo no es afectado por la cantidad de partidos y 
 
 Esta técnica a priori no aporta mucha informacion respectoa la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado. Ya que todos los partidos valen lo mismo. \\
 
-La implementación consiste en calcular: \sum_{i=1}^n{} \frac{G_i}{T} donde \textbf{n} es la cantidad de partidos jugados, \textbf{G_i} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
+La implementación consiste en calcular: \sum_{i=1}^n{} \frac{G_i}{T} \\
 
-
-\subsection{Eliminacion Gaussiana(EG)}
-
-\subsection{Factorizacion de Cholesky(CL)}
-
-\subsection{Implementacion}
-
+Sonde \textbf{n} es la cantidad de partidos jugados, \textbf{G} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
