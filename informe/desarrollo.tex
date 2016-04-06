@@ -1,12 +1,38 @@
+\subsection{Entrada y salida de los algoritmos}
+
+Dados los requirimientos de la catedra el programa toma como parametros 3 argumentos, el primero es el archivo de entrada, luego el archivo de salida y
+por ultimo el modo. Los modos solicitados por la catedra son:
+\begin{enumerate}
+    \item Eliminacion Gaussiana(EG)
+\item Factorizacion de Cholesky(CL)
+    \item WP
+    \item Cholesky con modificacion de partidos jugados
+    \item Cholesky haciendo ganar al ultimo
+    \end{enumerate}
+    Ademas de los 3 modos solicitados por la materia agregamos 2 mas.
+    Este modo corre cholesky y luego busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky
+    Este modo corre cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido ultimo llegue al primer puesto ganandole
+    al que tiene por arriba inmediato en el ranking. En cada paso agrega un partido mas y vuelve a calcular cholesky para la nueva matriz.
+    En el momento que llega al primer puesto retorna por stdout la cantidad de partidos que ejecuto hasta llegar al primer puesto.
+
+    Tanto el formato de entrada y de salida del programa son los solicitados por la catedra, para el archivo de entrada la primer linea tiene 2 valores n,
+    que representa la cantidad de equipos  y k que representa la cantidad de partidos,
+    luego se tienen k lineas donde esta el resultado de cada partido representado por 5 parametros f,e1,r1,e2,r2.
+    f contiene es una fecha de caracter opcional, en nuestos experimentos esta fecha no fue utilizada, luego se tienen e1 , numero de equipo 1,
+    r1 cantidad de anotaciones del equipo 1 y sus equivalentes con e2, r2 respectivamente para el equipo 2.
+
+
 \subsection{Sistema a resolver}
 
-Una vez cargado en memoria el historial de los partidos planteamos la matriz de Colley y la 
-resolvemos de 2 formas distintas.
--La clasica eliminacion Gaussiana 
--La Factorizacion de Cholesky
- 
-Almacenamiento de la matriz:
+    \[ C_{i,j} =
+    \begin{cases}
+        n_{i,j}       & \quad \text{si }  \text{i\neqj}\\
+        2+n_i & \quad \text{si } \text{ i \eq j }\\
+    \end{cases}
+    \]
 
-Eliminacion Gaussiana(EG)
+\subsection{Eliminacion Gaussiana(EG)}
 
-Factorizacion de Cholesky(CL)
+\subsection{Factorizacion de Cholesky(CL)}
+
+\subsection{Implementacion}

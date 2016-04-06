@@ -12,16 +12,19 @@ En un escenario donde tenemos participantes que jugaron una cantidad distinta de
 
 \subsubsection{¿Importa contra quien se pierde?}
 
-Como podemos observar realmente importa contra quien se pierde, del experimento realizado observamos que perder contra el participante último afecta mas el puntaje del ranking que perdiendo contra el primero. \\
+Como podemos observar realmente importa contra quien se pierde, del experimento realizado observamos que perder contra el participante último afecta mas el puntaje del ranking que perdiendo 
+contra el primero. \\
 
-La hipótesis con la que calculamos el experimento resulto ser falsa. Analizando más ejecuciones llegamos a la conclusión de que lo resultados obtenidos son lógicos, ya que con esta técnica es mas esperable que un equipo de mitad de tabla tenga un resultado adverso contra los primeros, por lo cual la perdida de ranking es menor. \\
+La hipótesis con la que calculamos el experimento resulto ser falsa. Analizando más ejecuciones llegamos a la conclusión de que lo resultados obtenidos son lógicos, ya que con esta técnica 
+es mas esperable que un equipo de mitad de tabla tenga un resultado adverso contra los primeros, por lo cual la perdida de ranking es menor. \\
 
 
 \subsubsection{Racha ganadora}
 
 Por lo visto el jugador escalo rapidamente en la tabla de posiciones, y ademas mejoro el ranking de los participantes que lo vencieron a el.\\
 
-Si bien mejoro su posición en la tabla, no alcanzo el top ten, y en las últimas victorias su ascenso fue mas lento. Esto nos hace concluir que solo haciendo jugar y ganar a un participante, la capacidad que tiene para crecer en el ranking esta limitada por la falta de juego de sus rivales.
+Si bien mejoro su posición en la tabla, no alcanzo el top ten, y en las últimas victorias su ascenso fue mas lento. Esto nos hace concluir que solo haciendo jugar y ganar 
+a un participante, la capacidad que tiene para crecer en el ranking esta limitada por la falta de juego de sus rivales.
 
 
 
@@ -42,7 +45,9 @@ Poner resultados
 
 Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecian los datos de la instancia fue lineal.
 
-En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue mas eficiente para las mismas instancias, y relativamente mejor a medida que se incrementaban los datos. Esto es esperado ya que nuestras implementaciones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume \frac{1}{3} n^3 flops y \textbf{Eliminación Gaussiana} \frac{2}{3} n^3 flops.
+En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue mas eficiente para las mismas instancias, y relativamente mejor a medida que se incrementaban los datos. 
+Esto es esperado ya que nuestras implementaciones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume \frac{1}{3} n^3 flops y 
+\textbf{Eliminación Gaussiana} \frac{2}{3} n^3 flops.
 
 
 \subsubsubsection{La aritmética importa}
@@ -50,9 +55,11 @@ En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue
 De los experimentos realizados notamos que es importante el tipo de datos utilizados. Principalmente cuando se utiliza \textbf{CMM}.
 \\
 
-Los errores de redondeo pueden derivar en un mal cálculo del ranking. Es decir, no considerar los suficientes decimales puede derivar en que un participante con un ranking decimalmente menor quede mejor rankeado que otro con mayor puntaje.\\
+Los errores de redondeo pueden derivar en un mal cálculo del ranking. Es decir, no considerar los suficientes decimales puede derivar en que un participante con un ranking
+decimalmente menor quede mejor rankeado que otro con mayor puntaje.\\
 
-Por ejemplo: El participante A con ranking 0,5819 y el participante B con ranking 0,5816 si se consideran solo dos decimales ambos tienen 0,58 y esto podria afectar su orden en el ranking global. \\
+Por ejemplo: El participante A con ranking 0,5819 y el participante B con ranking 0,5816 si se consideran solo dos decimales ambos tienen 0,58 y esto podria afectar su orden 
+en el ranking global. \\
 
 Para evitar esta situacion nuestra implementación usa el tipo de datos float con con 5 decimales despues de la coma.\\
 
@@ -61,7 +68,8 @@ Para evitar esta situacion nuestra implementación usa el tipo de datos float co
 
 Encontramos que los empates pueden modelarse en el caso de \textbf{WP}, asignando un puntaje al partido empatado y continuando con el procedimiento normal.
 
-En el caso de \textbf{CMM} nos resulto muy díficil tratar de modelarlo, como alternativa a este resultado proponemos modelarlo como si ambos equipos perdieran. Esto nos permite reutilizar el método y de alguna forma penar a ambos equipos por no haber ganado su partido.
+En el caso de \textbf{CMM} nos resulto muy díficil tratar de modelarlo, como alternativa a este resultado proponemos modelarlo como si ambos equipos perdieran. Esto nos permite 
+reutilizar el método y de alguna forma penar a ambos equipos por no haber ganado su partido.
 
 
 
