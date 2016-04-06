@@ -4,6 +4,11 @@
 #include "wp/wp.h"
 #include "cholesky/cholesky.h"
 
+
+#include <algorithm>    // std::sort
+#include <cmath>
+#include <climits>
+#include <vector>       // std::vector
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -19,6 +24,7 @@ string intToString(int pNumber);
 instancia * generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada);
 instancia * generarInstanciaVacia(ifstream &archivoDeEntrada);
 void printVector(double * ,int );
+bool pairCompare(const std::pair<int, double>& firstElem, const std::pair<int, double>& secondElem);
 
 //El programa requiere 3 parametros, un archivo de entrada, uno de salida y el modo a ejecutar.
 int main(int argc, char *argv[]) {
@@ -26,6 +32,7 @@ int main(int argc, char *argv[]) {
     timeval startCholesky, endCholesky;
     timeval startModificado, endModificado;
     timeval startWP, endWP;
+    int totalEquipos;
     long elapsed_mtime; /* elapsed time in milliseconds */
     long elapsed_seconds; /* diff between seconds counter */
     long elapsed_useconds; /* diff between microseconds counter */
@@ -59,14 +66,15 @@ int main(int argc, char *argv[]) {
     // genero una instancia Matriz de resultados Ganadores y vector de totales
     instancia *ins= generarInstanciaDesdeArchivo(archivoDeEntrada);
 
+    totalEquipos = ins->getTotalEquipos();
     // base para el resultado
     double* respuesta = new double[ins->getTotalEquipos()];
-    for (i = 0; i < ins->getTotalEquipos(); ++i) {
+    for (i = 0; i < totalEquipos; ++i) {
         respuesta[i] = 0.0;
     }
 
     Matriz * CMM = ins->getCMM();
-    string totales =  intToString(ins->getTotalEquipos()) + " " + intToString(ins->getTotalPartidos()) + " ";
+    string totales =  intToString(totalEquipos) + " " + intToString(ins->getTotalPartidos()) + " ";
 
     // metodo Metodo CMM Con Gauss
     if (strcmp(argv[3], "0") == 0) {
@@ -90,11 +98,12 @@ int main(int argc, char *argv[]) {
         timeGauss= timeGauss/5;
 
         archivoTiempos.open("tiempos/tiempos0.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos << ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " <<timeGauss<< endl;
+        archivoTiempos << totalEquipos << " "  << ins->getTotalPartidos() << " " <<timeGauss<< endl;
         archivoTiempos.close();
     }
     // metodo Metodo CMM Con CHOLESKY
-    if (strcmp(argv[3], "1") == 0  ||strcmp(argv[3], "3") == 0 ) {
+
+    if (strcmp(argv[3], "1") == 0  ||strcmp(argv[3], "3") == 0|| strcmp(argv[3],"4")==0 ) {
         cout << "Corriendo Metodo Cholesky..." << endl;
         gettimeofday(&startCholesky, NULL);
 
@@ -108,7 +117,7 @@ int main(int argc, char *argv[]) {
         double timeCholesky =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
 
         archivoTiempos.open("tiempos/tiempos1.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos <<  ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " <<timeCholesky<< endl;
+        archivoTiempos <<  totalEquipos << " "  << ins->getTotalPartidos() << " " <<timeCholesky<< endl;
         archivoTiempos.close();
     }
 
@@ -123,7 +132,7 @@ int main(int argc, char *argv[]) {
         elapsed_useconds = endWP.tv_usec - startWP.tv_usec;
         double timeWP =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
         archivoTiempos.open("tiempos/tiempos2.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos <<ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " << timeWP<< endl;
+        archivoTiempos <<totalEquipos << " "  << ins->getTotalPartidos() << " " << timeWP<< endl;
         archivoTiempos.close();
 
     }
@@ -133,16 +142,16 @@ int main(int argc, char *argv[]) {
         ofstream archivoModificadoCHOLESKY;
 
         // aca se escupe el ranking // base para el resultado
-        double* respuestaModificada = new double[ins->getTotalEquipos()];
-        for (i = 0; i < ins->getTotalEquipos(); ++i) {
+        double* respuestaModificada = new double[totalEquipos];
+        for (i = 0; i < totalEquipos; ++i) {
             respuestaModificada[i] = 0.0;
         }
 
-        cout << "Corriendo Metodo CHOLESKY RANDOM 1000 partidos..." << endl;
+        cout << "Corriendo Metodo CHOLESKY RANDOM 100 partidos..." << endl;
         // aa se modifican los partidos ganados
         for (i = 0; i < 100; ++i) {
             // agarro uno random
-            int e1 = rand() % ins->getTotalEquipos();
+            int e1 = rand() % totalEquipos;
             // le hago ganar un perder contra uno que haya ganado
             ins->ganaPartido(e1);
         }
@@ -160,15 +169,69 @@ int main(int argc, char *argv[]) {
         double timeModificado =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
 
         archivoTiempos.open("tiempos/tiempos4.txt", std::ofstream::out | std::ofstream::app);
-        archivoTiempos <<  ins->getTotalEquipos() << " "  << ins->getTotalPartidos() << " " <<timeModificado<< endl;
+        archivoTiempos <<  totalEquipos << " "  << ins->getTotalPartidos() << " " <<timeModificado<< endl;
         archivoTiempos.close();
 
         archivoModificadoCHOLESKY.open("tests/resultadosCholeskyModificado.out", std::ofstream::out | std::ofstream::app);
-        for (int w = 0; w < ins->getTotalEquipos(); w++) {
+        for (int w = 0; w < totalEquipos; w++) {
             archivoModificadoCHOLESKY<< respuestaModificada[w] << endl;
         }
         archivoModificadoCHOLESKY.close();
     }
+
+    if (strcmp(argv[3], "4") == 0) {
+        int t;
+
+        ofstream archivoModificadoCHOLESKY;
+
+        double min  =INT_MAX +0.0;
+        int minPOS  =0;
+        bool esPrimero = false;
+        // busco el minimo;
+        for (i = 0; i < totalEquipos; i++) {
+            if(min>respuesta[i]){
+                minPOS = i;
+                min = respuesta[i];
+            }
+        }
+
+        for (t = 0; !esPrimero; t++) {
+            double nextminPOS  =0;
+            vector<pair<int,double> > rankSorted;
+            for (i = 0; i < totalEquipos;i++) {
+                pair<int,double> p(i,respuesta[i]);
+                rankSorted.push_back(p);
+            }
+
+            std::sort(rankSorted.begin(),rankSorted.end(),pairCompare);
+
+            for (i = 0; i < totalEquipos; i++) {
+                if(rankSorted[i].first==minPOS){
+                    nextminPOS = i+1;
+                }
+            }
+            if(nextminPOS<totalEquipos-1){
+                archivoModificadoCHOLESKY.open("tests/rankingSTEPS.out", std::ofstream::out | std::ofstream::app);
+
+                archivoModificadoCHOLESKY<< "partido "<< minPOS<<" "<< rankSorted[nextminPOS].first << endl;
+                for (int w = 0; w < totalEquipos; w++) {
+                    archivoModificadoCHOLESKY<< rankSorted[w].first << " " << rankSorted[w].second<< endl;
+                }
+                archivoModificadoCHOLESKY<< endl;
+                archivoModificadoCHOLESKY.close();
+
+                ins->ganaPartidoContra(minPOS,rankSorted[nextminPOS].first);
+                respuesta= cholesky(ins->getCMM(),ins->getVectorB());
+            }else{
+                cout << "ES PRIMERO !!" << i  << endl;
+                esPrimero = true;
+                break;
+            }
+        }
+
+        return 0;
+    }
+
 
     //para imprimir una instancia (Matriz resultados, Vector totales y matriz CMM)
     // ins->print();
@@ -180,32 +243,6 @@ int main(int argc, char *argv[]) {
     archivoDeEntrada.close();
     return 0;
 }
-
-// generar instancia
-// instancia *generarInstanciaVacia(ifstream &archivoDeEntrada){
-// int n,k,i,fecha;
-// int equipo1,equipo2,goles1,goles2;
-
-// //leo cantidad de equipos
-// archivoDeEntrada >> n;
-// //leo cantidad de partidos
-// archivoDeEntrada >> k;
-// // creo la tabla de resultados ganadores
-// Matriz * tablaResultados  =  new Matriz(n,n);
-// // creo la tabla de partidos totales
-// int* totales = new int[n];
-// for (i = 0; i < n; ++i) {
-// totales[i]=0;
-// }
-
-// instancia *res =new instancia();
-// res->setTotalPartidos(k);
-// res->setGanados(tablaResultados);
-// res->setTotales(totales);
-// res->generarCMM();
-// res->generarVectorB();
-// return res;
-// };
 
 string intToString(int pNumber)
 {
@@ -277,3 +314,7 @@ void printVector(double * vec,int longitud){
     }
 
 }
+
+bool pairCompare(const std::pair<int, double>& firstElem, const std::pair<int, double>& secondElem) {
+    return firstElem.second< secondElem.second;
+};

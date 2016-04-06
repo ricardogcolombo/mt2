@@ -126,6 +126,17 @@ void instancia::generarVectorB(){
 
 }
 
+void instancia::ganaPartidoContra(int equipo1,int equipo2){
+    int totalJugados1 = this->getTotalJugados(equipo1);
+    int totalJugados2 = this->getTotalJugados(equipo2);
+    this->totales[equipo1]=totalJugados1+1;
+    this->totales[equipo2]=totalJugados2+1;
+    int totalganadose1e2 = this->ganados->getVal(equipo1,equipo2);
+    this->ganados->setVal(equipo1,equipo2,totalganadose1e2+1);
+    this->generarCMM();
+    this->generarVectorB();
+};
+
 bool instancia::ganaPartido(int equipo1){
     bool encontroUno = false;
     int i;
