@@ -23,19 +23,21 @@ El modo 5 es similar al anterior con la sutil diferencia que el participante que
 Tanto el formato de entrada y de salida del programa son los solicitados por la catedra.
 Para todos los metodos el archivo de entrada es el mismo, que contiene el siguiente formato:\\
 \newline
+
 \begin{pmatrix}
- (n) & (k) \\
- (x1) & (e1) & (r1) & (t1) & (s1)\\
- (x2) & (e2) & (r2) & (t2) & (s1)\\
-...\\
- (xk) & (ek) & (rk) & (tk) & (s1)\\
+    (n) & (k) \\
+    (x1) & (e1) & (r1) & (t1) & (s1)\\
+    (x2) & (e2) & (r2) & (t2) & (s1) \\
+    ...\\
+    (xk) & (ek) & (rk) & (tk) & (s1)\\
 \end{pmatrix}
+
 \newline
 la primer linea tiene 2 valores $n$ representa la cantidad de equipos y $k$ representa la cantidad de partidos, seguido k lineas que representa cada partido, donde
-$x1$ representa una fecha que en nuestro caso no utilizamos, luego $ei$ y $ti$ representan los numeros de los equipos, y por ultimo $ri$ y $s1$ representan las anotaciones de cada equipo respectivamente.
+$x1$ representa una fecha que en nuestro caso no utilizamos, luego $ei$ y $ti$ representan los numeros de los equipos, y por ultimo $ri$ y $s1$ representan las anotaciones de cada equipo respectivamente.\\
 en nuestra experimentacion con fines de no complejizar aum mas el problema no utilizamos en campo que representa la fecha si no que asumimos que dado el orden que venian los resultados era el orden de los partidos.
 
-Luego una vez se ejecutan los metodos 0-4 devuelven un archivo de n lineas donde en la linea se obtiene el ranking del equipo i. 
+Luego una vez se ejecutan los metodos 0-4 devuelven un archivo de n lineas donde en la linea se obtiene el ranking del equipo i.
 
 Para los metodos 4 y 5 se devuelve el ranking para cada iteracion antes de jugar el partido, estas se repiten hasta que el que comenzo ultimo termine primero utilizando dos metodos descriptos anteriormente, en la ultima linea se obtiene la cantidad total de partidos,
 estos dos metodos ademas devuelven por stdout la cantidad de partidos jugados hasta que termino en la primer posicion el que comenzo ultimo.
@@ -50,21 +52,21 @@ estos dos metodos ademas devuelven por stdout la cantidad de partidos jugados ha
         2+n_i & \quad \text{si } \text{ i $\eq$ j }\\
     \end{cases}
 
-    \]
+\]
 Esta matriz es simetrica y definida positiva y ademas es estrictamente diagonal domimante.
 Por lo tanto es posible hallar la factorizacion de Cholesky , que no es mas que un caso
-de factorizacion LU , esto nos permite asegurar que a la hora de hacer eliminacion 
+de factorizacion LU , esto nos permite asegurar que a la hora de hacer eliminacion
 gaussiana no vamos a hallar 0 en la diagonal , con lo cual no hace faltar considerar
-pivoteo parcial en la eliminacion Gaussiana.  
+pivoteo parcial en la eliminacion Gaussiana.
 
 %Las Caracteristicas de esta matriz son -La Matriz es Simetrica y definida positiva
-%-Es estrictamente Diagonal Domimante  
+%-Es estrictamente Diagonal Domimante
 %-Por lo tanto se le puede hacer la factorizacion de Cholesky que no es mas que
 %un caso particular de Factorizacion LU
 %-Si se le puede hallar la factorizacion LU , eso significa que la eliminaion gausiana
 %no va a hallar 0 en la diagonal , con lo cual no hace falta considerar pivoteo en el algoritmo
 %-El metodo para crear la matriz esta basado en la regla de metodos sucesivos de LaPlace
-    
+
 
 
 \subsection{Método Matriz de Colley}
@@ -134,7 +136,7 @@ Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sis
 
 \subsection{Porcentaje de Victorias}
 
-La primer técnica es \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en tomar el promedio de partidos ganados / partidos jugados. 
+La primer técnica es \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en tomar el promedio de partidos ganados / partidos jugados.
 Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados en base a partidos ganados. \\
 
 En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking. \\
