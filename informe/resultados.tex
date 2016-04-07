@@ -11,16 +11,32 @@ las presentaremos en la seguiente sección.
 
 \subsection{Ranking}
 
-Vamos a comparar la tabla de ranking obtenida a partir de un set de datos de la \textbf{ATP 2007}. Es decir calculamos el ranking a partir de la técnica \textbf{WP}, considerando partidos ganado / partidos jugados, a pesar de que no todos los jugadores hayan participado de la misma cantidad de partidos. Comparandolo con el \textbf{CMM} implementado con \textbf{Eliminación Gaussiana} y \textbf{Cholesky}. \\
+Vamos a comparar la tabla de ranking obtenida a partir de un set de datos de la \textbf{ATP 2007}. Es decir calculamos el ranking a partir de la técnica \textbf{WP}, considerando partidos ganado / partidos jugados, a pesar de que no todos los jugadores hayan participado de la misma cantidad de partidos. Comparandolo con el \textbf{CMM} implementado con \textbf{Cholesky}. \\
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{IMG/Comparativa WP- CMM todos.png}
-\caption{Rankings Calculados con las 3 tecnicas}
+\caption{Rankings para comparar WP vs CMM}
 \label{fig:Comparacion de tecnicas}
 \end{figure}
 
+\\
+El grafico elegido para graficar es un grafico de dispersion, que muestra: \\
+
+\begin{itemize}
+	\item Eje X el valor obtenido al ejecutar el algoritmo WP.
+	\item Eje Y el valor obtenido al ejecutar CMM implementado con Cholesky.
+	\item El tamaño de la burbuja es la cantidad de partidos jugados.
+\end{itemize}
+
+	
+Lo que se observa en el grafico es que el ranking CMM parece darle relevancia a la cantidad de partidos jugados ya que las burbujas de los top 10 son mas grandes.
+Esto esta dado en principio por la caracteristica del deporte (tenis) que permite a los que ganan jugar mas partidos en los torneos. 
+Lo que nos llamo la atencion es que si observamos el rank arrojado por WP, se observa que el primero es fnisk. El mismo es un jugador que solo jugo 1 partido y lo gano, 
+por lo cual tiene un 100% de efectividad y figura como primero. \\
+Ademas, si observamos los top 10 del rank WP, observamos algunas burbujas de tamaño pequeño. Esto es porque en algunos casos, este ranking beneficia jugar pocos 
+partidos pero ganarlos.
 \\
 
 Hemos realizado un zoom dentro del grafico para corroborar el nombre y posicion de ambos rankings.
@@ -49,29 +65,15 @@ Presentamos los resultados obtenidos.
 \\
 
 
-******Aca van los graficos de: tabla inicial, perder contra el primero y perder contra el ultimo (sacando el partido con el primero)
-
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/rank a quien le gano.png}
+\caption{Ranking de jugadores}
+\label{fig:Ranking de jugadores}
+\end{figure}
 \\
 
-
-
-
-\subsection{¿Importa contra quien se pierde?}
-
-Para verificar si importa contra que equipo se juega, proponemos el test de tomar un equipo que se encuentra por la mitad de la tabla. Por notación denominamos a este equipo como \textbf{medio}. \\
-
-Para lograrlo calculamos un ranking a partir de un set de datos. Y luego generamos una nueva instancia enfrentando a \textbf{medio}contra el actual puntero y calculamos el nuevo ranking. Volvemos a tomar la primer instancia y lo enfrentamos contra el último, calculamos nuevamente el ranking y luego comparamos los tres rankings obtenidos. La premisa que tenemos del experimento es que el ranking del equipo \textbf{medio} no debería ser afectado por el rival contra el que perdió.\\
-
-Este experimento lo calculamos usando la técnica de \textbf{CMM}, ya que considerar \textbf{WP} no afecta el resultado.
-
-\\
-A continuación presentamos los graficos obtenidos.
-
-\\
-
-
-******Aca van los graficos de: tabla inicial, perder contra el primero y perder contra el ultimo (sacando el partido con el primero)
-
+Se observa una mejoria en el ranking luego de haber ganado contra el primero.
 \\
 
 
@@ -95,41 +97,112 @@ A continuación presentamos el ranking calculado construido de la siguiente mane
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{IMG/comparativa cmm -cmm foto 0.png}
-\caption{Zoom de las primeras posiciones}
-\label{fig:Zoom de las primeras posiciones}
+\caption{Ranking de jugadores}
+\label{fig:Ranking de jugadores}
 \end{figure}
 
 \\
-Y a continuación el ranking después de los 10 partidos: \\
+Es logico que se observe una diagonal ya que ambos ejes son la misma metrica de CMM.
 \\
-En el gráfico se observa mediante una flecha cual es la ganancia en Ranking que tiene el ultimo jugador al ganarle a los top 10.\\
+Luego el experimento realizado fue agregar partidos al schedule, de manera que el ultimo le gane a los 10 primeros y entender que tipo de reaccion tiene el algoritmo CMM.
+Para ello se realizaron 10 schedules distintos (ATP2007_n.in) de tal forma que en cada uno de esos archivos de entrada exista un partido mas que en el caso anterior y
+el mismo sea una victoria del ultimo jugador del ranking vs alguno de los top 10.
+
+\\
+Para poder mostrar una evolucion a medida que se van jugando los 10 partidos, hemos dejado el eje Y del grafico con el ranking inicial, mientras que el eje X paso a ser el ranking recalculado con la agregacion de partidos.\\
+En el gráfico se observa mediante una flecha el salto del ranking de un partido a otro y evidencia cual es la ganancia que se tiene al ganarle a los top 10. 
+\\
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{IMG/comparativa cmm -cmm foto 10.png}
-\caption{Zoom de las primeras posiciones}
-\label{fig:Zoom de las primeras posiciones}
+\caption{Evolucion de jugadores con el pasar de los partidos}
+\label{fig:Evolucion de jugadores con el pasar de los partidos}
 \end{figure}
 
 \\
+Por ultimo y para entender si el ultimo podia llegar a ser primero en algun momento, hemos agregado al archivo un total de 100 partidos ganados por el ultimo contra 
+los top 10.
+\\
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/comparativa cmm -cmm foto 100.png}
+\caption{Evolucion de jugadores con el pasar de los partidos}
+\label{fig:Evolucion de jugadores con el pasar de los partidos}
+\end{figure}
 
+\\
+Y tal como vemos, si es posible pero a un costo altisimo (jugar alrededor de 100 partidos).
+\\
+Lo interesante es que aquellos equipos contra los que el ultimo jugador jugo tambien sufrieron modificaciones en su ranking. A continuacion se observa un zoom dentro
+del grafico para observar este comportamiento.
+\\
+
+El ultimo jugador del ranking se llama Verkerk M., sus partidos fueron los siguientes:
+\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/partidos jugados vs verkerk.png}
+\caption{Partidos jugados por Verkerk}
+\label{fig:Partidos jugados por Verkerk}
+\end{figure}
+
+\\
+En el siguiente grafico se observa el movimiento de ranking de los que le ganaron partidos a Verkerk, teniendo en cuenta la escalada al primer puesto de este jugador.
+\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/partidos jugados vs verkerk.png}
+\caption{Partidos jugados por Verkerk}
+\label{fig:Partidos jugados por Verkerk}
+\end{figure}
 
 \subsection{Escalando Posiciones}
 
-Una de las consignas del trabajo era encontrar una tecnica para hacer escalar en el ranking a un \textbf{equipo}, para lograr esto tenemos dos alternativas. \\
+Una de las consignas del trabajo era encontrar una tecnica para hacer escalar en el ranking a un \textbf{equipo}, pensamos en 2 tacticas. 
+\\
+Ambas, se basan en, dado un schedule ya definido donde existe un jugador que esta ultimo en el ranking, hacerlo jugar y ganar vs "el que siempre esta primero en la fecha correspondiente" y "contra el que tiene inmediatamente arriba de el en el rank"
+\\
+Pensamos en una primera instancia era que tenia que ascender mas pronto aquel jugador que juega y gana contra el que ocupa el primer puesto que aquel que juega y gana contra cualquier otro jugador.
+\\
+Los algoritmos realizados cortan la ejecucion al llegar al primer puesto, arrojando la cantidad de partidos en total que debio jugar, y ganar, ese jugador.
+
+A continuacion se muestran los graficos.
 
 
-\subsubsection{El torneo ya finalizo}
+\subsubsection{Ganarle siempre al primero}
 
-En este escenario el torneo se encuentra finalizado y los resultados no pueden modificarse. Lo que proponemos es ver si modificando el orden de los partidos podemos influir en el ranking de un equipo. Para esto vamos a modificar el orden de sus victorias de forma tal de encontrar una que resulte en una mejoría de su ranking. \\
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/estrategia 5.png}
+\caption{Ganarle siempre al primero}
+\label{fig:Ganarle siempre al primero}
+\end{figure}
 
+En este grafico se observa lo siguiente.\\
+Cada burbuja es un jugador, el eje de las X es el rank que arroja CMM para las distintas fechas jugadas, mientras que el eje Y tiene el rank de CMM base para 
+realizar el analisis y comparar la evolucion de los jugadores.
 
-\subsubsection{Agregando partidos}
+En este grafico se observa que el crecimiento es rapido en un incio y luego va reduciendo su velocidad de crecimiento.
+Se observa que el algoritmo necesita de 12 fechas para llegar a la cima del campeonato, validando nuestra teoria.\\
 
-En este caso vamoa a analizar si podemos influir positivamente en el ranking a favor de un equipo, minimizando la cantidad de partidos ganados. \\
+Se observa tambien una linea de referencia que indica cuando llega el jugador a superar al primero del ranking.\\
 
-Nuestra teoría es que tomando el conjunto de equipos que perdio contra el seleccionado y haciendolos jugar y ganar a los principales del ranking, vamos a lograr que nuestro equipo mejore en la tabla de posiciones. \\
+\subsubsection{Ganarle al esta inmediatamente arriba del jugador en cuestion}
+\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/estrategia 4.png}
+\caption{Ganarle siempre al que esta inmediatamente arriba}
+\label{fig:Ganarle siempre al que esta inmediatamente arriba}
+\end{figure}
+
+En este grafico se observa que el crecimiento es lento y que se necesitan aproximadamente 40 fechas para llegar a la cima del campeonato.\\
+
+Se observa tambien una linea de referencia que indica cuando llega el jugador a superar al primero del ranking.\\
+
 
 
 

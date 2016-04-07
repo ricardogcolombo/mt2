@@ -1,0 +1,4 @@
+En base a las peliculas vista , consideramos que el Analisis de datos
+es una herramienta importante para mejorar el rendimiento deportivo de un equipo , siempre y cuando se utilizen correctamente . 
+Las estadisticas son indicadores de que tan bien rinden los jugadores pero hay factores externos como el animo 
+, el nivel de los competidores que no son considerados en las estadisticas y pueden modificar bastante el rendimiento de los jugadores
