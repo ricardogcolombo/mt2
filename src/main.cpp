@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
     }
     // metodo Metodo CMM Con CHOLESKY
 
-    if (strcmp(argv[3], "1") == 0  ||strcmp(argv[3], "3") == 0|| strcmp(argv[3],"4")==0 ) {
+    if (strcmp(argv[3], "1") == 0  ||strcmp(argv[3], "3") == 0|| strcmp(argv[3],"4")==0 || strcmp(argv[3],"5")==0   ) {
         cout << "Corriendo Metodo Cholesky..." << endl;
         gettimeofday(&startCholesky, NULL);
 
@@ -134,7 +134,7 @@ int main(int argc, char *argv[]) {
         archivoTiempos.open("tiempos/tiempos2.txt", std::ofstream::out | std::ofstream::app);
         archivoTiempos <<totalEquipos << " "  << ins->getTotalPartidos() << " " << timeWP<< endl;
         archivoTiempos.close();
-    
+
     }
 
     if (strcmp(argv[3], "3") == 0) {
@@ -182,6 +182,15 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[3], "4") == 0 || strcmp(argv[3], "5") == 0) {
         int t;
 
+
+        string salida;
+        if(strcmp(argv[3], "4") == 0 ){
+            salida = "4";
+        }else{
+            salida = "5";
+        }
+
+
         ofstream archivoModificadoCHOLESKY;
 
         double min  =INT_MAX +0.0;
@@ -195,6 +204,10 @@ int main(int argc, char *argv[]) {
                 min = respuesta[i];
             }
         }
+        // esto no es lo mas lindo pero es solo para limpiar el archivo anterior
+        archivoModificadoCHOLESKY.open("tests/rankingSTEPS_"+ salida + ".out", std::ofstream::out | std::ofstream::trunc);
+        archivoModificadoCHOLESKY<<"Imprimo Cholesky en el primer paso "<< endl;
+        archivoModificadoCHOLESKY.close();
 
         for (t = 0; !esPrimero; t++) {
             double nextminPOS  =0;
@@ -205,7 +218,6 @@ int main(int argc, char *argv[]) {
             }
 
             std::sort(rankSorted.begin(),rankSorted.end(),pairCompare);
-
             for (i = 0; i < totalEquipos; i++) {
                 if(rankSorted[i].first==minPOS){
                     if(strcmp(argv[3], "4") == 0 ){
@@ -217,7 +229,7 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-            archivoModificadoCHOLESKY.open("tests/rankingSTEPS_"+argv[3] + ".out", std::ofstream::out | std::ofstream::app);
+            archivoModificadoCHOLESKY.open("tests/rankingSTEPS_"+ salida + ".out", std::ofstream::out | std::ofstream::app);
             for (int w = 0; w < totalEquipos; w++) {
                 archivoModificadoCHOLESKY<< rankSorted[w].first << " " << rankSorted[w].second<< endl;
             }
@@ -227,7 +239,7 @@ int main(int argc, char *argv[]) {
             if(actPOS==totalEquipos-1){
                 esPrimero = true;
                 archivoModificadoCHOLESKY<<"Cantidad total de partidos "<< t << endl;
-                cout <<"Cantidad total de partidos "<< t << endl;
+                cout <<"Cantidad total de partidos "<< t-1 << endl;
                 break;
             }
             archivoModificadoCHOLESKY.close();
