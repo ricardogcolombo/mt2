@@ -231,7 +231,7 @@ int main(int argc, char *argv[]) {
 
             archivoModificadoCHOLESKY.open(salida, std::ofstream::out | std::ofstream::app);
             for (int w = 0; w < totalEquipos; w++) {
-                archivoModificadoCHOLESKY<< rankSorted[w].first << " " << rankSorted[w].second<< endl;
+                archivoModificadoCHOLESKY<< intToString(t) << " " <<rankSorted[w].first << " " << rankSorted[w].second<< endl;
             }
             archivoModificadoCHOLESKY<< endl;
 
