@@ -183,11 +183,11 @@ int main(int argc, char *argv[]) {
         int t;
 
 
-        string salida;
+        const char* salida;
         if(strcmp(argv[3], "4") == 0 ){
-            salida = "4";
-        }else{
-            salida = "5";
+		salida= "tests/rankingSTEPS_4.out";
+	}else{
+		salida= "tests/rankingSTEPS_5.out";
         }
 
 
@@ -205,7 +205,7 @@ int main(int argc, char *argv[]) {
             }
         }
         // esto no es lo mas lindo pero es solo para limpiar el archivo anterior
-        archivoModificadoCHOLESKY.open("tests/rankingSTEPS_"+ salida + ".out", std::ofstream::out | std::ofstream::trunc);
+        archivoModificadoCHOLESKY.open(salida, std::ofstream::out | std::ofstream::trunc);
         archivoModificadoCHOLESKY<<"Imprimo Cholesky en el primer paso "<< endl;
         archivoModificadoCHOLESKY.close();
 
@@ -229,7 +229,7 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-            archivoModificadoCHOLESKY.open("tests/rankingSTEPS_"+ salida + ".out", std::ofstream::out | std::ofstream::app);
+            archivoModificadoCHOLESKY.open(salida, std::ofstream::out | std::ofstream::app);
             for (int w = 0; w < totalEquipos; w++) {
                 archivoModificadoCHOLESKY<< rankSorted[w].first << " " << rankSorted[w].second<< endl;
             }
