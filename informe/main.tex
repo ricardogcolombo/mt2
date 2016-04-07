@@ -18,7 +18,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-
+% esto es para el codigo
+\usepackage{listings}
 % Paquetes para pseudo
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -43,6 +44,18 @@
     filecolor=black,
     linkcolor=black,
     urlcolor=black
+}
+
+\lstset{
+    language=C++,
+    basicstyle=\ttfamily,
+    breaklines=true,
+    breakatwhitespace=true,
+    inputencoding=utf8,
+    extendedchars=true
+    }
+\lstset{literate={::}{}{0\discretionary{::}{}{::}}% line-break at ::
+   {->}{}{0\discretionary{->}{}{->}}% line-break at ->
 }
 
 \begin{document}
@@ -93,4 +106,10 @@
 
 \input{apendice}
 
+\pagebreak
+\section{Bibliografía}
+\input{bibliografia}
+\pagebreak
+\section{Codigo}
+\input{codigo}
 \end{document}
