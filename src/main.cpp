@@ -134,7 +134,7 @@ int main(int argc, char *argv[]) {
         archivoTiempos.open("tiempos/tiempos2.txt", std::ofstream::out | std::ofstream::app);
         archivoTiempos <<totalEquipos << " "  << ins->getTotalPartidos() << " " << timeWP<< endl;
         archivoTiempos.close();
-
+    
     }
 
     if (strcmp(argv[3], "3") == 0) {
@@ -179,13 +179,14 @@ int main(int argc, char *argv[]) {
         archivoModificadoCHOLESKY.close();
     }
 
-    if (strcmp(argv[3], "4") == 0) {
+    if (strcmp(argv[3], "4") == 0 || strcmp(argv[3], "5") == 0) {
         int t;
 
         ofstream archivoModificadoCHOLESKY;
 
         double min  =INT_MAX +0.0;
         int minPOS  =0;
+        int actPOS  =0;
         bool esPrimero = false;
         // busco el minimo;
         for (i = 0; i < totalEquipos; i++) {
@@ -207,26 +208,31 @@ int main(int argc, char *argv[]) {
 
             for (i = 0; i < totalEquipos; i++) {
                 if(rankSorted[i].first==minPOS){
-                    nextminPOS = i+1;
+                    if(strcmp(argv[3], "4") == 0 ){
+                        nextminPOS = i+1;
+                    }else{
+                        nextminPOS = totalEquipos-1;
+                    }
+                    actPOS = i;
                 }
             }
-            if(nextminPOS<totalEquipos-1){
-                archivoModificadoCHOLESKY.open("tests/rankingSTEPS.out", std::ofstream::out | std::ofstream::app);
 
-                archivoModificadoCHOLESKY<< "partido "<< minPOS<<" "<< rankSorted[nextminPOS].first << endl;
-                for (int w = 0; w < totalEquipos; w++) {
-                    archivoModificadoCHOLESKY<< rankSorted[w].first << " " << rankSorted[w].second<< endl;
-                }
-                archivoModificadoCHOLESKY<< endl;
-                archivoModificadoCHOLESKY.close();
+            archivoModificadoCHOLESKY.open("tests/rankingSTEPS_"+argv[3] + ".out", std::ofstream::out | std::ofstream::app);
+            for (int w = 0; w < totalEquipos; w++) {
+                archivoModificadoCHOLESKY<< rankSorted[w].first << " " << rankSorted[w].second<< endl;
+            }
+            archivoModificadoCHOLESKY<< endl;
 
-                ins->ganaPartidoContra(minPOS,rankSorted[nextminPOS].first);
-                respuesta= cholesky(ins->getCMM(),ins->getVectorB());
-            }else{
-                cout << "ES PRIMERO !!" << i  << endl;
+            ins->ganaPartidoContra(minPOS,rankSorted[nextminPOS].first);
+            if(actPOS==totalEquipos-1){
                 esPrimero = true;
+                archivoModificadoCHOLESKY<<"Cantidad total de partidos "<< t << endl;
+                cout <<"Cantidad total de partidos "<< t << endl;
                 break;
             }
+            archivoModificadoCHOLESKY.close();
+
+            respuesta= cholesky(ins->getCMM(),ins->getVectorB());
         }
 
         return 0;
