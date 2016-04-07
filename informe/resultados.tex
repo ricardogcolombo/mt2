@@ -11,9 +11,29 @@ las presentaremos en la seguiente sección.
 
 \subsection{Ranking}
 
-Vamos a comparar la tabla de ranking obtenida a partir de un set de datos de la \textbf{ATP 2007}. Es decir calculamos el ranking a partir de la técnica \textbf{WP}, considerando partidos ganado / partidos jugados, a pesar de que no todos los jugadores hayan participado de la misma cantidad de partidos. Comparandolo con el \textbf{CMM} implementado con \textbf{Eliminación Gaussiana} y \textbf{Cholesky}
+Vamos a comparar la tabla de ranking obtenida a partir de un set de datos de la \textbf{ATP 2007}. Es decir calculamos el ranking a partir de la técnica \textbf{WP}, considerando partidos ganado / partidos jugados, a pesar de que no todos los jugadores hayan participado de la misma cantidad de partidos. Comparandolo con el \textbf{CMM} implementado con \textbf{Eliminación Gaussiana} y \textbf{Cholesky}. \\
 
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/Comparativa WP- CMM todos.png}
+\caption{Rankings Calculados con las 3 tecnicas}
+\label{fig:Comparacion de tecnicas}
+\end{figure}
+
+\\
+
+Hemos realizado un zoom dentro del grafico para corroborar el nombre y posicion de ambos rankings.
+\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/comparativa WP - CMM zoom.png}
+\caption{Zoom de las primeras posiciones}
+\label{fig:Zoom de las primeras posiciones}
+\end{figure}
+
+\\
 
 \subsection{¿Importa a quien se le gana?}
 
@@ -58,11 +78,41 @@ A continuación presentamos los graficos obtenidos.
 
 \subsection{Racha ganadora}
 
-Realizamos un experimento tomando al participante del \textbf{ATP 2007} que se encontraba en el último puesto y le asignamos una racha ganadora contra los primeros diez jugadores del ranking. \\
+Para estudiar la ecuanimidad del \textbf{CMM} realizamos un experimento tomando al participante del \textbf{ATP 2007} que se encontraba en el último puesto y le asignamos una racha ganadora contra los primeros diez jugadores del ranking. \\
 
-El objetivo de este test es analizar como la racha de un jugador afecta al ranking global y si ganandole a los mejores realmente escala una considerable cantidad de posiciones en el ranking. \\
+Además este test nos permite observar como la racha de un jugador afecta al ranking global y si ganandole a los mejores realmente escala una considerable cantidad de posiciones en el ranking. \\
 
-En los siguientes graficos podemos ver la evolución del ranking: \\
+A continuacion presentamos el ranking calculado construido de la siguiente manera: \\
+
+
+\begin{itemize}
+	\item Eje X el valor obtenido al ejecutar CMM implementado con Cholesky.
+	\item Eje Y el valor obtenido al ejecutar CMM implementado con Eliminación Gaussiana.
+	\item El tamaño de la burbuja es la cantidad de partidos jugados.
+\end{itemize}
+
+\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/comparativa cmm -cmm foto 0.png}
+\caption{Zoom de las primeras posiciones}
+\label{fig:Zoom de las primeras posiciones}
+\end{figure}
+
+\\
+Y a continuación el ranking después de los 10 partidos: \\
+\\
+En el gráfico se observa mediante una flecha cual es la ganancia en Ranking que tiene el ultimo jugador al ganarle a los top 10.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/comparativa cmm -cmm foto 10.png}
+\caption{Zoom de las primeras posiciones}
+\label{fig:Zoom de las primeras posiciones}
+\end{figure}
+
+\\
 
 
 
