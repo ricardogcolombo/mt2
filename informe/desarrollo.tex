@@ -1,46 +1,77 @@
 \subsection{Entrada y salida de los algoritmos}
 
 Dados los requirimientos de la catedra el programa toma como parametros 3 argumentos, el primero es el archivo de entrada, luego el archivo de salida y
-por ultimo el modo. Los modos solicitados por la catedra son:
+por ultimo el modo.  La catedra solicitaba 3 modos el modo 0,1 y2 para los 3 metodos solicitados, luego agregamos 3 modos mas utilizados durante la etapa de expermentacion.
+\\
 \begin{enumerate}
     \item Eliminacion Gaussiana(EG)
-\item Factorizacion de Cholesky(CL)
+    \item Factorizacion de Cholesky(CL)
     \item WP
     \item Cholesky con modificacion de partidos jugados
-    \item Cholesky haciendo ganar al ultimo
-    \end{enumerate}
-    Ademas de los 3 modos solicitados por la materia agregamos 2 mas.
-    Este modo corre cholesky y luego busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky
-    Este modo corre cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido ultimo llegue al primer puesto ganandole
-    al que tiene por arriba inmediato en el ranking. En cada paso agrega un partido mas y vuelve a calcular cholesky para la nueva matriz.
-    En el momento que llega al primer puesto retorna por stdout la cantidad de partidos que ejecuto hasta llegar al primer puesto.
+    \item Cholesky haciendo ganar al ultimo con el siguiente reiteradas veces hasta quedar primero
+    \item Cholesky haciendo ganar al ultimo con el primero del ranking hasta quedar primero
+\end{enumerate}
+\\
+El modo 3 modo corre cholesky y luego busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky,
+para este modo se puede ingresar un parametro mas donde se indica la cantidad de partidos que se deben jugar de nuevo.
+\\
+Para el modo 4 corre cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido ultimo luego de obtener el ranking de cholesky llegue al primer puesto ganandole
+al que tiene por arriba inmediato en el ranking. En cada paso agrega un partido mas y vuelve a calcular cholesky para la nueva matriz, asi obtenemos un nuevo ranking y continuamos iterando hasta quedar en la primera posicion, siempre utilizando al que salio ultimo en la primera utilizacion del metodo de cholesky.
+Una vez finalizado por stdout devuelve la cantidad de partidos jugados, ademas de que en el archivo  rankingSTEPS\_4.out dentro de la carpeta test se encuentran los rankings en cada iteracion y como es la evolucion.
+El modo 5 es similar al anterior con la sutil diferencia que el participante que salio ultimo la primera vez que corrio cholesky llegue al primer puesto jugandole al que se encuentra en el primer puesto en cada iteracion.
+\newline
+Tanto el formato de entrada y de salida del programa son los solicitados por la catedra.
+Para todos los metodos el archivo de entrada es el mismo, que contiene el siguiente formato:\\
+\newline
 
-    Tanto el formato de entrada y de salida del programa son los solicitados por la catedra, para el archivo de entrada la primer linea tiene 2 valores n,
-    que representa la cantidad de equipos  y k que representa la cantidad de partidos,
-    luego se tienen k lineas donde esta el resultado de cada partido representado por 5 parametros f,e1,r1,e2,r2.
-    f contiene es una fecha de caracter opcional, en nuestos experimentos esta fecha no fue utilizada, luego se tienen e1 , numero de equipo 1,
-    r1 cantidad de anotaciones del equipo 1 y sus equivalentes con e2, r2 respectivamente para el equipo 2.
+\begin{pmatrix}
+    (n) & (k) \\
+    (x1) & (e1) & (r1) & (t1) & (s1)\\
+    (x2) & (e2) & (r2) & (t2) & (s1) \\
+    ...\\
+    (xk) & (ek) & (rk) & (tk) & (s1)\\
+\end{pmatrix}
+
+\newline
+la primer linea tiene 2 valores $n$ representa la cantidad de equipos y $k$ representa la cantidad de partidos, seguido k lineas que representa cada partido, donde
+$x1$ representa una fecha que en nuestro caso no utilizamos, luego $ei$ y $ti$ representan los numeros de los equipos, y por ultimo $ri$ y $s1$ representan las anotaciones de cada equipo respectivamente.\\
+en nuestra experimentacion con fines de no complejizar aum mas el problema no utilizamos en campo que representa la fecha si no que asumimos que dado el orden que venian los resultados era el orden de los partidos.
+
+Luego una vez se ejecutan los metodos 0-4 devuelven un archivo de n lineas donde en la linea se obtiene el ranking del equipo i.
+
+Para los metodos 4 y 5 se devuelve el ranking para cada iteracion antes de jugar el partido, estas se repiten hasta que el que comenzo ultimo termine primero utilizando dos metodos descriptos anteriormente, en la ultima linea se obtiene la cantidad total de partidos,
+estos dos metodos ademas devuelven por stdout la cantidad de partidos jugados hasta que termino en la primer posicion el que comenzo ultimo.
 
 
-\subsection{Método Matriz de Colley}
 
-Para la implementación de esta técnica nos basamos en el paper \textbf{The Colley Matrix Explained}. La cual consiste en plantear el siguiente sistema de ecuaciones en forma matricial
+\subsection{Sistema a resolver}
 
 \[ C_{i,j} =
     \begin{cases}
         n_{i,j}       & \quad \text{si }  \text{i $\neq$ j}\\
-        2+n_i & \quad \text{si } \text{ i = j }\\
+        2+n_i & \quad \text{si } \text{ i $\eq$ j }\\
     \end{cases}
 
-    \]
-                    
-y $b_i$ = 1 +  ($w_i$ - $l_i$) / 2
+\]
+Esta matriz es simetrica y definida positiva y ademas es estrictamente diagonal domimante.
+Por lo tanto es posible hallar la factorizacion de Cholesky , que no es mas que un caso
+de factorizacion LU , esto nos permite asegurar que a la hora de hacer eliminacion
+gaussiana no vamos a hallar 0 en la diagonal , con lo cual no hace faltar considerar
+pivoteo parcial en la eliminacion Gaussiana.
 
-La matriz se arriba se conoce como la Matriz de Colley , la cual es simetrica y definida positiva , ademas de ser estrictamente diagonal domimante.
-Por lo tanto es posible hallar la factorizacion de Cholesky , que en el fondo no es mas que
-un caso particular de la factorizacion LU , esto nos permite asegurar que a la hora de hacer eliminacion 
-gaussiana no vamos a hallar 0 en la diagonal , con lo cual no hace faltar considerar pivoteo parcial.  
+%Las Caracteristicas de esta matriz son -La Matriz es Simetrica y definida positiva
+%-Es estrictamente Diagonal Domimante
+%-Por lo tanto se le puede hacer la factorizacion de Cholesky que no es mas que
+%un caso particular de Factorizacion LU
+%-Si se le puede hallar la factorizacion LU , eso significa que la eliminaion gausiana
+%no va a hallar 0 en la diagonal , con lo cual no hace falta considerar pivoteo en el algoritmo
+%-El metodo para crear la matriz esta basado en la regla de metodos sucesivos de LaPlace
 
+
+
+\subsection{Método Matriz de Colley}
+
+Para la implementación de esta técnica nos basamos en el paper \textbf{The Colley Matrix Explained}. La cual consiste en plantear un sistema de ecuaciones
 
 La principal fortaleza de este método es que es útil para obtener rankings en torneos donde los participantes no juegan la misma cantidad de partidos. Además de que al armar el sistema en base a los resultados pasados, da relevancia al calendario de juegos de cada participante. Como se intentará demostrar en la sección de experimentos, utilizando esta tecnica importa contra quien se gana y contra quien se pierde. Además tiene el atractivo de que da una idea sobre la posibilidad de victoria en el siguiente partido, considerando los partidos anteriores. \\
 
@@ -49,7 +80,7 @@ La principal desventaja y que hace que no sea aplicable a muchos de los deportes
 Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resolucion del sistema de ecuaciones solicitado. \\
 
 \subsubsection{Eliminación Gaussiana}
-La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backward substitution para obtener el vector de la ecuacion Cr=b.
+La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backgward substitution para obtener el vector de la ecuacion Cr=b.
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=1mm
@@ -68,13 +99,13 @@ La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos 
     \end{algorithmic}
 \end{algorithm}
 
-Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posiciones 4 a 6 se ejecuta n veces y el ciclo de las lineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos n^2 iteraciones en el peor caso y finalizando con el ciclo de las lineas 1 a 6 que se ejecuta otras n veces.
-Luego en las lineas 7 a 10 se realiza el backgward substitution  que tiene en el peor caso se ejecuta $n^2$ veces.
+Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posiciones 4 a 6 se ejecuta n veces y el ciclo de las lineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos $n^2$ iteraciones en el peor caso y finalizando con el ciclo de las lineas 1 a 6 que se ejecuta otras n veces.
+Luego en las lineas 7 a 10 se realiza el backgward substitution  que tiene en el peor caso se ejecuta $n^2$ veces.\\
 
 \subsubsection{Cholesky}
 
-La implementación del algorimo de \textbf{Factorizacion de Cholesky} que elegimos es la que se encuentra en el libro \textbf{Burden}.
-Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sistema Cr=b.
+La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden}.
+Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sistema Cr=b.\\
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=1mm
@@ -101,10 +132,11 @@ Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sis
     \end{algorithmic}
 \end{algorithm}\\
 
+\\
 
 \subsection{Porcentaje de Victorias}
 
-La primer técnica es \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en tomar el promedio de partidos ganados / partidos jugados. 
+La primer técnica es \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en tomar el promedio de partidos ganados / partidos jugados.
 Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados en base a partidos ganados. \\
 
 En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking. \\
@@ -114,4 +146,4 @@ Ya que todos los partidos valen lo mismo. \\
 
 La implementación consiste en calcular: $\sum_{i=1}^n{} \frac{G_i}{T}$ \\
 
-Siendo \textbf{n} es la cantidad de partidos jugados, \textbf{G} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
+Sonde \textbf{n} es la cantidad de partidos jugados, \textbf{G} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
