@@ -82,8 +82,7 @@ Para estudiar la ecuanimidad del \textbf{CMM} realizamos un experimento tomando 
 
 Además este test nos permite observar como la racha de un jugador afecta al ranking global y si ganandole a los mejores realmente escala una considerable cantidad de posiciones en el ranking. \\
 
-A continuacion presentamos el ranking calculado construido de la siguiente manera: \\
-
+A continuación presentamos el ranking calculado construido de la siguiente manera: \\
 
 \begin{itemize}
 	\item Eje X el valor obtenido al ejecutar CMM implementado con Cholesky.
@@ -137,13 +136,86 @@ Nuestra teoría es que tomando el conjunto de equipos que perdio contra el selec
 \subsection{Análisis Cuantitativo}
 
 
-Vamos a estudiar la eficiencia de ambas tecnicas incrementando y variando los volúmenes de datos. La idea es repetir el cómputo de los rankings para la misma instancia de datos al azar, y posteriormente ir incrementando la cantidad de datos.
+Vamos a estudiar la eficiencia de ambas tecnicas incrementando y variando los volúmenes de datos. La idea es repetir el cómputo de los rankings para la misma instancia de datos al azar, y posteriormente ir incrementando la cantidad de datos. \\
 
-Nuestra hipótesis es el que método de basado en \textbf{WP} va a tardar lo mismo para instancias de datos iguales, y se irá incrementando de forma casi lineal a medida que incrementemos los datos. En cambio con \textbf{CMM} basando en \textbf{Eliminación Gaussiana} y \textbf{Cholesky} esperamos que difieran en para las mismas intancias. Nuestra hipótesis sobre esto es que la implementación de \textbf{Cholesky} va a demorar menos tiempo.
+Nuestra hipótesis es el que método de basado en \textbf{WP} va a tardar lo mismo para instancias de datos iguales, y se irá incrementando de forma casi lineal a medida que incrementemos los datos. En cambio con \textbf{CMM} basando en \textbf{Eliminación Gaussiana} y \textbf{Cholesky} esperamos que difieran en para las mismas intancias. Nuestra hipótesis sobre esto es que la implementación de \textbf{Cholesky} va a demorar menos tiempo. \\
+
+Para esta prueba se generaron schedules variando la cantidad de equipos en 6, 50, 100, 200, 300, 500, 700, 1000 y 2000. \\
+
+Adicionalmente se varió la cantidad de partidos jugados por cada equipo. Dado el análisis de complejidad de los algoritmos implementados, solo varían el tiempo de calculo en funcion del tamaño de la matriz definida por la cantidad de equipos, por lo cual al variar la cantidad de partidos no esperamos encontrarnos con variaciones en el tiempo. \\
+
+Ejecutamos los test para nuestra implementación de Eliminación Gaussiana.A continuación se muestran los resultados de tiempos de ejecucion dependiendo la cantidad de equipos. Para evidenciar la complejidad cubica del algoritmo lo hemos encerrado entre 2 funciones cuadraticas que evidencian que no pueden contener la curva de tiempos de nuestro algoritmo. \\
 
 
- 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/gauss cuadrativo.png}
+\caption{Gauss cuadrático}
+\label{fig:Gauss cuadrático}
+\end{figure}
+
+\\
+
+Luego observamos la misma gráfica pero con lineas de referencia de 2 funciones cubicas. \\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/gauss cubico.png}
+\caption{Gauss cúbico}
+\label{fig:Gauss cúbico}
+\end{figure}
+
+\\
+Ejecutamos los test para nuestra implementacion de Cholesky.A continuación se muestran los resultados de tiempos de ejecucion dependiendo la cantidad de equipos. Para mostrar la complejidad cúbica del algoritmo lo hemos encerrado entre 2 funciones cuadráticas que evidencian que no pueden contener la curva de tiempos de nuestro algoritmo.\\
 
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/cholesky cuadratico.png}
+\caption{Cholesky cuadrático}
+\label{fig:Cholesky cuadrático}
+\end{figure}
+
+\\
+
+Luego observamos la misma grafica pero con lineas de referencia de 2 funciones cúbicas.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/cholesky cubicos.png}
+\caption{Cholesky cúbico}
+\label{fig:Cholesky cúbico}
+\end{figure}
+
+\\
+
+Ejecutamos los test para nuestra implementacion de WP. A continuación se muestran los resultados de tiempos de ejecucion dependiendo la cantidad de equipos: \\
 
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/wp lineal.png}
+\caption{WP lineal}
+\label{fig:WP lineal}
+\end{figure}
+
+\\
+
+
+Cuando leimos el enunciado encontramos una frase que nos llamo la atención y era la siguiente: \\
+
+"Se pide comparar, para distintos tamaños de matrices, el tiempo de computo requerido para cada metodo en el contexto donde la información de la matriz del sistema (C) se mantiene invariante, pero varia el termino independiente (b)"\\
+
+Entendimos que nuestros tiempos de calculo no debian variar con la modificacion del termino independiente, pero para resolver esta incognita decidimos realizar la prueba.
+
+Lo que hicimos fue tomar una matriz C, calcularle CMM, luego modificar algunos partidos de la matriz y cambiarlos (esto significa cambiar el resultado de ganados/perdidos) y calculamos nuevamente CMM. \\
+
+Nuestra experimentación intenta demostrar que el tiempo de cálculo no cambia, aunque se varie el termino independiente.
+A continuación se grafican ambos tiempos.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/Cholesky con otro termino independiente.png}
+\caption{Cholesky con otro termino independiente}
+\label{fig:Cholesky con otro termino independiente}
+\end{figure}
