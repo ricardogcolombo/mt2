@@ -14,7 +14,7 @@ de expermentacion.
 \end{enumerate}
 Todos los metodos como paso previo a la realizacion de algunos de los metodos arma la matriz de Colley, explicada en la seccion siguiente , para luego utilizando los metodos 0-2 resolver el sistema pedido.
 \\
-El modo 3 modo corre cholesky, como paso siguiente busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky,
+El modo 3 corre cholesky, como paso siguiente busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky,
 para este modo se puede ingresar un parametro mas donde se indica la cantidad de partidos que se deben jugar de nuevo.
 \\
 Para el modo 4 corre cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido ultimo luego de obtener el ranking de cholesky llegue al primer puesto ganandole
@@ -77,6 +77,9 @@ Luego se intentará demostrar en la sección de experimentos, utilizando esta te
 
 Por otro lado la  desventajas que notamos es que no es aplicable a muchos de los deportes es que los empates no pueden ser modelados, ademas de que el ranking no toma en cuenta
 el margen de victoria de los equipos lo cual en los casos donde hay empate en el ranking podriamos utilizarlos para desempatar.
+
+En cuanto a escalar en este metodo no parece ser muy intuitivo mirando la matriz a simple vista pero nuestra intuicion nos dice que importa a quien se le gana, que no es lo mismo ganarle al que esta ultimo que ganarle al que esta primero
+y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de mas adelante.
 
 Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resolucion del sistema de ecuaciones solicitado.\\
 
@@ -159,4 +162,3 @@ Ya que todos los partidos valen lo mismo. \\
 La implementación consiste en calcular: $\sum_{i=1}^n{} \frac{G_i}{T}$ \\
 
 Donde \textbf{n} es la cantidad de partidos jugados, \textbf{G} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
-
