@@ -155,7 +155,7 @@ Matriz *Matriz::copy() {
     }
     return aux;
 }
-
+// NO SE USO
 void Matriz::gauss(Matriz *m,double * b){
     int filas = m->getN();
     int columnas = m->getM();
@@ -168,7 +168,7 @@ void Matriz::gauss(Matriz *m,double * b){
         }
     }
 };
-
+// NO SE USO SE PUEDE BORRAR
 void Matriz::restar_fila(Matriz *m, int fila_minuendo, int fila_sustraendo, double *b) {
     int columna = fila_sustraendo;
     if (fila_minuendo >= m->getN())

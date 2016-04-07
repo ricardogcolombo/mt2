@@ -30,30 +30,30 @@ double* gauss(Matriz *m,double * b) {
         for (int fila = pivot+1  ; fila < m->getN() ; fila++) {
 
             //si el valor de la diagonal es cero paso a la siguiente columna
-            if (! son_iguales(m->getVal(pivot, fila), 0.0)) {
+            // if (! son_iguales(m->getVal(pivot, fila), 0.0)) {
 
-                // genero el valor que va a multiplicar la fila pivot (a_i_pivot / a_pivot_pivot)
-                double valor_pivot = m->getVal(fila, pivot) / m->getVal(pivot, pivot) ;
-				
-                //cout<<"valor pivot = "<<valor_pivot<<" : getval("<< fila<<","<<pivot <<") = " << m->getVal(fila, pivot) << " / getval("<< pivot<<","<< pivot<<")" <<m->getVal(pivot,pivot) <<endl;
+            // genero el valor que va a multiplicar la fila pivot (a_i_pivot / a_pivot_pivot)
+            double valor_pivot = m->getVal(fila, pivot) / m->getVal(pivot, pivot) ;
 
-                b[fila] = b[fila] - (b[pivot] * valor_pivot);
-                // Teniendo el valor_pivot , resto toda las columnas de esa fila
-                for (int columna = pivot ; columna < m->getN() ; columna++) {
+            //cout<<"valor pivot = "<<valor_pivot<<" : getval("<< fila<<","<<pivot <<") = " << m->getVal(fila, pivot) << " / getval("<< pivot<<","<< pivot<<")" <<m->getVal(pivot,pivot) <<endl;
 
-                    //(BORRAR LUEGO!!!)cout << m->getVal(fila, columna) << " - " << m->getVal(pivot, columna) <<" * "<< valor_pivot <<" = "<< (m->getVal(pivot, columna) * valor_pivot) << " = "<< m->getVal(fila, columna) - (m->getVal(pivot, columna) * valor_pivot) <<endl;
-                    // genero los valores de la matriz de gauss F_fila = F_fila - F_pivot * valor_pivot
-                    double valor_fila_columna = m->getVal(fila, columna) - (m->getVal(pivot, columna) * valor_pivot);
+            b[fila] = b[fila] - (b[pivot] * valor_pivot);
+            // Teniendo el valor_pivot , resto toda las columnas de esa fila
+            for (int columna = pivot ; columna < m->getN() ; columna++) {
 
-                    // chequeo para descartar errores de representacion
-                    if(son_iguales(valor_fila_columna, 0.0)){
-                        valor_fila_columna=0.0;
-                    }
-                    m->setVal(fila,columna,valor_fila_columna);
-                    //(BORRAR LUEGO!!!)cout << "----------------------------------------------"<<endl;
+                //(BORRAR LUEGO!!!)cout << m->getVal(fila, columna) << " - " << m->getVal(pivot, columna) <<" * "<< valor_pivot <<" = "<< (m->getVal(pivot, columna) * valor_pivot) << " = "<< m->getVal(fila, columna) - (m->getVal(pivot, columna) * valor_pivot) <<endl;
+                // genero los valores de la matriz de gauss F_fila = F_fila - F_pivot * valor_pivot
+                double valor_fila_columna = m->getVal(fila, columna) - (m->getVal(pivot, columna) * valor_pivot);
 
+                // chequeo para descartar errores de representacion
+                if(son_iguales(valor_fila_columna, 0.0)){
+                    valor_fila_columna=0.0;
                 }
+                m->setVal(fila,columna,valor_fila_columna);
+                //(BORRAR LUEGO!!!)cout << "----------------------------------------------"<<endl;
+
             }
+            // }
         }
     }
     // cout<< "a resolver gauss==============================================="<<endl;

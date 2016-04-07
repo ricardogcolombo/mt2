@@ -86,7 +86,7 @@ void instancia::generarCMM(){
         }
     }
 }
-
+// setters
 void instancia::setTotales(int* _totales){
     totales=_totales;
 };
@@ -94,6 +94,7 @@ void instancia::setGanados(Matriz* _ganados){
     ganados = _ganados;
 };
 
+// getters
 int* instancia::getTotales(){
     return totales;
 };
@@ -116,6 +117,8 @@ Matriz *instancia::getCMM(){
     return CMM;
 };
 
+
+// esta funcion genera el vector B pedido por CMM
 void instancia::generarVectorB(){
     b = new double[ganados->getN()];
     int i;
@@ -126,17 +129,25 @@ void instancia::generarVectorB(){
 
 }
 
+
+// esta funcion lo que hace es darle un partido mas ganado al equipo1
 void instancia::ganaPartidoContra(int equipo1,int equipo2){
     int totalJugados1 = this->getTotalJugados(equipo1);
     int totalJugados2 = this->getTotalJugados(equipo2);
+    // le sumo un partido mas en partidos totales
     this->totales[equipo1]=totalJugados1+1;
     this->totales[equipo2]=totalJugados2+1;
+    // en la matriz de partidos ganados le sumo uno al primero
     int totalganadose1e2 = this->ganados->getVal(equipo1,equipo2);
     this->ganados->setVal(equipo1,equipo2,totalganadose1e2+1);
+    // genero la nueva CMM
     this->generarCMM();
+    // genero el nuevo vector B
     this->generarVectorB();
 };
 
+// Esta funcion lo que hace es cambiar un partido ganado por perdido y se lo suma al contrincante,
+// el partido seleccionado es uno que se jugo y fue ganado
 bool instancia::ganaPartido(int equipo1){
     bool encontroUno = false;
     int i;
