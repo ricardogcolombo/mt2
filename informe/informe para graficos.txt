@@ -96,3 +96,28 @@ El ultimo jugador del ranking se llama Verkerk M., sus partidos fueron los sigui
 En el siguiente grafico se observa el movimiento de ranking de los que le ganaron partidos a Verkerk
 //////partidos jugados vs verkerk grafico.png//////
 
+Por ultimo y para la etapa del TP donde debiamos encontrar una estrategia que minimize la cantidad de partidos de un jugador para llegar a lo mas alto que pueda, 
+pensamos en 2 tacticas. 
+Ambos, se basan en, dado un schedule ya definido donde existe un jugador que esta ultimo en el ranking, hacerlo jugar y ganar vs "el que siempre esta primero en la 
+fecha correspondiente" y "contra el que tiene inmediatamente arriba en el rank de el"
+Lo que pensamos en una primera instancia era que tenia que ascender mas pronto aquel jugador que juega y gana contra el que ocupa el primer puesto que aquel que 
+juega y gana contra el ultimo.
+Los algoritmos realizados cortan la ejecucion al llegar al primer puesto, arrojando la cantidad de partidos que debio jugar ese equipo
+A continuacion se muestran los graficos.
+////// estrategia 4.png////////
+En este grafico se observa lo siguiente.
+Cada burbuja es un jugador, el eje de las x es el rank que arroja CMM para las distintas fechas jugadas, mientras que el eje y tiene el rank de CMM base para 
+realizar el analisis y comparar la evolucion de los jugadores.
+En este grafico se observa que el crecimiento es lento y que se necesitan aproximadamente 40 fechas para llegar a la cima del campeonato
+
+Por otro lado en la estrategia nro 5 se observa lo siguiente:
+////// estrategia 5.png////////
+Cada burbuja es un jugador, el eje de las x es el rank que arroja CMM para las distintas fechas jugadas, mientras que el eje y tiene el rank de CMM base para 
+realizar el analisis y comparar la evolucion de los jugadores.
+En este grafico se observa que el crecimiento es rapido en un incio y luego va reduciendo su velocidad de crecimiento.
+Se observa que el algoritmo necesita de 12 fechas para llegar a la cima del campeonato, validando nuestra teoria.
+
+
+
+
+
