@@ -9,13 +9,12 @@ El ranking obtenido por \textbf{CMM} refleja de forma mucho m\'as realista el de
 En un escenario donde tenemos participantes que jugaron una cantidad distinta de partidos pensamos que refleja mejor la realidad del torneo el metodo de \textbf{CMM}. \\
 
 
-\subsection{\¿Importa contra quien se pierde\?}
+\subsection{\¿Importa a quien se le gana\?}
 
-Como podemos observar realmente importa contra quien se pierde, del experimento realizado observamos que perder contra el participante último afecta m\'as el puntaje del ranking que perdiendo 
-contra el primero. \\
+Como podemos observar realmente importa contra quien se gane, del experimento realizado observamos que ganarle a un participante que esta primero afecta m\'as el puntaje del ranking que ganando 
+contra el último. \\
 
-La hipótesis con la que calculamos el experimento resulto ser falsa. Analizando más ejecuci\'ones llegamos a la conclusión de que lo resultados obtenidos son lógicos, ya que con esta técnica 
-es m\'as esperable que un equipo de mitad de tabla tenga un resultado adverso contra los primeros, por lo cual la perdida de ranking es menor. \\
+La hipótesis con la que calculamos el experimento resulto ser verdadera.  \\
 
 
 \subsection{Racha ganadora}
@@ -35,8 +34,8 @@ de esta manera la forma m\'as rapida de llegar al primer puesto es ganandole sie
 
 Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecian los datos de la instancia fue l\'ineal.
 
-En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue m\'as eficiente para las mism\'as instancias, y relativamente mejor a medida que se incrementaban los datos. 
-Esto es esperado ya que nuestras implementaci\'ones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume 1/3 $n^3$ flops y 
+En el caso de \textbf{CMM}, no podemos decir que fue m\'as eficiente la implementacion de \textbf{Cholesky} que \textbf{Eliminación Gaussiana}, porque los tiempo observados son parecidos entre si. 
+Pero en este caso esperabamos una mejoria dado que los algoritmos se implementaron basadas en el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume 1/3 $n^3$ flops y 
 \textbf{Eliminación Gaussiana} 2\/3 $n^3$ flops.
 
 
@@ -58,8 +57,9 @@ Para evitar esta situaci\'on nuestra implementación usa el tipo de datos float 
 
 Encontramos que los empates pueden modelarse en el caso de \textbf{WP}, asignando un puntaje al partido empatado y continuando con el procedimiento normal.
 
-En el caso de \textbf{CMM} nos resulto muy díficil tratar de modelarlo, como alternativa a este resultado proponemos modelarlo como si ambos equipos perdieran. Esto nos permite 
-reutilizar el método y de alguna forma penar a ambos equipos por no haber ganado su partido.
+En el caso de \textbf{CMM} nos resulto muy díficil tratar de modelarlo , como alternativa pensamos que una buena idea seria, en el caso de existir un empate entre el 
+jugador A y el jugador B, podriamos dar un partido ganado y otro perdido a cada uno de los jugadores. 
+Esto nos permite reutilizar el método y de alguna forma penar y premiar a ambos equipos por haber empatado su partido.
 
 
 
