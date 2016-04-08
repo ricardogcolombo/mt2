@@ -4,39 +4,39 @@ En esta sección presentamos nuestras conclusiones sobre los resultados obtenido
 
 De los resultados obtenidos podemos ver que el ranking obtenido con \textbf{WP} no es muy realista, ya que la primer posición es ocupada por un participante que jugo y gano un solo partido. \\
 
-El ranking obtenido por \textbf{CMM} refleja de forma mucho mas realista el desempeño de cada jugador en el torneo. \\
+El ranking obtenido por \textbf{CMM} refleja de forma mucho m\'as realista el desempeño de cada jugador en el torneo. \\
 
 En un escenario donde tenemos participantes que jugaron una cantidad distinta de partidos pensamos que refleja mejor la realidad del torneo el metodo de \textbf{CMM}. \\
 
 
 \subsection{\¿Importa contra quien se pierde\?}
 
-Como podemos observar realmente importa contra quien se pierde, del experimento realizado observamos que perder contra el participante último afecta mas el puntaje del ranking que perdiendo 
+Como podemos observar realmente importa contra quien se pierde, del experimento realizado observamos que perder contra el participante último afecta m\'as el puntaje del ranking que perdiendo 
 contra el primero. \\
 
-La hipótesis con la que calculamos el experimento resulto ser falsa. Analizando más ejecuciones llegamos a la conclusión de que lo resultados obtenidos son lógicos, ya que con esta técnica 
-es mas esperable que un equipo de mitad de tabla tenga un resultado adverso contra los primeros, por lo cual la perdida de ranking es menor. \\
+La hipótesis con la que calculamos el experimento resulto ser falsa. Analizando más ejecuci\'ones llegamos a la conclusión de que lo resultados obtenidos son lógicos, ya que con esta técnica 
+es m\'as esperable que un equipo de mitad de tabla tenga un resultado adverso contra los primeros, por lo cual la perdida de ranking es menor. \\
 
 
 \subsection{Racha ganadora}
 
-Por lo visto el jugador escalo rapidamente desde el último puesto en la tabla de posiciones a casi la mitad de tabla. Si bien mejoro su posición, no alcanzo el top ten, y en las últimas victorias su ascenso fue mas lento. Esto nos hace concluir que solo haciendo jugar y ganar a un participante, la capacidad que tiene para crecer en el ranking esta limitada por la falta de juego de sus rivales.
+Por lo visto el jugador escalo rapidamente desde el último puesto en la tabla de posici\'ones a casi la mitad de tabla. Si bien mejoro su posición, no alcanzo el top ten, y en las últim\'as victorias su ascenso fue m\'as lento. Esto nos hace concluir que solo haciendo jugar y ganar a un participante, la capacidad que tiene para crecer en el ranking esta limitada por la falta de juego de sus rivales.
 
 \\
 Además sus victorias representaron una mejoría en el ranking de los participantes que lo vencieron a el. De esta forma podemos comprobar que la racha de un jugador afecta al ranking global.\\
 
 
-\subsection{Escalando Posiciones}
+\subsection{Escalando Posici\'ones}
 Como mensionamos al principio y confirmamos con estos experimentos es que si importa a quien hay que ganarle ya que como se demostro no es lo mismo ganarle al inmediato en el 
 ranking que al que se encuentra primero,
-de esta manera la forma mas rapida de llegar al primer puesto es ganandole siempre al que se encuentre primero.
+de esta manera la forma m\'as rapida de llegar al primer puesto es ganandole siempre al que se encuentre primero.
 
 \subsection{Análisis Cuantitativo}
 
-Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecian los datos de la instancia fue lineal.
+Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecian los datos de la instancia fue l\'ineal.
 
-En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue mas eficiente para las mismas instancias, y relativamente mejor a medida que se incrementaban los datos. 
-Esto es esperado ya que nuestras implementaciones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume 1/3 $n^3$ flops y 
+En cambio en el caso de \textbf{CMM} la implementación de \textbf{Cholesky} fue m\'as eficiente para las mism\'as instancias, y relativamente mejor a medida que se incrementaban los datos. 
+Esto es esperado ya que nuestras implementaci\'ones se basaron en las propuestas por el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume 1/3 $n^3$ flops y 
 \textbf{Eliminación Gaussiana} 2\/3 $n^3$ flops.
 
 
@@ -51,7 +51,7 @@ decimalmente menor quede mejor rankeado que otro con mayor puntaje.\\
 Por ejemplo: El participante A con ranking 0,5819 y el participante B con ranking 0,5816 si se consideran solo dos decimales ambos tienen 0,58 y esto podria afectar su orden 
 en el ranking global. \\
 
-Para evitar esta situacion nuestra implementación usa el tipo de datos float con con 5 decimales despues de la coma.\\
+Para evitar esta situaci\'on nuestra implementación usa el tipo de datos float con con 5 decimales despues de la coma.\\
 
 
 \subsection{Empates}
