@@ -34,7 +34,7 @@ El grafico elegido para graficar es un grafico de dispersion, que muestra: \\
 Lo que se observa en el grafico es que el ranking CMM parece darle relevancia a la cantidad de partidos jugados ya que las burbujas de los top 10 son mas grandes.
 Esto esta dado en principio por la caracteristica del deporte (tenis) que permite a los que ganan jugar mas partidos en los torneos. 
 Lo que nos llamo la atencion es que si observamos el rank arrojado por WP, se observa que el primero es fnisk. El mismo es un jugador que solo jugo 1 partido y lo gano, 
-por lo cual tiene un 100% de efectividad y figura como primero. \\
+por lo cual tiene un 100 \% de efectividad y figura como primero. \\
 Ademas, si observamos los top 10 del rank WP, observamos algunas burbujas de tamaño pequeño. Esto es porque en algunos casos, este ranking beneficia jugar pocos 
 partidos pero ganarlos.
 \\
@@ -49,6 +49,8 @@ Hemos realizado un zoom dentro del grafico para corroborar el nombre y posicion 
 \label{fig:Zoom de las primeras posiciones}
 \end{figure}
 
+\\ 
+En el grafico se resalta el jugador fnisk y se muestra informacion adicional.
 \\
 
 \subsection{¿Importa a quien se le gana?}
@@ -105,7 +107,8 @@ A continuación presentamos el ranking calculado construido de la siguiente mane
 Es logico que se observe una diagonal ya que ambos ejes son la misma metrica de CMM.
 \\
 Luego el experimento realizado fue agregar partidos al schedule, de manera que el ultimo le gane a los 10 primeros y entender que tipo de reaccion tiene el algoritmo CMM.
-Para ello se realizaron 10 schedules distintos (ATP2007_n.in) de tal forma que en cada uno de esos archivos de entrada exista un partido mas que en el caso anterior y
+\\
+Para ello se realizaron 10 schedules distintos de tal forma que en cada uno de esos archivos de entrada exista un partido mas que en el caso anterior y
 el mismo sea una victoria del ultimo jugador del ranking vs alguno de los top 10.
 
 \\
@@ -121,7 +124,7 @@ En el gráfico se observa mediante una flecha el salto del ranking de un partido
 \end{figure}
 
 \\
-Por ultimo y para entender si el ultimo podia llegar a ser primero en algun momento, hemos agregado al archivo un total de 100 partidos ganados por el ultimo contra 
+Por ultimo y para entender si el jugador en la ultima posicion podia llegar a ser primero en algun momento, hemos agregado al archivo un total de 100 partidos ganados por el ultimo contra 
 los top 10.
 \\
 
@@ -135,8 +138,8 @@ los top 10.
 \\
 Y tal como vemos, si es posible pero a un costo altisimo (jugar alrededor de 100 partidos).
 \\
-Lo interesante es que aquellos equipos contra los que el ultimo jugador jugo tambien sufrieron modificaciones en su ranking. A continuacion se observa un zoom dentro
-del grafico para observar este comportamiento.
+Lo interesante es que aquellos equipos contra los que el ultimo jugador jugo tambien sufrieron modificaciones en su ranking. \\
+A continuacion se observa un zoom dentro del grafico para observar este comportamiento.
 \\
 
 El ultimo jugador del ranking se llama Verkerk M., sus partidos fueron los siguientes:
@@ -153,16 +156,16 @@ En el siguiente grafico se observa el movimiento de ranking de los que le ganaro
 \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{IMG/partidos jugados vs verkerk.png}
-\caption{Partidos jugados por Verkerk}
-\label{fig:Partidos jugados por Verkerk}
+\includegraphics[width=1\textwidth]{IMG/partidos jugados vs verkerk grafico.png}
+\caption{Evolucion de aquellos que le ganaron a Verkerk}
+\label{fig:Evolucion de aquellos que le ganaron a Verkerk}
 \end{figure}
 
 \subsection{Escalando Posiciones}
 
 Una de las consignas del trabajo era encontrar una tecnica para hacer escalar en el ranking a un \textbf{equipo}, pensamos en 2 tacticas. 
 \\
-Ambas, se basan en, dado un schedule ya definido donde existe un jugador que esta ultimo en el ranking, hacerlo jugar y ganar vs "el que siempre esta primero en la fecha correspondiente" y "contra el que tiene inmediatamente arriba de el en el rank"
+Ambas se basan en, dado un schedule ya definido donde existe un jugador que esta ultimo en el ranking, hacerlo jugar y ganar vs 'el que siempre esta primero en la fecha correspondiente' y 'contra el que tiene inmediatamente arriba de el en el rank'
 \\
 Pensamos en una primera instancia era que tenia que ascender mas pronto aquel jugador que juega y gana contra el que ocupa el primer puesto que aquel que juega y gana contra cualquier otro jugador.
 \\
@@ -189,7 +192,7 @@ Se observa que el algoritmo necesita de 12 fechas para llegar a la cima del camp
 
 Se observa tambien una linea de referencia que indica cuando llega el jugador a superar al primero del ranking.\\
 
-\subsubsection{Ganarle al esta inmediatamente arriba del jugador en cuestion}
+\subsubsection{Ganarle al que esta inmediatamente arriba}
 \\
 
 \begin{figure}[H]
