@@ -80,11 +80,14 @@ el margen de victoria de los equipos lo cual en los casos donde hay empate en el
 
 En cuanto a escalar en este metodo no parece ser muy intuitivo mirando la matriz a simple vista pero nuestra intuicion nos dice que importa a quien se le gana, que no es lo mismo ganarle al que esta ultimo que ganarle al que esta primero
 y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de mas adelante.
+Para esto utilizaremos un algoritmo greedy tomando al equipo que salga ultimo en el ranking y haciendolo jugar con otro equipo que este mejor posicionado que el , para esto utilizaremos 2 heuristicas distintas
+con el fin de obtener una mejor posicion, la primera sera contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
 
 Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resolucion del sistema de ecuaciones solicitado.\\
 
 \subsubsection{Eliminación Gaussiana}
-La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backwards substitution para obtener el vector de la ecuacion Cr=b.
+La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backwards substitution para 
+obtener el vector de la ecuacion Cr=b.
 
 Presentamos un pseudo codigo del algoritmo de eliminacion gaussiana que utilizamos en nuestra implementacion que luego en secciones futuras vamos a detallar.
 
@@ -105,7 +108,8 @@ Presentamos un pseudo codigo del algoritmo de eliminacion gaussiana que utilizam
     \end{algorithmic}
 \end{algorithm}
 
-Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posiciones 4 a 6 se ejecuta n veces y el ciclo de las lineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos $n^2$ iteraciones en el peor caso y finalizando con el ciclo de las lineas 1 a 6 que se ejecuta otras n veces.
+Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posiciones 4 a 6 se ejecuta n veces
+y el ciclo de las lineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos $n^2$ iteraciones en el peor caso y finalizando con el ciclo de las lineas 1 a 6 que se ejecuta otras n veces.
 Luego en las lineas 7 a 10 se realiza el backgward substitution  que tiene en el peor caso se ejecuta $n^2$ veces.\\
 Con lo cual lo que esperamos en nuestros analisis de cantidad de equipos sobre tiempos de en la seccion experimentacion es encontrarnos con un grafico de una funcion cubica.
 
@@ -143,7 +147,7 @@ Este pseudocodigo representa nuestra implementacion sobre la factorizacion de ch
 \end{algorithm}
 Para las lineas 2-3 se puede ver que se ejecuta n veces.
 Dentro de esta algoritmo en las lineas 4-7 se realizan 3 ciclos donde en el peor caso se obtienen $n^3 $ ciclos.
-Por ultimo para las lineas 10 - 13 y 15 -18 se realizan 2 ciclos de n iteracines cada uno teniendo como total n^2 $ iteraciones.
+Por ultimo para las lineas 10 - 13 y 15 -18 se realizan 2 ciclos de n iteracines cada uno teniendo como total $n^2$ iteraciones.
 Con lo cual lo que esperamos en nuestros analisis de tiempos por cantidad de equipos es que obtengamos una cubica.
 
 \newpage
