@@ -1,0 +1,37 @@
+\subsection{Sobre los archivos e implementacion}
+
+Para la implementacion de los archivo se utilizo C++, la siguiente es la lista de archivos y consecutivo a la misma hay una descripcion sobre los distintos archivos.
+
+\begin{enumerate}
+\item ../src/main.cpp- este contiene la lectura de los archivos de entrada y escritura de la salida, asi como le ejecucion de cada metodo
+\item ../src/instancia/instancia.h - clase instancia, una instancia esta compuesta por la matriz CMM , el vector B, una matriz con los partidos ganados del equipo i al equipo j en la posicion (i,j), un arreglo con el total de los partidos. y las definiciones de los metodos para la clase
+\item ../src/instancia/instancia.cpp - este archivo contiene todas las implementaciones de los metodos, tanto para generar las matrizes  como los setters y getters de los partes privadas de la clase instancia. 
+\item ../src/matriz/matriz.h - Definicion clase matriz, con metodos de get y set y definicion de sus partes privadas y publicas.
+\item ../src/matriz/matriz.cpp -Aquise encuentra la implementacion de los metodos de la matriz.
+\item ../src/eliminaciongauss/elimgauss.h 
+\item ../src/eliminaciongauss/elimgauss.cpp - aquise encuentra la implementaciond de EG
+\item ../src/cholesky/cholesky.h 
+\item ../src/cholesky/cholesky.cp  - Aqui se encuentra la implementacion de la factorizacion de Cholesky.
+\item ../src/wp/wp.h
+\item ../src/wp/wp.cpp - Aqui se encuentra la implementacion del metodo WP
+\end{enumerate}
+
+La clase instancia la definimos para que sea mas facil el manejo de una instancia en general de juego, 
+en base a su matriz CMM , matriz de partidos ganados y vector b, con fin de facilitarnos el uso de la entrada.
+
+En cuanto a la implementacion del clase matri se utilizo un puntero a double donde en cada posicion hay otro puntero a double, 
+ademas definimos setters y getters para las posiciones para que sea mas facil si uso y modularizar cada parte del programa, como los algoritmos relevantes a 
+Eliminacion gaussiana, Cholesky y WP para una mas facil lectura.
+
+\subsection{Codigo implementado}
+\lstinputlisting[language=C++]{../src/main.cpp}
+\lstinputlisting[language=C++]{../src/matriz/matriz.h}
+\lstinputlisting[language=C++]{../src/matriz/matriz.cpp}
+\lstinputlisting[language=C++]{../src/instancia/instancia.h}
+\lstinputlisting[language=C++]{../src/instancia/instancia.cpp}
+\lstinputlisting[language=C++]{../src/eliminaciongauss/elimgauss.h}
+\lstinputlisting[language=C++]{../src/eliminaciongauss/elimgauss.cpp}
+\lstinputlisting[language=C++]{../src/cholesky/cholesky.h}
+\lstinputlisting[language=C++]{../src/cholesky/cholesky.cpp}
+\lstinputlisting[language=C++]{../src/wp/wp.h}
+\lstinputlisting[language=C++]{../src/wp/wp.cpp}
