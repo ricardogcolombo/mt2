@@ -1,0 +1,13 @@
+Comentarios Generales:
+- Faltan el abstract y las palabras clave.
+- Muy pobre la redacción. No hay un acento. Está escrita a las apuradas. No se mecionan los métodos. No se describe correctamente el problema a resolver, ni que se busca con el trabajo.
+- El desarrollo no está bien planteado. Lo primero que se presenta es la entrada salida, y esa sección debería ser un apéndice. La descripción del problema tiene errores en las fórmulas y errores conceptuales. Hay múltiples errores de redacción. Faltan innumerables acentos, y hay acentos en palabras que no corresponde (por ejemplo, "secciónes").
+- Bien planteado el primer experimento, del equipo "medio" ganando a los extremos.
+- Bien los experimentos buscando que el último quede primero, sobre todo la visualización de las modificaciones de los rankings.
+- Escalando posiciones: no es lo que pide el enunciado. Se pide que, dado un fixture y resultados fijos, se elija un equipo y se diseñe una técnica que decida como deberían haber salido sus partidos, minimizando la cantidad de victorias, hasta quedar en lo más alto. No se puede modificar la cantidad de partidos.
+- El análisis cuantitativo está bien en la primera parte, variando el "n". No es correcto el experimento planteado para el contexto con matriz invariante y muchos términos independientes. No identifican la ventaja de tener la matriz factorizada.
+- La discusión es simplmenete mecionar lo que vieron, pero no un análisis de los resultados. Esto en parte lo hacen cuando presentan los gráficos, pero en general es escueto y no se buscan causas.
+- En el análisis cuantitativo se menciona una comparación entre Cholesky y EG, que nunca se presenta. Los datos parecerían ser idénticos, lo cual es raro en principio.
+- Falta el experimento cualitativo respecto a la "justicia" del método CMM. Es posible que el resultado entre dos equipos afecte negativamente a un tercero, que nada tiene que ver con ellos?
+- La redacción del TP es muy muy muy muy muy floja.
+- El código pasa los tests. Bien en usar "son_iguales". Efectivamente, como en el pseudocódigo, insertaron el código de BS y FS dentro de Cholesky. Idem en EG. Esto podrían hacerlo un poco más modular. Bien la ejecución de los otros metodos.
