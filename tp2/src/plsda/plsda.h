@@ -1,7 +1,7 @@
 #ifndef _PLSDA_H
 #define _PLSDA_H
-#include "../instancia/instancia.h"
+#include "../manejoEntrada/entrada.h"
 #include "../matriz/matriz.h"
 
-void calcularPLSDA(vector<imagen> &etiquetados, vector<imagen> &sinEtiquetar, fstream &myfile, int cantidadIteraciones);
+void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones);
 #endif

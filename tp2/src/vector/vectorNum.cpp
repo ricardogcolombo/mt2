@@ -79,14 +79,14 @@ void vectorNum::multiplicacionEscalar(double escalar)
 		valores[i] = valores[i]*escalar;
 }
 
-Matriz* vectorNum::multiplicacionVectTrans(vectorNum *otroVector)
+matrizNum* vectorNum::multiplicacionVectTrans(vectorNum *otroVector)
 {
 	if(otroVector->dim != dim)
 		throw -1;
-	Matriz* matriz = new Matriz(dim,dim);
+	matrizNum* matriz = new matrizNum(dim);
 	for(int i = 0; i < dim; i++)
 		for(int j = 0; j < dim; j++)
-			matriz->setVal(i,j, valores[i]*otroVector->valores[j]);
+			matriz->set(i,j, valores[i]*otroVector->valores[j]);
 	return matriz;
 }
 
