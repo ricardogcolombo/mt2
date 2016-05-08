@@ -1,6 +1,7 @@
 #include "manejoEntrada/entrada.h"
 #include "knn/knn.h"
 #include "pca/pca.h"
+#include "plsda/plsda.h"
 #include <fstream>
 #include <sstream>
 #include <stdio.h>
@@ -15,7 +16,7 @@
 #include <sys/time.h>
 using namespace std;
 
-void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos, fstream& myfile);
+void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile);
 int **kfolds(string archivo, int &cantidadDePruebas, int &lamda,int& gamma, int &vecinos);
 void arreglarEntrada(vector<entrada> entradaOriginal, vector<entrada> &entradaNueva, vector<entrada> &testeo, int *kfold);
 
@@ -54,7 +55,7 @@ int main(int argc, char *argv[]) {
     cout << "Vecinos para el KNN: " << vecinos << endl;
     if (atoi(metodo.c_str()) == 1) {
         cout << "Lamda Para PCA: " << lamda << endl;
-        cout << "Lamda Para PCA: " << lamda << endl;
+        cout << "Lamda Para PLSDA: " << gamma << endl;
     }
 
     fstream myfile(archivoDeSalida.c_str(), ios::out | ios::trunc);
@@ -67,7 +68,7 @@ int main(int argc, char *argv[]) {
 
         cout << "Corriendo test: " << i + 1 << endl;
         arreglarEntrada(entradas, entrenamiento, testeo, kfold[i]);
-        ejecutar(atoi(metodo.c_str()), entrenamiento, testeo, lamda, vecinos, myfile);
+        ejecutar(atoi(metodo.c_str()), entrenamiento, testeo, lamda, vecinos,gamma, myfile);
 
         //Elimino todos los vectores creados
         entradas.erase(entradas.begin(), entradas.end());
@@ -87,7 +88,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos, fstream& myfile) {
+void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile) {
     //knn
 
     /*tiempos*/
@@ -105,6 +106,17 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
         gettimeofday(&startGauss, NULL);
         calcularknn(entradas, test, vecinos);
     }
+
+    // plsda + knn
+
+    if (metodo == 1) {
+        cout << "Ejecutando metodo PCA..." << endl;
+        calcularPLSDA(entradas, test, myfile, lamda,gamma);
+        cout << "Ejecutando KNN sobre el PCA..." << endl;
+        gettimeofday(&startGauss, NULL);
+        calcularknn(entradas, test, vecinos);
+    }
+
     long elapsed_seconds; /* diff between seconds counter */
     long elapsed_useconds; /* diff between microseconds counter */
     /*tiempos*/

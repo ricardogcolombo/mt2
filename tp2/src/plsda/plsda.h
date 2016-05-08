@@ -3,5 +3,5 @@
 #include "../manejoEntrada/entrada.h"
 #include "../matriz/matriz.h"
 
-void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones);
+void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones,int gamma);
 #endif

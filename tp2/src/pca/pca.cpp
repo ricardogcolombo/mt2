@@ -1,6 +1,5 @@
 #include "pca.h"
 
-
 void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadAutovectores) {
   // calculamos la matriz de covarianza
   matrizNum *covarianza = matrizDeCovarianza(etiquetados);
@@ -72,12 +71,12 @@ vectorNum *crearVectorInicial(int dim) {
 }
 
 matrizNum *matCovarianza(vector<entrada> &v, vectorNum * medias) {
-  int dimencion = medias->size();
-  matrizNum *covarianza = new matrizNum(dimencion);
+  int dimension = medias->size();
+  matrizNum *covarianza = new matrizNum(dimension);
 
   //Aca nos creamos el X del slide
   vector<vectorNum*> X;
-  for (int i = 0; i < dimencion; i++) {
+  for (int i = 0; i < dimension; i++) {
     vectorNum* nuevoVector = new vectorNum(v.size());
     for (int j = 0; j < v.size(); j++) {
       nuevoVector->set(j, (double) v[j].vect->get(i) - medias->get(i));
@@ -86,8 +85,8 @@ matrizNum *matCovarianza(vector<entrada> &v, vectorNum * medias) {
     X.push_back(nuevoVector);
   }
   //ahora Armamos la matriz Mx
-  for (int i = 0 ; i < dimencion; i++) {
-    for (int k = 0 ; k < dimencion; k++) {
+  for (int i = 0 ; i < dimension; i++) {
+    for (int k = 0 ; k < dimension; k++) {
       covarianza->set(i, k, X[i]->multiplicacionVect(X[k]) / (double)(v.size() - 1 ));
     }
   }
