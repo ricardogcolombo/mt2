@@ -1,0 +1,118 @@
+\documentclass[a4,11pt]{article}
+
+\parindent=10pt
+\parskip=6pt
+%\usepackage[width=15.5cm, left=2.5cm, top=2cm, height= 24.5cm]{geometry}
+
+\usepackage[paper=a4paper, left=2cm, right=2cm, bottom=2.5cm,top=2.5cm]{geometry}
+
+% Paquetes de nacionalización. No olvidar para poder poner tildes!
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+% Paquetes para graficos
+\usepackage{subfig}
+% \usepackage{graphicx} %% La caratula lo incluye
+
+% Paquetes para matematica
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% esto es para el codigo
+\usepackage{listings}
+% Paquetes para pseudo
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Caratula (Recordar logo_uba.jpg y logo_dc.jpg)
+\usepackage{caratula}
+
+% Paquetes para tablas
+\usepackage[table]{xcolor}
+
+% Se pueden sacar?
+\usepackage{url}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{tabularx}
+
+% Color de links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\lstset{
+    language=C++,
+    basicstyle=\ttfamily,
+    breaklines=true,
+    breakatwhitespace=true,
+    inputencoding=utf8,
+    extendedchars=true
+    }
+\lstset{literate={::}{}{0\discretionary{::}{}{::}}% line-break at ::
+   {->}{}{0\discretionary{->}{}{->}}% line-break at ->
+}
+
+\begin{document}
+
+
+\materia{Metodos numericos}
+\submateria{Primer Cuatrimestre de 2016}
+\titulo{Trabajo Pr\'actico 2}
+\subtitulo{“CSI:DC”}
+\integrante{ Leonardo Raed}{579/04}{leo\_raed@yahoo.com}
+\integrante{ Ricardo Colombo}{156/08}{ricardogcolombo@gmail.com}
+\integrante{ Diego Santos}{874/03}{diego.h.santos@gmail.com}
+\integrante{ Luis Badell }{246/13}{luisbadell@gmail.com}
+
+
+\maketitle
+\pagebreak
+  
+\tableofcontents
+
+\pagebreak
+\section{Resumen}
+\input{resumen}
+\section{Introducción teórica}
+
+\input{introduccion}
+
+% \pagebreak
+% \section{Desarrollo}
+% \input{desarrollo}
+
+
+% \pagebreak
+% \section{Experimentaci\'on}
+% \input{resultados}
+
+
+% \pagebreak
+% \section{Discusión}
+% \input{discusion}
+
+% \pagebreak
+% \section{Conclusiones}
+
+% \input{conclusiones}
+
+% \pagebreak
+% \section{Apéndice}
+
+% \input{apendice}
+
+% \pagebreak
+% \section{Bibliografía}
+% \input{bibliografia}
+% \pagebreak
+% \section{Codigo}
+% \input{codigo}
+
+
+\end{document}
