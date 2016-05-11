@@ -71,3 +71,27 @@ vectorNum *matrizNum::producto(vectorNum *unVector)
 	}
 	return vectAux;
 }
+
+void matrizNum::productoMatriz(matrizNum* otraMat)
+{
+	if(otraMat->size() != dim)
+		throw -1;
+	int sum = 0;
+	for(int i = 0; i < dim; i++) {
+		for(int j = 0; j < dim; j++){
+			for(int k = 0; k < dim; k++){
+				sum = valores[i][k] * otraMat->valores[k][j];
+			}
+			valores[i][j] = sum;
+			sum = 0;
+		}
+	}
+}
+
+void matrizNum::trasponer()
+{
+	for(int i = 0; i < dim; i++){
+		for(int j = 0; j < dim; j++)
+			valores[j][i] = valores[i][j];
+	}
+}
