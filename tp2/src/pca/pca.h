@@ -12,6 +12,7 @@ matrizNum * matrizDeCovarianza(vector<entrada> &etiquetados);
 matrizNum *matCovarianza(vector<entrada> &v, vectorNum *medias);
 vectorNum *crearVectorInicial(int dim);
 vectorNum *metodoDeLasPotencias(matrizNum *covarianza);
+vector<vectorNum *> matX(vector<entrada> &v, vectorNum * medias);
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores);
 double encontrarAutovalor(vectorNum *autovector, matrizNum *covarianza);
 #endif
