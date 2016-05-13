@@ -3,7 +3,6 @@
 using namespace std;
 
 Matriz::Matriz(int a,int b) {
-    tr= false;
     f = a; // N FILAS y M COLUMNAS
     c = b;
     matrix = new double*[f];
@@ -79,8 +78,7 @@ Matriz Matriz::operator+(Matriz& a)
 
 Matriz Matriz::operator-(Matriz& a)
 {
-    if (this->getF()!=a.getF() || this->getC()!=a.getC())
-    {
+    if (this->getF()!=a.getF() || this->getC()!=a.getC()) {
         cout << "Fijate las dimesiones.." << endl;
         throw 0 ;
     }
@@ -100,7 +98,6 @@ Matriz Matriz::operator-(Matriz& a)
 }
 
 Matriz &Matriz::operator=(Matriz& a){
-    tr= false;
     f = a.getF(); // N FILAS y M COLUMNAS
     c = a.getC();
     delete matrix;
@@ -117,18 +114,13 @@ Matriz &Matriz::operator=(Matriz& a){
 bool Matriz::operator==(Matriz& a)
 {
 
-    if (this->getF()!=a.getF() || this->getC()!=a.getC())
-    {
+    if (this->getF()!=a.getF() || this->getC()!=a.getC()) {
         return false;
     }
 
-
-    for (int i = 0; i < this->getF(); i++)
-    {
-        for (int j = 0; j < this->getC(); j++)
-        {
-            if (this->getVal(i,j)   != a.getVal(i,j) )
-            {
+    for (int i = 0; i < this->getF(); i++) {
+        for (int j = 0; j < this->getC(); j++) {
+            if (this->getVal(i,j)   != a.getVal(i,j) ) {
                 return false;
             }
         }
@@ -161,22 +153,18 @@ Matriz Matriz::operator*(Matriz& a)
     return res;
 }
 
-double Matriz::productoInterno(Matriz& a , Matriz& b, int f , int c)
-{   double res = 0.0 ;
+double Matriz::productoInterno(Matriz& a , Matriz& b, int f , int c) {
+    double res = 0.0 ;
     int contandor = b.getF();
     for (int i = 0; i < contandor; i++) {
         res += a.getVal(f,i)*b.getVal(i,c);
     }
     return res;
-
-
 }
 
-
-Matriz::Matriz(const Matriz& other) // Constructor por copia
-{
+// Constructor por copia
+Matriz::Matriz(const Matriz& other)  {
     //Quiero que la copie la tal cual esta other en memoria
-    tr = other.tr;
     f = other.f;
     c = other.c;
     matrix = new double*[f];
@@ -186,8 +174,6 @@ Matriz::Matriz(const Matriz& other) // Constructor por copia
             matrix[i][j] = other.matrix [i][j];
         }
     }
-
-
 }
 
 
@@ -207,32 +193,23 @@ double** Matriz::getMatrix() {
 
 int Matriz::getF() const
 {
-    if (this->tr)
-    {
-        return c ;
-    }
+
     return f;
 }
 
 
 int Matriz::getC() const
 {
-    if (this->tr)
-    {
-        return f ;
-    }
+
     return c;
 }
 
 
 
-double Matriz::getVal(int x, int y) const
-{
+double Matriz::getVal(int x, int y) const {
 
-    if (posicionValida(x, y))
-    {
-        if (this->tr){return matrix [x][y];}
-        else{return matrix [y] [x];}
+    if (posicionValida(x, y)) {
+        return matrix [x][y];
     }
 
     else
@@ -244,18 +221,11 @@ double Matriz::getVal(int x, int y) const
 
 }
 
-void Matriz::T() {
-    this->tr =!this->tr;
-
-}
 
 void Matriz::setVal(int x, int y, double val) {
     if (posicionValida(x,y)) {
-        if (tr==false) {
-            matrix [x] [y] = val;
-        } else {
-            matrix [y] [x] = val ;
-        }
+        matrix [x] [y] = val;
+
     } else {
         cout << "Posicion Invalida" << endl;
         throw 0;
@@ -287,7 +257,6 @@ void Matriz::trasponer() {
             nuevaMatrix[i][j] = matrix[j][i];
         }
     }
-    tr= false;
     f = this->getC();
     c = this->getF();
     delete matrix;

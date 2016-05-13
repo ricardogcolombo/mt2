@@ -10,7 +10,6 @@ class Matriz {
         int f; // N Filas
         int c; // M Columnas
         double** matrix;
-        bool tr;
         bool posicionValida(int x, int y) const ;
 
     public:
@@ -27,7 +26,6 @@ class Matriz {
         int getC() const; // Done
         double** getMatrix();// Nunca la tuve que cambiar;
         void setVal(int x, int y, double val); // Hecha
-        void T(); // Hecha
         double getVal(int x, int y) const ; // Hecha
         void printM(); // Hecha
         double productoInterno(Matriz& a,Matriz& b,int f,int c);
