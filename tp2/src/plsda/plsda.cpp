@@ -9,9 +9,38 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar,
     //Matriz X traspuesta
     matrizNum *x_t = x->traspuesta();
     //Matriz de Y
-    matrizNum *y;
+    //Aca creo la matriz Y , La voy haciendo de a poco
+    Matriz y = Matriz (&etiquetados.size(),10);
+    // Aca la lleno con 1 y -1
+    for (int i = 0; i < y.getF(); ++i)
+    {
+    	for (int j = 0; j < getC(); ++j)
+    	{
+	    		if (//no se que)){y.SetVal(i,j,1.0);}
+	    		else {y.SetVal(i,j,-1.0);}
+    	}
+    }
+    //Aca viene la parte de calcular el promedio de todas las filas ??
+
+    //double mean ;
+    // double root = sqrt(&etiquetados.size()-1);
+    // Aca el for que transform PreY a Y
+        for (int i = 0; i < y.getF(); ++i)
+    	{
+	    	for (int j = 0; j < getC(); ++j)
+	    	{
+		    		double actual = y.getVal(i,j);
+		    		y.SetVal(i,j,(actual-mean)/root);
+	    	}
+    	}
+
+    //Copio la Matriz Y con el constructor por copia
+
+    //Matriz yT = Matriz(Y);
+    //	yT.T() ; Transpongo Y
+    //matrizNum *y;
     //Matriz de Y traspuesta
-    matrizNum *y_t = y->traspuesta();
+    //matrizNum *y_t = y->traspuesta();
 
     myfile.precision(6);
     myfile << scientific;
