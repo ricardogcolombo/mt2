@@ -57,8 +57,7 @@ vectorNum* Matriz::multiplicarVector(vectorNum* unVector){
 
 Matriz Matriz::operator+(Matriz& a)
 {
-    if (this->getF()!=a.getF() || this->getC()!=a.getC())
-    {
+    if (this->getF()!=a.getF() || this->getC()!=a.getC()) {
         cout << "Fijate las dimesiones.." << endl;
         throw 0 ;
     }
@@ -67,10 +66,8 @@ Matriz Matriz::operator+(Matriz& a)
     c = this->getC();
     Matriz res = Matriz(f,c);
 
-    for (int i = 0; i < f; ++i)
-    {
-        for (int j = 0; j < c; ++j)
-        {
+    for (int i = 0; i < f; i++) {
+        for (int j = 0; j < c; j++) {
             double value = this->getVal(i,j) + a.getVal(i,j);
             res.setVal(i,j,value);
         }
@@ -92,10 +89,8 @@ Matriz Matriz::operator-(Matriz& a)
     c = this->getC();
     Matriz res = Matriz(f,c);
 
-    for (int i = 0; i < f; ++i)
-    {
-        for (int j = 0; j < c; ++j)
-        {
+    for (int i = 0; i < f;i++) {
+        for (int j = 0; j < c; j++) {
             double value = this->getVal(i,j) - a.getVal(i,j);
             res.setVal(i,j,value);
         }
@@ -128,9 +123,9 @@ bool Matriz::operator==(Matriz& a)
     }
 
 
-    for (int i = 0; i < this->getF(); ++i)
+    for (int i = 0; i < this->getF(); i++)
     {
-        for (int j = 0; j < this->getC(); ++j)
+        for (int j = 0; j < this->getC(); j++)
         {
             if (this->getVal(i,j)   != a.getVal(i,j) )
             {
@@ -156,10 +151,8 @@ Matriz Matriz::operator*(Matriz& a)
     f=this->getF();
     c=a.getC();
     Matriz res = Matriz(f,c);
-    for (int i = 0; i < f; ++i)
-    {
-        for (int j = 0; j < c; ++j)
-        {
+    for (int i = 0; i < f; i++) {
+        for (int j = 0; j < c; j++) {
             //double temp = productoInterno(*this,a,i,j);
             res.setVal(i,j,productoInterno(*this,a,i,j));
         }
@@ -171,8 +164,7 @@ Matriz Matriz::operator*(Matriz& a)
 double Matriz::productoInterno(Matriz& a , Matriz& b, int f , int c)
 {   double res = 0.0 ;
     int contandor = b.getF();
-    for (int i = 0; i < contandor; ++i)
-    {
+    for (int i = 0; i < contandor; i++) {
         res += a.getVal(f,i)*b.getVal(i,c);
     }
     return res;
@@ -188,11 +180,9 @@ Matriz::Matriz(const Matriz& other) // Constructor por copia
     f = other.f;
     c = other.c;
     matrix = new double*[f];
-    for (int i = 0; i < f; i++)
-    {
+    for (int i = 0; i < f; i++) {
         matrix[i] = new double[c];
-        for (int j = 0; j < c; j++)
-        {
+        for (int j = 0; j < c; j++) {
             matrix[i][j] = other.matrix [i][j];
         }
     }
@@ -254,47 +244,33 @@ double Matriz::getVal(int x, int y) const
 
 }
 
-void Matriz::T()
-{
+void Matriz::T() {
     this->tr =!this->tr;
 
 }
 
-void Matriz::setVal(int x, int y, double val)
-{
-    if (posicionValida(x,y))
-    {
-        if (tr==false)
-        {
+void Matriz::setVal(int x, int y, double val) {
+    if (posicionValida(x,y)) {
+        if (tr==false) {
             matrix [x] [y] = val;
-        }
-        else
-        {
+        } else {
             matrix [y] [x] = val ;
         }
-
-    }
-    else
-    {
+    } else {
         cout << "Posicion Invalida" << endl;
         throw 0;
     }
-
 }
 
 
 // X es la fila e y la Columna a ver si estan en rango
-bool Matriz::posicionValida(int x, int y) const
-{
+bool Matriz::posicionValida(int x, int y) const {
     return x<this->getF() && y<this->getC();
 }
 
-void Matriz::printM()
-{
-    for (int i = 0; i < this->getF(); ++i)
-    {
-        for (int j = 0; j < this->getC(); ++j)
-        {
+void Matriz::printM() {
+    for (int i = 0; i < this->getF(); i++) {
+        for (int j = 0; j < this->getC();j++) {
             cout << this->getVal(i,j) << "\t";
         }
         cout << "\n";
@@ -302,8 +278,7 @@ void Matriz::printM()
 
 }
 
-void Matriz::trasponer()
-{
+void Matriz::trasponer() {
     double ** nuevaMatrix = new double*[f];
     //inicializo la matriz de cocmanera segura (evitando problemas de manejo de memoria)
     for (int i = 0; i <f ; i++) {

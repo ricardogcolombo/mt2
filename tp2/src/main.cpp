@@ -2,6 +2,7 @@
 #include "knn/knn.h"
 #include "pca/pca.h"
 #include "plsda/plsda.h"
+#include "matriz2/testMatriz.h"
 #include <fstream>
 #include <sstream>
 #include <stdio.h>
@@ -31,59 +32,64 @@ int main(int argc, char *argv[]) {
     string archivoDeSalida (argv[2]);
     string metodo;
     if (argc == 3) {
-        metodo = "1";
+        // corre test
+        metodo = 1;
     } else {
         metodo = argv[3];
     }
+    if(atoi(metodo.c_str())== 3){
+        cout << "corro testK...." << endl;
+        testMatriz();
+    }else{
+        //Esto es para competir
+        // int lamda = 50;
+        // int vecinos = 5;
+        // fstream myfile("autovectores",ios::out | ios::app);
+        // cout << "Cargando Base de datos..." << endl;
+        // vector<entrada> entrenamiento = procesarEntrada("train.csv", false);
+        // cout << "Cargando imagenes a testear..." << endl;
+        // vector<entrada> testeo = procesarEntrada("test.csv", true);
+        // ejecutar(atoi(metodo.c_str()), entrenamiento, testeo,lamda,vecinos, myfile);
+        //Esto es para competir
 
-    //Esto es para competir
-    // int lamda = 50;
-    // int vecinos = 5;
-    // fstream myfile("autovectores",ios::out | ios::app);
-    // cout << "Cargando Base de datos..." << endl;
-    // vector<entrada> entrenamiento = procesarEntrada("train.csv", false);
-    // cout << "Cargando imagenes a testear..." << endl;
-    // vector<entrada> testeo = procesarEntrada("test.csv", true);
-    // ejecutar(atoi(metodo.c_str()), entrenamiento, testeo,lamda,vecinos, myfile);
-    //Esto es para competir
+        //Esto es para hacer el K folds
+        int cantidadDePruebas, lamda, vecinos,gamma;
+        int **kfold = kfolds(archivoDeEntrada, cantidadDePruebas, lamda, gamma,vecinos);
+        cout << "Iniciando Kfolds...." << endl;
+        cout << "Cantidad De Pruebas: " << cantidadDePruebas << endl;
+        cout << "Vecinos para el KNN: " << vecinos << endl;
+        cout << "Lamda Para PCA: " << lamda << endl;
+        cout << "gamma Para PLSDA: " << gamma << endl;
 
-    //Esto es para hacer el K folds
-    int cantidadDePruebas, lamda, vecinos,gamma;
-    int **kfold = kfolds(archivoDeEntrada, cantidadDePruebas, lamda, gamma,vecinos);
-    cout << "Iniciando Kfolds...." << endl;
-    cout << "Cantidad De Pruebas: " << cantidadDePruebas << endl;
-    cout << "Vecinos para el KNN: " << vecinos << endl;
-    cout << "Lamda Para PCA: " << lamda << endl;
-    cout << "gamma Para PLSDA: " << gamma << endl;
+        fstream myfile(archivoDeSalida.c_str(), ios::out | ios::trunc);
 
-    fstream myfile(archivoDeSalida.c_str(), ios::out | ios::trunc);
+        for (int i = 0; i < cantidadDePruebas; i++) {
+            cout << "Cargando Base de datos..." << endl;
+            vector<entrada> entradas = procesarEntrada("train.csv", false);
+            vector<entrada> testeo;
+            vector<entrada> entrenamiento;
 
-    for (int i = 0; i < cantidadDePruebas; i++) {
-        cout << "Cargando Base de datos..." << endl;
-        vector<entrada> entradas = procesarEntrada("train.csv", false);
-        vector<entrada> testeo;
-        vector<entrada> entrenamiento;
+            cout << "Corriendo test: " << i + 1 << endl;
+            arreglarEntrada(entradas, entrenamiento, testeo, kfold[i]);
+            ejecutar(atoi(metodo.c_str()), entrenamiento, testeo, lamda, vecinos,gamma, myfile);
 
-        cout << "Corriendo test: " << i + 1 << endl;
-        arreglarEntrada(entradas, entrenamiento, testeo, kfold[i]);
-        ejecutar(atoi(metodo.c_str()), entrenamiento, testeo, lamda, vecinos,gamma, myfile);
-
-        //Elimino todos los vectores creados
-        entradas.erase(entradas.begin(), entradas.end());
-        for (int i = 0; i < entrenamiento.size(); i++) {
-            delete entrenamiento[i].vect;
+            //Elimino todos los vectores creados
+            entradas.erase(entradas.begin(), entradas.end());
+            for (int i = 0; i < entrenamiento.size(); i++) {
+                delete entrenamiento[i].vect;
+            }
+            entrenamiento.erase(entrenamiento.begin(), entrenamiento.end());
+            for (int i = 0; i < testeo.size(); i++) {
+                delete testeo[i].vect;
+            }
+            testeo.erase(testeo.begin(), testeo.end());
         }
-        entrenamiento.erase(entrenamiento.begin(), entrenamiento.end());
-        for (int i = 0; i < testeo.size(); i++) {
-            delete testeo[i].vect;
-        }
-        testeo.erase(testeo.begin(), testeo.end());
+        myfile.close();
+        //Esto es para hacer el K folds
+        cerr << endl;
+        cout << "Fin!" << endl;
+        return 0;
     }
-    myfile.close();
-    //Esto es para hacer el K folds
-    cerr << endl;
-    cout << "Fin!" << endl;
-    return 0;
 }
 
 void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile) {
