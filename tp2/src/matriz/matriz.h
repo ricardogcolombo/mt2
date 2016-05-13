@@ -29,7 +29,6 @@ public:
 	void print();
 	int size();
 	vectorNum *producto(vectorNum *vector);
-	void matrizNum::productoMatriz(matrizNum* otraMat);
 	void trasponer();
 };
 

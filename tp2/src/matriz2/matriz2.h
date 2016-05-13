@@ -1,5 +1,9 @@
-#ifndef __Matriz_H_INCLUDED__   //   #define this so the compiler knows it has been included
-#define __Matriz_H_INCLUDED__   //   #define this so the compiler knows it has been included
+#ifndef __Matriz2_H_INCLUDED__   //   #define this so the compiler knows it has been included
+#define __Matriz2_H_INCLUDED__   //   #define this so the compiler knows it has been included
+#include <algorithm>
+#include <iostream>
+#include <cmath>
+#include "../vector/vectorNum.h"
 
 class Matriz {
     private:
@@ -10,11 +14,12 @@ class Matriz {
         bool posicionValida(int x, int y) const ;
 
     public:
-    	//Tengo que arreglar todas;
+        //Tengo que arreglar todas;
         Matriz(int a, int b); // Hecha
         Matriz(const Matriz& other); //  Creo que esta
         Matriz operator*(Matriz& a); // Hecha
         Matriz operator+(Matriz& a); // Operacion +
+        Matriz& operator=(Matriz& a); // Operacion +
         Matriz operator-(Matriz& a); // Falta esta y la suma
         bool operator==(Matriz& a); // Esta Tambien ;
         ~Matriz(); // Never Changed
@@ -25,6 +30,10 @@ class Matriz {
         void T(); // Hecha
         double getVal(int x, int y) const ; // Hecha
         void printM(); // Hecha
-        double ProductoInterno(Matriz& a,Matriz& b,int f,int c);
+        double productoInterno(Matriz& a,Matriz& b,int f,int c);
+        void trasponer();
+        void multiplicarMatriz(Matriz* a);
+        void restarMatriz(Matriz* a);
+        vectorNum *multiplicarVector(vectorNum* a);
 };
 #endif

@@ -61,29 +61,6 @@ vectorNum *metodoDeLasPotencias(matrizNum *covarianza) {
     return vectorInicial;
 }
 
-vectorNum *crearVectorInicial(int dim) {
-    vectorNum *vectorInicial = new vectorNum(dim);
-    for (int w = 0; w < dim; w++) {
-        int random = rand() % 100 + 1;
-        vectorInicial->set(w, (double)random);
-    }
-    return vectorInicial;
-}
-vector<vectorNum*> matX(vector<entrada> &v, vectorNum * medias) {
-    int dimension = medias->size();
-
-    //Aca nos creamos el X del slide
-    vector<vectorNum*> X;
-    for (int i = 0; i < dimension; i++) {
-        vectorNum* nuevoVector = new vectorNum(v.size());
-        for (int j = 0; j < v.size(); j++) {
-            nuevoVector->set(j, (double) v[j].vect->get(i) - medias->get(i));
-        }
-        //nuevoVector->print();
-        X.push_back(nuevoVector);
-    }
-    return X;
-};
 
 matrizNum *matCovarianza(vector<entrada> &v, vectorNum * medias) {
     int dimension = medias->size();
@@ -91,15 +68,7 @@ matrizNum *matCovarianza(vector<entrada> &v, vectorNum * medias) {
 
     //Aca nos creamos el X del slide
     vector<vectorNum*> X = matX(v,medias);
-    // for (int i = 0; i < dimension; i++) {
-        // vectorNum* nuevoVector = new vectorNum(v.size());
-        // for (int j = 0; j < v.size(); j++) {
-            // nuevoVector->set(j, (double) v[j].vect->get(i) - medias->get(i));
-        // }
-        // //nuevoVector->print();
-        // X.push_back(nuevoVector);
-    // }
-
+    
     //ahora Armamos la matriz Mx
     for (int i = 0 ; i < dimension; i++) {
         for (int k = 0 ; k < dimension; k++) {
