@@ -1,0 +1,27 @@
+#include <iostream>
+#include "matriz.cpp"
+using namespace std;
+
+int main()
+{
+	Matriz neo = Matriz(3,3);
+	for (int i = 0; i < neo.getF(); ++i)
+	{
+		for (int j = 0; j < neo.getC(); ++j)
+		{
+			neo.setVal(i,j,i+j);
+		}
+	}
+
+	neo.printM();
+	Matriz neo2 = Matriz(neo);
+	Matriz neo3 = neo*neo; // Asi se multiplica 
+	cout << "\n";
+	neo3.printM();
+	cout << "\n";
+	cout << "\n";
+	neo.T(); // Asi se transpone 
+	neo.printM();
+	cout << "Ending" << endl;
+	return 0;
+}
