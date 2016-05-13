@@ -1,2 +1,14 @@
-En este trabajo practico , haremos una primera incursion en el tema de Machine Learning mediante la impleementacion de tecnicas para el reconocimiento de digitos
+% TO DO : PASAR A WORD ; ORTOGRAFIA Y CAMBIAR UN PAR DE COSAS
+En este trabajo practico , haremos una primera incursion en el tema de Machine Learning mediante la implementacion de tecnicas para el reconocimiento de digitos.
+
+Tenemos 2 Base de datos , una con los elementos ya identificados llamada train y otra con los elementos a etiquetar llamada test . Usando a train para preparar al algoritmo , se busca poder identificar a los elementos de test con la mayor eficacia posible .
+
+La base de esto es el metodo conocido como kNN , que de manera resumida ,
+considera a cada elemento ya identificado como un punto en el espacio y cada vez que llega un elementar sin identificar , se llama a elecciones con los elementos mas cercano y gana quien obtenga mas votos.
+El principal problemita de este metodo es que su tiempo de ejecucion depende de la dimesion de los elementos y como nuestras imagenes son de 784 dimesiones ... bueno no quiero dejar la notebook un par de  semanas corriendo el test .
+Para contrarestar esto , se implemeta los metodos conocidos como PCA 
+y PLS-DA que basicamente hacen una transformacion sobre los datos de entrada y permiten reducir la dimesion de los elementos (WIII) , lo 
+cual es muy bueno cuando la dimesion de los elementos es un problema
+
+
 
