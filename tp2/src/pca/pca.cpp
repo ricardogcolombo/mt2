@@ -30,17 +30,6 @@ void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fs
     }
 }
 
-void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores) {
-    for (int j = 0; j < etiquetados.size(); j++) {
-        vectorNum* vectorAux = new vectorNum(cantidadAutovectores);
-        for (int i = 0; i < autovectores.size(); i++) {
-            vectorAux->set(i, autovectores[i]->multiplicacionVect(etiquetados[j].vect));
-        }
-        //Borro el vector viejo y le pongo el de las nuevas dimenciones
-        delete etiquetados[j].vect;
-        etiquetados[j].vect = vectorAux;
-    }
-}
 
 //devuelve el mayor autovalor
 vectorNum *metodoDeLasPotencias(matrizNum *covarianza) {

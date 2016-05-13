@@ -53,10 +53,8 @@ int main(int argc, char *argv[]) {
     cout << "Iniciando Kfolds...." << endl;
     cout << "Cantidad De Pruebas: " << cantidadDePruebas << endl;
     cout << "Vecinos para el KNN: " << vecinos << endl;
-    if (atoi(metodo.c_str()) == 1) {
-        cout << "Lamda Para PCA: " << lamda << endl;
-        cout << "Lamda Para PLSDA: " << gamma << endl;
-    }
+    cout << "Lamda Para PCA: " << lamda << endl;
+    cout << "gamma Para PLSDA: " << gamma << endl;
 
     fstream myfile(archivoDeSalida.c_str(), ios::out | ios::trunc);
 
@@ -109,7 +107,7 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
 
     // plsda + knn
 
-    if (metodo == 1) {
+    if (metodo == 2) {
         cout << "Ejecutando metodo PCA..." << endl;
         calcularPLSDA(entradas, test, myfile, lamda,gamma);
         cout << "Ejecutando KNN sobre el PCA..." << endl;
