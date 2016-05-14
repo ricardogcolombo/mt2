@@ -50,14 +50,16 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
 
         // normalizo el autovector
         double norma2Autovector=  autovector->norma2();
-        autovector->multiplicacionEscalar(norma2Autovector);
-
+        double lamda = encontrarAutovalor(autovector, X_t);
+        myfile << lamda << endl;
+        cout<< lamda << endl;
+        autovector->multiplicacionEscalar(1/norma2Autovector);
         // obtengo ti = X * autovector
         vectorNum *t_i = X->multiplicarVector(autovector);
 
         // normalizo ti
         double norma2t_i=  t_i->norma2();
-        t_i->multiplicacionEscalar(norma2t_i);
+        t_i->multiplicacionEscalar(1/norma2t_i);
 
         // actualizo X = X - ti * ti_t * X
         Matriz * j_t = vectorTraspuestoToMatriz(t_i);
