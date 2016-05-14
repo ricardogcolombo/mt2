@@ -16,12 +16,13 @@ Matriz::Matriz(int a,int b) {
 }
 // no pude usar operartor *
 void Matriz::multiplicarMatriz(Matriz* a){
+    // TODO CHECK DIMENSIONES
     double ** nuevaMatrix = new double*[f];
     for (int i = 0; i < f; i++) {
-        nuevaMatrix[i] = new double[c];
+        nuevaMatrix[i] = new double[a->getC()];
         for (int j = 0; j < c; j++) {
             double res = 0;
-            for (int s = 0; s < c; s++) {
+            for (int s = 0; s < a->getF(); s++) {
                 res += this->getVal(i,s)* a->getVal(s,i);
             }
             nuevaMatrix[i][j]=res;

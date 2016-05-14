@@ -2,7 +2,6 @@
 
 void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones, int gamma){
     std::vector<vectorNum*> autovectores;
-    cout << "Entro a PLSDA"<<endl;
     //Matriz de Covarianza de X
     vectorNum *medias = calcularMedias(etiquetados);
     int dimension = medias->size();
@@ -11,7 +10,7 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
     Matriz *X = fromVectorNumToMatriz(X1);
 
     //Matriz X traspuesta
-    Matriz *X_t = X;
+    Matriz *X_t = new Matriz(*X);
     X_t->trasponer();
 
     //Matriz de Y
@@ -33,17 +32,20 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
 
     //Copio la Matriz Y con el constructor por copia
 
-    Matriz* Y_t = Y;
+    Matriz* Y_t = new Matriz(*Y);
     Y_t->trasponer() ;
 
     myfile.precision(6);
     myfile << scientific;
 
     for (int i = 0; i < cantidadIteraciones; i++) {
-        Matriz * M= Y_t;
+        cout << "iteracion numero " << i<<endl;
+        Matriz * M= new Matriz(*X_t);
         M->multiplicarMatriz(Y);
+        cout << "multiplico Y t por Y" <<endl;
         M->multiplicarMatriz(Y_t);
-        M->multiplicarMatriz(Y);
+        M->multiplicarMatriz(X_t);
+        cout << "multiplico Y t por Y" <<endl;
         // se supone que aca esta el autovector asociado al mayor autovalor
         vectorNum * autovector = metodoDeLasPotencias2(M);
         autovectores.push_back(autovector);

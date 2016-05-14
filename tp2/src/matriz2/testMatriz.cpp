@@ -24,4 +24,12 @@ void testMatriz(){
     t->multiplicarMatriz(dos);
     t->printM();
     cout<<endl;
+    Matriz * X = new Matriz(*t);
+    X->printM();
+    t->multiplicarMatriz(dos);
+    cout<<endl;
+    X->printM();
+    cout<<endl;
+    t->printM();
+
 }
