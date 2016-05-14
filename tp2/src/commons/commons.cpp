@@ -64,3 +64,10 @@ Matriz* multiplicacionVectTrans2(vectorNum* unVector, vectorNum *otroVector) {
             matriz->setVal(i,j, unVector->get(i)*otroVector->get(j));
     return matriz;
 }
+
+double encontrarAutovalor(vectorNum * autovector, Matriz * m) {
+    vectorNum * aux = m->multiplicarVector(autovector);
+    double lamda = aux->norma2();
+    delete aux;
+    return lamda;
+}
