@@ -14,6 +14,7 @@ class Matriz {
 
     public:
         //Tengo que arreglar todas;
+        void LimpiarMemoria();
         Matriz(int a, int b); // Hecha
         Matriz(const Matriz& other); //  Creo que esta
         Matriz operator*(Matriz& a); // Hecha

@@ -14,9 +14,23 @@ Matriz::Matriz(int a,int b) {
         }
     }
 }
+
+void Matriz::LimpiarMemoria()
+{
+	for (int i = 0; i < this->getF(); ++i)
+	{
+		delete[] this->matrix[i];
+	}
+	
+	delete[] this->matrix;
+}
+
 // no pude usar operartor *
 void Matriz::multiplicarMatriz(Matriz* a){
     // TODO CHECK DIMENSIONES
+    int oldf = f;
+    int oldc = c;
+    double ** oldMatrix = matrix;
     double ** nuevaMatrix = new double*[f];
     int newC = a->getC();
     int aFilas= a->getF();
@@ -31,7 +45,11 @@ void Matriz::multiplicarMatriz(Matriz* a){
         }
     }
     c = newC;
-    delete matrix;
+    for (int i = 0; i < oldf; ++i)
+    {
+    	delete[] oldMatrix[i];
+    }
+    delete[] oldMatrix;
     matrix = nuevaMatrix;
 }
 // no pude usar el operator -
@@ -171,12 +189,13 @@ Matriz::Matriz(const Matriz& other)  {
 
 
 Matriz::~Matriz() {
+
     for (int i = 0; i <f ; i++) {
-        delete[] matrix[i];
-        // delete matrix[i];
+        //delete[] matrix[i];
+         delete matrix[i];
     }
-    delete[] matrix;
-    //delete matrix;
+    //delete[] matrix;
+    delete matrix;
 }
 
 
@@ -252,7 +271,7 @@ void Matriz::trasponer() {
     }
     f = newF;
     c = newC;
-    for (int i = 0; i <c ; i++) {
+    for (int i = 0; i <newC ; i++) {
         delete[] oldMatrix[i];
         // delete matrix[i];
     }
