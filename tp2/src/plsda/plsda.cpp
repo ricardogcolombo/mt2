@@ -7,11 +7,11 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
     int dimension = medias->size();
     //TODO use only Matriz and replace all vector vectornum in pca
     vector<vectorNum*> X1 = matX(etiquetados,medias);
-    Matriz *X = fromVectorNumToMatriz(X1);
+    Matriz *X_t = fromVectorNumToMatriz(X1);
 
     //Matriz X traspuesta
-    Matriz *X_t = new Matriz(*X);
-    X_t->trasponer();
+    Matriz *X = new Matriz(*X_t);
+    X->trasponer();
 
     //Matriz de Y
     //Aca creo la matriz Y , La voy haciendo de a poco
@@ -32,59 +32,76 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
 
     //Copio la Matriz Y con el constructor por copia
 
-    Matriz* Y_t = new Matriz(*Y);
-    Y_t->trasponer() ;
-
     myfile.precision(6);
     myfile << scientific;
 
     for (int i = 0; i < cantidadIteraciones; i++) {
-        cout << "iteracion numero " << i<<endl;
-        Matriz * M= new Matriz(*X);
-        M->multiplicarMatriz(Y);
-        Matriz *Z =new Matriz(*M);
+        // cout << "iteracion numero " << i<<endl;
+        // M = X_t Y Y_t X
+        X_t->multiplicarMatriz(Y);
+        Matriz *Z =new Matriz(*X_t);
         Z->trasponer();
-        M->multiplicarMatriz(Z);
+        X_t->multiplicarMatriz(Z);
+        delete Z;
 
         // se supone que aca esta el autovector asociado al mayor autovalor
-        vectorNum * autovector = metodoDeLasPotencias2(M);
+        vectorNum * autovector = metodoDeLasPotencias2(X_t);
         autovectores.push_back(autovector);
-        // cout << "autovectores size " << autovector->size() <<endl;
 
         // normalizo el autovector
         double norma2Autovector=  autovector->norma2();
         autovector->multiplicacionEscalar(norma2Autovector);
-        // cout << "norma2 de autovector " <<endl;
+
         // obtengo ti = X * autovector
-        vectorNum *t_i = X_t->multiplicarVector(autovector);
-        cout << "multiplique por vector size " << t_i->size() <<endl;
+        vectorNum *t_i = X->multiplicarVector(autovector);
 
         // normalizo ti
         double norma2t_i=  t_i->norma2();
         t_i->multiplicacionEscalar(norma2t_i);
-        // cout << "norma2 de ti " <<endl;
 
         // actualizo X = X - ti * ti_t * X
-        Matriz * j = multiplicacionVectTrans2(t_i,t_i);
+        Matriz * j_t = vectorTraspuestoToMatriz(t_i);
+        delete t_i;
+        Matriz * j = new Matriz(*j_t);
+        j->trasponer();
+        Matriz * j2_t = new Matriz(*j_t);
         Matriz * j2 = new Matriz(*j);
-        // cout << "ti por ti transpuesta "<<endl;
-
-        j->multiplicarMatriz(X_t);
+        j_t->multiplicarMatriz(X);
+        j->multiplicarMatriz(j_t);
         X->restarMatriz(j);
-        // cout << "reste X-t*ty "<<endl;
 
         // actualizo Y = Y - ti * ti_t * Y
+        delete X_t;
+        // actualizo Z
+        X_t = new Matriz(*X);
+        X_t->trasponer();
 
-        // cout << "Medidas Y " <<endl;
-        // cout << Y->getF()<<" " << Y->getC() <<endl;
-        // cout << "Medidas J " <<endl;
-        cout << j2->getF()<<" " << j2->getC() <<endl;
-        j2->multiplicarMatriz(Y);
+        //  "reste Y-t*ty "
+        j2_t->multiplicarMatriz(Y);
+        j2->multiplicarMatriz(j2_t);
         Y->restarMatriz(j2);
-        cout << "reste Y-t*ty " << i<<endl;
+        delete j;
+        delete j_t;
+        delete j2;
+        delete j2_t;
+
     }
+    delete X;
+    delete Y;
+    trasponerEntrada(etiquetados, autovectores, cantidadIteraciones);
     trasponerEntrada(sinEtiquetar, autovectores, cantidadIteraciones);
+    for (int i = 0; i < autovectores.size(); i++) {
+        delete autovectores[i];
+    }
 }
+
+Matriz *vectorTraspuestoToMatriz(vectorNum* t){
+    Matriz * x =  new Matriz(1,t->size());
+    for(int i = 0;i<t->size();i++){
+        x->setVal(0,i,t->get(i));
+    }
+    return x;
+};
 
 Matriz *fromVectorNumToMatriz(vector<vectorNum*> t){
     int n,m;

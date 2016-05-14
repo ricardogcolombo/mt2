@@ -8,4 +8,5 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
 Matriz *preY(vector<entrada> t);
 Matriz *fromVectorNumToMatriz(vector<vectorNum*> t);
 double getMean(Matriz* t,int fila);
+Matriz *vectorTraspuestoToMatriz(vectorNum* t);
 #endif
