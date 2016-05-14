@@ -214,7 +214,7 @@ double Matriz::getVal(int x, int y) const {
 
     else
     {
-        cout << "Posicion invalida" << endl;
+        cout << "Posicion Invalida" << x <<" "<< y<< endl;
         throw 1;
     }
 
@@ -227,7 +227,7 @@ void Matriz::setVal(int x, int y, double val) {
         matrix [x] [y] = val;
 
     } else {
-        cout << "Posicion Invalida" << endl;
+        cout << "Posicion Invalida" << x <<" "<< y<< endl;
         throw 0;
     }
 }
@@ -249,11 +249,11 @@ void Matriz::printM() {
 }
 
 void Matriz::trasponer() {
-    double ** nuevaMatrix = new double*[f];
+    double ** nuevaMatrix = new double*[c];
     //inicializo la matriz de cocmanera segura (evitando problemas de manejo de memoria)
-    for (int i = 0; i <f ; i++) {
-        nuevaMatrix[i] = new double[c];
-        for (int j = 0; j < c; j++) {
+    for (int i = 0; i <c ; i++) {
+        nuevaMatrix[i] = new double[f];
+        for (int j = 0; j < f; j++) {
             nuevaMatrix[i][j] = matrix[j][i];
         }
     }
