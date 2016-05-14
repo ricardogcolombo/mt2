@@ -18,16 +18,19 @@ Matriz::Matriz(int a,int b) {
 void Matriz::multiplicarMatriz(Matriz* a){
     // TODO CHECK DIMENSIONES
     double ** nuevaMatrix = new double*[f];
+    int newC = a->getC();
+    int aFilas= a->getF();
     for (int i = 0; i < f; i++) {
-        nuevaMatrix[i] = new double[a->getC()];
+        nuevaMatrix[i] = new double[newC];
         for (int j = 0; j < c; j++) {
             double res = 0;
-            for (int s = 0; s < a->getF(); s++) {
-                res += this->getVal(i,s)* a->getVal(s,i);
+            for (int s = 0; s < aFilas; s++) {
+                res += this->getVal(i,s)* a->getVal(s,j);
             }
             nuevaMatrix[i][j]=res;
         }
     }
+    c = newC;
     delete matrix;
     matrix = nuevaMatrix;
 }
@@ -200,11 +203,8 @@ double Matriz::getVal(int x, int y) const {
 
     if (posicionValida(x, y)) {
         return matrix [x][y];
-    }
-
-    else
-    {
-        cout << "Posicion Invalida" << x <<" "<< y<< endl;
+    } else {
+        cout << "get Posicion Invalida" << x <<" "<< y<< endl;
         throw 1;
     }
 
@@ -217,7 +217,7 @@ void Matriz::setVal(int x, int y, double val) {
         matrix [x] [y] = val;
 
     } else {
-        cout << "Posicion Invalida" << x <<" "<< y<< endl;
+        cout << "set Posicion Invalida" << x <<" "<< y<< endl;
         throw 0;
     }
 }
@@ -239,19 +239,23 @@ void Matriz::printM() {
 }
 
 void Matriz::trasponer() {
-    double ** nuevaMatrix = new double*[c];
-    //inicializo la matriz de cocmanera segura (evitando problemas de manejo de memoria)
-    for (int i = 0; i <c ; i++) {
-        nuevaMatrix[i] = new double[f];
-        for (int j = 0; j < f; j++) {
-            nuevaMatrix[i][j] = matrix[j][i];
-        }
-    }
     int newC = this->getF();
     int newF = this->getC();
-    f = newC;
-    c = newF;
-    delete matrix;
-    matrix = nuevaMatrix;
+    double ** oldMatrix = matrix;
+    matrix  = new double*[newF];
+    //inicializo la matriz de cocmanera segura (evitando problemas de manejo de memoria)
+    for (int i = 0; i <c ; i++) {
+        matrix[i] = new double[newC];
+        for (int j = 0; j < f; j++) {
+            matrix[i][j] = oldMatrix[j][i];
+        }
+    }
+    f = newF;
+    c = newC;
+    for (int i = 0; i <c ; i++) {
+        delete[] oldMatrix[i];
+        // delete matrix[i];
+    }
+    delete[] oldMatrix;
 }
 
