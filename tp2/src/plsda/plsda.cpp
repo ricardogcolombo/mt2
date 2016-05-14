@@ -21,14 +21,7 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
 
     double root = sqrt(etiquetados.size()-1);
     // Aca el for que transform PreY a Y
-    for (int i = 0; i < Y->getF(); ++i)
-    {
-        for (int j = 0; j < Y->getC(); ++j)
-        {
-            double actual = Y->getVal(i,j);
-            Y->setVal(i,j,(actual-mean)/root);
-        }
-    }
+    Y->restarYmultiplicarEscalar(mean,root);
 
     //Copio la Matriz Y con el constructor por copia
 

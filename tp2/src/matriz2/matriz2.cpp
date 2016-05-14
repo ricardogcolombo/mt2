@@ -17,12 +17,12 @@ Matriz::Matriz(int a,int b) {
 
 void Matriz::LimpiarMemoria()
 {
-	for (int i = 0; i < this->getF(); ++i)
-	{
-		delete[] this->matrix[i];
-	}
-	
-	delete[] this->matrix;
+    for (int i = 0; i < this->getF(); ++i)
+    {
+        delete[] this->matrix[i];
+    }
+
+    delete[] this->matrix;
 }
 
 // no pude usar operartor *
@@ -47,7 +47,7 @@ void Matriz::multiplicarMatriz(Matriz* a){
     c = newC;
     for (int i = 0; i < oldf; ++i)
     {
-    	delete[] oldMatrix[i];
+        delete[] oldMatrix[i];
     }
     delete[] oldMatrix;
     matrix = nuevaMatrix;
@@ -192,7 +192,7 @@ Matriz::~Matriz() {
 
     for (int i = 0; i <f ; i++) {
         //delete[] matrix[i];
-         delete matrix[i];
+        delete matrix[i];
     }
     //delete[] matrix;
     delete matrix;
@@ -255,6 +255,13 @@ void Matriz::printM() {
         cout << "\n";
     }
 
+}
+void Matriz::restarYmultiplicarEscalar(double m,double t) {
+    for (int i = 0; i < this->getF(); i++) {
+        for (int j = 0; j < this->getC();j++) {
+            this->setVal(i,j,(this->getVal(i,j)-m)/t );
+        }
+    }
 }
 
 void Matriz::trasponer() {

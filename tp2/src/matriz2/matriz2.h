@@ -32,6 +32,7 @@ class Matriz {
         double productoInterno(Matriz& a,Matriz& b,int f,int c);
         void trasponer();
         void multiplicarMatriz(Matriz* a);
+        void restarYmultiplicarEscalar(double m,double t);
         void restarMatriz(Matriz* a);
         vectorNum *multiplicarVector(vectorNum* a);
 };
