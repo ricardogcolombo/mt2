@@ -1,7 +1,7 @@
 #include "testMatriz.h"
 
 void testMatriz(){
-    Matriz * t = new Matriz(30,10);
+    Matriz * t = new Matriz(784,37800);
     int i,j;
     int s = 1;
     for(i = 0;i<t->getF();i++){
@@ -10,14 +10,18 @@ void testMatriz(){
             s++;
         }
     }
-    Matriz * unos  = new Matriz(*t);
-
-    unos->trasponer();
+    Matriz * unos  = new Matriz(37800,10);
+    for(i = 0;i<unos->getF();i++){
+        for (j = 0; j < unos->getC(); j++) {
+            unos->setVal(i,j,2);
+        }
+    }
 
     cout <<t->getF()<< " "<< t->getC()<<endl;
     cout << unos->getF()<< " "<< unos->getC()<<endl;
 
     t->multiplicarMatriz(unos);
-    cout<< "funco"<< endl;
+    cout<< t->getF() << " " << t->getC()<< endl;
 
 }
+

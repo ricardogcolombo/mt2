@@ -57,7 +57,6 @@ matrizNum *matCovarianza(vector<entrada> &v, vectorNum * medias) {
 
     //Aca nos creamos el X del slide
     vector<vectorNum*> X = matX(v,medias);
-    
     //ahora Armamos la matriz Mx
     for (int i = 0 ; i < dimension; i++) {
         for (int k = 0 ; k < dimension; k++) {

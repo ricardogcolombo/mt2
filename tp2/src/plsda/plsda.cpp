@@ -40,36 +40,48 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
 
     for (int i = 0; i < cantidadIteraciones; i++) {
         cout << "iteracion numero " << i<<endl;
-        Matriz * M= new Matriz(*X_t);
-        cout << "multiplico X t por Y" <<endl;
+        Matriz * M= new Matriz(*X);
         M->multiplicarMatriz(Y);
-        cout << "multiplico X_t*Y por Y_t" <<endl;
-        M->multiplicarMatriz(Y_t);
-        M->multiplicarMatriz(X);
-        cout << "multiplico Y t por Y" <<endl;
+        Matriz *Z =new Matriz(*M);
+        Z->trasponer();
+        M->multiplicarMatriz(Z);
+
         // se supone que aca esta el autovector asociado al mayor autovalor
         vectorNum * autovector = metodoDeLasPotencias2(M);
         autovectores.push_back(autovector);
+        // cout << "autovectores size " << autovector->size() <<endl;
 
         // normalizo el autovector
         double norma2Autovector=  autovector->norma2();
         autovector->multiplicacionEscalar(norma2Autovector);
+        // cout << "norma2 de autovector " <<endl;
         // obtengo ti = X * autovector
-        vectorNum *t_i = X->multiplicarVector(autovector);
+        vectorNum *t_i = X_t->multiplicarVector(autovector);
+        cout << "multiplique por vector size " << t_i->size() <<endl;
+
         // normalizo ti
         double norma2t_i=  t_i->norma2();
         t_i->multiplicacionEscalar(norma2t_i);
+        // cout << "norma2 de ti " <<endl;
 
         // actualizo X = X - ti * ti_t * X
         Matriz * j = multiplicacionVectTrans2(t_i,t_i);
-        Matriz * j2 = j;
+        Matriz * j2 = new Matriz(*j);
+        // cout << "ti por ti transpuesta "<<endl;
 
-        j->multiplicarMatriz(X);
+        j->multiplicarMatriz(X_t);
         X->restarMatriz(j);
+        // cout << "reste X-t*ty "<<endl;
 
         // actualizo Y = Y - ti * ti_t * Y
-        j->multiplicarMatriz(Y);
-        Y->restarMatriz(j);
+
+        // cout << "Medidas Y " <<endl;
+        // cout << Y->getF()<<" " << Y->getC() <<endl;
+        // cout << "Medidas J " <<endl;
+        cout << j2->getF()<<" " << j2->getC() <<endl;
+        j2->multiplicarMatriz(Y);
+        Y->restarMatriz(j2);
+        cout << "reste Y-t*ty " << i<<endl;
     }
     trasponerEntrada(sinEtiquetar, autovectores, cantidadIteraciones);
 }
@@ -79,7 +91,6 @@ Matriz *fromVectorNumToMatriz(vector<vectorNum*> t){
     n= t.size();
     m=t[0]->size();
     Matriz* nuevo = new Matriz(n,m);
-
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             nuevo->setVal(i,j,t[i]->get(j));

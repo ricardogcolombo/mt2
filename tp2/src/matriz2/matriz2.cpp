@@ -22,7 +22,7 @@ void Matriz::multiplicarMatriz(Matriz* a){
     int aFilas= a->getF();
     for (int i = 0; i < f; i++) {
         nuevaMatrix[i] = new double[newC];
-        for (int j = 0; j < c; j++) {
+        for (int j = 0; j < newC; j++) {
             double res = 0;
             for (int s = 0; s < aFilas; s++) {
                 res += this->getVal(i,s)* a->getVal(s,j);
@@ -48,8 +48,8 @@ vectorNum* Matriz::multiplicarVector(vectorNum* unVector){
 
     if(unVector->size() != dim)
         throw -1;
-    vectorNum *vectAux = new vectorNum(dim);
-    for(int i = 0; i < dim; i++){
+    vectorNum *vectAux = new vectorNum(f);
+    for(int i = 0; i < f; i++){
         double aux = 0;
         for(int j = 0; j < dim; j++)
             aux += unVector->get(j)*matrix[i][j];
