@@ -36,5 +36,3 @@ Matriz *matrizDeCovarianza(vector<entrada> &etiquetados) {
     delete medias;
     return matrizCovarianza;
 }
-
-

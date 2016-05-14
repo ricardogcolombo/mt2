@@ -98,10 +98,3 @@ vectorNum *calcularMedias(vector<entrada> &v) {
     }
     return medias;
 }
-
-double encontrarAutovalor(vectorNum * autovector, matrizNum * covarianza) {
-    vectorNum * aux = covarianza->producto(autovector);
-    double lamda = aux->norma2();
-    delete aux;
-    return lamda;
-}

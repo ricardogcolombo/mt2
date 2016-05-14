@@ -16,5 +16,4 @@ void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &aut
 double encontrarAutovalor(vectorNum * autovector, Matriz * m) ;
 Matriz *matCovarianza(vector<entrada> &v, vectorNum * medias) ;
 vectorNum *calcularMedias(vector<entrada> &v);
-double encontrarAutovalor(vectorNum *autovector, matrizNum *covarianza);
 # endif

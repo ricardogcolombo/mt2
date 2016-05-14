@@ -10,10 +10,8 @@
 #include <string>
 #include <vector>
 #include <cmath>
-#include "../matriz/matriz.h"
 using namespace std;
 
-class matrizNum;
 
 class vectorNum{
 private:
@@ -38,7 +36,6 @@ public:
 	void print();
 	double multiplicacionVect(vectorNum *otroVector);
 	void multiplicacionEscalar(double escalar);
-	matrizNum* multiplicacionVectTrans(vectorNum *otroVector);
 	vectorNum *copy();
 	double normaInfinito();
 };
