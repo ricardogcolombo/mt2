@@ -8,10 +8,13 @@
 
 
 
-vectorNum *metodoDeLasPotencias2(Matriz *covarianza);
+vectorNum *metodoDeLasPotencias(Matriz *covarianza);
 Matriz* multiplicacionVectTrans2(vectorNum *unVector,vectorNum *otroVector);
 vectorNum *crearVectorInicial(int dim);
 vector<vectorNum *> matX(vector<entrada> &v, vectorNum * medias);
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores);
 double encontrarAutovalor(vectorNum * autovector, Matriz * m) ;
+Matriz *matCovarianza(vector<entrada> &v, vectorNum * medias) ;
+vectorNum *calcularMedias(vector<entrada> &v);
+double encontrarAutovalor(vectorNum *autovector, matrizNum *covarianza);
 # endif

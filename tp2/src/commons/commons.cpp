@@ -1,6 +1,6 @@
 #include "commons.h"
 
-vectorNum *metodoDeLasPotencias2(Matriz *covarianza) {
+vectorNum *metodoDeLasPotencias(Matriz *covarianza) {
     int dimencion = covarianza->getF();
     vectorNum *vectorInicial = crearVectorInicial(dimencion);
 
@@ -17,6 +17,7 @@ vectorNum *metodoDeLasPotencias2(Matriz *covarianza) {
     }
     return vectorInicial;
 }
+
 vectorNum *crearVectorInicial(int dim) {
     vectorNum *vectorInicial = new vectorNum(dim);
     for (int w = 0; w < dim; w++) {
@@ -25,6 +26,7 @@ vectorNum *crearVectorInicial(int dim) {
     }
     return vectorInicial;
 }
+
 vector<vectorNum*> matX(vector<entrada> &v, vectorNum * medias) {
     int dimension = medias->size();
 
@@ -41,7 +43,20 @@ vector<vectorNum*> matX(vector<entrada> &v, vectorNum * medias) {
     return X;
 };
 
+Matriz *matCovarianza(vector<entrada> &v, vectorNum * medias) {
+    int dimension = medias->size();
+    Matriz *covarianza = new Matriz(dimension,dimension);
 
+    //Aca nos creamos el X del slide
+    vector<vectorNum*> X = matX(v,medias);
+    //ahora Armamos la matriz Mx
+    for (int i = 0 ; i < dimension; i++) {
+        for (int k = 0 ; k < dimension; k++) {
+            covarianza->setVal(i, k, X[i]->multiplicacionVect(X[k]) / (double)(v.size() - 1 ));
+        }
+    }
+    return covarianza;
+}
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores) {
     for (int j = 0; j < etiquetados.size(); j++) {
         vectorNum* vectorAux = new vectorNum(cantidadAutovectores);
@@ -67,6 +82,25 @@ Matriz* multiplicacionVectTrans2(vectorNum* unVector, vectorNum *otroVector) {
 
 double encontrarAutovalor(vectorNum * autovector, Matriz * m) {
     vectorNum * aux = m->multiplicarVector(autovector);
+    double lamda = aux->norma2();
+    delete aux;
+    return lamda;
+}
+
+vectorNum *calcularMedias(vector<entrada> &v) {
+    vectorNum *medias = new vectorNum(v[0].vect->size());
+    for (int j = 0; j < v[0].vect->size(); j++) {
+        double media = 0.0;
+        for (int i = 0; i < v.size(); i++) {
+            media += v[i].vect->get(j);
+        }
+        medias->set(j, (double)media / (double)v.size());
+    }
+    return medias;
+}
+
+double encontrarAutovalor(vectorNum * autovector, matrizNum * covarianza) {
+    vectorNum * aux = covarianza->producto(autovector);
     double lamda = aux->norma2();
     delete aux;
     return lamda;

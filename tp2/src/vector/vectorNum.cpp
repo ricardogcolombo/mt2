@@ -15,7 +15,6 @@ vectorNum::~vectorNum(){
 
 
 double vectorNum::norma2() {
-
 	if(valorNorma2 != -1)
 		return valorNorma2;
 

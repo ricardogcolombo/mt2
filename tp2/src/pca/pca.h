@@ -8,9 +8,5 @@
 #include "../matriz/matriz.h"
 
 void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadAutovectores);
-vectorNum *calcularMedias(vector<entrada> &v);
-matrizNum * matrizDeCovarianza(vector<entrada> &etiquetados);
-matrizNum *matCovarianza(vector<entrada> &v, vectorNum *medias);
-vectorNum *metodoDeLasPotencias(matrizNum *covarianza);
-double encontrarAutovalor(vectorNum *autovector, matrizNum *covarianza);
+Matriz * matrizDeCovarianza(vector<entrada> &etiquetados);
 #endif

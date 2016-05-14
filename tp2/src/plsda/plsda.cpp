@@ -45,7 +45,7 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
         delete Z;
 
         // se supone que aca esta el autovector asociado al mayor autovalor
-        vectorNum * autovector = metodoDeLasPotencias2(X_t);
+        vectorNum * autovector = metodoDeLasPotencias(X_t);
         autovectores.push_back(autovector);
 
         // normalizo el autovector
