@@ -52,7 +52,8 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
         double norma2Autovector=  autovector->norma2();
         double lamda = encontrarAutovalor(autovector, X_t);
         myfile << lamda << endl;
-        cout<< lamda << endl;
+        cout << lamda << endl;
+
         autovector->multiplicacionEscalar(1/norma2Autovector);
         // obtengo ti = X * autovector
         vectorNum *t_i = X->multiplicarVector(autovector);
@@ -141,5 +142,5 @@ double getMean(Matriz* t,int fila){
     for(int i=0;i<t->getC();i++){
         result += t->getVal(fila,i);
     }
-    return result;
+    return result/10;
 }
