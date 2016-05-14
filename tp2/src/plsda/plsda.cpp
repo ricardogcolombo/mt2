@@ -6,9 +6,7 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
     vectorNum *medias = calcularMedias(etiquetados);
     int dimension = medias->size();
     //TODO use only Matriz and replace all vector vectornum in pca
-    vector<vectorNum*> X1 = matX(etiquetados,medias);
-    Matriz *X_t = fromVectorNumToMatriz(X1);
-
+    Matriz *X_t = matX(etiquetados,medias);
     //Matriz X traspuesta
     Matriz *X = new Matriz(*X_t);
     X->trasponer();

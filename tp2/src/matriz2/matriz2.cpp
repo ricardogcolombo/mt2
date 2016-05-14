@@ -256,6 +256,14 @@ void Matriz::printM() {
     }
 
 }
+
+void Matriz::multiplicarEscalar(double t) {
+    for (int i = 0; i < this->getF(); i++) {
+        for (int j = 0; j < this->getC();j++) {
+            this->setVal(i,j,this->getVal(i,j)*t );
+        }
+    }
+}
 void Matriz::restarYmultiplicarEscalar(double m,double t) {
     for (int i = 0; i < this->getF(); i++) {
         for (int j = 0; j < this->getC();j++) {

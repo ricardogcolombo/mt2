@@ -27,18 +27,15 @@ vectorNum *crearVectorInicial(int dim) {
     return vectorInicial;
 }
 
-vector<vectorNum*> matX(vector<entrada> &v, vectorNum * medias) {
+Matriz * matX(vector<entrada> &v, vectorNum * medias) {
     int dimension = medias->size();
 
     //Aca nos creamos el X del slide
-    vector<vectorNum*> X;
+    Matriz * X= new Matriz(dimension,v.size()) ;
     for (int i = 0; i < dimension; i++) {
-        vectorNum* nuevoVector = new vectorNum(v.size());
         for (int j = 0; j < v.size(); j++) {
-            nuevoVector->set(j, (double) v[j].vect->get(i) - medias->get(i));
+            X->setVal(i,j, (double) v[j].vect->get(i) - medias->get(i));
         }
-        //nuevoVector->print();
-        X.push_back(nuevoVector);
     }
     return X;
 };
@@ -48,14 +45,13 @@ Matriz *matCovarianza(vector<entrada> &v, vectorNum * medias) {
     Matriz *covarianza = new Matriz(dimension,dimension);
 
     //Aca nos creamos el X del slide
-    vector<vectorNum*> X = matX(v,medias);
-    //ahora Armamos la matriz Mx
-    for (int i = 0 ; i < dimension; i++) {
-        for (int k = 0 ; k < dimension; k++) {
-            covarianza->setVal(i, k, X[i]->multiplicacionVect(X[k]) / (double)(v.size() - 1 ));
-        }
-    }
-    return covarianza;
+    Matriz* X_t = matX(v,medias);
+    Matriz* X = new Matriz(*X_t);
+    X->trasponer();
+    X_t->multiplicarMatriz(X);
+    X_t->multiplicarEscalar(1/(double)(v.size() - 1 ));
+    
+    return X_t;
 }
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores) {
     for (int j = 0; j < etiquetados.size(); j++) {

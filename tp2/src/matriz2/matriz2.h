@@ -33,6 +33,7 @@ class Matriz {
         void trasponer();
         void multiplicarMatriz(Matriz* a);
         void restarYmultiplicarEscalar(double m,double t);
+        void multiplicarEscalar(double t);
         void restarMatriz(Matriz* a);
         vectorNum *multiplicarVector(vectorNum* a);
 };
