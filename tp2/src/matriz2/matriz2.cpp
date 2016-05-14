@@ -98,19 +98,7 @@ Matriz Matriz::operator-(Matriz& a)
     return res;
 }
 
-Matriz &Matriz::operator=(Matriz& a){
-    f = a.getF(); // N FILAS y M COLUMNAS
-    c = a.getC();
-    delete matrix;
-    matrix = new double*[f];
-    for (int i = 0; i <f ; i++) {
-        matrix[i] = new double[c];
-        for (int j = 0; j < c; j++) {
-            matrix[i][j] = a.getVal(i,j);
-        }
-    }
-    return *this;
-};
+
 
 bool Matriz::operator==(Matriz& a)
 {
@@ -169,10 +157,11 @@ Matriz::Matriz(const Matriz& other)  {
     f = other.f;
     c = other.c;
     matrix = new double*[f];
+
     for (int i = 0; i < f; i++) {
         matrix[i] = new double[c];
         for (int j = 0; j < c; j++) {
-            matrix[i][j] = other.matrix [i][j];
+            this->setVal(i,j ,other.getVal(i,j));
         }
     }
 }
@@ -258,8 +247,10 @@ void Matriz::trasponer() {
             nuevaMatrix[i][j] = matrix[j][i];
         }
     }
-    f = this->getC();
-    c = this->getF();
+    int newC = this->getF();
+    int newF = this->getC();
+    f = newC;
+    c = newF;
     delete matrix;
     matrix = nuevaMatrix;
 }

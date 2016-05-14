@@ -41,10 +41,11 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
     for (int i = 0; i < cantidadIteraciones; i++) {
         cout << "iteracion numero " << i<<endl;
         Matriz * M= new Matriz(*X_t);
+        cout << "multiplico X t por Y" <<endl;
         M->multiplicarMatriz(Y);
-        cout << "multiplico Y t por Y" <<endl;
+        cout << "multiplico X_t*Y por Y_t" <<endl;
         M->multiplicarMatriz(Y_t);
-        M->multiplicarMatriz(X_t);
+        M->multiplicarMatriz(X);
         cout << "multiplico Y t por Y" <<endl;
         // se supone que aca esta el autovector asociado al mayor autovalor
         vectorNum * autovector = metodoDeLasPotencias2(M);
