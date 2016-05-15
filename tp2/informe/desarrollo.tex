@@ -68,6 +68,18 @@ Generalizando entonces, los supuestos de PCA son:
 
 Si algunas de estas características no es apropiada, PCA podría producir resultados pobres. Un hecho importante que debemos recordar: PCA devuelve una nueva base que es una combinación lineal de la base original, limitando el número de posibles bases que puedan ser encontradas.
 
+
+\subsubsection {Cross-Validation}
+
+Para medir la precisión de los resultados utilizamos la metodología de cross-validation. Esta consiste en tomar nuestra base de datos de entrenamiento y dividirla en k bloques. En una primera iteración se toma un bloque para testear y los bloques restantes para entrenar a nuestro modelo,observando los resultados obtenidos. En la siguiente, se toma el segundo bloque para testear y los
+restantes como dataset de entrenamiento.
+La metodología se repite k veces hasta iterar todo el conjunto de datos. Finalmente, se realiza la media aritmética de los resultados de cada iteración para obtener un único resultado de error y poder evaluar la performance del método de entrenamiento.
+
+Esta técnica, que es una mejora de la técnica de holdout donde simplemente se divide el set de datos en dos conjuntos (uno para entrenamiento y otro para testing), trata de garantizar que los resultados obtenidos sean independientes de la partición de datos contra la que se est ́a evaluando porque ofrece el beneficio de que los parámetros del método de predicción no pueden ser ajustados exhaustivamentea casos particulares. Es por esto que se utiliza principalmente en situaciones de predicción, dado que intenta evitar que el aprendizaje se realice sobre un cuerpo de datos específico y busca obtener respuestas más generales.
+
+La única desventaja que presenta es la necesidad esperable de correr los algoritmos en varias iteraciones, situación que puede tener un peso significativo si el método de predicción tiene un costo computacional muy alto durante el entrenamiento.
+
+
 \subsubsection {Algoritmos para Optimización con PCA}
 
 \begin{algorithm}
