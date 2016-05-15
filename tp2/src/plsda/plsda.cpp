@@ -16,54 +16,10 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
     Matriz *Y =  preY(etiquetados); //Aca viene la parte de calcular el promedio de todas las filas ??
 
     double mean = getMean(Y,0) ;
-    double res[Y->getC()];
 
-    // FIND MEAN
-    //Mas vale que res tenga el tamaño de Y->GetC()
-    //Plancho 0     
-    for (int i = 0; i < Y->getC(); ++i)
-    {
-        res[i]= 0.0;
-    }
-    //Hago la suma
-    for (int i = 0; i < Y->getF(); ++i)
-    {
-        for (int j = 0; j < Y->getC(); ++j)
-        {
-            res[j]+=Y->getVal(i,j);
-        }
-    }
-    //Divido por la cantidad de filas para tener el promedio
-
-    for (int i = 0; i < Y->getC(); ++i)
-    {
-        res[i] /= Y->getF();
-    }
-    // END FIND MEAN
-
-
-
-    // FindMean(Y,mean2);
     double root = sqrt(etiquetados.size()-1);
     // Aca el for que transform PreY a Y
-    //Comento la linea sigueinte y pongo lo que me parece que va
-    //Y->restarYmultiplicarEscalar(mean,root);
-
-    for (int i = 0; i < Y->getF(); ++i)
-    {
-        for (int j = 0; j < Y->getC(); ++j)
-        {
-            double actual = Y->getVal(i,j);
-            //Primero le resto res
-            //Res es el vector que contiene el promedio
-            actual-=res[j];
-            //Divido por
-            actual/=root;
-            //Actualizo el valor
-            Y->setVal(i,j,actual);
-        }
-    }
-
+    Y->restarYmultiplicarEscalar(mean,root);
 
     //Copio la Matriz Y con el constructor por copia
 
@@ -169,31 +125,6 @@ Matriz *preY(vector<entrada> t){
     return n;
 }
 
-//En C++ no se pueden devolver []
-void FindMean(Matriz* m, double res [] )
-{
-    //Mas vale que res tenga el tamaño de m->GetC()
-    //Plancho 0     
-    for (int i = 0; i < m->getC(); ++i)
-    {
-        res[i]= 0.0;
-    }
-    //Hago la suma
-    for (int i = 0; i < m->getF(); ++i)
-    {
-        for (int j = 0; j < m->getC(); ++j)
-        {
-            res[j]+=m->getVal(i,j);
-        }
-    }
-    //Divido por la cantidad de filas para tener el promedio
-
-    for (int i = 0; i < m->getC(); ++i)
-    {
-        res[i] /= m->getF();
-    }
-    
-}
 
 double getMean(Matriz* t,int fila){
 
