@@ -36,21 +36,21 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
         delete Z;
 
         // se supone que aca esta el autovector asociado al mayor autovalor
-        vectorNum * autovector = metodoDeLasPotencias(X_t);
-        autovectores.push_back(autovector);
+        vectorNum * wi = metodoDeLasPotencias(X_t);
+        autovectores.push_back(wi);
 
         // normalizo el autovector
-        double norma2Autovector=  autovector->norma2();
-        double lamda = encontrarAutovalor(autovector, X_t);
+        double lamda = encontrarAutovalor(wi, X_t);
         myfile << lamda << endl;
 
-        autovector->multiplicacionEscalar(1/norma2Autovector);
+        double norma2Autovector=  wi->norma2();
+        wi->multiplicacionEscalar((1/(double)norma2Autovector));
         // obtengo ti = X * autovector
-        vectorNum *t_i = X->multiplicarVector(autovector);
+        vectorNum *t_i = X->multiplicarVector(wi);
 
         // normalizo ti
         double norma2t_i=  t_i->norma2();
-        t_i->multiplicacionEscalar(1/norma2t_i);
+        t_i->multiplicacionEscalar((1/(double)norma2t_i));
 
         // actualizo X = X - ti * ti_t * X
         Matriz * j_t = vectorTraspuestoToMatriz(t_i);
@@ -116,9 +116,9 @@ Matriz *preY(vector<entrada> t){
     for(int i=0;i<t.size();i++){
         for(int j=0;j<10;j++){
             if(t[i].label-1==j){
-                n->setVal(i,j,1);
+                n->setVal(i,j,(double)1.0);
             }else{
-                n->setVal(i,j,-1);
+                n->setVal(i,j,(double)-1.0);
             }
         }
     }
@@ -129,8 +129,9 @@ Matriz *preY(vector<entrada> t){
 double getMean(Matriz* t,int fila){
 
     double result = 0.0;
-    for(int i=0;i<t->getC();i++){
+    int qty = 0;
+    for(int i=0;i<10;i++){
         result += t->getVal(fila,i);
     }
-    return result/10.0;
+    return (result*t->getF())/10;
 }
