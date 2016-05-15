@@ -1,8 +1,8 @@
 #include "pca.h"
 
-void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadAutovectores) {
+void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadAutovectores,Matriz* X_t) {
     // calculamos la matriz de covarianza
-    Matriz *covarianza = matrizDeCovarianza(etiquetados);
+    Matriz *covarianza = matrizDeCovarianza(etiquetados,X_t);
     std::vector<vectorNum*> autovectores;
 
     myfile.precision(6);
@@ -30,9 +30,7 @@ void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fs
     }
 }
 
-Matriz *matrizDeCovarianza(vector<entrada> &etiquetados) {
-    vectorNum *medias = calcularMedias(etiquetados);
-    Matriz *matrizCovarianza = matCovarianza(etiquetados, medias);
-    delete medias;
+Matriz *matrizDeCovarianza(vector<entrada> &etiquetados,Matriz *X_t) {
+    Matriz *matrizCovarianza = matCovarianza(etiquetados, X_t);
     return matrizCovarianza;
 }

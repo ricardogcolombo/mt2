@@ -103,24 +103,28 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
         calcularknn(entradas, test, vecinos);
     }
     //pca + knn
-    if (metodo == 1) {
+    // Matriz de Covarianza de X
+    // la calculo aca para no hacerlo dos veces
+    vectorNum *medias = calcularMedias(entradas);
+    int dimension = medias->size();
+    Matriz *X_t = matX(entradas,medias);
+
+    if (metodo == 1 || metodo == 2) {
         cout << "Ejecutando metodo PCA..." << endl;
-        calcularPca(entradas, test, myfile, lamda);
+        calcularPca(entradas, test, myfile, lamda,X_t);
         cout << "Ejecutando KNN sobre el PCA..." << endl;
         gettimeofday(&startGauss, NULL);
         calcularknn(entradas, test, vecinos);
-    }
 
-    // plsda + knn
+        // plsda + knn
 
-    if (metodo == 2) {
         cout << "Ejecutando metodo PLSDA..." << endl;
-        calcularPLSDA(entradas, test, myfile, gamma);
+        calcularPLSDA(entradas, test, myfile, gamma,X_t);
         cout << "Ejecutando KNN sobre el PLSDA..." << endl;
         gettimeofday(&startGauss, NULL);
         calcularknn(entradas, test, vecinos);
     }
-
+    delete X_t;
     long elapsed_seconds; /* diff between seconds counter */
     long elapsed_useconds; /* diff between microseconds counter */
     /*tiempos*/

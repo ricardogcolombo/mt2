@@ -14,6 +14,6 @@ vectorNum *crearVectorInicial(int dim);
 Matriz * matX(vector<entrada> &v, vectorNum * medias);
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores);
 double encontrarAutovalor(vectorNum * autovector, Matriz * m) ;
-Matriz *matCovarianza(vector<entrada> &v, vectorNum * medias) ;
+Matriz *matCovarianza(vector<entrada> &v, Matriz *X_T) ;
 vectorNum *calcularMedias(vector<entrada> &v);
 # endif

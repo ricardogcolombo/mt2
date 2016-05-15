@@ -1,12 +1,12 @@
 #include "plsda.h"
 
-void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones){
+void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones,Matriz * X2_t){
     std::vector<vectorNum*> autovectores;
     //Matriz de Covarianza de X
     vectorNum *medias = calcularMedias(etiquetados);
     int dimension = medias->size();
-    //TODO use only Matriz and replace all vector vectornum in pca
-    Matriz *X_t = matX(etiquetados,medias);
+
+    Matriz *X_t = new Matriz(*X2_t);
     //Matriz X traspuesta
     Matriz *X = new Matriz(*X_t);
     X->trasponer();
@@ -128,9 +128,9 @@ Matriz *preY(vector<entrada> t){
 
 double getMean(Matriz* t,int fila){
 
-    double result = 0;
+    double result = 0.0;
     for(int i=0;i<t->getC();i++){
         result += t->getVal(fila,i);
     }
-    return result/10;
+    return result/10.0;
 }

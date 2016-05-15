@@ -6,6 +6,6 @@
 #include "../manejoEntrada/entrada.h"
 #include "../commons/commons.h"
 
-void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadAutovectores);
-Matriz * matrizDeCovarianza(vector<entrada> &etiquetados);
+void calcularPca(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadAutovectores,Matriz *X);
+Matriz * matrizDeCovarianza(vector<entrada> &etiquetados,Matriz *X_t);
 #endif

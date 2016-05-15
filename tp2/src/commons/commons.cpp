@@ -40,17 +40,15 @@ Matriz * matX(vector<entrada> &v, vectorNum * medias) {
     return X;
 };
 
-Matriz *matCovarianza(vector<entrada> &v, vectorNum * medias) {
-    int dimension = medias->size();
-    Matriz *covarianza = new Matriz(dimension,dimension);
-
+Matriz *matCovarianza(vector<entrada> &v, Matriz *X2_t) {
     //Aca nos creamos el X del slide
-    Matriz* X_t = matX(v,medias);
+    //genero una copia
+    Matriz* X_t = new Matriz(*X2_t);
     Matriz* X = new Matriz(*X_t);
     X->trasponer();
     X_t->multiplicarMatriz(X);
     X_t->multiplicarEscalar(1/(double)(v.size() - 1 ));
-    
+    delete X;
     return X_t;
 }
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores) {
