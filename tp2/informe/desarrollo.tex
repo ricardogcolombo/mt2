@@ -1,0 +1,143 @@
+Para cumplir con el objetivo del trabajo práctico, lo primero que desarrollamos fue la implementación del algoritmo de $K-NN$. Como mencionamos en la introducción esta tecnica permite dado un dado del que no conocemos a que clase pertenece, buscar entre el set de datos de imagenes etiquetadas las $k$ más parecidas, denomidadas $vecinas$. Luego una vez identificados determinar cual es la moda.
+
+\subsection {Elección del K}
+
+La mejor elección de $k$ depende fundamentalmente de los datos; generalmente, valores grandes de k reducen el efecto de ruido en la clasificación, pero crean límites entre clases parecidas. Un buen k puede ser seleccionado mediante una optimización de uso.
+
+La exactitud de este algoritmo puede ser severamente degradada por la presencia de ruido o características irrelevantes, o si las escalas de características no son consistentes con lo que uno considera importante.
+
+
+\subsection {Algorimo}
+
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{vector KNN (matriz etiquedados, matriz sinEtiquedar, int cantidadVecinos)}
+        \STATE{vector etiquetas = vector(cant_filas(sinEtiquetar))}\\
+        \STATE{for 1 to cant_filas(sinEtiquetar) do }\\
+        \STATE{\quad etiquetas_{i} = encontrarEtiquetas(etiquedados, sinEtiquetar_{i}, cantidadVecinos)}\\
+        \STATE{end for}\\
+        \STATE{\RETURN etiquetas}\\
+    \end{algorithmic}
+\end{algorithm}
+
+
+Para encontrar las etiquetas implementamos el siguiente algoritmo
+
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{int encontrarEtiquetas(matriz etiquetados, vector incognito, int cantidadVecinos)}
+        \STATE{for 1 to size(incognito) do}\\
+        \STATE{\quad resParcial = restaVectores(etiquedatos_{i}, incognito) }\\
+        \STATE{\quad colaPrioridad.push((norma(resParcial), etiqueta(etiquetados_{i}))}\\
+        \STATE{end for}\\
+        \STATE{vector numeros = vector(10)}\\
+        \STATE{while cantidadVecinos > 0 & noEsVacia(resultados) do}\\
+        \STATE{\quad int elemento = primero(resultados.etiqueta)}\\
+        \STATE{\quad numeros_{elemento}++}\\
+        \STATE{end while}\\
+        \STATE{\RETURN maximo(numeros)}
+    \end{algorithmic}
+\end{algorithm}
+
+
+\subsection {Optimización con PCA}
+
+
+El $Análisis de Componentes Principales$ utiliza una transformación lineal ortogonal de los datos para convertir un conjunto de variables, posiblemente correlacionadas, a un nuevo sistema de coordenadas conocidas estas como componentes principales tal que la mayor varianza de cualquier proyecci ́on de los datos queda ubicada como la primer coordenada, la segunda mayor varianza en la segunda posición, y asi sucesivamente. 
+
+En este sentido, PCA calcula la base más significativa para expresar nuestros datos.
+De esta manera entonces, será fácil quedarnos con los λ componentes principales que concentran la mayor varianza y quitar el resto. 
+
+En la sección de experimentación, uno de los objetivos principales será buscar cual es el λ que concentra la mayor varianza de manera tal de optimizar el número de predicciones. A fines prácticos, lo que haremos es, a partir de nuestra base de datos de elementos etiquetados, será construir la matriz de covarianza M de tal manera que en la coordenada M_{i,j} se obtenga el valor de la covarianza del pixel i contra el pixel j. 
+
+Luego, utilizando el método de la potencia, procederemos a calcular los primeros λ autovectores de esta matriz. Una vez obtenidos los
+autovectores, multiplicando cada elemento por los λ autovectores, obtendremos un nuevo set de datos.
+
+Sobre este set de datos, ahora aplicaremos el algoritmo $KNN$ nuevamente y lo que esperamos ver es un mayor número de aciertos, ya que hemos quitado ruido del set de datos. Esto se suma a mejores tiempos de ejecuci ́on, ya que hemos reducido la dimensionalidad del problema.
+
+Generalizando entonces, los supuestos de PCA son:
+
+\begin{itemize}
+\item Linealidad: La nueva base es una combinación lineal de la base original
+\item Media y Varianza son estadísticos importantes: asume que estos estadísticos describen la distribución de los datos sobre el eje.
+\item Varianza alta tiene una dinámica importante: Varianza alta significa senal. Baja varianza significa ruido.
+\item Las componentes son ortonormales
+\end{itemize}
+
+Si algunas de estas características no es apropiada, PCA podría producir resultados pobres. Un hecho importante que debemos recordar: PCA devuelve una nueva base que es una combinación lineal de la base original, limitando el número de posibles bases que puedan ser encontradas.
+
+\subsubsection {Algoritmos para Optimización con PCA}
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{void PCA(matriz etiquetados, matriz sinetiquetar,int cantidadAutovectores)}
+        \STATE{matriz covarianza = obtenerCovarianza(etiquetados)}\\
+        \STATE{vector(vector) autovectores}\\
+        \STATE{for 1 to cantidadAutovectores do}\\
+        \STATE{\quad vector autovector=metodoDeLasPotencias(covarianza)}\\
+        \STATE{\quad agregar(autovectores,autovector)}\\
+        \STATE{\quad double lamda = encontrarAutovalor(autovector,covarianza)}\\
+        \STATE{\quad multiplicarXEscalar(auovector,lamda)}\\
+        \STATE{\quad restaMatrizVector(covarianza,auovector,lamda)}\\
+        \STATE{end for}\\
+        \STATE{\RETURN maximo(numeros)}
+    \end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{matriz obtenerCovarianza(matriz entrada,vector medias)}
+        \STATE{matriz covarianza, vector nuevo}\\
+        \STATE{for i=1 to size(medias) do}\\
+        \STATE{for j=1 to cant filas(entrada) do}\\
+        \STATE{\quad nuevoVector_{j} = entrada_{(j,i)} − medias_{i}}\\
+        \STATE{end for}\\
+        \STATE{agregar(covarianza,nuevoVector)}\\
+        \STATE{end for}\\
+        \STATE{for i=1 to cant filas(entrada) do}\\
+        \STATE{for k=1 to cant filas(entrada) do}\\
+        \STATE{covarianza_{i} = multiplicarVectorEscalar(covarianza_{k} , cantidadFilas(entrada))}\\
+        \STATE{end for}\\
+        \STATE{end for}\\
+        \STATE{\RETURN covarianza}
+    \end{algorithmic}
+\end{algorithm}
+
+Además implementamos los métodos auxiliares
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{Vector metodoDeLasPotencias(matriz covarianza,cantIteraciones)}
+        \STATE{vector vectorInicial= vector(cant filas(covarianza))}\\
+        \STATE{for 1 to cantIteraciones do}\\
+        \STATE{\quad vector nuevo = multiplicar(covarianza,vectorInicial)}\\
+        \STATE{\quad multiplicarEscalar(nuevo,1/norma(nuevo))}\\
+        \STATE{\quad vectorInicial = nuevo}\\
+        \STATE{end for}\\
+        \STATE{\RETURN vectorInicial}
+    \end{algorithmic}
+\end{algorithm}
+
+
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{Vector medias(matriz entrada)}
+        \STATE{for i=1 to cantColumnas(entrada) do}\\
+        \STATE{\quad suma = 0 }\\
+        \STATE{\quad for j=1 to cant columnas(entrada) do}\\
+        \STATE{\quad \quad suma += entrada_{i,j}}\\
+        \STATE{end for}\\
+        \STATE{medias_{i} = suma/cantFilas(entrada)}\\
+        \STATE{end for}\\
+        \STATE{\RETURN medias}
+    \end{algorithmic}
+\end{algorithm}
+
+
+\subsection {Optimización con PLS-DA}
+
+\subsubsection {Algoritmos para Optimización con PLS-DA}
