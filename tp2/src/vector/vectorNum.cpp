@@ -15,7 +15,6 @@ vectorNum::~vectorNum(){
 
 
 double vectorNum::norma2() {
-
 	if(valorNorma2 != -1)
 		return valorNorma2;
 
@@ -79,16 +78,6 @@ void vectorNum::multiplicacionEscalar(double escalar)
 		valores[i] = valores[i]*escalar;
 }
 
-matrizNum* vectorNum::multiplicacionVectTrans(vectorNum *otroVector)
-{
-	if(otroVector->dim != dim)
-		throw -1;
-	matrizNum* matriz = new matrizNum(dim);
-	for(int i = 0; i < dim; i++)
-		for(int j = 0; j < dim; j++)
-			matriz->set(i,j, valores[i]*otroVector->valores[j]);
-	return matriz;
-}
 
 void vectorNum::suma(vectorNum *otroVector){
 	if(dim != otroVector->dim)

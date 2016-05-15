@@ -1,6 +1,6 @@
 #include "commons.h"
 
-vectorNum *metodoDeLasPotencias2(Matriz *covarianza) {
+vectorNum *metodoDeLasPotencias(Matriz *covarianza) {
     int dimencion = covarianza->getF();
     vectorNum *vectorInicial = crearVectorInicial(dimencion);
 
@@ -17,6 +17,7 @@ vectorNum *metodoDeLasPotencias2(Matriz *covarianza) {
     }
     return vectorInicial;
 }
+
 vectorNum *crearVectorInicial(int dim) {
     vectorNum *vectorInicial = new vectorNum(dim);
     for (int w = 0; w < dim; w++) {
@@ -25,23 +26,31 @@ vectorNum *crearVectorInicial(int dim) {
     }
     return vectorInicial;
 }
-vector<vectorNum*> matX(vector<entrada> &v, vectorNum * medias) {
+
+Matriz * matX(vector<entrada> &v, vectorNum * medias) {
     int dimension = medias->size();
 
     //Aca nos creamos el X del slide
-    vector<vectorNum*> X;
+    Matriz * X= new Matriz(dimension,v.size()) ;
     for (int i = 0; i < dimension; i++) {
-        vectorNum* nuevoVector = new vectorNum(v.size());
         for (int j = 0; j < v.size(); j++) {
-            nuevoVector->set(j, (double) v[j].vect->get(i) - medias->get(i));
+            X->setVal(i,j, (double) v[j].vect->get(i) - medias->get(i));
         }
-        //nuevoVector->print();
-        X.push_back(nuevoVector);
     }
     return X;
 };
 
-
+Matriz *matCovarianza(vector<entrada> &v, Matriz *X2_t) {
+    //Aca nos creamos el X del slide
+    //genero una copia
+    Matriz* X_t = new Matriz(*X2_t);
+    Matriz* X = new Matriz(*X_t);
+    X->trasponer();
+    X_t->multiplicarMatriz(X);
+    X_t->multiplicarEscalar(1/(double)(v.size() - 1 ));
+    delete X;
+    return X_t;
+}
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores) {
     for (int j = 0; j < etiquetados.size(); j++) {
         vectorNum* vectorAux = new vectorNum(cantidadAutovectores);
@@ -70,4 +79,16 @@ double encontrarAutovalor(vectorNum * autovector, Matriz * m) {
     double lamda = aux->norma2();
     delete aux;
     return lamda;
+}
+
+vectorNum *calcularMedias(vector<entrada> &v) {
+    vectorNum *medias = new vectorNum(v[0].vect->size());
+    for (int j = 0; j < v[0].vect->size(); j++) {
+        double media = 0.0;
+        for (int i = 0; i < v.size(); i++) {
+            media += v[i].vect->get(j);
+        }
+        medias->set(j, (double)media / (double)v.size());
+    }
+    return medias;
 }

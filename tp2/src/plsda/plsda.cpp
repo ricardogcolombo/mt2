@@ -1,14 +1,12 @@
 #include "plsda.h"
 
-void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones, int gamma){
+void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones,Matriz * X2_t){
     std::vector<vectorNum*> autovectores;
     //Matriz de Covarianza de X
     vectorNum *medias = calcularMedias(etiquetados);
     int dimension = medias->size();
-    //TODO use only Matriz and replace all vector vectornum in pca
-    vector<vectorNum*> X1 = matX(etiquetados,medias);
-    Matriz *X_t = fromVectorNumToMatriz(X1);
 
+    Matriz *X_t = new Matriz(*X2_t);
     //Matriz X traspuesta
     Matriz *X = new Matriz(*X_t);
     X->trasponer();
@@ -21,14 +19,7 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
 
     double root = sqrt(etiquetados.size()-1);
     // Aca el for que transform PreY a Y
-    for (int i = 0; i < Y->getF(); ++i)
-    {
-        for (int j = 0; j < Y->getC(); ++j)
-        {
-            double actual = Y->getVal(i,j);
-            Y->setVal(i,j,(actual-mean)/root);
-        }
-    }
+    Y->restarYmultiplicarEscalar(mean,root);
 
     //Copio la Matriz Y con el constructor por copia
 
@@ -45,14 +36,13 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
         delete Z;
 
         // se supone que aca esta el autovector asociado al mayor autovalor
-        vectorNum * autovector = metodoDeLasPotencias2(X_t);
+        vectorNum * autovector = metodoDeLasPotencias(X_t);
         autovectores.push_back(autovector);
 
         // normalizo el autovector
         double norma2Autovector=  autovector->norma2();
         double lamda = encontrarAutovalor(autovector, X_t);
         myfile << lamda << endl;
-        cout << lamda << endl;
 
         autovector->multiplicacionEscalar(1/norma2Autovector);
         // obtengo ti = X * autovector
@@ -138,9 +128,9 @@ Matriz *preY(vector<entrada> t){
 
 double getMean(Matriz* t,int fila){
 
-    double result = 0;
+    double result = 0.0;
     for(int i=0;i<t->getC();i++){
         result += t->getVal(fila,i);
     }
-    return result/10;
+    return result/10.0;
 }

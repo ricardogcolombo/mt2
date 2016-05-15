@@ -4,7 +4,7 @@
 #include "../matriz2/matriz2.h"
 #include "../pca/pca.h"
 
-void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones,int gamma);
+void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones,Matriz *X_t);
 Matriz *preY(vector<entrada> t);
 Matriz *fromVectorNumToMatriz(vector<vectorNum*> t);
 double getMean(Matriz* t,int fila);
