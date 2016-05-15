@@ -1,6 +1,6 @@
 #include "plsda.h"
 
-void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones, int gamma){
+void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones){
     std::vector<vectorNum*> autovectores;
     //Matriz de Covarianza de X
     vectorNum *medias = calcularMedias(etiquetados);
@@ -43,7 +43,6 @@ void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, 
         double norma2Autovector=  autovector->norma2();
         double lamda = encontrarAutovalor(autovector, X_t);
         myfile << lamda << endl;
-        cout << lamda << endl;
 
         autovector->multiplicacionEscalar(1/norma2Autovector);
         // obtengo ti = X * autovector

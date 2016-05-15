@@ -115,7 +115,7 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
 
     if (metodo == 2) {
         cout << "Ejecutando metodo PLSDA..." << endl;
-        calcularPLSDA(entradas, test, myfile, lamda,gamma);
+        calcularPLSDA(entradas, test, myfile, gamma);
         cout << "Ejecutando KNN sobre el PLSDA..." << endl;
         gettimeofday(&startGauss, NULL);
         calcularknn(entradas, test, vecinos);
