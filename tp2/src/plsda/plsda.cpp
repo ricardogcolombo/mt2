@@ -115,6 +115,6 @@ double getMean(Matriz* t,int fila){
             result += t->getVal(i,j);
         }
     }
-    double total = t->getF()*t->getC();
+    double total = t->getF()*t->getC() +0.0;
     return result/total;
 }

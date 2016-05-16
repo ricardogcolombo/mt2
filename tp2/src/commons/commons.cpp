@@ -11,7 +11,7 @@ vectorNum *metodoDeLasPotencias(Matriz *covarianza) {
         normaVieja = vectorInicial->norma2();
         vectorNum *nuevoVector = covarianza->multiplicarVector(vectorInicial);
         norma = nuevoVector->norma2();
-        nuevoVector->multiplicacionEscalar((1 / (double)norma));
+        nuevoVector->multiplicacionEscalar((double)(1 / (double)norma));
         delete vectorInicial;
         vectorInicial = nuevoVector;
     }

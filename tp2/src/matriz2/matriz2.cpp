@@ -39,7 +39,7 @@ void Matriz::multiplicarMatriz(Matriz* a){
         for (int j = 0; j < newC; j++) {
             double res = 0.0;
             for (int s = 0; s < aFilas; s++) {
-                res += this->getVal(i,s)* a->getVal(s,j);
+                res += (double)(this->getVal(i,s)* a->getVal(s,j));
             }
             nuevaMatrix[i][j]=res;
         }
