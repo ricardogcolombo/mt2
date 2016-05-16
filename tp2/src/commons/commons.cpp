@@ -34,7 +34,7 @@ Matriz * matX(vector<entrada> &v, vectorNum * medias) {
     Matriz * X= new Matriz(dimension,v.size()) ;
     for (int i = 0; i < dimension; i++) {
         for (int j = 0; j < v.size(); j++) {
-            X->setVal(i,j, (double) v[j].vect->get(i) - medias->get(i));
+            X->setVal(i,j,( (double) v[j].vect->get(i) - medias->get(i))/ sqrt(v.size()-1));
         }
     }
     return X;
@@ -47,7 +47,6 @@ Matriz *matCovarianza(vector<entrada> &v, Matriz *X2_t) {
     Matriz* X = new Matriz(*X_t);
     X->trasponer();
     X_t->multiplicarMatriz(X);
-    X_t->multiplicarEscalar(1/(double)(v.size() - 1 ));
     delete X;
     return X_t;
 }
