@@ -17,11 +17,6 @@ class Matriz {
         void LimpiarMemoria();
         Matriz(int a, int b); // Hecha
         Matriz(const Matriz& other); //  Creo que esta
-        Matriz operator*(Matriz& a); // Hecha
-        Matriz operator+(Matriz& a); // Operacion +
-        Matriz& operator=(Matriz& a); // Operacion +
-        Matriz operator-(Matriz& a); // Falta esta y la suma
-        bool operator==(Matriz& a); // Esta Tambien ;
         ~Matriz(); // Never Changed
         int getF() const; // Done
         int getC() const; // Done

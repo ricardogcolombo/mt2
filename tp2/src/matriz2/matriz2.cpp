@@ -37,7 +37,7 @@ void Matriz::multiplicarMatriz(Matriz* a){
     for (int i = 0; i < f; i++) {
         nuevaMatrix[i] = new double[newC];
         for (int j = 0; j < newC; j++) {
-            double res = 0;
+            double res = 0.0;
             for (int s = 0; s < aFilas; s++) {
                 res += this->getVal(i,s)* a->getVal(s,j);
             }
@@ -68,99 +68,12 @@ vectorNum* Matriz::multiplicarVector(vectorNum* unVector){
         throw -1;
     vectorNum *vectAux = new vectorNum(f);
     for(int i = 0; i < f; i++){
-        double aux = 0;
+        double aux = 0.0;
         for(int j = 0; j < dim; j++)
             aux += unVector->get(j)*matrix[i][j];
         vectAux->set(i, aux);
     }
     return vectAux;
-}
-
-Matriz Matriz::operator+(Matriz& a)
-{
-    if (this->getF()!=a.getF() || this->getC()!=a.getC()) {
-        cout << "Fijate las dimesiones.." << endl;
-        throw 0 ;
-    }
-
-    f = this->getF();
-    c = this->getC();
-    Matriz res = Matriz(f,c);
-
-    for (int i = 0; i < f; i++) {
-        for (int j = 0; j < c; j++) {
-            double value = this->getVal(i,j) + a.getVal(i,j);
-            res.setVal(i,j,value);
-        }
-    }
-
-    return res;
-
-}
-
-Matriz Matriz::operator-(Matriz& a)
-{
-    if (this->getF()!=a.getF() || this->getC()!=a.getC()) {
-        cout << "Fijate las dimesiones.." << endl;
-        throw 0 ;
-    }
-
-    f = this->getF();
-    c = this->getC();
-    Matriz res = Matriz(f,c);
-
-    for (int i = 0; i < f;i++) {
-        for (int j = 0; j < c; j++) {
-            double value = this->getVal(i,j) - a.getVal(i,j);
-            res.setVal(i,j,value);
-        }
-    }
-
-    return res;
-}
-
-
-
-bool Matriz::operator==(Matriz& a)
-{
-
-    if (this->getF()!=a.getF() || this->getC()!=a.getC()) {
-        return false;
-    }
-
-    for (int i = 0; i < this->getF(); i++) {
-        for (int j = 0; j < this->getC(); j++) {
-            if (this->getVal(i,j)   != a.getVal(i,j) ) {
-                return false;
-            }
-        }
-    }
-
-    return true;
-}
-
-Matriz Matriz::operator*(Matriz& a)
-{
-    //Aca viene el if que chequea si se pueden multlipicar las matrices
-    if (this->getC()!=a.getF())
-    {
-        cout << "Las  matrices no se pueden multiplicar " << endl;
-        throw 1 ;
-    }
-
-
-    //tr = false;
-    f=this->getF();
-    c=a.getC();
-    Matriz res = Matriz(f,c);
-    for (int i = 0; i < f; i++) {
-        for (int j = 0; j < c; j++) {
-            //double temp = productoInterno(*this,a,i,j);
-            res.setVal(i,j,productoInterno(*this,a,i,j));
-        }
-    }
-
-    return res;
 }
 
 double Matriz::productoInterno(Matriz& a , Matriz& b, int f , int c) {

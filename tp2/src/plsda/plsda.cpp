@@ -3,9 +3,6 @@
 void calcularPLSDA(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, fstream &myfile, int cantidadIteraciones,Matriz * X2_t){
     std::vector<vectorNum*> autovectores;
     //Matriz de Covarianza de X
-    vectorNum *medias = calcularMedias(etiquetados);
-    int dimension = medias->size();
-
     Matriz *X_t = new Matriz(*X2_t);
     //Matriz X traspuesta
     Matriz *X = new Matriz(*X_t);
@@ -96,26 +93,11 @@ Matriz *vectorTraspuestoToMatriz(vectorNum* t){
     return x;
 };
 
-Matriz *fromVectorNumToMatriz(vector<vectorNum*> t){
-    int n,m;
-    n= t.size();
-    m=t[0]->size();
-    Matriz* nuevo = new Matriz(n,m);
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            nuevo->setVal(i,j,t[i]->get(j));
-        }
-    }
-
-    return nuevo;
-};
-
-
 Matriz *preY(vector<entrada> t){
     Matriz *n = new Matriz(t.size(),10);
     for(int i=0;i<t.size();i++){
         for(int j=0;j<10;j++){
-            if(t[i].label-1==j){
+            if(t[i].label-1==j-1){
                 n->setVal(i,j,(double)1.0);
             }else{
                 n->setVal(i,j,(double)-1.0);
@@ -127,11 +109,12 @@ Matriz *preY(vector<entrada> t){
 
 
 double getMean(Matriz* t,int fila){
-
     double result = 0.0;
-    int qty = 0;
-    for(int i=0;i<10;i++){
-        result += t->getVal(fila,i);
+    for(int i=0;i<t->getF();i++){
+        for(int j=0;j<t->getC();j++){
+            result += t->getVal(i,j);
+        }
     }
-    return (result*t->getF())/10;
+    double total = t->getF()*t->getC();
+    return result/total;
 }
