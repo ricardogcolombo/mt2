@@ -1,0 +1,306 @@
+Iniciando Kfolds....
+Cantidad De Pruebas: 10
+Vecinos para el KNN: 10
+Lamda Para PCA: 50
+gamma Para PLSDA: 5
+Cargando Base de datos...
+Corriendo test: 1
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4038
+
+Array de Aciertos
+Aciertos de 0 son 403
+Aciertos de 1 son 443
+Aciertos de 2 son 390
+Aciertos de 3 son 438
+Aciertos de 4 son 381
+Aciertos de 5 son 381
+Aciertos de 6 son 402
+Aciertos de 7 son 431
+Aciertos de 8 son 375
+Aciertos de 9 son 394
+
+
+Arrays de Fracasos
+Fracasos de 0 son 3
+Fracasos de 1 son 1
+Fracasos de 2 son 29
+Fracasos de 3 son 18
+Fracasos de 4 son 16
+Fracasos de 5 son 22
+Fracasos de 6 son 5
+Fracasos de 7 son 19
+Fracasos de 8 son 30
+Fracasos de 9 son 19
+Cargando Base de datos...
+Corriendo test: 2
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4066
+
+Array de Aciertos
+Aciertos de 0 son 388
+Aciertos de 1 son 470
+Aciertos de 2 son 397
+Aciertos de 3 son 437
+Aciertos de 4 son 377
+Aciertos de 5 son 354
+Aciertos de 6 son 416
+Aciertos de 7 son 440
+Aciertos de 8 son 377
+Aciertos de 9 son 410
+
+
+Arrays de Fracasos
+Fracasos de 0 son 4
+Fracasos de 1 son 1
+Fracasos de 2 son 17
+Fracasos de 3 son 11
+Fracasos de 4 son 22
+Fracasos de 5 son 15
+Fracasos de 6 son 7
+Fracasos de 7 son 9
+Fracasos de 8 son 29
+Fracasos de 9 son 19
+Cargando Base de datos...
+Corriendo test: 3
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4056
+
+Array de Aciertos
+Aciertos de 0 son 433
+Aciertos de 1 son 472
+Aciertos de 2 son 402
+Aciertos de 3 son 425
+Aciertos de 4 son 381
+Aciertos de 5 son 330
+Aciertos de 6 son 422
+Aciertos de 7 son 412
+Aciertos de 8 son 371
+Aciertos de 9 son 408
+
+
+Arrays de Fracasos
+Fracasos de 0 son 1
+Fracasos de 1 son 2
+Fracasos de 2 son 23
+Fracasos de 3 son 14
+Fracasos de 4 son 14
+Fracasos de 5 son 17
+Fracasos de 6 son 6
+Fracasos de 7 son 6
+Fracasos de 8 son 37
+Fracasos de 9 son 24
+Cargando Base de datos...
+Corriendo test: 4
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4043
+
+Array de Aciertos
+Aciertos de 0 son 387
+Aciertos de 1 son 448
+Aciertos de 2 son 390
+Aciertos de 3 son 404
+Aciertos de 4 son 416
+Aciertos de 5 son 374
+Aciertos de 6 son 410
+Aciertos de 7 son 460
+Aciertos de 8 son 354
+Aciertos de 9 son 400
+
+
+Arrays de Fracasos
+Fracasos de 0 son 4
+Fracasos de 1 son 4
+Fracasos de 2 son 24
+Fracasos de 3 son 19
+Fracasos de 4 son 18
+Fracasos de 5 son 17
+Fracasos de 6 son 8
+Fracasos de 7 son 16
+Fracasos de 8 son 30
+Fracasos de 9 son 17
+Cargando Base de datos...
+Corriendo test: 5
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4033
+
+Array de Aciertos
+Aciertos de 0 son 429
+Aciertos de 1 son 449
+Aciertos de 2 son 410
+Aciertos de 3 son 416
+Aciertos de 4 son 427
+Aciertos de 5 son 380
+Aciertos de 6 son 381
+Aciertos de 7 son 416
+Aciertos de 8 son 336
+Aciertos de 9 son 389
+
+
+Arrays de Fracasos
+Fracasos de 0 son 1
+Fracasos de 1 son 4
+Fracasos de 2 son 20
+Fracasos de 3 son 22
+Fracasos de 4 son 21
+Fracasos de 5 son 20
+Fracasos de 6 son 3
+Fracasos de 7 son 12
+Fracasos de 8 son 47
+Fracasos de 9 son 17
+Cargando Base de datos...
+Corriendo test: 6
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4054
+
+Array de Aciertos
+Aciertos de 0 son 395
+Aciertos de 1 son 468
+Aciertos de 2 son 416
+Aciertos de 3 son 417
+Aciertos de 4 son 420
+Aciertos de 5 son 360
+Aciertos de 6 son 409
+Aciertos de 7 son 394
+Aciertos de 8 son 361
+Aciertos de 9 son 414
+
+
+Arrays de Fracasos
+Fracasos de 0 son 3
+Fracasos de 1 son 2
+Fracasos de 2 son 20
+Fracasos de 3 son 20
+Fracasos de 4 son 10
+Fracasos de 5 son 20
+Fracasos de 6 son 8
+Fracasos de 7 son 12
+Fracasos de 8 son 34
+Fracasos de 9 son 17
+Cargando Base de datos...
+Corriendo test: 7
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4057
+
+Array de Aciertos
+Aciertos de 0 son 398
+Aciertos de 1 son 458
+Aciertos de 2 son 374
+Aciertos de 3 son 416
+Aciertos de 4 son 407
+Aciertos de 5 son 353
+Aciertos de 6 son 425
+Aciertos de 7 son 457
+Aciertos de 8 son 393
+Aciertos de 9 son 376
+
+
+Arrays de Fracasos
+Fracasos de 0 son 6
+Fracasos de 1 son 4
+Fracasos de 2 son 22
+Fracasos de 3 son 9
+Fracasos de 4 son 13
+Fracasos de 5 son 13
+Fracasos de 6 son 4
+Fracasos de 7 son 12
+Fracasos de 8 son 40
+Fracasos de 9 son 20
+Cargando Base de datos...
+Corriendo test: 8
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4069
+
+Array de Aciertos
+Aciertos de 0 son 420
+Aciertos de 1 son 470
+Aciertos de 2 son 369
+Aciertos de 3 son 405
+Aciertos de 4 son 373
+Aciertos de 5 son 388
+Aciertos de 6 son 385
+Aciertos de 7 son 438
+Aciertos de 8 son 412
+Aciertos de 9 son 409
+
+
+Arrays de Fracasos
+Fracasos de 0 son 1
+Fracasos de 1 son 3
+Fracasos de 2 son 29
+Fracasos de 3 son 12
+Fracasos de 4 son 13
+Fracasos de 5 son 10
+Fracasos de 6 son 4
+Fracasos de 7 son 16
+Fracasos de 8 son 24
+Fracasos de 9 son 19
+Cargando Base de datos...
+Corriendo test: 9
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4058
+
+Array de Aciertos
+Aciertos de 0 son 439
+Aciertos de 1 son 530
+Aciertos de 2 son 389
+Aciertos de 3 son 418
+Aciertos de 4 son 349
+Aciertos de 5 son 356
+Aciertos de 6 son 398
+Aciertos de 7 son 419
+Aciertos de 8 son 379
+Aciertos de 9 son 381
+
+
+Arrays de Fracasos
+Fracasos de 0 son 2
+Fracasos de 1 son 2
+Fracasos de 2 son 19
+Fracasos de 3 son 14
+Fracasos de 4 son 12
+Fracasos de 5 son 20
+Fracasos de 6 son 5
+Fracasos de 7 son 15
+Fracasos de 8 son 37
+Fracasos de 9 son 16
+Cargando Base de datos...
+Corriendo test: 10
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo KNN...
+Cantidad De Aciertos 4045
+
+Array de Aciertos
+Aciertos de 0 son 411
+Aciertos de 1 son 451
+Aciertos de 2 son 414
+Aciertos de 3 son 422
+Aciertos de 4 son 389
+Aciertos de 5 son 348
+Aciertos de 6 son 432
+Aciertos de 7 son 403
+Aciertos de 8 son 368
+Aciertos de 9 son 407
+
+
+Arrays de Fracasos
+Fracasos de 0 son 4
+Fracasos de 1 son 2
+Fracasos de 2 son 23
+Fracasos de 3 son 14
+Fracasos de 4 son 13
+Fracasos de 5 son 17
+Fracasos de 6 son 7
+Fracasos de 7 son 14
+Fracasos de 8 son 29
+Fracasos de 9 son 32
+Fin!

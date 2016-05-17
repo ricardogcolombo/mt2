@@ -1,0 +1,37 @@
+// Los Cpp son los que modifique para correr los siguientes ejecuciones
+
+//Test1.in Original
+./tp ./tests/test1.in test1.out 2  >> Exp1.txt
+luis@luis-Presario-21 ~/MN/metodos/tp2/src $ ./tp ./tests/test1.in test1.out 2  >> Exp1.txt
+3499 37000.5 3547 39000.5 3559 37000.5 3546 37000.5 3537 35000.5 3554 35000.5 3534 35000.5 3519 36000.5 3551 35000.5 3516 35000.5 
+
+
+
+
+>> Redirecciona casi todo el output de la terminal al archivo pasado como parametro , si no existe lo crea y si existe , lo agrega al final 
+//Test2.in original
+./tp ./tests/test2.in test2.out 2  >> Exp2.txt
+luis@luis-Presario-21 ~/MN/metodos/tp2/src $ sudo ./tp ./tests/test2.in test2.out 2  >> Exp2.txt
+ 
+6692 60000.5 6581 64000.5 6669 59000.5 6606 61000.5 6626 60000.5 
+
+
+// Se modifica test1.in y se suma 1 a la cantidad de dimesiones de PLS-DA
+./tp ./tests/test1.in ./tests/test1.out 2 >> Exp3.txt
+3351 36000.5 3385 36000.5 3409 36000.5 3359 35000.5 3356 36000.5 3405 34000.5 3327 34000.5 3344 35000.5 3372 35000.5 3374 34000.5 
+
+
+//Se invierten Gamma y knn del test1 original  , es decir se agarra 5 dimesiones para PLS y se toman 10 vecinos para kNN
+./tp ./tests/test1.in ./tests ./tests./test1.out >> Exp4.txt
+
+4038 401000 4066 403000 4056 414000 4043 390000 4033 346000 4054 346000 4057 349000 4069 345000 4058 345000 4045 347000 
+
+
+
+
+
+// Se modifica test.in Original y se deja en 10 los vecinos para kNN (Gamma == Vecinos ==10)
+// TODO 
+
+
+Mi idea 
