@@ -15,16 +15,6 @@ Matriz::Matriz(int a,int b) {
     }
 }
 
-void Matriz::LimpiarMemoria()
-{
-    for (int i = 0; i < this->getF(); ++i)
-    {
-        delete[] this->matrix[i];
-    }
-
-    delete[] this->matrix;
-}
-
 // no pude usar operartor *
 void Matriz::multiplicarMatriz(Matriz* a){
     // TODO CHECK DIMENSIONES
@@ -76,14 +66,6 @@ vectorNum* Matriz::multiplicarVector(vectorNum* unVector){
     return vectAux;
 }
 
-double Matriz::productoInterno(Matriz& a , Matriz& b, int f , int c) {
-    double res = 0.0 ;
-    int contandor = b.getF();
-    for (int i = 0; i < contandor; i++) {
-        res += a.getVal(f,i)*b.getVal(i,c);
-    }
-    return res;
-}
 
 // Constructor por copia
 Matriz::Matriz(const Matriz& other)  {
@@ -147,7 +129,6 @@ double Matriz::getVal(int x, int y) const {
 void Matriz::setVal(int x, int y, double val) {
     if (posicionValida(x,y)) {
         matrix [x] [y] = val;
-
     } else {
         cout << "set Posicion Invalida" << x <<" "<< y<< endl;
         throw 0;
@@ -167,20 +148,19 @@ void Matriz::printM() {
         }
         cout << "\n";
     }
-
 }
 
 void Matriz::multiplicarEscalar(double t) {
     for (int i = 0; i < this->getF(); i++) {
         for (int j = 0; j < this->getC();j++) {
-            this->setVal(i,j,this->getVal(i,j)*t );
+            this->setVal(i,j,(double)this->getVal(i,j)*(double)t );
         }
     }
 }
 void Matriz::restarYmultiplicarEscalar(double m,double t) {
     for (int i = 0; i < this->getF(); i++) {
         for (int j = 0; j < this->getC();j++) {
-            this->setVal(i,j,(this->getVal(i,j)-m)/t );
+            this->setVal(i,j,(this->getVal(i,j)-m)/(double)t );
         }
     }
 }

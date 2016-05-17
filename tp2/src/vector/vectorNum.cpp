@@ -5,8 +5,7 @@ vectorNum::vectorNum(int dimencion){
 	valores = new double[dim];
 	valorNorma2 = -1;
 	for(int i = 0; i < dim; i++)
-		valores[i] = 0;
-
+		valores[i] = 0.0;
 }
 
 vectorNum::~vectorNum(){
@@ -27,7 +26,6 @@ double vectorNum::norma2() {
 }
 
 vectorNum *vectorNum::resta(vectorNum *otroVector){
-
 	if(dim != otroVector->dim)
 		throw -1;
 	vectorNum *nuevoVector = new vectorNum(dim);
@@ -66,7 +64,7 @@ int vectorNum::size()
 
 double vectorNum::multiplicacionVect(vectorNum *otroVector)
 {
-	double aux = 0;
+	double aux = 0.0;
 	for(int i = 0; i < dim; i++)
 		aux = aux + (valores[i]* otroVector->valores[i]);
 	return aux;
@@ -75,7 +73,7 @@ double vectorNum::multiplicacionVect(vectorNum *otroVector)
 void vectorNum::multiplicacionEscalar(double escalar)
 {
 	for(int i = 0; i < dim; i++)
-		valores[i] = valores[i]*escalar;
+		valores[i] =(double) valores[i]*escalar;
 }
 
 

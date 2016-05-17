@@ -14,7 +14,6 @@ class Matriz {
 
     public:
         //Tengo que arreglar todas;
-        void LimpiarMemoria();
         Matriz(int a, int b); // Hecha
         Matriz(const Matriz& other); //  Creo que esta
         ~Matriz(); // Never Changed
@@ -24,7 +23,6 @@ class Matriz {
         void setVal(int x, int y, double val); // Hecha
         double getVal(int x, int y) const ; // Hecha
         void printM(); // Hecha
-        double productoInterno(Matriz& a,Matriz& b,int f,int c);
         void trasponer();
         void multiplicarMatriz(Matriz* a);
         void restarYmultiplicarEscalar(double m,double t);

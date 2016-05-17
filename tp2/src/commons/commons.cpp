@@ -3,15 +3,16 @@
 vectorNum *metodoDeLasPotencias(Matriz *covarianza) {
     int dimencion = covarianza->getF();
     vectorNum *vectorInicial = crearVectorInicial(dimencion);
+    int i ;
+    double normaVieja = 0.0;
+    double norma = 1.0;
 
-    double normaVieja = 0;
-    double norma = 1;
-
-    while ( abs( normaVieja - norma) > 0.000000000000001) {
+    // while ( abs( normaVieja - norma) > 0.00000000000000001) {
+    for(i =0 ;i<2000;i++){
         normaVieja = vectorInicial->norma2();
         vectorNum *nuevoVector = covarianza->multiplicarVector(vectorInicial);
         norma = nuevoVector->norma2();
-        nuevoVector->multiplicacionEscalar((double)(1 / (double)norma));
+        nuevoVector->multiplicacionEscalar(1 / (double)norma);
         delete vectorInicial;
         vectorInicial = nuevoVector;
     }
@@ -21,7 +22,7 @@ vectorNum *metodoDeLasPotencias(Matriz *covarianza) {
 vectorNum *crearVectorInicial(int dim) {
     vectorNum *vectorInicial = new vectorNum(dim);
     for (int w = 0; w < dim; w++) {
-        int random = rand() % 100 + 1;
+        double random = rand() % 100 + 1.0;
         vectorInicial->set(w, (double)random);
     }
     return vectorInicial;
@@ -34,7 +35,7 @@ Matriz * matX(vector<entrada> &v, vectorNum * medias) {
     Matriz * X= new Matriz(dimension,v.size()) ;
     for (int i = 0; i < dimension; i++) {
         for (int j = 0; j < v.size(); j++) {
-            X->setVal(i,j,( (double) v[j].vect->get(i) - medias->get(i))/ sqrt(v.size()-1));
+            X->setVal(i,j,(v[j].vect->get(i) -  medias->get(i))/ (double)sqrt(v.size()-1.0));
         }
     }
     return X;
@@ -50,6 +51,7 @@ Matriz *matCovarianza(vector<entrada> &v, Matriz *X2_t) {
     delete X;
     return X_t;
 }
+
 void trasponerEntrada(vector<entrada> &etiquetados, std::vector<vectorNum*> &autovectores, int cantidadAutovectores) {
     for (int j = 0; j < etiquetados.size(); j++) {
         vectorNum* vectorAux = new vectorNum(cantidadAutovectores);
@@ -87,7 +89,7 @@ vectorNum *calcularMedias(vector<entrada> &v) {
         for (int i = 0; i < v.size(); i++) {
             media += v[i].vect->get(j);
         }
-        medias->set(j, (double)media / (double)v.size());
+        medias->set(j, media / (double)v.size());
     }
     return medias;
 }
