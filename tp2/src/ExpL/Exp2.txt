@@ -1,0 +1,161 @@
+Iniciando Kfolds....
+Cantidad De Pruebas: 5
+Vecinos para el KNN: 3
+Lamda Para PCA: 50
+gamma Para PLSDA: 5
+Cargando Base de datos...
+Corriendo test: 1
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 6692
+
+Array de Aciertos
+Aciertos de 0 son 795
+Aciertos de 1 son 903
+Aciertos de 2 son 680
+Aciertos de 3 son 576
+Aciertos de 4 son 572
+Aciertos de 5 son 547
+Aciertos de 6 son 788
+Aciertos de 7 son 753
+Aciertos de 8 son 543
+Aciertos de 9 son 535
+
+
+Arrays de Fracasos
+Fracasos de 0 son 45
+Fracasos de 1 son 39
+Fracasos de 2 son 130
+Fracasos de 3 son 290
+Fracasos de 4 son 203
+Fracasos de 5 son 220
+Fracasos de 6 son 96
+Fracasos de 7 son 118
+Fracasos de 8 son 250
+Fracasos de 9 son 317
+Cargando Base de datos...
+Corriendo test: 2
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 6581
+
+Array de Aciertos
+Aciertos de 0 son 723
+Aciertos de 1 son 875
+Aciertos de 2 son 718
+Aciertos de 3 son 582
+Aciertos de 4 son 609
+Aciertos de 5 son 541
+Aciertos de 6 son 705
+Aciertos de 7 son 789
+Aciertos de 8 son 525
+Aciertos de 9 son 514
+
+
+Arrays de Fracasos
+Fracasos de 0 son 63
+Fracasos de 1 son 32
+Fracasos de 2 son 164
+Fracasos de 3 son 278
+Fracasos de 4 son 239
+Fracasos de 5 son 222
+Fracasos de 6 son 89
+Fracasos de 7 son 107
+Fracasos de 8 son 289
+Fracasos de 9 son 336
+Cargando Base de datos...
+Corriendo test: 3
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 6669
+
+Array de Aciertos
+Aciertos de 0 son 808
+Aciertos de 1 son 916
+Aciertos de 2 son 655
+Aciertos de 3 son 588
+Aciertos de 4 son 614
+Aciertos de 5 son 555
+Aciertos de 6 son 731
+Aciertos de 7 son 733
+Aciertos de 8 son 562
+Aciertos de 9 son 507
+
+
+Arrays de Fracasos
+Fracasos de 0 son 61
+Fracasos de 1 son 30
+Fracasos de 2 son 136
+Fracasos de 3 son 323
+Fracasos de 4 son 215
+Fracasos de 5 son 189
+Fracasos de 6 son 93
+Fracasos de 7 son 121
+Fracasos de 8 son 291
+Fracasos de 9 son 272
+Cargando Base de datos...
+Corriendo test: 4
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 6606
+
+Array de Aciertos
+Aciertos de 0 son 743
+Aciertos de 1 son 921
+Aciertos de 2 son 689
+Aciertos de 3 son 577
+Aciertos de 4 son 582
+Aciertos de 5 son 561
+Aciertos de 6 son 734
+Aciertos de 7 son 753
+Aciertos de 8 son 530
+Aciertos de 9 son 516
+
+
+Arrays de Fracasos
+Fracasos de 0 son 67
+Fracasos de 1 son 42
+Fracasos de 2 son 174
+Fracasos de 3 son 264
+Fracasos de 4 son 217
+Fracasos de 5 son 217
+Fracasos de 6 son 99
+Fracasos de 7 son 114
+Fracasos de 8 son 280
+Fracasos de 9 son 320
+Cargando Base de datos...
+Corriendo test: 5
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 6626
+
+Array de Aciertos
+Aciertos de 0 son 774
+Aciertos de 1 son 891
+Aciertos de 2 son 685
+Aciertos de 3 son 576
+Aciertos de 4 son 588
+Aciertos de 5 son 515
+Aciertos de 6 son 711
+Aciertos de 7 son 806
+Aciertos de 8 son 535
+Aciertos de 9 son 545
+
+
+Arrays de Fracasos
+Fracasos de 0 son 53
+Fracasos de 1 son 35
+Fracasos de 2 son 146
+Fracasos de 3 son 297
+Fracasos de 4 son 233
+Fracasos de 5 son 228
+Fracasos de 6 son 91
+Fracasos de 7 son 107
+Fracasos de 8 son 258
+Fracasos de 9 son 326
+Fin!
