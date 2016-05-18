@@ -129,7 +129,7 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
     gettimeofday(&endGauss, NULL);
     elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
     double timeGauss =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
-    cerr << timeGauss << " ";
+    cerr << timeGauss << " "<<endl;
 }
 
 

@@ -4,6 +4,8 @@ void calcularknn(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, in
     fstream myfile("Resultados.csv",ios::out | ios::app);
     fstream experimentos("experimentos.txt",ios::out | ios::app);
     experimentos.precision(3);
+
+    experimentos<< "cantidad de vecinos mas cercanos" << cantidadDeVecinosMasCercanos <<endl;
     int lepegue = 0;
     vector<double> falsosPositivos (10,0);
     vector<double> falsosNegativos(10,0);
@@ -34,7 +36,7 @@ void calcularknn(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, in
     experimentos<< "Recall" <<endl;
     for(int i = 0;i<10;i++){
         recall[i] = positivos[i]/double (falsosNegativos[i]+positivos[i]);
-        experimentos<< recall[i] << ",";
+        experimentos<< recall[i]/double (recall[i]+presicion[i]) << ",";
     }
     experimentos<< endl;
 
