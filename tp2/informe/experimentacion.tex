@@ -1,0 +1,43 @@
+Para analizar los algortimos implementados vamos a utilizar los archivos test1.in y test2.in provistos por la cátedra y realizar una serie de test que nos permitirán en primer caso encontrar parametros buenos con lo que ejecutarlos y posteriormente evaluar el desempeño de la implementación mediante las métricas propuestas por la cátedra.
+
+Dividimos la experimentación en dos secciones, una para cada archivo de prueba. Y evaluaremos los parametros individualmente para cada una de ellas
+
+
+\subsubsection {Archivo Test1.in}
+
+\subsubsubsection {Algoritmo de K-NN}
+
+Lo primero que vamos a hacer es encontrar un valor de $K$ que nos permita maximizar la cantidad de aciertos, sin tener en consideración las métricas.
+
+Ejecutamos el algoritmos de $K-NN$ variando los valores de k entre {1..20} dejando fija la cantidad de iteraciones en 10. Luego para cada K nos quedamos con los resultados de la iteración con mas aciertos, es decir de las 10 corridas por cada $K$ nos quedamos con la que arrojo mas aciertos.
+
+Expresamos los aciertos para cada K en con el siguiente gráfico:
+
+Aca va el grafico.
+
+Como se puede observar la iteración que mas aciertos dió es para $K = 3$. Además se puede observar que a medida que se incrementa el valor de $K$ la cantidad de aciertos disminuye levemente algo que es realmente esperado.
+
+Lo siguiente es evaluar fijando el $K$ si la cantidad de iteraciones influye en en la cantidad de aciertos. Entonces para eso variamos el número de iteraciones, entre {10..40} incrementando en 10 y como en el caso anterior tomamos los aciertos máximos por iteración.
+
+Aca va el grafico.
+
+Como se puede observar la cantidad de iteraciones no es decisiva en la cantidad de aciertos, ya que no incrementa de forma considerable la cantidad de aciertos. Lo que se observa es que a mayor cantidad de repeticiones, las chances de tener un valor de acierto relativamente mayor se incrementan, esto es solamente debido a que el experimento se repite mas veces y no representa una mejora en la calidad de los resultados.
+
+Obtenidos los valores de $K$ y $Cantidad de iteraciones$ presentamos las métricas para el mejor caso de cada una de ellas.
+
+Aca iria en forma de tabla
+
+
+\subsubsubsection {Algoritmo de K-NN con Optimización de PCA}
+
+\subsubsubsection {Algoritmo de K-NN con Optimización de PSL-DA}
+
+
+\subsubsection {Archivo Test2.in}
+
+\subsubsubsection {Algoritmo de K-NN}
+
+\subsubsubsection {Algoritmo de K-NN con Optimización de PCA}
+
+\subsubsubsection {Algoritmo de K-NN con Optimización de PSL-DA}
+
