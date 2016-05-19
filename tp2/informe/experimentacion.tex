@@ -9,23 +9,23 @@ Dividimos la experimentación en dos secciones, una para cada archivo de prueba.
 
 Lo primero que vamos a hacer es encontrar un valor de $K$ que nos permita maximizar la cantidad de aciertos, sin tener en consideración las métricas.
 
-Ejecutamos el algoritmos de $K-NN$ variando los valores de k entre {1..20} dejando fija la cantidad de iteraciones en 10. Luego para cada K nos quedamos con los resultados de la iteración con mas aciertos, es decir de las 10 corridas por cada $K$ nos quedamos con la que arrojo mas aciertos.
+Ejecutamos el algoritmos de $K-NN$ variando los valores de k entre {1..20} dejando fija la cantidad de particiones en 10. Luego para cada K nos quedamos con los resultados de la iteración con mas aciertos.
 
 Expresamos los aciertos para cada K en con el siguiente gráfico:
 
 Aca va el grafico.
 
-Como se puede observar la iteración que mas aciertos dió es para $K = 3$. Además se puede observar que a medida que se incrementa el valor de $K$ la cantidad de aciertos disminuye levemente algo que es realmente esperado.
+Como se puede observar la iteración que mas aciertos dió es para $K = 3$. Además se puede observar que a medida que se incrementa el valor de $K$ la cantidad de aciertos va disminuyendo levemente, cumpliendo lo mencionado en la introducción teórica. Cuanto mas corta sea la distancia de los vecinos, mas chances hay de tener un acierto.
 
-Lo siguiente es evaluar fijando el $K$ si la cantidad de iteraciones influye en en la cantidad de aciertos. Entonces para eso variamos el número de iteraciones, entre {10..40} incrementando en 10 y como en el caso anterior tomamos los aciertos máximos por iteración.
+Lo siguiente es evaluar fijando el $K$ si el valor de la cantidad de particiones influye en en la cantidad de aciertos. Entonces para eso variamos el número de variamos el número, entre {10..40} incrementando en 10 y tomamos la cantidad de aciertos.
 
 Aca va el grafico.
 
-Como se puede observar la cantidad de iteraciones no es decisiva en la cantidad de aciertos, ya que no incrementa de forma considerable la cantidad de aciertos. Lo que se observa es que a mayor cantidad de repeticiones, las chances de tener un valor de acierto relativamente mayor se incrementan, esto es solamente debido a que el experimento se repite mas veces y no representa una mejora en la calidad de los resultados.
+Como se puede observar la cantidad de particiones no es decisiva a la hora de obtener resultados, ya que no incrementa de forma considerable la cantidad de aciertos. Lo que se observa es que a mayor cantidad de repeticiones, las chances de tener un valor de acierto relativamente mayor se incrementan, esto es solamente debido a que el experimento se repite mas veces y no representa una mejora en la calidad de los resultados.
 
-Obtenidos los valores de $K$ y $Cantidad de iteraciones$ presentamos las métricas para el mejor caso de cada una de ellas.
+Caracterizados los valores de $K$ y $Cantidad de Particiones$ que nos dieron mejor cantidad de aciertos. Presentamos las métricas para el mejor caso de cada una de ellas.
 
-Aca iria en forma de tabla
+Aca iria en forma de tabla y su explicacion
 
 
 \subsubsubsection {Algoritmo de K-NN con Optimización de PCA}
