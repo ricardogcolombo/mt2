@@ -1,11 +1,13 @@
 {
     ".deps_version": 2, 
     "g++ -O2 -c ./commons/commons.cpp -o ./commons/commons.o": {
-        "commons/commons.cpp": "input-fc44593930012a94430b51dc94bbe0e1", 
-        "commons/commons.o": "output-39e7b0c8714405d734610c6aee16cbad", 
-        "knn/knn.o": "input-66e121e6bf053ed8e437cd0c1bd46b8b", 
-        "matriz/matriz.o": "input-99598c0b406482f69a1c82ecb27eaa11", 
-        "pca/pca.o": "input-745ffd234b282136578d86c56cdc1603"
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "commons/commons.cpp": "input-9d8c27b760f736481b73500dc50df28a", 
+        "commons/commons.h": "input-de151bc139675e9d41e0888e4ee52da2", 
+        "commons/commons.o": "output-812d6b0c33950af479dd55ebbcc0a3e3", 
+        "manejoEntrada/entrada.h": "input-70129ec4712f31a96c5bc89317f78bb4", 
+        "matriz2/matriz2.h": "input-d464c30bf8d7c4c32a807417fa573a14", 
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542"
     }, 
     "g++ -O2 -c ./instancia/instancia.cpp -o ./instancia/instancia.o": {
         "commons/commons.o": "input-19fc9e2c0a96f271b2fbc0df8dbd017b", 
@@ -19,36 +21,31 @@
         "vector/vectorNum.h": "input-6c357e9d7c81785571e0af7a5e4a40a1"
     }, 
     "g++ -O2 -c ./knn/knn.cpp -o ./knn/knn.o": {
-        "commons/commons.o": "input-39e7b0c8714405d734610c6aee16cbad", 
-        "knn/knn.cpp": "input-6087aea4ed1ac182ae329bb7c0f78884", 
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "knn/knn.cpp": "input-1de726c73e85d8930e46986a8fefd241", 
         "knn/knn.h": "input-635678afdf602724ee1b378f24b78825", 
-        "knn/knn.o": "output-66e121e6bf053ed8e437cd0c1bd46b8b", 
-        "main.o": "input-da07b6867a9c0e8e51754ae8e7fc24bd", 
+        "knn/knn.o": "output-a49abbc011ce1b21157786571872e0b2", 
         "manejoEntrada/entrada.h": "input-70129ec4712f31a96c5bc89317f78bb4", 
-        "manejoEntrada/entrada.o": "input-0b20eb07d30bc3c543b74e40924bafc0", 
-        "matriz/matriz.h": "input-d53e7e8e7e6759ee0393d7e5f2a7010b", 
-        "plsda/plsda.o": "input-7a46e972c0942e6bf0aeaf66b0fcf4b0", 
-        "vector/vectorNum.h": "input-cb544b8abbbc9deae7407304c2029edd", 
-        "vector/vectorNum.o": "input-4c8a6452f5f5d62bdbba5a7ab85fb92b"
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542"
     }, 
     "g++ -O2 -c ./main.cpp -o ./main.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "commons/commons.h": "input-de151bc139675e9d41e0888e4ee52da2", 
         "knn/knn.h": "input-635678afdf602724ee1b378f24b78825", 
-        "knn/knn.o": "input-66e121e6bf053ed8e437cd0c1bd46b8b", 
-        "main.cpp": "input-0803357fcd41b84b48707854a2cc3b67", 
-        "main.o": "output-da07b6867a9c0e8e51754ae8e7fc24bd", 
+        "main.cpp": "input-cbb6148386dc565cb976d41cfd24f5dc", 
+        "main.o": "output-17365521db6e2f00a6e74b8a6474e49d", 
         "manejoEntrada/entrada.h": "input-70129ec4712f31a96c5bc89317f78bb4", 
-        "matriz/matriz.h": "input-d53e7e8e7e6759ee0393d7e5f2a7010b", 
-        "matriz/matriz.o": "input-99598c0b406482f69a1c82ecb27eaa11", 
-        "pca/pca.h": "input-aa6a512539516802d4a4b90c3735013a", 
-        "pca/pca.o": "input-745ffd234b282136578d86c56cdc1603", 
-        "vector/vectorNum.h": "input-cb544b8abbbc9deae7407304c2029edd"
+        "matriz2/matriz2.h": "input-d464c30bf8d7c4c32a807417fa573a14", 
+        "pca/pca.h": "input-e55218f893ae47e2bc655c1d9550b8bf", 
+        "plsda/plsda.h": "input-24f80e19d2b213db2db3204e8b573e62", 
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542"
     }, 
     "g++ -O2 -c ./manejoEntrada/entrada.cpp -o ./manejoEntrada/entrada.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
         "manejoEntrada/entrada.cpp": "input-0ed62d8f70fbbac82f88ae27f3064a3f", 
         "manejoEntrada/entrada.h": "input-70129ec4712f31a96c5bc89317f78bb4", 
-        "manejoEntrada/entrada.o": "output-0b20eb07d30bc3c543b74e40924bafc0", 
-        "matriz/matriz.h": "input-d53e7e8e7e6759ee0393d7e5f2a7010b", 
-        "vector/vectorNum.h": "input-cb544b8abbbc9deae7407304c2029edd"
+        "manejoEntrada/entrada.o": "output-1a1a2dcce5dc213d80493a250ce71410", 
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542"
     }, 
     "g++ -O2 -c ./matriz/matriz.cpp -o ./matriz/matriz.o": {
         "matriz/matriz.cpp": "input-952d5c20f7fa2498676f6faba37ef237", 
@@ -57,39 +54,39 @@
         "tests/test1.in": "input-e128120868ebc85db9b9fd00a0e6c95d", 
         "vector/vectorNum.h": "input-cb544b8abbbc9deae7407304c2029edd"
     }, 
+    "g++ -O2 -c ./matriz2/matriz2.cpp -o ./matriz2/matriz2.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "matriz2/matriz2.cpp": "input-7c3054c439c0d9a85139604297d81739", 
+        "matriz2/matriz2.h": "input-d464c30bf8d7c4c32a807417fa573a14", 
+        "matriz2/matriz2.o": "output-6b8ce3ee388dd29aef04b03e278d9685", 
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542"
+    }, 
     "g++ -O2 -c ./pca/pca.cpp -o ./pca/pca.o": {
-        "commons/commons.o": "input-39e7b0c8714405d734610c6aee16cbad", 
-        "main.o": "input-da07b6867a9c0e8e51754ae8e7fc24bd", 
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "commons/commons.h": "input-de151bc139675e9d41e0888e4ee52da2", 
         "manejoEntrada/entrada.h": "input-70129ec4712f31a96c5bc89317f78bb4", 
-        "matriz/matriz.h": "input-d53e7e8e7e6759ee0393d7e5f2a7010b", 
-        "matriz/matriz.o": "input-99598c0b406482f69a1c82ecb27eaa11", 
-        "pca/pca.cpp": "input-cc2ee020f78f68d5f01e381e761fc54b", 
-        "pca/pca.h": "input-aa6a512539516802d4a4b90c3735013a", 
-        "pca/pca.o": "output-745ffd234b282136578d86c56cdc1603", 
-        "tests/test1.in": "input-e128120868ebc85db9b9fd00a0e6c95d", 
-        "tests/test2.expected": "input-2cc3e9bb5fa4fa03a8ef2b7edacb24d2", 
-        "vector/vectorNum.h": "input-cb544b8abbbc9deae7407304c2029edd"
+        "matriz2/matriz2.h": "input-d464c30bf8d7c4c32a807417fa573a14", 
+        "pca/pca.cpp": "input-861a0870647b3220214fea9a80011fb7", 
+        "pca/pca.h": "input-e55218f893ae47e2bc655c1d9550b8bf", 
+        "pca/pca.o": "output-406486da091885a87c2c53c8758190ea", 
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542"
     }, 
     "g++ -O2 -c ./plsda/plsda.cpp -o ./plsda/plsda.o": {
-        "commons/commons.o": "input-39e7b0c8714405d734610c6aee16cbad", 
-        "knn/knn.o": "input-66e121e6bf053ed8e437cd0c1bd46b8b", 
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "commons/commons.h": "input-de151bc139675e9d41e0888e4ee52da2", 
         "manejoEntrada/entrada.h": "input-70129ec4712f31a96c5bc89317f78bb4", 
-        "matriz/matriz.h": "input-d53e7e8e7e6759ee0393d7e5f2a7010b", 
-        "matriz/matriz.o": "input-99598c0b406482f69a1c82ecb27eaa11", 
-        "pca/pca.o": "input-745ffd234b282136578d86c56cdc1603", 
-        "plsda/plsda.cpp": "input-2434913a6f269ce5534c5df50f380e09", 
-        "plsda/plsda.h": "input-a43ea60676a7fe1877aad3c5cdea7c12", 
-        "plsda/plsda.o": "output-7a46e972c0942e6bf0aeaf66b0fcf4b0", 
-        "vector/vectorNum.h": "input-cb544b8abbbc9deae7407304c2029edd"
+        "matriz2/matriz2.h": "input-d464c30bf8d7c4c32a807417fa573a14", 
+        "pca/pca.h": "input-e55218f893ae47e2bc655c1d9550b8bf", 
+        "plsda/plsda.cpp": "input-58fb8131bef01c471b27aa2a3f297289", 
+        "plsda/plsda.h": "input-24f80e19d2b213db2db3204e8b573e62", 
+        "plsda/plsda.o": "output-3f598a7dcece995446b052888a3ba17c", 
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542"
     }, 
     "g++ -O2 -c ./vector/vectorNum.cpp -o ./vector/vectorNum.o": {
-        "main.o": "input-da07b6867a9c0e8e51754ae8e7fc24bd", 
-        "manejoEntrada/entrada.o": "input-0b20eb07d30bc3c543b74e40924bafc0", 
-        "matriz/matriz.h": "input-d53e7e8e7e6759ee0393d7e5f2a7010b", 
-        "plsda/plsda.o": "input-7a46e972c0942e6bf0aeaf66b0fcf4b0", 
-        "vector/vectorNum.cpp": "input-f885fb90eb22f1860d8ae188649c1e22", 
-        "vector/vectorNum.h": "input-cb544b8abbbc9deae7407304c2029edd", 
-        "vector/vectorNum.o": "output-4c8a6452f5f5d62bdbba5a7ab85fb92b"
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "vector/vectorNum.cpp": "input-128f45084d0ac176e06c0ea9f2574058", 
+        "vector/vectorNum.h": "input-686f762d4862405e2f1124f386cb5542", 
+        "vector/vectorNum.o": "output-11fbb076c519bdeee8907c0714f9960d"
     }, 
     "g++ -o ./tp ./main.o ./commons/commons.o ./instancia/instancia.o ./knn/knn.o ./matriz/matriz.o ./pca/pca.o ./plsda/plsda.o ./vector/vectorNum.o": {
         "commons/commons.o": "input-19fc9e2c0a96f271b2fbc0df8dbd017b", 
@@ -112,6 +109,18 @@
         "plsda/plsda.o": "input-7a46e972c0942e6bf0aeaf66b0fcf4b0", 
         "tp": "output-eaf3b9df3a1699e4b2b219d3c2b331a2", 
         "vector/vectorNum.o": "input-4c8a6452f5f5d62bdbba5a7ab85fb92b"
+    }, 
+    "g++ -o ./tp ./main.o ./commons/commons.o ./manejoEntrada/entrada.o ./pca/pca.o ./vector/vectorNum.o ./plsda/plsda.o ./matriz2/matriz2.o ./knn/knn.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d", 
+        "commons/commons.o": "input-812d6b0c33950af479dd55ebbcc0a3e3", 
+        "knn/knn.o": "input-a49abbc011ce1b21157786571872e0b2", 
+        "main.o": "input-17365521db6e2f00a6e74b8a6474e49d", 
+        "manejoEntrada/entrada.o": "input-1a1a2dcce5dc213d80493a250ce71410", 
+        "matriz2/matriz2.o": "input-6b8ce3ee388dd29aef04b03e278d9685", 
+        "pca/pca.o": "input-406486da091885a87c2c53c8758190ea", 
+        "plsda/plsda.o": "input-3f598a7dcece995446b052888a3ba17c", 
+        "tp": "output-c9f8b5b96a908b4a3b077d2b49ef8918", 
+        "vector/vectorNum.o": "input-11fbb076c519bdeee8907c0714f9960d"
     }, 
     "g++ -o ./tp ./main.o ./instancia/instancia.o ./knn/knn.o ./matriz/matriz.o ./pca/pca.o ./plsda/plsda.o ./vector/vectorNum.o": {
         "instancia/instancia.o": "input-606a2e331217714d4a2584d682803a08", 

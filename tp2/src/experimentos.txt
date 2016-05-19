@@ -1,0 +1,79 @@
+luis@luis-Presario-21 ~/MN/metodos/tp2/src $ ./tp ./tests/test2.in ./tests/test2.out 2
+Iniciando Kfolds....
+Cantidad De Pruebas: 5
+Vecinos para el KNN: 13
+Lamda Para PCA: 50
+gamma Para PLSDA: 13
+Cargando Base de datos...
+Corriendo test: 1
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 5975
+77000.5 
+Cargando Base de datos...
+Corriendo test: 2
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 6045
+61000.5 
+Cargando Base de datos...
+Corriendo test: 3
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 5995
+60000.5 
+Cargando Base de datos...
+Corriendo test: 4
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 5926
+57000.5 
+Cargando Base de datos...
+Corriendo test: 5
+Cantidad De imagenes a reconocer: 8400
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 6031
+60000.5 
+
+Fin!
+
+cantidad de vecinos mas cercanos13
+presicion
+0.687,0.74,0.766,0.67,0.704,0.752,0.715,0.675,0.757,0.673,
+Recall
+0.514,0.568,0.436,0.482,0.501,0.473,0.528,0.513,0.424,0.508,
+F1 Score
+0.514,0.568,0.436,0.482,0.501,0.473,0.528,0.513,0.424,0.508,
+cantidad de vecinos mas cercanos13
+presicion
+0.677,0.747,0.792,0.676,0.729,0.777,0.697,0.682,0.773,0.68,
+Recall
+0.517,0.565,0.44,0.478,0.491,0.471,0.533,0.527,0.431,0.51,
+F1 Score
+0.517,0.565,0.44,0.478,0.491,0.471,0.533,0.527,0.431,0.51,
+cantidad de vecinos mas cercanos13
+presicion
+0.735,0.743,0.754,0.683,0.718,0.737,0.695,0.665,0.785,0.646,
+Recall
+0.499,0.569,0.442,0.47,0.495,0.478,0.529,0.526,0.426,0.522,
+F1 Score
+0.499,0.569,0.442,0.47,0.495,0.478,0.529,0.526,0.426,0.522,
+cantidad de vecinos mas cercanos13
+presicion
+0.679,0.742,0.751,0.647,0.729,0.738,0.668,0.674,0.783,0.672,
+Recall
+0.503,0.567,0.441,0.492,0.493,0.476,0.54,0.513,0.416,0.509,
+F1 Score
+0.503,0.567,0.441,0.492,0.493,0.476,0.54,0.513,0.416,0.509,
+cantidad de vecinos mas cercanos13
+presicion
+0.72,0.749,0.791,0.664,0.706,0.724,0.686,0.705,0.785,0.678,
+Recall
+0.505,0.565,0.45,0.484,0.489,0.48,0.538,0.511,0.427,0.509,
+F1 Score
+0.505,0.565,0.45,0.484,0.489,0.48,0.538,0.511,0.427,0.509,
