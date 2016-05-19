@@ -11,13 +11,34 @@ Para el archivo de test Test1.in, provisto por la cátedra. Ejecutamos el algori
 
 Expresamos los aciertos para cada K en con el siguiente gráfico:
 
-Aca va el grafico.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\columnwidth]{test1 - cantidadAciertos.bmp}
+  \caption{Se presenta la cantidad de aciertos dependiendo de los K vecinos}
+  \label{fig:test1 - cantidadAciertos.bmp}
+\end{figure}
 
 Como se puede observar la iteración que mas aciertos dió es para $K = 3$. Además se puede observar que a medida que se incrementa el valor de $K$ la cantidad de aciertos va disminuyendo levemente, cumpliendo lo mencionado en la introducción teórica. Cuanto mas corta sea la distancia de los vecinos, mas chances hay de tener un acierto.
 
 Repetimos el experimento para el archivo Test2.in
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\columnwidth]{test2 - cantidadAciertos.bmp}
+  \caption{Se presenta la cantidad de aciertos dependiendo de los K vecinos}
+  \label{fig:test2 - cantidadAciertos.bmp}
+\end{figure}
+
+
+Durante la ejecución de los test notamos que el tiempo que le tomaba al algoritmo encontrar una respuesta es constante, es decir la elección de los $K$ no influye en el tiempo de cómputo. Por lo que no consideramos necesario tomar métricas de medición del tiempo.
+
 Caracterizados los valores de $K$ que nos dieron mejor cantidad de aciertos. Presentamos las métricas para el mejor caso de cada una de ellas.
+
+$Presición$
+
+$Recall$
+
+$F1-Score$
 
 Aca iria en forma de tabla y su explicacion
 
