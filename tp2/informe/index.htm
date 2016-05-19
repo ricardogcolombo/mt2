@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Total de Aciertos ',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Con k = 3 y variando el gamma',
+            x: -20
+        },
+        xAxis: {
+            categories: ['K-fold-1','K-fold-2','K-fold-3','K-fold-4','K-fold-5','K-fold-6','K-fold-7','K-fold-8','K-fold-9','K-fold-10' ]
+        },
+        yAxis: {
+            title: {
+                text: 'Aciertos'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Gamma=1',
+            data: [1174,1155,1198,1119,1149,1143,1139,1153,1232,1136]
+        }, {
+            name: 'Gamma=2',
+            data: [1731,1757,1741,1726,1773,1749,1684,1719,1753,1707]
+        }, {
+            name: 'Gamma=10',
+            data: [3496,3532,3533,3502,3494,3517,3488,3469,3522,3494]
+        }, {
+            name: 'Gamma=50',
+            data: [2744,2741,2720,2700,2703,2744,2755,2750,2800,2790]
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
