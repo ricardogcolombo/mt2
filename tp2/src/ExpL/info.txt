@@ -1,0 +1,388 @@
+Aqui van mis exp del miercoles a la noche
+
+luis@luis-Presario-21 ~/MN/metodos/tp2/src $ ./tp ./tests/test1.in ./tests/test1.out 2
+Iniciando Kfolds....
+Cantidad De Pruebas: 10
+Vecinos para el KNN: 3
+Lamda Para PCA: 50
+gamma Para PLSDA: 1
+Cargando Base de datos...
+Corriendo test: 1
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1174
+32000.5 
+Cargando Base de datos...
+Corriendo test: 2
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1155
+33000.5 
+Cargando Base de datos...
+Corriendo test: 3
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1198
+33000.5 
+Cargando Base de datos...
+Corriendo test: 4
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1119
+32000.5 
+Cargando Base de datos...
+Corriendo test: 5
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1149
+33000.5 
+Cargando Base de datos...
+Corriendo test: 6
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1143
+32000.5 
+Cargando Base de datos...
+Corriendo test: 7
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1139
+33000.5 
+Cargando Base de datos...
+Corriendo test: 8
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1153
+33000.5 
+Cargando Base de datos...
+Corriendo test: 9
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1232
+32000.5 
+Cargando Base de datos...
+Corriendo test: 10
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1136
+34000.5 
+
+Fin!
+
+
+Aqui Copy & Paste del experimentos.txt
+
+
+cantidad de vecinos mas cercanos3
+presicion
+0.533,0.648,0.153,0.154,0.132,0.136,0.143,0.227,0.207,0.166,
+Recall
+0.597,0.57,0.659,0.573,0.558,0.403,0.376,0.358,0.25,0.312,
+F1 Score
+0.597,0.57,0.659,0.573,0.558,0.403,0.376,0.358,0.25,0.312,
+cantidad de vecinos mas cercanos3
+presicion
+0.558,0.628,0.125,0.148,0.143,0.121,0.153,0.205,0.13,0.261,
+Recall
+0.588,0.57,0.655,0.591,0.543,0.417,0.376,0.343,0.304,0.296,
+F1 Score
+0.588,0.57,0.655,0.591,0.543,0.417,0.376,0.343,0.304,0.296,
+cantidad de vecinos mas cercanos3
+presicion
+0.56,0.66,0.144,0.154,0.136,0.103,0.145,0.195,0.135,0.243,
+Recall
+0.588,0.564,0.645,0.595,0.547,0.439,0.368,0.366,0.257,0.286,
+F1 Score
+0.588,0.564,0.645,0.595,0.547,0.439,0.368,0.366,0.257,0.286,
+cantidad de vecinos mas cercanos3
+presicion
+0.518,0.662,0.125,0.131,0.143,0.131,0.144,0.217,0.124,0.17,
+Recall
+0.601,0.563,0.659,0.606,0.519,0.439,0.34,0.343,0.285,0.311,
+F1 Score
+0.601,0.563,0.659,0.606,0.519,0.439,0.34,0.343,0.285,0.311,
+cantidad de vecinos mas cercanos3
+presicion
+0.548,0.645,0.141,0.126,0.167,0.146,0.121,0.186,0.127,0.145,
+Recall
+0.585,0.569,0.651,0.598,0.504,0.419,0.377,0.366,0.291,0.289,
+F1 Score
+0.585,0.569,0.651,0.598,0.504,0.419,0.377,0.366,0.291,0.289,
+cantidad de vecinos mas cercanos3
+presicion
+0.509,0.623,0.15,0.147,0.175,0.144,0.15,0.21,0.0897,0.128,
+Recall
+0.596,0.568,0.644,0.599,0.522,0.44,0.345,0.379,0.269,0.285,
+F1 Score
+0.596,0.568,0.644,0.599,0.522,0.44,0.345,0.379,0.269,0.285,
+cantidad de vecinos mas cercanos3
+presicion
+0.524,0.641,0.118,0.147,0.132,0.112,0.128,0.222,0.174,0.156,
+Recall
+0.604,0.577,0.673,0.596,0.543,0.413,0.33,0.338,0.234,0.304,
+F1 Score
+0.604,0.577,0.673,0.596,0.543,0.413,0.33,0.338,0.234,0.304,
+cantidad de vecinos mas cercanos3
+presicion
+0.553,0.602,0.131,0.16,0.135,0.105,0.131,0.178,0.175,0.178,
+Recall
+0.594,0.577,0.664,0.593,0.552,0.392,0.379,0.363,0.239,0.296,
+F1 Score
+0.594,0.577,0.664,0.593,0.552,0.392,0.379,0.363,0.239,0.296,
+cantidad de vecinos mas cercanos3
+presicion
+0.573,0.633,0.144,0.165,0.143,0.122,0.181,0.181,0.174,0.2,
+Recall
+0.577,0.558,0.664,0.586,0.561,0.379,0.392,0.348,0.249,0.324,
+F1 Score
+0.577,0.558,0.664,0.586,0.561,0.379,0.392,0.348,0.249,0.324,
+cantidad de vecinos mas cercanos3
+presicion
+0.532,0.636,0.137,0.126,0.126,0.109,0.185,0.261,0.139,0.179,
+Recall
+0.587,0.566,0.648,0.584,0.547,0.445,0.362,0.395,0.257,0.277,
+F1 Score
+0.587,0.566,0.648,0.584,0.547,0.445,0.362,0.395,0.257,0.277,
+
+
+
+
+
+Gamma == 2
+./tp ./tests/test1.in ./tests/test1.out 2
+
+luis@luis-Presario-21 ~/MN/metodos/tp2/src $ ./tp ./tests/test1.in ./tests/test1.out 2
+Iniciando Kfolds....
+Cantidad De Pruebas: 10
+Vecinos para el KNN: 3
+Lamda Para PCA: 50
+gamma Para PLSDA: 2
+Cargando Base de datos...
+Corriendo test: 1
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1731
+33000.5 
+Cargando Base de datos...
+Corriendo test: 2
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1757
+30000.5 
+Cargando Base de datos...
+Corriendo test: 3
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1741
+32000.5 
+Cargando Base de datos...
+Corriendo test: 4
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1726
+32000.5 
+Cargando Base de datos...
+Corriendo test: 5
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1773
+28000.5 
+Cargando Base de datos...
+Corriendo test: 6
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1749
+29000.5 
+Cargando Base de datos...
+Corriendo test: 7
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1684
+29000.5 
+Cargando Base de datos...
+Corriendo test: 8
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1719
+29000.5 
+Cargando Base de datos...
+Corriendo test: 9
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1753
+30000.5 
+Cargando Base de datos...
+Corriendo test: 10
+Cantidad De imagenes a reconocer: 4200
+Ejecutando metodo PLSDA...
+Ejecutando KNN sobre el PLSDA...
+Cantidad De Aciertos 1707
+27000.5 
+
+Fin!
+luis@luis-Presario-21 ~/MN/metodos/tp2/src $ 
+
+Experimentos.txt
+
+cantidad de vecinos mas cercanos3
+presicion
+0.533,0.648,0.153,0.154,0.132,0.136,0.143,0.227,0.207,0.166,
+Recall
+0.597,0.57,0.659,0.573,0.558,0.403,0.376,0.358,0.25,0.312,
+F1 Score
+0.597,0.57,0.659,0.573,0.558,0.403,0.376,0.358,0.25,0.312,
+cantidad de vecinos mas cercanos3
+presicion
+0.558,0.628,0.125,0.148,0.143,0.121,0.153,0.205,0.13,0.261,
+Recall
+0.588,0.57,0.655,0.591,0.543,0.417,0.376,0.343,0.304,0.296,
+F1 Score
+0.588,0.57,0.655,0.591,0.543,0.417,0.376,0.343,0.304,0.296,
+cantidad de vecinos mas cercanos3
+presicion
+0.56,0.66,0.144,0.154,0.136,0.103,0.145,0.195,0.135,0.243,
+Recall
+0.588,0.564,0.645,0.595,0.547,0.439,0.368,0.366,0.257,0.286,
+F1 Score
+0.588,0.564,0.645,0.595,0.547,0.439,0.368,0.366,0.257,0.286,
+cantidad de vecinos mas cercanos3
+presicion
+0.518,0.662,0.125,0.131,0.143,0.131,0.144,0.217,0.124,0.17,
+Recall
+0.601,0.563,0.659,0.606,0.519,0.439,0.34,0.343,0.285,0.311,
+F1 Score
+0.601,0.563,0.659,0.606,0.519,0.439,0.34,0.343,0.285,0.311,
+cantidad de vecinos mas cercanos3
+presicion
+0.548,0.645,0.141,0.126,0.167,0.146,0.121,0.186,0.127,0.145,
+Recall
+0.585,0.569,0.651,0.598,0.504,0.419,0.377,0.366,0.291,0.289,
+F1 Score
+0.585,0.569,0.651,0.598,0.504,0.419,0.377,0.366,0.291,0.289,
+cantidad de vecinos mas cercanos3
+presicion
+0.509,0.623,0.15,0.147,0.175,0.144,0.15,0.21,0.0897,0.128,
+Recall
+0.596,0.568,0.644,0.599,0.522,0.44,0.345,0.379,0.269,0.285,
+F1 Score
+0.596,0.568,0.644,0.599,0.522,0.44,0.345,0.379,0.269,0.285,
+cantidad de vecinos mas cercanos3
+presicion
+0.524,0.641,0.118,0.147,0.132,0.112,0.128,0.222,0.174,0.156,
+Recall
+0.604,0.577,0.673,0.596,0.543,0.413,0.33,0.338,0.234,0.304,
+F1 Score
+0.604,0.577,0.673,0.596,0.543,0.413,0.33,0.338,0.234,0.304,
+cantidad de vecinos mas cercanos3
+presicion
+0.553,0.602,0.131,0.16,0.135,0.105,0.131,0.178,0.175,0.178,
+Recall
+0.594,0.577,0.664,0.593,0.552,0.392,0.379,0.363,0.239,0.296,
+F1 Score
+0.594,0.577,0.664,0.593,0.552,0.392,0.379,0.363,0.239,0.296,
+cantidad de vecinos mas cercanos3
+presicion
+0.573,0.633,0.144,0.165,0.143,0.122,0.181,0.181,0.174,0.2,
+Recall
+0.577,0.558,0.664,0.586,0.561,0.379,0.392,0.348,0.249,0.324,
+F1 Score
+0.577,0.558,0.664,0.586,0.561,0.379,0.392,0.348,0.249,0.324,
+cantidad de vecinos mas cercanos3
+presicion
+0.532,0.636,0.137,0.126,0.126,0.109,0.185,0.261,0.139,0.179,
+Recall
+0.587,0.566,0.648,0.584,0.547,0.445,0.362,0.395,0.257,0.277,
+F1 Score
+0.587,0.566,0.648,0.584,0.547,0.445,0.362,0.395,0.257,0.277,
+cantidad de vecinos mas cercanos3
+presicion
+0.585,0.81,0.235,0.329,0.366,0.19,0.238,0.514,0.243,0.374,
+Recall
+0.581,0.537,0.592,0.528,0.6,0.432,0.394,0.438,0.337,0.402,
+F1 Score
+0.581,0.537,0.592,0.528,0.6,0.432,0.394,0.438,0.337,0.402,
+cantidad de vecinos mas cercanos3
+presicion
+0.59,0.831,0.26,0.358,0.336,0.215,0.251,0.478,0.299,0.345,
+Recall
+0.574,0.533,0.605,0.538,0.599,0.443,0.376,0.416,0.356,0.403,
+F1 Score
+0.574,0.533,0.605,0.538,0.599,0.443,0.376,0.416,0.356,0.403,
+cantidad de vecinos mas cercanos3
+presicion
+0.61,0.854,0.252,0.355,0.32,0.199,0.268,0.447,0.226,0.349,
+Recall
+0.564,0.524,0.616,0.513,0.598,0.435,0.389,0.443,0.342,0.411,
+F1 Score
+0.564,0.524,0.616,0.513,0.598,0.435,0.389,0.443,0.342,0.411,
+cantidad de vecinos mas cercanos3
+presicion
+0.56,0.824,0.255,0.36,0.331,0.177,0.261,0.469,0.292,0.351,
+Recall
+0.585,0.534,0.605,0.549,0.578,0.415,0.373,0.428,0.333,0.429,
+F1 Score
+0.585,0.534,0.605,0.549,0.578,0.415,0.373,0.428,0.333,0.429,
+cantidad de vecinos mas cercanos3
+presicion
+0.593,0.856,0.25,0.374,0.374,0.204,0.295,0.451,0.259,0.285,
+Recall
+0.583,0.522,0.589,0.544,0.557,0.407,0.386,0.456,0.369,0.427,
+F1 Score
+0.583,0.522,0.589,0.544,0.557,0.407,0.386,0.456,0.369,0.427,
+cantidad de vecinos mas cercanos3
+presicion
+0.564,0.854,0.278,0.355,0.345,0.204,0.275,0.429,0.225,0.381,
+Recall
+0.582,0.523,0.579,0.537,0.568,0.471,0.369,0.473,0.346,0.412,
+F1 Score
+0.582,0.523,0.579,0.537,0.568,0.471,0.369,0.473,0.346,0.412,
+cantidad de vecinos mas cercanos3
+presicion
+0.577,0.841,0.228,0.341,0.331,0.19,0.222,0.454,0.244,0.284,
+Recall
+0.585,0.531,0.598,0.538,0.583,0.463,0.366,0.441,0.326,0.428,
+F1 Score
+0.585,0.531,0.598,0.538,0.583,0.463,0.366,0.441,0.326,0.428,
+cantidad de vecinos mas cercanos3
+presicion
+0.609,0.829,0.213,0.336,0.325,0.202,0.269,0.475,0.26,0.326,
+Recall
+0.563,0.532,0.615,0.557,0.602,0.402,0.401,0.446,0.314,0.4,
+F1 Score
+0.563,0.532,0.615,0.557,0.602,0.402,0.401,0.446,0.314,0.4,
+cantidad de vecinos mas cercanos3
+presicion
+0.608,0.855,0.244,0.345,0.302,0.168,0.238,0.453,0.288,0.32,
+Recall
+0.562,0.525,0.603,0.533,0.596,0.416,0.412,0.447,0.341,0.417,
+F1 Score
+0.562,0.525,0.603,0.533,0.596,0.416,0.412,0.447,0.341,0.417,
+cantidad de vecinos mas cercanos3
+presicion
+0.578,0.809,0.265,0.331,0.346,0.165,0.301,0.437,0.233,0.349,
+Recall
+0.57,0.536,0.589,0.542,0.594,0.438,0.368,0.44,0.36,0.409,
+F1 Score
+0.57,0.536,0.589,0.542,0.594,0.438,0.368,0.44,0.36,0.409,
+
+
+
