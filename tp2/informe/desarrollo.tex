@@ -1,3 +1,76 @@
+\subsection{Reconocimiento óptico de caracteres}
+
+La tecnología de reconocimiento de caracteres, OCR (Optical Character  Recognition)  engloba  a  un  conjunto  de  técnicas basadas en  estadísticas, en las formas de los caracteres, transformadas y en comparaciones, que complementándose entre sí, se  emplean para  distinguir de forma automática entre  los diferentes caracteres alfanuméricos existentes.
+En realidad no se reconocen  exactamente los  caracteres de un determinado alfabeto, sino que es posible distinguir entre cualquier conjunto de formas o símbolos. Sin embargo, se debe tener en cuenta que la precisión que se obtiene en la práctica al intentar distinguir entre un conjunto de símbolos no es total. Por lo tanto, es fácil  deducir  que  cuanto  más  numeroso  es  el conjunto de símbolos entre los que se debe decidir, mayor es la probabilidad de que se produzca un fallo de clasificación.
+En todo sistema de reconocimiento óptico de caracteres se distinguen al menos estas 4 etapas:
+\begin{itemize}
+    \item Preproceso
+    \item Segmentación
+    \item Extracción de características
+    \item Reconocimiento
+\end{itemize}
+
+
+\subsubsection{Preproceso}
+
+En esta fase de preprocesamiento (o adecuación de la imagen) el objetivo que se persigue es eliminar de la imagen de cualquier
+tipo de ruido o imperfección que no pertenezca al carácter, así como normalizar el tamaño del mismo. La normalización de la imagen también puede implicar un binarizado de la misma. Para la eliminación del ruido que puede aparecer en una imagen digital se utilizan diversos algoritmos:
+\begin{itemize}
+    \item Etiquetado:  para  la  división  de  la  imagen  en  regiones  de componentes conectadas.
+    \item Erosión / expansión: para la eliminación de peque\~nos grupos de píxeles.
+    \item Umbralizado de histograma:  para  eliminar/seleccionar los objetos más brillantes o más oscuros de la imagen.
+\end{itemize}
+
+
+\subsubsection{Segmentación}
+
+Una vez preprocesada la imagen se deberá segmentar en las diferentes componentes conexas (parte de la imagen donde todos los píxeles son adyacentes entre sí) que la componen. La segmentación de la imagen constituye una de las mayores dificultades del reconocimiento, y se hace  necesaria para poder reconocer cada uno de los caracteres de la imagen binaria.
+La fragmentación o segmentación es la operación que permite la descomposición  de  un  texto  en  diferentes  entidades lógicas. Estas entidades deben ser lo suficientemente invariables, para ser independientes del escritor, y lo suficientemente significativas para su reconocimiento.
+
+
+\subsubsection{Extracción de características}
+
+Una  vez  realizada  la  segmentación,  se  tiene  una  imagen normalizada en la que se encuentra la información susceptible de ser “reconocida”. La información así representada, una matriz bidimensional de valores binarios.
+
+La extracción de las características es una de las fases  más difíciles, dado que es muy difícil elegir un conjunto de características óptimo.
+Para que una característica se pueda considerar buena debe tener:
+\begin{itemize}
+    \item Discriminación: Deben  ser características que diferencien suficientemente una clase de otra
+    \item Deben tener igual valor para mismas clases
+    \item Independencia: Las características deben estar incorreladas unas de otras.
+    \item Pequeño espacio para características: El número de características debe ser pequeño para la rapidez y facilidad de clasificación.
+\end{itemize}
+
+En este trabajo desarrollaremos y evaluaremos dos técnicas.
+
+
+{\ttfamily PCA (Principal Component Analysis)}
+
+El objetivo de esta técnica es definir una transformación lineal desde el espacio de representación original a un nuevo espacio en el que las distintas clases de las muestras quedan mejor separadas.
+Esta transformación permite reducir la dimensión del nuevo espacio sin perjudicar sensiblemente la capacidad discriminativa de la nueva representación.
+
+{\ttfamily PSL-DA (Partial Least Squares Discriminant Analysis)}
+
+Es un método estadístico que tiene relación con la regresión de componentes principales, se encuentra una regresión lineal mediante la proyección de las variables de predicción y las variables observables a un nuevo espacio. Debido a que tanto los datos de X e Y se proyectan a nuevos espacios, los familia de los modelos PLS se conoce como factor de modelos bilineales. Los cuadrados mínimos parciales Análisis discriminante (PLS-DA) es una variante que se utiliza cuando la Y es binaria.
+
+
+\subsubsection{Reconocimiento}
+
+Una  vez  se  tienen  las  características  más  importantes de la imagen a analizar hay que determinar el  carácter correspondiente en este trabajo exploraremos la técnica de KNN.
+
+
+\subsubsection{ K-NN (K vecinos más próximos)}
+
+Es un método no paramétrico y supervisado, que dado un conjunto de objetos prototipo de los que ya se conoce su clase (es decir, dado un conjunto de caracteres de muestra) y dado un  nuevo objeto cuya clase no conocemos (imagen de un carácter a reconocer) se busca entre el conjunto de prototipos los “k” más parecidos a nuevo objeto. A este se le asigna la clase más numerosa entre los “k” objetos prototipo seleccionados.
+
+
+\subsubsubsection{Entrenamiento y Test}
+Conociendo el funcionamiento básico del método de clasificación de los “k vecinos más próximos” es obvio que para poder empezar a trabajar con este método es necesario reunir un conjunto de datos etiquetados, es decir, un conjunto de muestras prototipo con las clases a las que pertenecen. Esta recolección implica disponer de una base de datos de imágenes de los tipos de caracteres que posteriormente se esperen reconocer. A este conjunto de datos se le denomina conjunto de entrenamiento. Sin embargo, la fase de entrenamiento no solo consiste en la recopilación de estos datos, sino que, típicamente, los datos originales que se dedican al
+entrenamiento deben ser preprocesados adecuadamente para obtener representaciones compactas y coherentes. Esto quiere decir que  las  imágenes deben ser segmentadas, normalizadas y transformadas para obtener los vectores de baja dimensionalidad que finalmente se almacenan como conjunto de entrenamiento.
+Con este conjunto de entrenamiento ya construido, el clasificador “knn” ya puede ser utilizado para reconocer la clase de una nueva muestra. Esta es la fase de test y lógicamente, también aquí es necesario aplicar todo el preproceso descrito anteriormente a cada una de las nuevas muestras. Por lo tanto, aquí se ve la necesidad de disponer de métodos rápidos de realizar estas tareas de preproceso, puesto que la velocidad de reconocimiento dependerá, en parte, de ellos. En la práctica se tiene que este preproceso es posible realizarlo muy rápidamente, aunque justo a continuación aparece la parte del proceso de reconocimiento que normalmente más carga computacional conlleva, la clasificación.
+
+
+
 Para cumplir con el objetivo del trabajo práctico, lo primero que desarrollamos fue la implementación del algoritmo de $K-NN$. Como mencionamos en la introducción esta tecnica permite dado un dado del que no conocemos a que clase pertenece, buscar entre el set de datos de imagenes etiquetadas las $k$ más parecidas, denomidadas $vecinas$. Luego una vez identificados determinar cual es la moda.
 
 \subsection {Elección del K}
@@ -45,12 +118,12 @@ Para encontrar las etiquetas implementamos el siguiente algoritmo
 \subsection {Optimización con PCA}
 
 
-El $Análisis de Componentes Principales$ utiliza una transformación lineal ortogonal de los datos para convertir un conjunto de variables, posiblemente correlacionadas, a un nuevo sistema de coordenadas conocidas estas como componentes principales tal que la mayor varianza de cualquier proyecci ́on de los datos queda ubicada como la primer coordenada, la segunda mayor varianza en la segunda posición, y asi sucesivamente. 
+El $Análisis de Componentes Principales$ utiliza una transformación lineal ortogonal de los datos para convertir un conjunto de variables, posiblemente correlacionadas, a un nuevo sistema de coordenadas conocidas estas como componentes principales tal que la mayor varianza de cualquier proyecci ́on de los datos queda ubicada como la primer coordenada, la segunda mayor varianza en la segunda posición, y asi sucesivamente.
 
 En este sentido, PCA calcula la base más significativa para expresar nuestros datos.
-De esta manera entonces, será fácil quedarnos con los λ componentes principales que concentran la mayor varianza y quitar el resto. 
+De esta manera entonces, será fácil quedarnos con los λ componentes principales que concentran la mayor varianza y quitar el resto.
 
-En la sección de experimentación, uno de los objetivos principales será buscar cual es el λ que concentra la mayor varianza de manera tal de optimizar el número de predicciones. A fines prácticos, lo que haremos es, a partir de nuestra base de datos de elementos etiquetados, será construir la matriz de covarianza M de tal manera que en la coordenada M_{i,j} se obtenga el valor de la covarianza del pixel i contra el pixel j. 
+En la sección de experimentación, uno de los objetivos principales será buscar cual es el λ que concentra la mayor varianza de manera tal de optimizar el número de predicciones. A fines prácticos, lo que haremos es, a partir de nuestra base de datos de elementos etiquetados, será construir la matriz de covarianza M de tal manera que en la coordenada M_{i,j} se obtenga el valor de la covarianza del pixel i contra el pixel j.
 
 Luego, utilizando el método de la potencia, procederemos a calcular los primeros λ autovectores de esta matriz. Una vez obtenidos los
 autovectores, multiplicando cada elemento por los λ autovectores, obtendremos un nuevo set de datos.
@@ -60,10 +133,10 @@ Sobre este set de datos, ahora aplicaremos el algoritmo $KNN$ nuevamente y lo qu
 Generalizando entonces, los supuestos de PCA son:
 
 \begin{itemize}
-\item Linealidad: La nueva base es una combinación lineal de la base original
-\item Media y Varianza son estadísticos importantes: asume que estos estadísticos describen la distribución de los datos sobre el eje.
-\item Varianza alta tiene una dinámica importante: Varianza alta significa senal. Baja varianza significa ruido.
-\item Las componentes son ortonormales
+    \item Linealidad: La nueva base es una combinación lineal de la base original
+    \item Media y Varianza son estadísticos importantes: asume que estos estadísticos describen la distribución de los datos sobre el eje.
+    \item Varianza alta tiene una dinámica importante: Varianza alta significa senal. Baja varianza significa ruido.
+    \item Las componentes son ortonormales
 \end{itemize}
 
 Si algunas de estas características no es apropiada, PCA podría producir resultados pobres. Un hecho importante que debemos recordar: PCA devuelve una nueva base que es una combinación lineal de la base original, limitando el número de posibles bases que puedan ser encontradas.
