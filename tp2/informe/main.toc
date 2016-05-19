@@ -1,4 +1,16 @@
 \select@language {spanish}
-\contentsline {section}{\numberline {1}Resumen}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}Resumen}{3}{subsection.1.1}
-\contentsline {section}{\numberline {2}Introducci\IeC {\'o}n te\IeC {\'o}rica}{3}{section.2}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n te\IeC {\'o}rica}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Introducci\IeC {\'o}n Te\IeC {\'o}rica}{3}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Reconocimiento \IeC {\'o}ptico de caracteres}{3}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2} K-NN (K vecinos m\IeC {\'a}s pr\IeC {\'o}ximos)}{4}{subsubsection.1.1.2}
+\contentsline {section}{\numberline {2}Desarrollo}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Elecci\IeC {\'o}n del K}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Algorimo}{6}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Optimizaci\IeC {\'o}n con PCA}{7}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}Cross-Validation}{7}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Algoritmos para Optimizaci\IeC {\'o}n con PCA}{8}{subsubsection.2.3.2}
+\contentsline {subsection}{\numberline {2.4}Optimizaci\IeC {\'o}n con PLS-DA}{10}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Algoritmos para Optimizaci\IeC {\'o}n con PLS-DA}{10}{subsubsection.2.4.1}
+\contentsline {section}{\numberline {3}Experimentaci\'on}{10}{section.3}
+\contentsline {subsubsection}{\numberline {3.0.2}Archivo Test1.in}{10}{subsubsection.3.0.2}
+\contentsline {subsubsection}{\numberline {3.0.3}Archivo Test2.in}{11}{subsubsection.3.0.3}

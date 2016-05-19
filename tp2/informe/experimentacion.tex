@@ -13,6 +13,8 @@ Ejecutamos el algoritmos de $K-NN$ variando los valores de k entre {1..20} dejan
 
 Expresamos los aciertos para cada K en con el siguiente gráfico:
 
+
+
 Aca va el grafico.
 
 Como se puede observar la iteración que mas aciertos dió es para $K = 3$. Además se puede observar que a medida que se incrementa el valor de $K$ la cantidad de aciertos va disminuyendo levemente, cumpliendo lo mencionado en la introducción teórica. Cuanto mas corta sea la distancia de los vecinos, mas chances hay de tener un acierto.
@@ -31,7 +33,14 @@ Aca iria en forma de tabla y su explicacion
 \subsubsubsection {Algoritmo de K-NN con Optimización de PCA}
 
 \subsubsubsection {Algoritmo de K-NN con Optimización de PSL-DA}
-Habiendo fijado k = 3 , corremos el test1.in variando el gamma utilizando los valores 1 , 2 ,10 y 50 50 . Aqui el grafico
+Habiendo fijado k = 3 , corremos el test1.in variando el gamma utilizando los valores 1,2,10 y 50. Aqui el grafico
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{chart.jpeg}
+\caption{Comparacion de aciertos variando el gamma}
+\label{fig:Comparacion de tecnicas}
+\end{figure}
+
 
 Vemos que si aumenta el gamma , mejora la precision pero si gamma aumenta demasiado , en algun momento empeora tu hit rate , suponemos que eso se debe a que si bien tenemos bastante informacion , la cantidad de vecinos no permite aprovecharla . Eso hace suponer que para que tengamos un buen hit rate , debe haber algun tipo de relacion entre el k y el gamma . Eso se va a poner a prueba usando el test2.in
 
@@ -43,5 +52,15 @@ Vemos que si aumenta el gamma , mejora la precision pero si gamma aumenta demasi
 
 \subsubsubsection {Algoritmo de K-NN con Optimización de PSL-DA}
 
-El experimento que nos planteamos es el siguiente. Dejamos fijo el gamma en 10 y hacemos variar el k . Aqui el grafico  
+El experimento que nos planteamos es el siguiente. Dejamos fijo el gamma en 13 y hacemos variar el k . Aqui el grafico  
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{chart(2).jpeg}
+\caption{Comparacion de aciertos variando el k}
+\label{fig:Comparacion de tecnicas}
+\end{figure}
+
+De 3 a 7 mejora el hit rate pero es muy poca la mejora en comparacion al aumento de tiempo de computo
+
+
 
