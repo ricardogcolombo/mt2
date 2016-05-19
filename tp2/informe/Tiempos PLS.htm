@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Ciclos de clock knn con PLS-DA ',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Con k = 3 y variando el gamma',
+            x: -20
+        },
+        xAxis: {
+            categories: ['K-fold-1','K-fold-2','K-fold-3','K-fold-4','K-fold-5','K-fold-6','K-fold-7','K-fold-8','K-fold-9','K-fold-10' ]
+        },
+        yAxis: {
+            title: {
+                text: 'Ciclos'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Gamma=1',
+            data: [32000.5,33000.5,33000.5,32000.5,33000.5,32000.5,33000.5,33000.5,32000.5,34000.5]
+        }, {
+            name: 'Gamma=2',
+            data: [33000.5,30000.5,32000.5,32000.5,28000.5,29000.5,29000.5,29000.5,30000.5 ,27000.5 ]
+        }, {
+            name: 'Gamma=10',
+            data: [34000.5,37000.5,33000.5,32000.5,33000.5,32000.5,30000.5,31000.5,32000.5,30000.5]
+        }, {
+            name: 'Gamma=50',
+            data: [58000.5,62000.5,60000.5,62000.5,61000.5,60000.5,65000.5,60000.5,62000.5,61000.5]
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
