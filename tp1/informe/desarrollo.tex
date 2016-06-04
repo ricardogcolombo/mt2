@@ -8,8 +8,8 @@ La cual consiste en plantear el siguiente sistema de ecuaci\'ones en forma matri
         n_{i,j}       & \quad \text{si }  \text{i $\neq$ j}\\
         2+n_i & \quad \text{si } \text{ i = j }\\
     \end{cases}
-
-    \]
+$$
+  $$  \]
                     
 y $b_i$ = 1 +  ($w_i$ - $l_i$) / 2.
 
@@ -33,7 +33,7 @@ y en esto nos vamos a basar para realizar nuestras experimentaci\'ones en las se
 Para esto utilizaremos un algoritmo greedy tomando al equipo que salga \'ultimo en el ranking y haciendolo jugar con otro equipo que este mejor posici\'onado que el , para esto utilizaremos 2 heuristicas distintas
 con el fin de obtener una mejor posici\'on, la primera sera contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
 
-Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resoluci\'on del sistema de ecuaci\'ones solicitado.\\
+Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resoluci\'on del sistema de ecuaci\'ones solicitado.
 
 \subsubsection{Eliminación Gaussiana}
 La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backwards substitution para 
@@ -67,14 +67,14 @@ Con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos sobre
 \subsubsection{Cholesky}
 
 La implementación del algoritmo de factorizaci\'on de cholesky que elegimos al igual que la eliminaci\'on gaussiana es la que se encuentra en el libro \textbf{Burden}.
-Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sistema Cr$=$b.\\
+Agregandole los pasos que mensiona en el libro (pagina 420) para resolver el sistema Cr$=$b.
 
 Este pseudocodigo representa nuestra implementaci\'on sobre la factorizaci\'on de cholesky.
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
         \caption{vector Cholesky(matriz A, vector b)}
-        \STATE{$l_{1,1} = \sqrt{a_{1,1}$}}\\
+        \STATE{$l_{1,1} = \sqrt{a_{1,1}}$}\\
         \STATE{Para j = 2,...n}
         \STATE{\quad $ l_{j,1} = a_{j,1} / l_{1,1}$}
         \STATE{Para $i = 2,...n-1$}\\
@@ -82,16 +82,16 @@ Este pseudocodigo representa nuestra implementaci\'on sobre la factorizaci\'on d
         \STATE{\quad Para $j = i+1,...n1$}\\
         \STATE{\quad\quad $l_{j,i}  = (a_{j,i} - \sum_{k=1}^{i-1}{l_{j,k} l_{i,k}} / l_{i,i})$}\\
         \STATE{$l_{n,n}  = (a_{n,n} - \sum_{k=1}^{n-1}{l^2_{n,k}}$)}\\
-        \STATE{y_1$=$b_1\l_{1,1}}\\
+        \STATE{$y_1=b_1 l_{1,1}$}\\
         \STATE{Para i$=$2..n}\\
         \STATE{\quad Para j$=$1..i-1}\\
-        \STATE{\quad\quad sum$=$l_{i,j}*y_j}\\
-        \STATE{\quad\quad y_i$=$(b_i-sum)\l_{i,i}}\\
-        \STATE{x_n$=y_n\l_{n,n}}\\
+        \STATE{\quad\quad sum=$l_{i,j}*y_j$}\\
+        \STATE{\quad\quad $y_i=(b_i-sum) \ l_{i,i}$}\\
+        \STATE{$x_n=y_n \ l_{n,n}$}\\
         \STATE{Para i$=$n-1..1}\\
         \STATE{\quad Para j$=$i+1..n}\\
         \STATE{\quad\quad sum$=l_{i,j}*x_j$}\\
-        \STATE{\quad\quad x_i$=(y_i-sum)\l_{i,i}$}
+        \STATE{\quad\quad $x_i=(y_i-sum)\ l_{i,i}$}
         \STATE{\RETURN x}
     \end{algorithmic}
 \end{algorithm}
@@ -106,13 +106,13 @@ Con lo cual lo que esperamos en nuestros an\'alisis de tiempos por cantidad de e
 Por otro lado analizaremos otra tecnica en base a el \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en 
 tomar el promedio de partidos ganados sobre partidos jugados.
 
-Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados en base a partidos ganados. \\
+Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados en base a partidos ganados. 	
 
-En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking. \\
+En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking. 
 
 Esta técnica a priori no aporta mucha informaci\'on respectoa la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado.
-Ya que todos los partidos valen lo mismo. \\
+Ya que todos los partidos valen lo mismo. 
 
-La implementación consiste en calcular: $\sum_{i=1}^n{} \frac{G_i}{T}$ \\
+La implementación consiste en calcular: $\sum_{i=1}^n{} \frac{G_i}{T}$ 
 
 Donde \textbf{n} es la cantidad de partidos jugados, \textbf{G} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
