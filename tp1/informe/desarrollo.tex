@@ -14,24 +14,22 @@ $$
                     
 y $b_i$ = 1 +  ($w_i$ - $l_i$) / 2.
 
-Esta matriz tiene la particularidad de ser simetrica y definida positiva,siendo condicion necesaria para encontrar la factorizaci\'on de cholesky sobre esta matriz, ademas de factorizaci\'on LU.
+Esta matriz tiene la particularidad de ser simétrica y definida positiva, siendo condición necesaria para encontrar la factorización de cholesky sobre esta matriz, además de factorización LU.
 
-Ambos m\'etodos, Eliminaci\'on gaussiana y Factorizaci\'on de cholesky, combinadas con otras t\'ecnicas de remplazo nos permitiran resolver el sistema presentado previamente.
+Ambos métodos, Eliminación gaussiana y Factorización de cholesky, combinadas con otras técnicas de remplazo nos permitirán resolver el sistema presentado previamente.
 
 La principal fortaleza de este método es que es útil para obtener rankings en torneos donde los participantes no juegan la misma cantidad de partidos, lo cual 
-podrias hacer una an\'alisis m\'as exhaustivo sobre cada uno de los partidos jugados y como afecta esto en todo un torneo,
+podríamos hacer una análisis más exhaustivo sobre cada uno de los partidos jugados y como afecta esto en todo un torneo,
 además de que al armar el sistema en base a los resultados pasados, da relevancia al calendario de juegos de cada participante. 
-Luego se intentará demostrar en la sección de experimentos, utilizando esta tecnica importa contra quien se gana y contra quien se pierde.
+Luego se intentará demostrar en la sección de experimentos, utilizando esta técnica que importa contra quien se gana y contra quien se pierde.
 
-Por otro lado las desventajas que notamos es que no es aplicable a muchos de los deportes es que los empates no pueden ser modelados, adem\'as de que el ranking no toma en cuenta
-el margen de victoria de los equipos lo cual en los casos donde hay empate en el ranking podriamos utilizarlos para desempatar.
+Por otro lado las desventajas que notamos es que este método no es aplicable a muchos de los deportes ya que los empates no pueden ser modelados, además de que el ranking no toma en cuenta
+el margen de victoria de los equipos, lo cual cuando surjan empates en cuanto a cantidad de victorias podrían utilizarse los empates como forma de desempate.
 
-En cuanto a escalar en este metodo no parece ser muy intuitivo mirando la matriz a simple vista pero nuestra intuici\'on nos dice que importa a quien se le gana, que no es lo mismo ganarle al que esta \'ultimo que ganarle al que esta primero
-y en esto nos vamos a basar para realizar nuestras experimentaci\'ones en las secci\'ones de m\'as adelante.
-Para esto utilizaremos un algoritmo greedy tomando al equipo que salga \'ultimo en el ranking y haciendolo jugar con otro equipo que este mejor posici\'onado que el , para esto utilizaremos 2 heuristicas distintas
-con el fin de obtener una mejor posici\'on, la primera sera contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
-
-Una vez obtenida la \textbf{Matriz de Colley} vamos a  presentar dos técnicas de resoluci\'on del sistema de ecuaci\'ones solicitado.
+En cuanto a cómo podría un participante subir posiciones en el ranking con en este método no parece ser muy intuitivo mirando la matriz a simple vista. Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero
+y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante.
+Para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que el , para esto utilizaremos 2 heurísticas distintas
+con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
 
 \subsubsection{Eliminación Gaussiana}
 La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backwards substitution para 
