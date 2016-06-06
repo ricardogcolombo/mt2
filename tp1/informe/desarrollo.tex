@@ -1,11 +1,12 @@
 \subsection{Sistema a resolver}
 
-Para la implementación del problema presentado en la secci\'on introducci\'on nos basamos en el paper \textbf{The Colley Matrix Explained}. 
-La cual consiste en plantear el siguiente sistema de ecuaci\'ones en forma matricial
+Como mencionamos en la introducción, comenzamos armando el sistema de la Matriz de Colley basados en el paper de Colley\footnote{''\textbf{The Colley Matrix Explained}:Wesley N. Colley''}, este método está basado en la Regla de Laplace de sucesos y solo se requiere conocer un historial de partidos. 
+El método de \textbf{CMM} propone construir una matriz C $\in$ $ R^{nxn}$ , un vector b $\in$ $ R^n$ tal que el ranking r $\in$ $R^n$ buscado sea la solución al sistema Cr=b.
+Para esto utiliza, que dado un equipo $i$, la cantidad total de partidos jugados por este equipo como $n_i$, sabiendo que tuvo $w_i$ victorias el equipo, análogamente $l_i$ los partidos perdidos y $n_{i,j}$ la cantidad de partidos jugados entre el equipo $i$ y $j$, para finalmente definir a la matriz C como: 
 
 \[ C_{i,j} =
     \begin{cases}
-        n_{i,j}       & \quad \text{si }  \text{i $\neq$ j}\\
+        -n_{i,j}       & \quad \text{si }  \text{i $\neq$ j}\\
         2+n_i & \quad \text{si } \text{ i = j }\\
     \end{cases}
 $$
@@ -13,11 +14,8 @@ $$
                     
 y $b_i$ = 1 +  ($w_i$ - $l_i$) / 2.
 
-Donde $n_i$ es la cantidad de partidos totales jugados por el equipo i e $n_{i,j}$ representa la cantidad de partidos jugados entre el equipo i y j.
+Esta matriz tiene la particularidad de ser simetrica y definida positiva,siendo condicion necesaria para encontrar la factorizaci\'on de cholesky sobre esta matriz, ademas de factorizaci\'on LU.
 
-Esta matriz tiene la particularidad de ser simetrica y definida positiva ,adem\'as de ser estrictamente diagonal dominante, estas dos propiedades nos 
-posibilitan encontrar la factorizaci\'on de cholesky sobre esta matriz, y que con todas estas propiedades nos indican que la matriz tambi\'en cumple que es no singular 
-con lo cual a aplicar la eliminaci\'on gaussiana no vamos a necesitar realizar pivoteo ya que no nos encontraremos con 0 en la diagonal, dandonos asi la factorizaci\'on LU.
 Ambos m\'etodos, Eliminaci\'on gaussiana y Factorizaci\'on de cholesky, combinadas con otras t\'ecnicas de remplazo nos permitiran resolver el sistema presentado previamente.
 
 La principal fortaleza de este método es que es útil para obtener rankings en torneos donde los participantes no juegan la misma cantidad de partidos, lo cual 

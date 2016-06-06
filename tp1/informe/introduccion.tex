@@ -1,63 +1,27 @@
-\subsection{Motivacion}
+Las Competencias deportivas, de cualquier índole, requieren la comparación de equipos mediante la confección de tablas de Posiciones y ranking en base a los 
+resultados obtenidos durante un cierto periodo de tiempo. Algunos de los métodos de ordenamiento utilizados normalmente se basan en proporción de victorias 
+sobre partidos jugados, aunque no todos, sin embargo estos no logran mostrar las dificultades presentadas en estas competencias. A su vez este tipo de 
+rankings son utilizados para clasificaciones de otras competencias o su fin dentro de las categorías en las cuales se encuentran divididas estas 
+competencias, teniendo impactos económicos en los clubes, demostrando que no son del todo justas estos métodos utilizados.
+En este trabajo practico intentaremos modelar y resolver el problema de generar un ranking de equipos a partir de los resultados exceptuando en un principio los empates,
+luego discutiremos como podríamos modelar esto.
+Para confeccionar dicho ranking presentaremos los siguientes métodos:
+\begin{itemize}  
+\item El Porcentaje de Victorias \textbf{WP} : Este método básicamente es el que nombramos anteriormente, se basa en armar el ranking en base al porcentaje de victorias sobre partidos totales.
+\item Colley Matrix Method \textbf{CMM} :Este es un método matricial se basa en el armado de un ranking en base a los partidos ganados, perdidos y los partidos totales entre equipos.
+\end{itemize}
 
-Las Competencias deportivas, de cualquier \'\i{ndole} requieren la comparación de equipos
-mediante la confección de las tablas de Posiciones y rankings en base a los resultados obtenidos
-durante un cierto periodo de tiempo.
-En un mundo ideal, cada equipo jugar\'\i{a} exactamente la misma cantidad de partidos y se enfrentar\'\i{a} a sus rivales
-la misma cantidad de veces. Esto no siempre pasa, puede haber demasiados equipos o bien pueden ser competencias
-eliminatorias, donde el que pierde deja de competir. En esos casos hace faltar tener otras técnicas  
+Como mencionamos anteriormente el método de Colley, es un método matricial, por lo que para la resolución de este sistema utilizaremos los métodos vistos en
+la catedra para encontrar los valores del ranking a la solucion Ax=b dichos métodos son:
 
-\newline
-\subsection{Problema a Resolver}
-En este trabajo practico intentaremos modelar y 
-resolver el problema de generar un ranking de equipos a partir de los 
-resultados con la condición de que no haya empates. 
-Para confeccionar dicho ranking presentaremos los siguientes métodos
-\newline
-- El Porcentaje de Victorias (En adelante llamado WP)
-\newline
-- Colley Matrix Method (En adelante llamado CMM)
+\begin{itemize}  
+\item La Eliminación Gaussiana \textbf{EG}
+\item La Factorización de Cholesky \textbf{CL}
+\end{itemize}
 
-
-Además, para resolver el CMM presentaremos y usaremos las siguientes técnicas.\\
--La Eliminacion Gaussiana (En adelante llamado EG)\\
--La Factorizacion de Cholesky (En adelante llamado CL)  
-
-
-\subsection{Objetivos}
--Hacer un análisis de WP y CMM, hallar los puntos fuertes y débiles de cada método y compararlos 
--Comparar EG con CL. Ver cual es mas rápido. 
-
-\\
-\subsection{¿Por que es importante el ranking?} 
-\\
-Es importante porque determina quienes fueron los mejores y peores equipos al final
-de la temporada, quienes avanzan a la siguiente ronda y en ciertas
-ligas como la liga de basquet y de baseball de los estados unidos 
-determina la prioridad para los drafts.
-Además de eso tenemos la justicia deportiva y una gran cantidad de dinero en juego
-
-\subsection{¿Por que es importante el análisis de datos ?} 
-
-Es importante porque permite en las manos adecuadas, optimizar el
-rendimiento de los jugadores y además decidir si los jugadores son buenos en base a ciertos 
-indicadores.
-
-
-%En este trabajo practico intentaremos modelar y resolver el problema de generar un ranking de equipos a partir de los resultados entre ellos con la condicion de que no haya empates entre ellos. 
-%Para confenccionar dicho ranking haremos uso de 2 metodos diferentes.El primero
-%es el Winning Porcentage y el 2 es el Colley Matrix Method (CMM).
-%El WP es simplemente Partidos Ganados / Partidos Jugados mientras que el CMM
-%requiere mas explicacion.\newline
-%Sea T = $\{$1,2...n$\}$ el conjunto de los equipos.Dado un i $\in$ T definimos:\newline
-%$n_i$ a la cantidad de partidos jugados del equipo i
-%$w_i$ a la cantidad de partidos ganados del equipo i
-%$l_i$ a la cantidad de partidos perdidos del equipo i
-%Dados i y j $\in$ T llamarems $n_{ij}$ a la cantidad de partidos jugados entre ellos . Notar
-%que $n_{ij}$ es igual $n_{ji}$
-%blah blah 
-
-%Esto nos lleva a un sistema de la forma Cr = b con C $\in$ R
-
+Luego se procederá a un análisis de los distintos métodos de resolución de sistemas lineales, EG y CL, en base a tiempos y tamaños de sistema a resolver,
+por otro lado estaremos analizando los resultados obtenidos del método de Colley, haremos una comparativa contra el método de porcentajes de victorias para 
+finalizar realizando algún tipo de conclusión respecto a la justicia de dichos métodos frente a los resultados. Todos estos resultados serán representados 
+mediante gráficos comparativos con sus respectivos detalles.
 
 

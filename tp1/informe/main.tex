@@ -57,15 +57,28 @@
 \lstset{literate={::}{}{0\discretionary{::}{}{::}}% line-break at ::
    {->}{}{0\discretionary{->}{}{->}}% line-break at ->
 }
-
+\let\oldabstract\abstract
+\let\oldendabstract\endabstract
+\makeatletter
+\renewenvironment{abstract}
+{\renewenvironment{quotation}%
+               {\list{}{\addtolength{\leftmargin}{1em} % change this value to add or remove length to the the default
+                        \listparindent 1.5em%
+                        \itemindent    \listparindent%
+                        \rightmargin   \leftmargin%
+                        \parsep        \z@ \@plus\p@}%
+                \item\relax}%
+               {\endlist}%
+\oldabstract}
+{\oldendabstract}
+\makeatother
 \begin{document}
 
 
 \materia{Metodos numericos}
 \submateria{Primer Cuatrimestre de 2016}
-\titulo{Trabajo Pr\'actico 1}
+\titulo{Re Entrega Trabajo Pr\'actico 1}
 \subtitulo{“(No) Todo Pasa”}
-\integrante{ Leonardo Raed}{579/04}{leo\_raed@yahoo.com}
 \integrante{ Ricardo Colombo}{156/08}{ricardogcolombo@gmail.com}
 \integrante{ Diego Santos}{874/03}{diego.h.santos@gmail.com}
 \integrante{ Luis Badell }{246/13}{luisbadell@gmail.com}
@@ -78,6 +91,7 @@
 
 \pagebreak
 
+\input{abstract}
 \section{Introducción teórica}
 
 \input{introduccion}
