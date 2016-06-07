@@ -46,18 +46,30 @@ Presentamos un pseudo codigo del algoritmo de eliminaci\'on gaussiana que utiliz
         \STATE{\quad\quad Para $j = i+1,...n$}\\
         \STATE{\quad \quad \quad $a_{i,j}  = a_{i,j} - a_{i,j} * (a_{i,k} / a_{k,k})$}\\
         \STATE{\quad \quad \quad $b_{i}  = b_{i} - a_{i,j} * (a_{i,k} / a_{k,k})$}\\
-        \STATE{$x_{n} = a_{n,n+1}/a_{n,n}$}\\
-        \STATE{para $i=n-1..1$}\\
-        \STATE{\quad para $j=i+1..n$}\\
-        \STATE{\quad\quad $ sum +=a_{i,j}*x_{j}$}\\
-        \STATE{\RETURN x}
+        \STATE{return backwardSubstitution(A,b)}
     \end{algorithmic}
 \end{algorithm}
+
 
 Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posici\'ones 4 a 6 se ejecuta n veces
 y el ciclo de las l\'ineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos $n^2$ iteraci\'ones en el peor caso y finalizando con el ciclo de las l\'ineas 1 a 6 que se ejecuta otras n veces.
 Luego en las l\'ineas 7 a 10 se realiza el backgward substitution  que tiene en el peor caso se ejecuta $n^2$ veces.\\
 Con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos sobre tiempos de en la secci\'on experimentaci\'on es encontrarnos con un grafico de una funci\'on cubica.
+
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{vector backwardSubstitution(matriz A, vector b)}
+        \STATE{$x = vector(Cantidad_Columnas(A))$}\\
+        \STATE{$x_{n} = a_{n,n+1}/a_{n,n}$}\\
+        \STATE{para $i=n-1..1$}\\
+        \STATE{\quad para $j=i+1..n$}\\
+        \STATE{\quad\quad $ sum +=a_{i,j}*x_{j}$}\\
+        \STATE{\quad $x_i = (b_i -sum) /a_{i,i}$}
+        \STATE{\RETURN $x$}\\
+    \end{algorithmic}
+\end{algorithm}
+
 
 \newpage
 \subsubsection{Cholesky}
