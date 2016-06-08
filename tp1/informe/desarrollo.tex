@@ -1,6 +1,46 @@
-\subsection{Sistema a resolver}
+\subsection{Porcentaje de Victorias}
 
-Como mencionamos en la introducción, comenzamos armando el sistema de la Matriz de Colley basados en el paper de Colley\footnote{''\textbf{The Colley Matrix Explained}:Wesley N. Colley''}, este método está basado en la Regla de Laplace de sucesos y solo se requiere conocer un historial de partidos. 
+Primero analizaremos la técnica que se basa a el \textbf{Porcentaje de Victorias}, que a lo largo del análisis denominaremos \textbf{WP},la misma analiza la performance de un equipo o participante en los partidos jugados en base a partidos ganados para el armado del ranking, digamos que si queremos generar el ranking 
+
+La implementación consiste en calcular el ranking R ordenado de mayor a menor donde en cada posición $j$ del ranking se encuentra: R_j = $\sum_{i=1}^n{} \frac{G_i}{T}$. 
+
+Donde \textbf{n} es la cantidad de partidos jugados, \textbf{$G_i$} corresponde a partidos ganados por el equipo $i$ y \textbf{$T_i$} al total de partidos jugados por el equipo $i$. \\
+
+En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking, además cada partido perdido para el equipo le hace perder valor en el ranking ya que el dividendo es mayor.
+
+Mostremos esto con un ejemplo entre 3 equipos para ver como se ve afectado:
+Supongamos que tenemos 3 equipos \textbf{A}, \textbf{B} y \textbf{C} al principio, como ninguno disputo ningún partido todos tienen valor 0 en la tabla de posiciones.
+
+Ahora supongamos que el equipo \textbf{A} juegua contra el equipo \textbf{B} y gana, luego el equipo \textbf{C} juega contra el equipo \textbf{A} y gana el \textbf{C}, con lo cual la tabla de posiciones se ve como la siguiente:
+
+\begin{center}
+    \begin{tabular}{| 1 | 1 | 1 |}
+    \hline
+    Posición & Equipo & Ranking \\ \hline
+    1 & C & 1 \\ \hline
+    2 & A & 1/2  \\ \hline
+    3 & B & 0 \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
+Como puede observarse en el ejemplo este método no es muy justo ya que si bien el equipo A jugo mas partidos tiene la misma cantidad de partidos ganados que el equipo C, si en el partido siguiente juegan el equipo \textbf{B} vs equipo \textbf{C} y gana el equipo \textbf{B}, entonces en la tabla de posiciones quedan todos con el mismo ranking.
+
+\begin{center}
+    \begin{tabular}{| 1 | 1 | 1 |}
+    \hline
+    Posición & Equipo & Ranking \\ \hline
+    1 & C & 1/2 \\ \hline
+    2 & A & 1/2  \\ \hline
+    3 & B & 1/2 \\
+    \hline
+    \end{tabular}
+\end{center}
+
+Con este ejemplo se puede observar lo que mencionamos anteriormente, que si bien los partidos de los demás no afectan a cambiar el valor de un equipo dentro del ranking si puede afectar su posición, a su vez esta técnica no aporta mucha información respecto a la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado, con lo cual la posición del equipo en el ranking depende de los resultados de victorias del equipo.
+
+\subsection{Sistema a resolver}
+Debido a que el sistema anterior no parece ser muy justo ya que los partidos perdidos influyen en la posicion final, analizaremos el otro metodo que mencionamos en la introducción. Para comenzar armamos el sistema de la Matriz de Colley basados en el paper de Colley\footnote{''\textbf{The Colley Matrix Explained}:Wesley N. Colley''}, este método está basado en la Regla de Laplace de sucesos y solo se requiere conocer un historial de partidos. 
 El método de \textbf{CMM} propone construir una matriz C $\in$ $ R^{nxn}$ , un vector b $\in$ $ R^n$ tal que el ranking r $\in$ $R^n$ buscado sea la solución al sistema Cr=b.
 Para esto utiliza, que dado un equipo $i$, la cantidad total de partidos jugados por este equipo como $n_i$, sabiendo que tuvo $w_i$ victorias el equipo, análogamente $l_i$ los partidos perdidos y $n_{i,j}$ la cantidad de partidos jugados entre el equipo $i$ y $j$, para finalmente definir a la matriz C como: 
 
@@ -32,8 +72,8 @@ Para esto utilizaremos un algoritmo greedy tomando al equipo que salga último e
 con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
 
 \subsubsection{Eliminación Gaussiana}
-La implementación del algorimo de \textbf{Eliminación Gaussiana} que elegimos es la que se encuentra en el libro \textbf{Burden[1]}.Con el agregado de backward substitution para 
-obtener el vector de la ecuaci\'on Cr=b.
+
+El Algoritmo de Eliminacion Gaussiana se utilizo para la solucion de la Matriz de Colley para la obtecion del vector r mostrado anteriormente en la ecuacion del sistema a resovler, la implementación del mismo fue tomada en el libro de Burden \footnote{''\textbf{Analisis Numerico }:Richard L. Burden & J. Douglas Faires''}, adiriendole al mismo  la utilizacion de backward substitution para obtener el vector de la ecuaci\'on Cr=b.
 
 Presentamos un pseudo codigo del algoritmo de eliminaci\'on gaussiana que utilizamos en nuestra implementaci\'on que luego en secci\'ones futuras vamos a detallar.
 
@@ -51,12 +91,6 @@ Presentamos un pseudo codigo del algoritmo de eliminaci\'on gaussiana que utiliz
 \end{algorithm}
 
 
-Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posici\'ones 4 a 6 se ejecuta n veces
-y el ciclo de las l\'ineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos $n^2$ iteraci\'ones en el peor caso y finalizando con el ciclo de las l\'ineas 1 a 6 que se ejecuta otras n veces.
-Luego en las l\'ineas 7 a 10 se realiza el backward substitution que tiene en el peor caso se ejecuta $n^2$ veces.\\
-Con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos sobre tiempos de en la secci\'on experimentaci\'on es encontrarnos con un grafico de una funci\'on cubica.
-
-
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
         \caption{vector backwardSubstitution(matriz A, vector b)}
@@ -70,6 +104,10 @@ Con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos sobre
     \end{algorithmic}
 \end{algorithm}
 
+Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posici\'ones 4 a 6 se ejecuta n veces
+y el ciclo de las l\'ineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos $n^2$ iteraci\'ones en el peor caso y finalizando con el ciclo de las l\'ineas 1 a 6 que se ejecuta otras n veces.
+Luego en las l\'ineas 7 a 10 se realiza el backward substitution que tiene en el peor caso se ejecuta $n^2$ veces.\\
+Con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos sobre tiempos de en la secci\'on experimentaci\'on es encontrarnos con un grafico de una funci\'on cubica.
 
 \newpage
 \subsubsection{Cholesky}
@@ -109,18 +147,4 @@ Por \'ultimo para las l\'ineas 10 - 13 y 15 -18 se realizan 2 ciclos de n iterac
 Con lo cual lo que esperamos en nuestros an\'alisis de tiempos por cantidad de equipos es que obtengamos una cubica.
 
 \newpage
-\subsection{Porcentaje de Victorias}
 
-Por otro lado analizaremos otra tecnica en base a el \textbf{Porcentaje de Victorias} que a lo largo del análisis denominaremos \textbf{WP} que consiste en 
-tomar el promedio de partidos ganados sobre partidos jugados.
-
-Esta técnica basicamente analiza la performance de un equipo participante en los partidos jugados en base a partidos ganados. 	
-
-En este caso el score de un equipo no es afectado por la cantidad de partidos y resultados obtenidos de los demás participantes, pero esto si afecta su posición final en el ranking. 
-
-Esta técnica a priori no aporta mucha informaci\'on respectoa la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado.
-Ya que todos los partidos valen lo mismo. 
-
-La implementación consiste en calcular: $\sum_{i=1}^n{} \frac{G_i}{T}$ 
-
-Donde \textbf{n} es la cantidad de partidos jugados, \textbf{G} corresponde a partidos ganados y \textbf{T} al total de partidos jugados. \\
