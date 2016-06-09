@@ -55,10 +55,10 @@ function ftt=interpolacionFragmentariaLineal(caminataSample, tiempos)
         end
     
         % Realizar interpolación lineal para X(t) con t \in [a,b]
-        Xt = _______________; % X(t)
+        Xt = Xa + ((Xb-Xa)/(b-a))*(t -a); % X(t)
 
         % Realizar interpolación lineal para Y(t) con t \in [a,b]
-        Yt = _______________; % Y(t)
+        Yt =Ya+((Yb-Ya)/(b-a))*(t-a); % Y(t)
 
         % f(t) = (X(t), Y(t))
         ft = [Xt, Yt];

@@ -5,18 +5,19 @@ presicionInfinita = 0.0001; % decímetros (10^{-4} kilómetros)
 
 % Valor de dt (delta t) para tomar las muestras del ciudadano (intervalo de tiempo
 % entre todos los pares de fotografías).
-dt = ____________; % en horas
+dt =sqrt(2* 10^-6); % en horas
 
 % Conversión a minutos
-dt = dt * 60;
+%dt = dt*60;
+dt =1;
 
 %% Ciudadanos
 ciudadano = @ciudadanoMareado;
 %ciudadano = @ciudadanoKane;
 
 %% Método de interpolación
-interpolacion = @interpolacionFragmentariaLineal;
-%interpolacion = @interpolacionSplines;
+%interpolacion = @interpolacionFragmentariaLineal;
+interpolacion = @interpolacionSplines;
 
 %% Obtención de muestras - Interpolación.
 
