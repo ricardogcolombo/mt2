@@ -4,8 +4,8 @@ format long;
 
 % Para integrar se usan los puntos {x_0, ..., x_n}. n determina la cantidad
 % de puntos. x_0 = 0. x_n = 1.
-n_trapecios = _____________;
-n_simpson = ___________;
+n_trapecios = 248;
+n_simpson = 10;
 
 % Función a integrar
 f = @(x) exp(-x.^2);
@@ -34,7 +34,7 @@ X = 0:h:1;
 F = f(X);
 
 % Integrar usando Simpson
-int_simpson = simpson(F,h)
+int_simpson = simpson(F,h);
 
 %% Resolver integral usando Matlab
 
