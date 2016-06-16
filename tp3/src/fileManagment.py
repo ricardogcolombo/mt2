@@ -12,7 +12,7 @@ def getDataFromFiles(anioInicial,cantAnios,airport):
     for i in range (0,cantAnios+1):
         print "Abriendo base " + str(filename) + ".."
         #  leo archivo, los archivos se nombran por anio.csv
-        ifile  = open(str(filename)+".csv", "rb")
+        ifile  = open("../data/"+str(filename)+".csv", "rb")
         reader = csv.reader(ifile)
 
         #  ACA SE APLICA EL FILTRO SI SE QUIERE USAR OTRO FILTRO CAMBIAR EL IF DENTRO DEL FOR
