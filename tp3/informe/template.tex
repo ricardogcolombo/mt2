@@ -36,7 +36,6 @@
 %\author{My Name\thanksref{ALL}\thanksref{myemail}}
 \author{Ricardo Colombo}
 \author{Diego Santos}
-\author{Luis Badel}
 \author{Erik Machicado}
 %\address{My Department\\ My University\\ My City, My Country}
 \address{Departamento de Computaci\'on\\ Universidad de Buenos Aires\\ C.A.B.A, Argentina}
@@ -71,18 +70,20 @@ Data Science, KPIs, Cuadrados Minimos Lineales (CML)
 \end{frontmatter}
 
 
-\section{Introduction}\label{intro}
+\section{Introducción}\label{intro}
 
+En la competitiva industria aeron\'autica la eficiencia de los procesos es vital para mantener la calidad del servicio. Cumplir con el servicio no es algo que solo dependa de la empresa que se contrata, ya que año a año la cantidad de vuelos se multipilica y muchas veces existen variables externas que terminen afectando la puntualidad y calidad del servicio. Por eso es importante contar con m\'etricas que analizen los eventos pasados buscando patrones e intentar prevenirlos o desminuir su impacto en el futuro. Estos indicadores son denominados \textit{Key Performance Indicators} (KPIs).
 
-La industria aeron\'autica , por su gran estructura organizativa, infraestructura, medidas de seguridad y costos operativos necesita llevar acabo evaluaciones  peri\'odicas sobre sus actividades con el fin de planificar sus operaciones diarias y a mas largo plazo. Una forma de llevar acabo es mediante los llamados \textit{Key Performance Indicators} (KPIs), que nos permiten medir el nivel de servicio, realizar diagn\'osticos de la situaci\'on, informar sobre los objetivos realizados. 
+En este trabajo estudiaremos factores que influyen en la organización de las salidas de vuelos para un aeropuerto en particular. Como se mencion\'o anteriormente estad\'isticamente, todos los años se registran mas vuelos para cualquier aeropuerto, esto requiere una sincronizaci\'on precisa de los tiempos que ocupa un avi\'on dentro del aeropuerto esperando para partir.
 
-Tomando como punto de partida los KPIs en el presente trabajo se propone analizar datos reales de vuelos realizados en USA , adem\'as se busca utilizar CML para identificar modelos que describan algunos comportamientos y evaluar su eficacia para realizar predicciones.
+Nuestro primer eje de estudio es la evoluci\'on en la cantidad de tr\'afico \'aereo de un aeropuerto, y como la cuota de \textit{market share} se fue concentrando con el correr del tiempo sobre las empresas l\'ideres del segmento. Lo interesante de esta evaluaci\'on es esperamos poder proyectar el crecimiento de tr\'afico sobre el aeropuerto a fin de poder satisfacer la creciente demanda.
 
+El segundo eje de estudio se centra en los factores estacionales que influyen en que un vuelo salga en tiempo y forma, es decir estudiaremos la cantidad de retrasos en partidas para un aeropuerto particular, con el objetivo de detectar las estaciones anuales donde el clima pueda afectar el funcionamiento del aeropuerto.
 
-\subsection{Primer eje}
-	probando
-\subsection{Segundo eje}
-	probando
+Luego relacionaremos los ejes de estudio para estudiar si es posible predecir temporadas de mayor retraso, esperando que sea de utilidad en la programaci\'on de los nuevos vuelos que se incorporán al mercado.
+
+Para la realización del trabajo analizaremos una base de datos reales correspondientes a vuelos realizados en Estados Unidos durante el per\'iodo 1987 - 2008. Y para poder relacionar los casos utilizaremos en los dos ejes el mismo aeropuerto.
+
 \section{Frontmatter}
 
 The biggest difference between a ``usual'' \LaTeX\ style such as
