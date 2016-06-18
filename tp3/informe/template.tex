@@ -40,21 +40,6 @@
 %\address{My Department\\ My University\\ My City, My Country}
 \address{Departamento de Computaci\'on\\ Universidad de Buenos Aires\\ C.A.B.A, Argentina}
 
-% \author{My Co-author\thanksref{coemail}}
-% \address{My Co-author's Department\\ My Co-author's University\\
-%    My Co-author's City, My Co-author's Country} \thanks[ALL]{Thanks
-%    to everyone who should be thanked} \thanks[myemail]{Email:
-%    \href{mailto:myuserid@mydept.myinst.myedu} {\texttt{\normalshape
-%    myuserid@mydept.myinst.myedu}}} \thanks[coemail]{Email:
-%    \href{mailto:couserid@codept.coinst.coedu} {\texttt{\normalshape
-%    couserid@codept.coinst.coedu}}}
-
-% \begin{abstract}
-% This is a short example to show the basics of using the ENDM style
-% macro files. Ample examples of how files should look may be found
-% among the published volumes of the series at the ENDM home page
-% ({\texttt{http://www.elsevier.com/locate/endm}})
-% \end{abstract}
 
 \begin{abstract}
 El trabajo consiste en aplicar t\'ecnicas de M\'etodos num\'ericos y 
@@ -70,7 +55,7 @@ Data Science, KPIs, Cuadrados Minimos Lineales (CML)
 \end{frontmatter}
 
 
-\section{Introducción}\label{intro}
+\section{Introducci\'on}\label{intro}
 
 %Contendrá una breve explicación de la base teórica que fundamenta los métodos involucrados en el trabajo, junto con los métodos mismos. No deben incluirse demostraciones de propiedades ni teoremas, ejemplos innecesarios, ni definiciones elementales (como por ejemplo la de matriz simétrica). En vez de definiciones básicas es conveniente citar ejemplos de bibliografía adecuada. Una cita vale más que mil palabras
 
@@ -87,17 +72,16 @@ El segundo eje de estudio se centra en los factores estacionales que influyen en
 Luego relacionaremos los ejes de estudio para estudiar si es posible predecir temporadas de mayor retraso, esperando que sea de utilidad en la programaci\'on de los nuevos vuelos que se incorporán al mercado.
 
 
+%breve explicacion de metodo
+\paragraph{Metodo de Minimos Cuadrados}
 
-	\paragraph{Metodo de Minimos Cuadrados}
-	%breve explicacion de metodo
-	El metodo de Cuadrados Minimos Lineales es un procedimiento para determinar la mejor linea que aproxima los datos, basicamente consiste en encontrar la mejor recta $y = ax + b$ dados los datos observados, los pares $(x_n, y_n)$ con $n \in \{1, \dots, N\}$. La generalizacion del metodo propone encontrar la funcion que mejor aproxima de la forma $y = a_1f_1(x) + \dots + a_Kf_K(x)$ y que no es necesario que las funciones $f$ sean lineales pero si que $y$ sea una combinacion lineal de ellas.
+Minimos cuadrados es una t\'enica de an\'a num\'erico, en la que, dados un conjunto de pares intenta encontrar la funci\'on que mejor aproxime a los datos de acuerdo con el criterio de Error cuadr\'atico medio. En su forma m\'as simple, intenta minimizar la suma de los cuadrados de las diferencias entre los puntos generados por la funci\'on de aproximaci\'on y los que corresponden a los datos. CML es el caso en el que se usa a las rectas para la aproximaci\'on osea $y = ax + b$, adem\'as la generalizaci\'on del m\'etodo propone encontrar la funci\'on que mejor aproxima de la forma $y = a_1f_1(x) + \dots + a_Kf_K(x)$ y que no es necesario que las funciones $f$ sean lineales pero si que $y$ sea una combinaci\'on lineal de ellas. Para mas informacion consultar  \cite{bf} (seccion 8.1)
 
 \section{Desarrollo}
 	%Deben explicarse los métodos numéricos que utilizaron y su aplicación al problema concreto involucrado en el trabajo práctico. Se deben mencionar los pasos que siguieron para implementar los algoritmos, las dificultades que fueron encontrando y la descripción de cómo las fueron resolviendo. Explicar también cómo fueron planteadas y realizadas las mediciones experimentales. Los ensayos fallidos, hipótesis y conjeturas equivocadas, experimentos y métodos malogrados deben figurar en esta sección, con una breve explicación de los motivos de estas fallas (en caso de ser conocidas).
 
-	%Para reducir el set de datos que se analizan en el estudio, las predicciones se haran apartir de los datos de aeropuerto JFK del a\~{n}o 2004 al 2007 para predecir sobre el 2008.
 
-	Para la realización del trabajo analizaremos una base de datos reales correspondientes a vuelos realizados en Estados Unidos durante el per\'iodo 1987 - 2008. Y para poder relacionar los casos utilizaremos en los dos ejes el mismo aeropuerto.	Ademas al momento de analizar que funciones utilizar en el metodo, como primer opcion se propuso a los polinomios, pues estos fueron estudiados y usados en clase en la introduccion del metodo. Posteriormente se plateo el uso de senos y cosenos, ya que al ser funciones periodicas podrian presentar alguna ventaja en la prediccion.
+	Para la realización del trabajo analizaremos un set de datos reales correspondientes a vuelos realizados en Estados Unidos durante el per\'iodo 1987 - 2008. Y para poder relacionar los casos utilizaremos en los dos ejes el mismo aeropuerto.	Ademas al momento de analizar que funciones utilizar en el metodo, como primer opcion se propuso a los polinomios, pues estos fueron estudiados y usados en clase en la introduccion del metodo. Posteriormente se plateo el uso de senos y cosenos, ya que al ser funciones periodicas podrian presentar alguna ventaja en la prediccion. 
 
 	\paragraph{Cross Validation}
 	Para evaluar los resultados de la prediccion y se siguien los siguientes pasos:
@@ -197,8 +181,8 @@ The criteria are illustrated by the examples below.
 \bibitem{cy} Civin, P., and B. Yood, \emph{Involutions on Banach
     algebras}, Pacific J. Math. \textbf{9} (1959), 415--436.
   
-\bibitem{cp} Clifford, A. H., and G. B. Preston, ``The Algebraic
-  Theory of Semigroups,'' Math. Surveys \textbf{7}, Amer. Math. Soc.,
+\bibitem{bf} Burden, R. L., and J. D. Faires, ``An\'alisis numérico,
+'' Math. Surveys \textbf{7}, Amer. Math. Soc.,
   Providence, R.I., 1961.
   
 \bibitem{f} Freyd, Peter, Peter O'Hearn, John Power, Robert Tennent
