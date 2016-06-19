@@ -40,6 +40,21 @@
 %\address{My Department\\ My University\\ My City, My Country}
 \address{Departamento de Computaci\'on\\ Universidad de Buenos Aires\\ C.A.B.A, Argentina}
 
+% \author{My Co-author\thanksref{coemail}}
+% \address{My Co-author's Department\\ My Co-author's University\\
+%    My Co-author's City, My Co-author's Country} \thanks[ALL]{Thanks
+%    to everyone who should be thanked} \thanks[myemail]{Email:
+%    \href{mailto:myuserid@mydept.myinst.myedu} {\texttt{\normalshape
+%    myuserid@mydept.myinst.myedu}}} \thanks[coemail]{Email:
+%    \href{mailto:couserid@codept.coinst.coedu} {\texttt{\normalshape
+%    couserid@codept.coinst.coedu}}}
+
+% \begin{abstract}
+% This is a short example to show the basics of using the ENDM style
+% macro files. Ample examples of how files should look may be found
+% among the published volumes of the series at the ENDM home page
+% ({\texttt{http://www.elsevier.com/locate/endm}})
+% \end{abstract}
 
 \begin{abstract}
 El trabajo consiste en aplicar t\'ecnicas de M\'etodos num\'ericos y 
@@ -63,11 +78,11 @@ En la competitiva industria aeron\'autica la eficiencia de los procesos es vital
 
 En este trabajo estudiaremos factores que influyen en la organización de las salidas de vuelos para un aeropuerto en particular. Como se mencion\'o anteriormente estad\'isticamente, todos los años se registran mas vuelos para cualquier aeropuerto, esto requiere una sincronizaci\'on precisa de los tiempos que ocupa un avi\'on dentro del aeropuerto esperando para partir.
 
-Tomando como punto de partida los KPIs, en este trabajo se propone analizar datos reales de vuelos realizados en USA , adem\'as se busca utilizar CML para identificar modelos que describan algunos comportamientos y evaluar su eficacia para realizar predicciones. Para ello la catedra propuso que se escoja dos ejes de estudios a elecci\'on y se evalue experimentalmente
+Para la realización del trabajo analizaremos un set de datos reales correspondientes a vuelos realizados en Estados Unidos durante el per\'iodo 1987 - 2008. Y para poder relacionar los casos utilizaremos en los dos ejes el mismo aeropuerto.
 
 Nuestro primer eje de estudio es la evoluci\'on en la cantidad de tr\'afico \'aereo de un aeropuerto, y como la cuota de \textit{market share} se fue concentrando con el correr del tiempo sobre las empresas l\'ideres del segmento. Lo interesante de esta evaluaci\'on es esperamos poder proyectar el crecimiento de tr\'afico sobre el aeropuerto a fin de poder satisfacer la creciente demanda.
 
-El segundo eje de estudio se centra en los factores estacionales que influyen en que un vuelo salga en tiempo y forma, es decir estudiaremos la cantidad de retrasos en partidas para un aeropuerto particular, con el objetivo de detectar las estaciones anuales donde el clima pueda afectar el funcionamiento del aeropuerto.
+El segundo eje de estudio se centra en los factores estacionales que influyen en un vuelo salga en tiempo y forma, es decir estudiaremos la cantidad de retrasos en partidas para un aeropuerto particular, con el objetivo de detectar las estaciones anuales donde el clima pueda afectar el funcionamiento del aeropuerto.
 
 Luego relacionaremos los ejes de estudio para estudiar si es posible predecir temporadas de mayor retraso, esperando que sea de utilidad en la programaci\'on de los nuevos vuelos que se incorporán al mercado.
 
@@ -80,42 +95,38 @@ Minimos cuadrados es una t\'enica de an\'a num\'erico, en la que, dados un conju
 \section{Desarrollo}
 	%Deben explicarse los métodos numéricos que utilizaron y su aplicación al problema concreto involucrado en el trabajo práctico. Se deben mencionar los pasos que siguieron para implementar los algoritmos, las dificultades que fueron encontrando y la descripción de cómo las fueron resolviendo. Explicar también cómo fueron planteadas y realizadas las mediciones experimentales. Los ensayos fallidos, hipótesis y conjeturas equivocadas, experimentos y métodos malogrados deben figurar en esta sección, con una breve explicación de los motivos de estas fallas (en caso de ser conocidas).
 
+	Como se dijo previamente, comenzamos con un set de datos relacionados a los vuelos realizados en Estados Unidos entre 1987 y 2008 (descripto en \cite{d}), luego seleccionamos aquellos datos relacionados con el aeropuerto JFK, entonces propucimos como aspectos a analizar, ver el numero de vuelos con Weather Delay mayor a 15min por mes y la cantidad de vuelos por mes de un conjunto aerolineas de similares caracteristicas (Delta, American y United). Posteriormente con los datos de esos ejes de estudio ya obtenidos para un periodo de tiempo vamos a aplicar el metodo propuesto por la catedra, dicho metodo encontrara la combinacion lineal de funciones (propuestas por el grupo) que mejor aproxime a los datos, con esta combinacion de funciones veremos si tambien aproxima a los resultados de los ejes de estudio para un periodo de tiempo posterior
 
-	Para la realización del trabajo analizaremos un set de datos reales correspondientes a vuelos realizados en Estados Unidos durante el per\'iodo 1987 - 2008. Y para poder relacionar los casos utilizaremos en los dos ejes el mismo aeropuerto.	Ademas al momento de analizar que funciones utilizar en el metodo, como primer opcion se propuso a los polinomios, pues estos fueron estudiados y usados en clase en la introduccion del metodo. Posteriormente se plateo el uso de senos y cosenos, ya que al ser funciones periodicas podrian presentar alguna ventaja en la prediccion. 
-
-	\paragraph{Cross Validation}
-	Para evaluar los resultados de la prediccion y se siguien los siguientes pasos:
+	Para evitar caer en el conocido overfitting elegiremos distintos subconjuntos del trainig del training para hallar los coeficientes de la aproximacion lineal.
 
 
-\section{Experimentacion}
+	Al momento de analizar que funciones utilizar en el metodo, como primer opcion se propuso a los polinomios, pues estos fueron estudiados y usados en clase en la introduccion del metodo. Posteriormente se plateo el uso de senos y cosenos, ya que al ser funciones periodicas podrian presentar alguna ventaja si los datos presentan patrones que se repiten varias veces.
+
+\section{Resultados}
+
+	\begin{center}
+	\includegraphics[scale=0.8]{imagenes/delaysPolinomio.png}
+	\end{center}
+	%porque parece la aproximacion tan lineal?
+
+	
+
+	\begin{center}
+	\includegraphics[scale=0.5]{imagenes/polinomioysenos.png}
+	\end{center}
+
+	\begin{center}
+	\includegraphics[scale=0.8]{imagenes/delays2008.png}
+	\end{center}
+
+\section{Discusi\'on}
 	%Hablar de las limintaciones de cada tipo de funcion 
 	Durante la experimentacion con la familias de polinomios usadas para el metodo se encontro que si bien en los meses tomados como training se comportaban bastante bien afuera de ese periodo crecia constantemente. 
 	%como se muestr acontinuacion
-	%porque parece la aproximacion tan lineal?
-	\begin{center}
-	\includegraphics{imagenes/delaysPolinomio.png}
-	\end{center}
 
-% \begin{center}
-% \includegraphics[height=2.8in,width=2.8in]{chess.eps}
-% \end{center}
+\section{Conclusiones}
+	%Hablar sobre la funcion final que escogimos y como reune los que queremos de la dos funciones
 
-
-
-% \begin{center}
-% \includegraphics[height=3.5in,width=3in]{tigre.eps}
-% \end{center}
-
-\paragraph{Using ENDM Macros with Mac OS X}
-
-Clearly, if your file does not require \texttt{.eps} or other
-PostScript files, then you can create the required \texttt{.pdf} file
-using any of the standard \TeX\ implementations for the Macintosh. If
-you do need to include PostScript files and if you are using \TeX Shop,
-then you can specify to use dvips and Ghostview in processing your
-file, and then you can apply \texttt{ps2pdf} to create the needed
-\texttt{.pdf} file. Alternatively, the Mac OS X operating system is
-based on UNIX, so it supports the use of te\TeX\ as described above.
 
 
 \section{Summary and Remarks}
@@ -181,15 +192,13 @@ The criteria are illustrated by the examples below.
 \bibitem{cy} Civin, P., and B. Yood, \emph{Involutions on Banach
     algebras}, Pacific J. Math. \textbf{9} (1959), 415--436.
   
-\bibitem{bf} Burden, R. L., and J. D. Faires, ``An\'alisis numérico,
+\bibitem{bf} Burden, R. L., and J. D. Faires, ``An\'alisis num\'erico,
 '' Math. Surveys \textbf{7}, Amer. Math. Soc.,
   Providence, R.I., 1961.
   
-\bibitem{f} Freyd, Peter, Peter O'Hearn, John Power, Robert Tennent
-  and Makoto Takeyama, \emph{Bireflectivity}, Electronic Notes in
-  Theoretical Computer Science {\bf 1} (1995), URL:
-  \href{http://www.elsevier.com/locate/entcs/volume1.html}
-  {\texttt{http://www.elsevier.com/locate/entcs/volume1.html}}.
+\bibitem{d} ASA Section on Statistical Computing. 2009 data expor competition, URL:
+  \href{http://stat-computing.org/dataexpo/2009/the-data.html}
+  {\texttt{http://stat-computing.org/dataexpo/2009/the-data.html}}.
   
 \bibitem{em2} Easdown, D., and W. D. Munn, \emph{Trace functions on
     inverse semigroup algebras}, U. of Glasgow, Dept. of Math.,
