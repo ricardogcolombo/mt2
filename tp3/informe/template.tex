@@ -97,19 +97,24 @@ Minimos cuadrados es una t\'enica de an\'a num\'erico, en la que, dados un conju
 
 	Como se dijo previamente, comenzamos con un set de datos relacionados a los vuelos realizados en Estados Unidos entre 1987 y 2008 (descripto en \cite{d}), luego seleccionamos aquellos datos relacionados con el aeropuerto JFK, entonces propucimos como aspectos a analizar, ver el numero de vuelos con Weather Delay mayor a 15min por mes y la cantidad de vuelos por mes de un conjunto aerolineas de similares caracteristicas (Delta, American y United). Posteriormente con los datos de esos ejes de estudio ya obtenidos para un periodo de tiempo vamos a aplicar el metodo propuesto por la catedra, dicho metodo encontrara la combinacion lineal de funciones (propuestas por el grupo) que mejor aproxime a los datos, con esta combinacion de funciones veremos si tambien aproxima a los resultados de los ejes de estudio para un periodo de tiempo posterior
 
-	Para evitar caer en el conocido overfitting elegiremos distintos subconjuntos del trainig del training para hallar los coeficientes de la aproximacion lineal.
+	Para evitar caer en el conocido overfitting elegiremos distintos subconjuntos del training para hallar los coeficientes de la aproximacion lineal.
 
 
-	Al momento de analizar que funciones utilizar en el metodo, como primer opcion se propuso a los polinomios, pues estos fueron estudiados y usados en clase en la introduccion del metodo. Posteriormente se plateo el uso de senos y cosenos, ya que al ser funciones periodicas podrian presentar alguna ventaja si los datos presentan patrones que se repiten varias veces.
+	Al momento de analizar que funciones utilizar en el metodo, como primer opcion se propuso a los polinomios, pues estos fueron estudiados y usados en clase en la introduccion del metodo. `riormente se plateo el uso de senos y cosenos, ya que al ser funciones periodicas podrian presentar alguna ventaja si los datos presentan patrones que se repiten varias veces.
+
+
 
 \section{Resultados}
 
 	\begin{center}
-	\includegraphics[scale=0.8]{imagenes/delaysPolinomio.png}
+	\caption{figura 1}
+	\includegraphics[scale=0.7]{imagenes/delaysPolinomio.png}
 	\end{center}
-	%porque parece la aproximacion tan lineal?
 
-	
+	\begin{center}
+	\caption{figura 2}
+	\includegraphics[scale=0.6]{imagenes/senosCosenos.png}
+	\end{center}
 
 	\begin{center}
 	\includegraphics[scale=0.5]{imagenes/polinomioysenos.png}
@@ -121,76 +126,19 @@ Minimos cuadrados es una t\'enica de an\'a num\'erico, en la que, dados un conju
 
 \section{Discusi\'on}
 	%Hablar de las limintaciones de cada tipo de funcion 
-	Durante la experimentacion con la familias de polinomios usadas para el metodo se encontro que si bien en los meses tomados como training se comportaban bastante bien afuera de ese periodo crecia constantemente. 
-	%como se muestr acontinuacion
+	Durante la experimentacion con la familias de polinomios usadas para el metodo se encontro que si bien en los meses de training se aproximaba bien afuera de ese periodo se aleja de los datos reales, como esta ilustrado en el grafico de la figura 1 que utiliza los datos del periodo 2004-2007 para predecir 2008 (apartir del mes 48) despues de discutirlo entendimos que la cantida de picos que tiene un polinomio esta limitada por el grado del mismo, pues son las raices del polinomio derivado y estas a lo sumo son tantas como el grado del polinomio derivado por eso fuera del periodo usado como training no se generan nuevos picos apesar que los datos reales si los tienen. Cuando usamos senos y cosenos como familias de funciones para el metodo nos encontramos con que estas estaban acotadas como lo estan los senos y cosenos, y no podian crecer si los datos lo hacian como lo muestra la figura 2
+
+
+
+
 
 \section{Conclusiones}
 	%Hablar sobre la funcion final que escogimos y como reune los que queremos de la dos funciones
 
 
 
-\section{Summary and Remarks}
-
-The ENDM macro package is relatively easy to use and provides a
-uniform layout for all the papers that appear in ENDM.
-
-\paragraph{Assigning Volume Numbers}
-
-An additional point worth mentioning is that ENDM has moved to
-\emph{ScienceDirect}, Elsevier's main platform for publishing
-electronic series. Because \emph{ScienceDirect} cannot easily
-accommodate changes to published material, the \emph{Proceedings}
-must be entirely ready before they can be published. Volume numbers
-will therefore not be assigned for the \emph{Proceedings} until the
-final versions of all papers are in.
-
-\paragraph{Copyright Transfer Forms}
-
-Due to the move to \emph{ScienceDirect}, the corresponding author of
-each paper published in ENDM must submit a signed Copyright Transfer
-Form to Elsevier in order for their paper to be published. A copy of
-this form will be sent to each author. Note that the publication of
-an abstract or extended abstract in ENDM will not restrict the
-author(s) from publishing a full-length article on the same topic and
-with the same title in another journal (possibly with another
-publisher). Details about the copyright agreement specifying the exact
-rights of the authors and the rights of Elsevier are available at
-\href{http://authors.elsevier.com/PublisherInfoDetail.html?dc=AGI}
-{Elsevier's Author Gateway}.
-
-
-\section{Bibliographical references}\label{references}
-
-ENDM employs the \texttt{plain} style of bibliographic references in
-which references are numbered sequentially and listed in alphabetical
-order according to the first author's last name. Please utilize this
-style. We have a Bib\TeX\ style file, for those who wish to use it.
-It is the file \texttt{endm.bst} which is included in this package.
-The basic rules we have employed are the following:
-\begin{itemize}
-\item Authors' names should be listed in alphabetical order, with the
-first author's last name listed first followed by initials or first
-name, and with the other authors' names listed as \emph{first name,
-last name}.
-\item Titles of articles in journals should be in \emph{emphasized}
-font.
-\item Titles of books, monographs, etc.\ should be in quotations.
-\item Journal names should be in plain roman type.
-\item Journal volume numbers should be in boldface, immediately
-followed by the year of publication enclosed in parentheses in
-roman type.
-\item References to URLs on the net should be ``active'' and the URL
-itself should be in {\tt typewriter} font.
-\item Articles should include page numbers.
-\end{itemize}
-
-The criteria are illustrated by the examples below.
-
 
 \begin{thebibliography}{10}\label{bibliography}
-
-\bibitem{cy} Civin, P., and B. Yood, \emph{Involutions on Banach
-    algebras}, Pacific J. Math. \textbf{9} (1959), 415--436.
   
 \bibitem{bf} Burden, R. L., and J. D. Faires, ``An\'alisis num\'erico,
 '' Math. Surveys \textbf{7}, Amer. Math. Soc.,
@@ -199,22 +147,6 @@ The criteria are illustrated by the examples below.
 \bibitem{d} ASA Section on Statistical Computing. 2009 data expor competition, URL:
   \href{http://stat-computing.org/dataexpo/2009/the-data.html}
   {\texttt{http://stat-computing.org/dataexpo/2009/the-data.html}}.
-  
-\bibitem{em2} Easdown, D., and W. D. Munn, \emph{Trace functions on
-    inverse semigroup algebras}, U. of Glasgow, Dept. of Math.,
-  preprint 93/52.
-
-\bibitem{r} Roscoe, A. W., ``The Theory and Practice of Concurrency,''
-  Prentice Hall Series in Computer Science, Prentice Hall Publishers,
-  London, New York (1198), 565pp. With associated web site\\  
-  \href{http://www.comlab.ox.ac.uk/oucl/publications/books/concurrency/}
-  {\texttt{http://www.comlab.ox.ac.uk/oucl/publications/books/concurrency/}}.
-  
-\bibitem{s} Shehadah, A. A., ``Embedding theorems for semigroups with
-  involution, `` Ph.D.  thesis, Purdue University, Indiana, 1982.
-  
-\bibitem{w} Weyl, H., ``The Classical Groups,'' 2nd Ed., Princeton U.
-  Press, Princeton, N.J., 1946.
 
 \end{thebibliography}
 
