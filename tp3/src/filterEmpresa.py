@@ -4,7 +4,7 @@ import numpy as np
 def getDataByEmpresa(anioInicial,empresa,airport):
     result= []
     filename = anioInicial
-    ifile  = open(str(filename)+".csv", "rb")
+    ifile  = open("../data/"+str(filename)+".csv", "rb")
     reader = csv.reader(ifile)
 
     for row in reader:

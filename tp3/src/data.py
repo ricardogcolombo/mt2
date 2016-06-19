@@ -4,11 +4,11 @@ from filterEmpresa import *
 import numpy
 import csv
 
-anio =1987
-cant = 1
+anio =2008
+cant = 0
 final = anio+cant
 airport = "JFK"
-empresa = "AA"
+empresa = "DL"
 for i in range(0,cant+1):
     print "Procesando archivo: "+ str(anio)
     ofile  = str(anio)+ '-' + str(empresa) + '.csv'

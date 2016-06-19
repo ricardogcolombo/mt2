@@ -4,7 +4,7 @@ import matplotlib as mp
 import matplotlib.pyplot as plt
 import math
 import json
-from aproximacionesDelay import *
+from aproximacionesEmpresas import *
 
 def getSolution(anioInicial,cantAniosArchivos):
     metodo = 1
