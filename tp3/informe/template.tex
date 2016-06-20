@@ -127,7 +127,7 @@ Para evitar este problema intentamos aproximar mediante funciones trigonom\'etri
 	\caption{suma de senos y cosenos}
 	\includegraphics[scale=0.6]{imagenes/senosCosenos.png}
 	\end{center}
-	
+
 Como se puede ver en el siguiente gr\'afico, el problema de utilizar estas funciones es que se mantienen dentro de esas cotas en l\'inea recta, con lo cual si nuestra funci\'on a aproximar crece levemente durante toda su grafica no vamos a poder aproximarla bien.
 Por lo tanto decidimos hacer una combinaci\'on de ambas funciones para poder aprovechar ambas necesidades que ten\'iamos, que la misma no tienda a infinito luego de los meses de entrenamiento y que en cierta forma podamos captar los picos de la funci\'on a aproximar, con lo que tuvimos una mejor aproximaci\'on.
 
@@ -145,11 +145,38 @@ Si vemos m\'as en detalle lo que es la aproximaci\'on para 2008 notamos que no t
 
 Resultando dicha funci\'on $a*sin(x)^5+b*sin(x^2)^4+c*sin(x^2)^3+d*sin(x^2)^2+e*sin(x^2)+f$ y la combinacion de 20 ejecuciones para el cross validation y 24 meses de training.
 
-\subsection{Crecimiento de vuelos}
+\section{Comparaci\'on entre vuelos de Delta - American Airlines}
 
-Luego de analizar los resultados vemos que hay un crecimiento relativamente lineal de la cantidad de vuelos, con excepciones donde crece de forma exponencial.
+Luego de analizar los datos de vuelo reales de las empresas, comenzamos con la b\'usqueda de funciones que nos permitan predecir de forma relativamente certera los valores reales.
 
-Además con el correr de los años la cuota de mercado de ambas empresas crece, pero una m\'as que la otra.
+Como en el caso anterior empezamos probando con funciones polin\'omicas, y con el mismo resultado observamos que para obtener predicciones mejores requeriamos una combinaci\'on de funciones trigonom\'etricas y polin\'omincas.
+
+Para la construcci\'on de nuestra predicci\'on tomamos como set de entrenamiento los a\~nos 2004-2007 y realizamos una proyecci\'on sobre el a\~no 2008 comparando los datos reales con la proyecci\'on obtenida por nuestra funci\'on.
+
+En el caso de la empresa \textit{American Airlines} la funci\'on que hacia mejor fit sobre el set de datos fue la dada por:
+x_0 * sen(mes)^5 + x_1 * sen(mes^2)^4 + x_2 * sen(mes^2)^3 + x_3 * sen(mes^2)^2 + x_4 * mes + x_5
+
+Presentamos los resultados obtenidos para la proyecci\'on del 2008 en el siguiente gr\'afico
+
+\begin{center}
+\caption{figura 1}
+\includegraphics[scale=0.5]{imagenes/AA.png}
+\end{center}
+
+En el gr\'afico se puede observar que la funci\'on elegida se comporto de forma similar a la funcion dada por los valores reales, pero de forma mas suave. Es decir, la funci\'on propuesta no es sensible a los valores outliers que se pueden dar por picos de baja o alta demanda, por lo que en meses promedios acompa\~nara la pendiente de los datos reales, pero en mese excepcionales quedara desfazada para ir reacomodandose en el correr del tiempo.
+
+Y para el caso de la empresa \textit{Delta} la funci\'on que hacia mejor fit sobre el set de datos fue la dada por:
+x_0 * tan(mes^6)^4 + x_1 * sen(mes^8) + x_2 * sen(mes^2) + x_3 * sen(mes) +  x_4
+
+
+\begin{center}
+\caption{figura 1}
+\includegraphics[scale=0.5]{imagenes/DL.png}
+\end{center}
+
+En este gr\'afico se puede observar mas el efecto de haber tomado el la funci\'on seno en varios de los coeficientes. Los saltos en la venta de pasajes son suavizados pero siguiendo la misma tendencia. Tomamos la tangente para el coeficiente asociado al x_0 porque nos permit\'ia poder representar mejor el crecimiento de de los primeros meses, sin usar una funci\'on exponencial, que en el largo plazo ser\'ia contraproducente ya que el creciemiento de ventas exponencial nunca podr\'ia ser sostenido.
+
+
 
 \section{Discusi\'on}
 	%Hablar de las limintaciones de cada tipo de funcion 
