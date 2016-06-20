@@ -1,6 +1,8 @@
 \documentclass{endm}
 \usepackage{endmmacro}
 \usepackage{graphicx}
+\usepackage[spanish]{babel}
+
 
 % The following is enclosed to allow easy detection of differences in
 % ascii coding.
@@ -60,7 +62,7 @@
 El trabajo consiste en aplicar t\'ecnicas de M\'etodos num\'ericos y 
 Data Science, en particular Regresiones Lineales y Cuadrados M\'inimos, 
 a un gran conjunto de datos reales, buscando identificar modelos 
-capaces de predecir comportamientos .
+capaces de predecir comportamientos.
 \end{abstract}
 
 \begin{keyword}
@@ -76,13 +78,13 @@ Data Science, KPIs, Cuadrados Minimos Lineales (CML)
 
 En la competitiva industria aeron\'autica la eficiencia de los procesos es vital para mantener la calidad del servicio. Cumplir con el servicio no es algo que solo dependa de la empresa que se contrata, ya que a\~no a a\~no la cantidad de vuelos se multipilica y muchas veces existen variables externas que terminen afectando la puntualidad y calidad del servicio. Por eso es importante contar con m\'etricas que analizen los eventos pasados buscando patrones e intentar prevenirlos o desminuir su impacto en el futuro. Estos indicadores son denominados \textit{Key Performance Indicators} (KPIs).
 
-En este trabajo estudiaremos factores que influyen en la organizaci\'on de las salidas de vuelos para un aeropuerto en particular. Como se mencion\'o anteriormente estad\'isticamente, todos los a\~nos se registran mas vuelos para cualquier aeropuerto, esto requiere una sincronizaci\'on precisa de los tiempos que ocupa un avi\'on dentro del aeropuerto esperando para partir.
+En este trabajo estudiaremos factores que influyen en la organizaci\'on de las salidas de vuelos para un aeropuerto en particular. Como se mencion\'o anteriormente, estad\'isticamente todos los a\~nos se registran mas vuelos para cualquier aeropuerto, esto requiere una sincronizaci\'on precisa de los tiempos que ocupa un avi\'on dentro del aeropuerto esperando para partir.
 
-Nuestro primer eje de estudio es la evoluci\'on en la cantidad de tr\'afico \'aereo de un aeropuerto, y como la cuota de \textit{market share} se fue concentrando con el correr del tiempo sobre las empresas l\'ideres del segmento. Lo interesante de esta evaluaci\'on es esperamos poder proyectar el crecimiento de tr\'afico sobre el aeropuerto a fin de poder satisfacer la creciente demanda.
+Nuestro primer eje de estudio se centra en los factores estacionales que influyen en un vuelo salga en tiempo y forma, es decir estudiaremos la cantidad de retrasos en partidas para un aeropuerto particular, con el objetivo de detectar las estaciones anuales donde el clima pueda afectar el funcionamiento del aeropuerto.
 
-El segundo eje de estudio se centra en los factores estacionales que influyen en un vuelo salga en tiempo y forma, es decir estudiaremos la cantidad de retrasos en partidas para un aeropuerto particular, con el objetivo de detectar las estaciones anuales donde el clima pueda afectar el funcionamiento del aeropuerto.
+Nuestro segundo eje de estudio es la evoluci\'on en la cantidad de tr\'afico \'aereo de un aeropuerto, y como la cuota de \textit{market share} se fue concentrando con el correr del tiempo sobre las empresas l\'ideres del segmento. Lo interesante de esta evaluaci\'on es esperamos poder proyectar el crecimiento de tr\'afico sobre el aeropuerto a fin de poder satisfacer la creciente demanda.
 
-Para la realización del trabajo analizaremos un set de datos reales correspondientes a vuelos realizados en Estados Unidos durante el per\'iodo 1987 - 2008. Y para poder relacionar los casos utilizaremos en los dos ejes el mismo aeropuerto.
+Para la realización del trabajo analizaremos un set de datos reales correspondientes a vuelos realizados en Estados Unidos durante el per\'iodo 2004 - 2008 dado a que no habia datos para años anteriores a 2004 en relacion a nuestras KPI's y la busqueda de encontrar una relacion entre ambos ejes de estudio.
 
 Luego relacionaremos los ejes de estudio para estudiar si es posible predecir temporadas de mayor retraso, esperando que sea de utilidad en la programaci\'on de los nuevos vuelos que se incorporán al mercado.
 
@@ -90,53 +92,64 @@ Luego relacionaremos los ejes de estudio para estudiar si es posible predecir te
 %breve explicacion de metodo
 \paragraph{Metodo de Minimos Cuadrados}
 
-Minimos cuadrados es una t\'ecnica de an\'a num\'erico, en la que, dados un conjunto de pares intenta encontrar la funci\'on que mejor aproxime a los datos de acuerdo con el criterio de Error cuadr\'atico medio. En su forma m\'as simple, intenta minimizar la suma de los cuadrados de las diferencias entre los puntos generados por la funci\'on de aproximaci\'on y los que corresponden a los datos. CML es el caso en el que se usa a las rectas para la aproximaci\'on osea $y = ax + b$, adem\'as la generalizaci\'on del m\'etodo propone encontrar la funci\'on que mejor aproxima de la forma $y = a_1f_1(x) + \dots + a_Kf_K(x)$ y que no es necesario que las funciones $f$ sean lineales pero si que $y$ sea una combinaci\'on lineal de ellas. Para mas informacion consultar  \cite{bf} (seccion 8.1)
+Minimos cuadrados es una t\'ecnica de an\'alisis num\'erico, en la que, dados un conjunto de pares ordenados intenta encontrar la funci\'on que mejor aproxime a los datos de acuerdo con el criterio de Error cuadr\'atico medio. En su forma m\'as simple, intenta minimizar la suma de los cuadrados de las diferencias entre los puntos generados por la funci\'on de aproximaci\'on y los que corresponden a los datos. CML es el caso en el que se usa a las rectas para la aproximaci\'on osea $y = ax + b$, adem\'as la generalizaci\'on del m\'etodo propone encontrar la funci\'on que mejor aproxima de la forma $y = a_1f_1(x) + \dots + a_Kf_K(x)$ y que no es necesario que las funciones $f$ sean lineales pero si que $y$ sea una combinaci\'on lineal de ellas. Para mas informacion consultar  \cite{bf} (seccion 8.1)
 
 \section{Desarrollo}
 	%Deben explicarse los métodos numéricos que utilizaron y su aplicación al problema concreto involucrado en el trabajo práctico. Se deben mencionar los pasos que siguieron para implementar los algoritmos, las dificultades que fueron encontrando y la descripción de cómo las fueron resolviendo. Explicar también cómo fueron planteadas y realizadas las mediciones experimentales. Los ensayos fallidos, hipótesis y conjeturas equivocadas, experimentos y métodos malogrados deben figurar en esta sección, con una breve explicación de los motivos de estas fallas (en caso de ser conocidas).
 
-En an\'alisis de las m\'etricas que proponemos esta centradado en el aeropueto \textit{JFK}. Tomandolo como referencia en nuestro primer eje estudiaremos la evoluci\'on de la cantidad de vuelos de ese aeropuerto, y veremos cual es la cuota de mercado de las dos empresas reconocidas mundialemente \textit{Delta} y \textit{United Airlines} y su evoluci\'on a traves de los a\~nos. En el segundo eje estudiaremos la cantidad de demoras que se producen por condiciones climaticas. Tomando como definici\'on de demora, un vuelo que sale al menos 15 minutos despues de su horario programado. El objetivo de este caso es identificar temporadas c\'iciclas donde las condiciones clim\'aticas afectan el comportamiento normal del aeropuerto.
+Para la simplificaci\'on del problema y dado a que es replicable en otros aeropuertos optamos por centrarnos en el aeropueto \textit{JFK} debido a que hoy d\'ia es uno de los aeropuertos que m\'as movimiento presenta por la importancia que presenta la ciudad donde est\'a ubicado y sabiendo que tiene estaciones invernales marcadas a fines de a\˜no que afectar\'ian los vuelos ayudandonos en nuestro analisis.  Como primer eje estudiaremos la cantidad de demoras que se producen por condiciones clim\'aticas. Tomando como definici\'on de demora, un vuelo que sale al menos 15 minutos despues de su horario programado ademas de que este tenga una demora debido al clima. El objetivo de este caso es identificar temporadas c\'iciclas donde las condiciones clim\'aticas afectan el comportamiento normal del aeropuerto. Luego como segundo eje estudiaremos la evoluci\'on de la cantidad de vuelos de ese aeropuerto,entre dos de las empresas mas reconocidas mundialemente \textit{Delta} y \textit{United Airlines} y con mayor presencia de vuelos viendo su evoluci\'on a traves de los a\~nos.
 
-Para finalizar intentaremos probar si hay alguna relaci\'on entre el crecimiento de los vuelos y la cantidad de demoras estacionales generadas por el clima.
+Para finalizar intentaremos probar si hay alguna relaci\'on entre el crecimiento de los vuelos y la cantidad de demoras estacionales generadas por el clima, una primera hip\'otesis que tenemos es que al aumentar el trafico aéreo la demora por clima deber\'ia aumentar pese a que no tienen relaci\'on directa creemos que cuando se demora un avi\'on por clima arrastra esta demora a los dem\'as.
 
-Para la realizaci\'on del estudio implementamos una serie de algoritmos utilizando el lenguaje \textit{Python}. En la primer etapa procesamos el data set inicial filtrando los registros que nos interesa estudiar y los agrupamos por mes. Luego para entrenar nuestra soluci\'on propuesta tomamos un subconjunto de meses de los datos conocidos de forma random, ejecutamos el proceso para una cantidad \textit{n} tambi\'en random y validamos los resultados obtenidos utilizando la t\'ecnica de \textit{Coss-Validation}. Qued\'andonos con los que min\'imizen el error. Para evitar caer en el conocido overfitting elegiremos distintos subconjuntos del training para hallar los coeficientes de la aproximacion lineal.
+Para la realizaci\'on del estudio implementamos una serie de algoritmos utilizando el lenguaje \textit{Python}. En la primer etapa procesamos el data set inicial filtrando los registros que nos interesa estudiar y los agrupamos por mes. Luego para entrenar nuestra soluci\'on propuesta tomamos un subconjunto de meses de los datos conocidos hasta encontrar el que nos de la mejor aproximacion, ejecutamos el proceso para una cantidad \textit{n} tambi\'en buscando la mejor combinacion con los meses elegidos y validamos los resultados obtenidos utilizando la t\'ecnica de \textit{Coss-Validation}. Qued\'andonos con los que min\'imizen el error. Para evitar caer en el conocido overfitting elegiremos distintos subconjuntos del training para hallar los coeficientes de la aproximacion lineal, para ambos entrenamientos usamos el periodo 2004-2007 para entrenamiento y test,  luego realizamos una aproximacion sobre el a\˜n 2008 y lo comparamos con los resultados reales.
 
 Luego el siguiente paso es ver como con los datos entrenados nuestras funciones que tan bien aproximan al valor real e intentar predecir el comportamiento futuro.
+
+
+\section{Demoras Clim\'aticas}
+Luego de analizar los datos reales, intentamos buscar funciones que mejor aproximen en base a funciones conocidas como son los polinomios y las funciones trigonometricas.
+
+Encontramos que la mejor forma de aproximaci\'on es una combinaci\'on de funciones trigonom\'etricas sobre prolinomios, en la siguiente subseccion pasamos a mostrar el detalle de como llegamos a esta conclusi\'on.
+
+\subsection{Resultados}
+En primer lugar tomamos un polinomio de grado impar ($a*x^5+b*x^4+c*x^3+d*x^2+e*x+f$ , siendo $a,b,c,d,e,f$ valores que nos da cuadrados minimos y x el numero de) , ya que luego de comparar contra uno de grado par notamos que era mas suave y tomaba mejor los puntos, para la aproximaci\'on de los meses 0-47, osea los años 2004-2007, con el fin de ver como resultaba la misma arrojando los primeros resultados.
+
+	\begin{center}
+	\caption{polinomio de grado 5}
+	\includegraphics[scale=0.7]{imagenes/delaysPolinomio.png}
+	\end{center}
+
+Como podemos ver en el grafico anterior esta aproximaci\'on es buena dentro de los meses de entrenamiento pero el problema que surge es que luego en la aproximaci\'on no aproxima bien haciendo que la funci\'on tienda a menos infinito, siendo este un problema para los polinomios, ya que a lo sumo un polinomio de grado n tiene n derivadas esto nos indica que a partir de un punto va a tender a m\'as o  menos infinito, pero por otro lado el problema es que no podemos agarrar los picos que tiene la funcio\'on real.
+
+Para evitar este problema intentamos aproximar mediante funciones trigonom\'etricas, mas puntualmente con senos y cosenos ya que estas están acotadas tanto superior como inferiormente, la funcion utilizada fue $a*sin(x)+ b*cos(x)+c*sin(2*x)+ d*sin(3*x)+ e*cos(2*x)+f$.
+
+	\begin{center}
+	\caption{suma de senos y cosenos}
+	\includegraphics[scale=0.6]{imagenes/senosCosenos.png}
+	\end{center}
+	
+Como se puede ver en el siguiente gr\'afico, el problema de utilizar estas funciones es que se mantienen dentro de esas cotas en l\'inea recta, con lo cual si nuestra funci\'on a aproximar crece levemente durante toda su grafica no vamos a poder aproximarla bien.
+Por lo tanto decidimos hacer una combinaci\'on de ambas funciones para poder aprovechar ambas necesidades que ten\'iamos, que la misma no tienda a infinito luego de los meses de entrenamiento y que en cierta forma podamos captar los picos de la funci\'on a aproximar, con lo que tuvimos una mejor aproximaci\'on.
+
+	\begin{center}
+	\caption{Combinacion de senos y polinomio}
+	\includegraphics[scale=0.5]{imagenes/polinomioysenos.png}
+	\end{center}
+
+Si vemos m\'as en detalle lo que es la aproximaci\'on para 2008 notamos que no tenemos tanto margen de error resultando una buena aproximaci\'on.
+
+	\begin{center}
+	\caption{Combinacion de senos y polinomio, detalle prediccion 2008 }
+	\includegraphics[scale=0.8]{imagenes/delays2008.png}
+	\end{center}
+
+Resultando dicha funci\'on $a*sin(x)^5+b*sin(x^2)^4+c*sin(x^2)^3+d*sin(x^2)^2+e*sin(x^2)+f$ y la combinacion de 20 ejecuciones para el cross validation y 24 meses de training.
 
 \subsection{Crecimiento de vuelos}
 
 Luego de analizar los resultados vemos que hay un crecimiento relativamente lineal de la cantidad de vuelos, con excepciones donde crece de forma exponencial.
 
 Además con el correr de los años la cuota de mercado de ambas empresas crece, pero una m\'as que la otra.
-
-
-\subsection{Demoras Clim\'aticas}
-
-Luego de analizar los resultados, propusimos funciones que intenten aproximar de forma adeacuada a los datos reales. En primera instancia intentamos con funciones polin\'omicas, pero el modelo generado distaba bastante de lo real. Ya que los datos tienen un comportamiento c\'iclico.
-
-Encontramos que la mejor forma de aproximaci\'on es una combinaci\'on de funciones trigonom\'etricas sobre prolinomios.
-
-
-
-\section{Resultados}
-
-	\begin{center}
-	\caption{figura 1}
-	\includegraphics[scale=0.7]{imagenes/delaysPolinomio.png}
-	\end{center}
-
-	\begin{center}
-	\caption{figura 2}
-	\includegraphics[scale=0.6]{imagenes/senosCosenos.png}
-	\end{center}
-
-	\begin{center}
-	\includegraphics[scale=0.5]{imagenes/polinomioysenos.png}
-	\end{center}
-
-	\begin{center}
-	\includegraphics[scale=0.8]{imagenes/delays2008.png}
-	\end{center}
 
 \section{Discusi\'on}
 	%Hablar de las limintaciones de cada tipo de funcion 
