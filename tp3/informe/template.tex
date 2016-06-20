@@ -107,15 +107,21 @@ Luego el siguiente paso es ver como con los datos entrenados nuestras funciones 
 
 
 \section{Demoras Clim\'aticas}
-Luego de analizar los datos reales, intentamos buscar funciones que mejor aproximen en base a funciones conocidas como son los polinomios y las funciones trigonometricas.
 
-Encontramos que la mejor forma de aproximaci\'on es una combinaci\'on de funciones trigonom\'etricas sobre prolinomios, en la siguiente subseccion pasamos a mostrar el detalle de como llegamos a esta conclusi\'on.
+Como mencionamos anteriormente el aeropuerto estudiado tiene temporadas marcadas y estas se puede observar en el grafico siguiente en forma de picos en el medio de cada a\˜no y en a finales del a\˜no donde tienen nevadas, ademas que se ven esos 2 picos se ven dos caidas en las demoras entre medio marcnado las otras estaciones.
+
+\begin{center}
+\includegraphics[scale=0.5]{imagenes/reales.png}
+\end{center}
+
+Como resultado de esta observaion podriamos decir que las funciones trigonometricas como senos y cosenos podrian sernos de gran ayuda, ademas de que sabemos que las funciones polinomicas pueden aproximar bastante bien.
+
+Por lo que en la experimentacion intentaremos buscar la mejor forma de aproximaci\'on es una combinaci\'on de funciones trigonom\'etricas sobre prolinomios, en la siguiente subseccion pasamos a mostrar el detalle de como llegamos a esta conclusi\'on.
 
 \subsection{Resultados}
 En primer lugar tomamos un polinomio de grado impar ($a*x^5+b*x^4+c*x^3+d*x^2+e*x+f$ , siendo $a,b,c,d,e,f$ valores que nos da cuadrados minimos y x el numero de) , ya que luego de comparar contra uno de grado par notamos que era mas suave y tomaba mejor los puntos, para la aproximaci\'on de los meses 0-47, osea los años 2004-2007, con el fin de ver como resultaba la misma arrojando los primeros resultados.
 
 	\begin{center}
-	\caption{polinomio de grado 5}
 	\includegraphics[scale=0.7]{imagenes/delaysPolinomio.png}
 	\end{center}
 
