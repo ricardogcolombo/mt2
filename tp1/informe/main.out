@@ -1,29 +1,29 @@
 \BOOKMARK [1][-]{section.1}{Introducci\363n te\363rica}{}% 1
 \BOOKMARK [1][-]{section.2}{Desarrollo}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Entrada y salida de los algoritmos}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Porcentaje de Victorias}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Sistema a resolver}{section.2}% 4
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Eliminaci\363n Gaussiana}{subsection.2.2}% 5
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Cholesky}{subsection.2.2}% 6
-\BOOKMARK [2][-]{subsection.2.3}{Porcentaje de Victorias}{section.2}% 7
-\BOOKMARK [1][-]{section.3}{Experimentaci\363n}{}% 8
-\BOOKMARK [2][-]{subsection.3.1}{Ranking}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.2}{\277Importa a quien se le gana?}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.3}{Racha ganadora}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.4}{Escalando Posiciones}{section.3}% 12
-\BOOKMARK [3][-]{subsubsection.3.4.1}{Ganarle siempre al primero}{subsection.3.4}% 13
-\BOOKMARK [3][-]{subsubsection.3.4.2}{Ganarle al que esta inmediatamente arriba}{subsection.3.4}% 14
-\BOOKMARK [2][-]{subsection.3.5}{Analisis Cuantitativo}{section.3}% 15
-\BOOKMARK [1][-]{section.4}{Discusi\363n}{}% 16
-\BOOKMARK [2][-]{subsection.4.1}{Ranking}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.2}{Importa a quien se le gana}{section.4}% 18
-\BOOKMARK [2][-]{subsection.4.3}{Racha ganadora}{section.4}% 19
-\BOOKMARK [2][-]{subsection.4.4}{Escalando Posici\363nes}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.5}{An\341lisis Cuantitativo}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.6}{La aritm\351tica importa}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.7}{Empates}{section.4}% 23
-\BOOKMARK [1][-]{section.5}{Conclusiones}{}% 24
-\BOOKMARK [1][-]{section.6}{Ap\351ndice}{}% 25
-\BOOKMARK [2][-]{subsection.6.1}{Archivos de test usados}{section.6}% 26
+\BOOKMARK [1][-]{section.3}{Experimentaci\363n}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Ranking}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{\277Importa a quien se le gana?}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Racha ganadora}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{Escalando Posiciones}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Ganarle siempre al primero}{subsection.3.4}% 12
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Ganarle al que esta inmediatamente arriba}{subsection.3.4}% 13
+\BOOKMARK [2][-]{subsection.3.5}{Analisis Cuantitativo}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Discusi\363n}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Ranking}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Importa a quien se le gana}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Racha ganadora}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Escalando Posici\363nes}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.5}{An\341lisis Cuantitativo}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.6}{La aritm\351tica importa}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.7}{Empates}{section.4}% 22
+\BOOKMARK [1][-]{section.5}{Conclusiones}{}% 23
+\BOOKMARK [1][-]{section.6}{Ap\351ndice}{}% 24
+\BOOKMARK [2][-]{subsection.6.1}{Entrada y salida de los algoritmos}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.2}{Archivos de test usados}{section.6}% 26
 \BOOKMARK [1][-]{section.7}{Bibliograf\355a}{}% 27
 \BOOKMARK [2][-]{subsection.7.1}{Bibliograf\355a}{section.7}% 28
 \BOOKMARK [1][-]{section.8}{Codigo}{}% 29

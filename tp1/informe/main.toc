@@ -1,30 +1,30 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Introducci\IeC {\'o}n te\IeC {\'o}rica}{4}{section.1}
 \contentsline {section}{\numberline {2}Desarrollo}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Entrada y salida de los algoritmos}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Sistema a resolver}{6}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Eliminaci\IeC {\'o}n Gaussiana}{7}{subsubsection.2.2.1}
+\contentsline {subsection}{\numberline {2.1}Porcentaje de Victorias}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Sistema a resolver}{5}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Eliminaci\IeC {\'o}n Gaussiana}{6}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Cholesky}{8}{subsubsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}Porcentaje de Victorias}{9}{subsection.2.3}
-\contentsline {section}{\numberline {3}Experimentaci\'on}{10}{section.3}
-\contentsline {subsection}{\numberline {3.1}Ranking}{10}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}\IeC {\textquestiondown }Importa a quien se le gana?}{11}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Racha ganadora}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Escalando Posiciones}{17}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Ganarle siempre al primero}{17}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Ganarle al que esta inmediatamente arriba}{18}{subsubsection.3.4.2}
-\contentsline {subsection}{\numberline {3.5}Analisis Cuantitativo}{18}{subsection.3.5}
-\contentsline {section}{\numberline {4}Discusi\IeC {\'o}n}{23}{section.4}
-\contentsline {subsection}{\numberline {4.1}Ranking}{23}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}\@inpenc@undefined@ {utf8}Importa a quien se le gana}{23}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Racha ganadora}{23}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Escalando Posici\'ones}{23}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}An\IeC {\'a}lisis Cuantitativo}{24}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}La aritm\IeC {\'e}tica importa}{24}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Empates}{24}{subsection.4.7}
-\contentsline {section}{\numberline {5}Conclusiones}{25}{section.5}
-\contentsline {section}{\numberline {6}Ap\IeC {\'e}ndice}{26}{section.6}
-\contentsline {subsection}{\numberline {6.1}Archivos de test usados}{26}{subsection.6.1}
+\contentsline {section}{\numberline {3}Experimentaci\'on}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Ranking}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}\IeC {\textquestiondown }Importa a quien se le gana?}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Racha ganadora}{11}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Escalando Posiciones}{16}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Ganarle siempre al primero}{16}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Ganarle al que esta inmediatamente arriba}{17}{subsubsection.3.4.2}
+\contentsline {subsection}{\numberline {3.5}Analisis Cuantitativo}{17}{subsection.3.5}
+\contentsline {section}{\numberline {4}Discusi\IeC {\'o}n}{22}{section.4}
+\contentsline {subsection}{\numberline {4.1}Ranking}{22}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}\@inpenc@undefined@ {utf8}Importa a quien se le gana}{22}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Racha ganadora}{22}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Escalando Posici\'ones}{22}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}An\IeC {\'a}lisis Cuantitativo}{23}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}La aritm\IeC {\'e}tica importa}{23}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.7}Empates}{23}{subsection.4.7}
+\contentsline {section}{\numberline {5}Conclusiones}{24}{section.5}
+\contentsline {section}{\numberline {6}Ap\IeC {\'e}ndice}{25}{section.6}
+\contentsline {subsection}{\numberline {6.1}Entrada y salida de los algoritmos}{25}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Archivos de test usados}{26}{subsection.6.2}
 \contentsline {section}{\numberline {7}Bibliograf\IeC {\'\i }a}{27}{section.7}
 \contentsline {subsection}{\numberline {7.1}Bibliograf\IeC {\'\i }a}{27}{subsection.7.1}
 \contentsline {section}{\numberline {8}Codigo}{28}{section.8}

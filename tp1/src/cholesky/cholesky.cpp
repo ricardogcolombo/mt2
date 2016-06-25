@@ -24,7 +24,6 @@ double* cholesky(Matriz* m,double *b){
     }
 
     for (i = 1; i < cantFilas-1; i++) {
-
         // lii = aii - sum(k=1,i, lik*likk)
         // step 4
         double aii= m->getVal(i,i);

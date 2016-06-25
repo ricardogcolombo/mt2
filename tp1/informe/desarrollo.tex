@@ -73,7 +73,11 @@ con el fin de obtener una mejor posición, la primera será contra el inmediato 
 
 \subsubsection{Eliminación Gaussiana}
 
-El Algoritmo de Eliminacion Gaussiana se utilizo para la solucion de la Matriz de Colley para la obtecion del vector r mostrado anteriormente en la ecuacion del sistema a resovler, la implementación del mismo fue tomada en el libro de Burden \footnote{''\textbf{Analisis Numerico }:Richard L. Burden & J. Douglas Faires''}, adiriendole al mismo  la utilizacion de backward substitution para obtener el vector de la ecuaci\'on Cr=b.
+El Algoritmo de Eliminacion Gaussiana que se utilizo para la solucion de la Matriz de Colley con el fin de obtener el vector r mostrado anteriormente en la ecuacion del sistema a resolver fue tomada en el libro de Burden \footnote{''\textbf{Analisis Numerico }:Richard L. Burden & J. Douglas Faires''}, adiriendole al mismo  la utilizacion de backward
+substitution para obtener el vector de la ecuaci\'on Cr=b.
+Dado que la matriz no contiene ninguna caracteristica especifica que nos pueda acelerar la ejecucion del mismo, pero a su vez como esta matriz es definida positiva como mensionamos anteriormente
+sabemos que en la diagonal nunca nos vamos a encontrar con un 0 o un valor negativo ya que no se cumpliria esta condicion, para demostrar esto vasta con tomar un vector canonico y ver si 
+se cumple la definicion de definida positiva.
 
 Presentamos un pseudo codigo del algoritmo de eliminaci\'on gaussiana que utilizamos en nuestra implementaci\'on que luego en secci\'ones futuras vamos a detallar.
 
@@ -104,10 +108,8 @@ Presentamos un pseudo codigo del algoritmo de eliminaci\'on gaussiana que utiliz
     \end{algorithmic}
 \end{algorithm}
 
-Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, ya que en ciclo interno de las posici\'ones 4 a 6 se ejecuta n veces
-y el ciclo de las l\'ineas 2 a 6 se ejecuta n veces por lo tanto ya tendriamos $n^2$ iteraci\'ones en el peor caso y finalizando con el ciclo de las l\'ineas 1 a 6 que se ejecuta otras n veces.
-Luego en las l\'ineas 7 a 10 se realiza el backward substitution que tiene en el peor caso se ejecuta $n^2$ veces.\\
-Con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos sobre tiempos de en la secci\'on experimentaci\'on es encontrarnos con un grafico de una funci\'on cubica.
+Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos
+sobre tiempos de en la secci\'on experimentaci\'on es encontrarnos con un grafico de una funci\'on cubica. 
 
 \newpage
 \subsubsection{Cholesky}
