@@ -8,9 +8,9 @@ src/scripts/fabricate.pyc
 src/scripts/settings.pyc
 src/scripts/utils.pyc
 src/tp
+
 tp3/data/
 tp3/src/webTest/
-
 tp3/airportjfk/
 tp3/informe/template.aux
 tp3/informe/template.log
@@ -25,3 +25,20 @@ tp1/informe/main.out
 tp1/informe/main.pdf
 tp1/informe/main.toc
 
+
+tp2/src/knn/knn.o
+tp2/src/main.o
+tp2/src/manejoEntrada/entrada.o
+tp2/src/matriz2/matriz2.o
+tp2/src/pca/pca.o
+tp2/src/plsda/plsda.o
+tp2/src/scripts/__init__.pyc
+tp2/src/scripts/fabricate.pyc
+tp2/src/scripts/settings.pyc
+tp2/src/scripts/utils.pyc
+tp2/src/commons/commons.o
+
+tp2/informe/main.aux
+tp2/informe/main.log
+tp2/informe/main.out
+tp2/informe/main.toc
