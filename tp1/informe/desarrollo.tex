@@ -54,9 +54,7 @@ $$
                     
 y $b_i$ = 1 +  ($w_i$ - $l_i$) / 2.
 
-Esta matriz tiene la particularidad de ser simétrica y definida positiva, siendo condición necesaria para encontrar la factorización de cholesky sobre esta matriz, además de factorización LU.
-
-Ambos métodos, Eliminación gaussiana y Factorización de cholesky, combinadas con otras técnicas de remplazo nos permitirán resolver el sistema presentado previamente.
+Esta matriz tiene la particularidad de ser simétrica y definida positiva, siendo condición necesaria para encontrar la factorización de cholesky sobre esta matriz, además de factorización LU, por lo que con ambos métodos, Eliminación gaussiana y Factorización de cholesky, combinadas con otras técnicas de remplazo nos permitirán resolver el sistema presentado previamente.
 
 La principal fortaleza de este método es que es útil para obtener rankings en torneos donde los participantes no juegan la misma cantidad de partidos, lo cual 
 podríamos hacer una análisis más exhaustivo sobre cada uno de los partidos jugados y como afecta esto en todo un torneo,
@@ -64,7 +62,19 @@ además de que al armar el sistema en base a los resultados pasados, da relevanc
 Luego se intentará demostrar en la sección de experimentos, utilizando esta técnica que importa contra quien se gana y contra quien se pierde.
 
 Por otro lado las desventajas que notamos es que este método no es aplicable a muchos de los deportes ya que los empates no pueden ser modelados, además de que el ranking no toma en cuenta
-el margen de victoria de los equipos, lo cual cuando surjan empates en cuanto a cantidad de victorias podrían utilizarse los empates como forma de desempate.
+el margen de victoria de los equipos, lo cual cuando surjan empates en cuanto a cantidad de victorias podrían utilizarse los empates como forma de desempate, por otro lado como es mencionado en el paper de Colley, este metodo mantiene en todo momento que el promedio del ranking sea 1/2, con lo cual al jugar dos equipos se vera afectado un tercero en el ranking total, demostremos esto con el siguiente ejemplo.
+
+\begin{center}
+    \begin{tabular}{| 1 | 1 | 1 |}
+    \hline
+    Posición & Equipo & Ranking \\ \hline
+    1 & C & 1 \\ \hline
+    2 & A & 1/2  \\ \hline
+    3 & B & 0 \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
 
 En cuanto a cómo podría un participante subir posiciones en el ranking con en este método no parece ser muy intuitivo mirando la matriz a simple vista. Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero
 y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante.
@@ -73,16 +83,16 @@ con el fin de obtener una mejor posición, la primera será contra el inmediato 
 
 \subsubsection{Eliminación Gaussiana}
 
-El Algoritmo de Eliminacion Gaussiana que se utilizo para la solucion de la Matriz de Colley con el fin de obtener el vector r mostrado anteriormente en la ecuacion del sistema a resolver fue tomada en el libro de Burden \footnote{''\textbf{Analisis Numerico }:Richard L. Burden & J. Douglas Faires''}, adiriendole al mismo  la utilizacion de backward
-substitution para obtener el vector de la ecuaci\'on Cr=b.
-Dado que la matriz no contiene ninguna caracteristica especifica que nos pueda acelerar la ejecucion del mismo, pero a su vez como esta matriz es definida positiva como mensionamos anteriormente
-sabemos que en la diagonal nunca nos vamos a encontrar con un 0 o un valor negativo ya que no se cumpliria esta condicion, para demostrar esto vasta con tomar un vector canonico y ver si 
-se cumple la definicion de definida positiva.
+El algoritmo de Eliminación Gaussiana es útil para la resolución de sistemas lineales, con el cual mediante combinaciones lineales entre filas e intercambio cuando se encuentran ceros diagonal de la matriz, llegando así a una matriz escalonada por reglones con ceros debajo de los elementos de la diagonal.\\
+Finalmente, dado que la matriz esta triangulada, mediante el algoritmo denominado back substitution se realiza el cálculo para obtener el valor de las incógnitas tomando cada elemento como
+$x_i = (b_i - \sum\limits_{j = i + 1}^n c_{ij}x_i) / c_{ii}$ con el fin de obtener la solución al sistema $Cr=b$, donde $C$ es la Matriz de Colley, con el fin de obtener el vector $r$ mostrado anteriormente en la ecuación del sistema a resolver. 
 
-Presentamos un pseudo codigo del algoritmo de eliminaci\'on gaussiana que utilizamos en nuestra implementaci\'on que luego en secci\'ones futuras vamos a detallar.
+Dado que la matriz no contiene ninguna característica especifica que nos pueda acelerar la ejecución del mismo, con esto nos referimos a que no puede contener ceros debajo de la diagonal dado a que esta matriz es definida positiva como mencionamos anteriormente sabemos que en la diagonal nunca nos vamos a encontrar con un 0, para demostrar esto basta con tomar un vector canónico y ver si se cumple la definición de definida positiva.
+
+A continuación presentamos un pseudo código del algoritmo de eliminación gaussiana que utilizamos en nuestra implementación, para el mismo tomamos como base el seudocódigo del libro de Burden \footnote{''\textbf{Análisis Numérico }:Richard L. Burden & J. Douglas Faires''},
 
 \begin{algorithm}
-    \begin{algorithmic}[1]\parskip=2mm
+    \begin{algorithmic}[1]\parskip=2mm  
         \caption{vector Gauss(matriz A, vector b)}
         \STATE{Para $k$=$1...n-1$}\\
         \STATE{\quad Para $i$=$1...n-1$}\\
@@ -97,27 +107,35 @@ Presentamos un pseudo codigo del algoritmo de eliminaci\'on gaussiana que utiliz
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
-        \caption{vector backwardSubstitution(matriz A, vector b)}
+        \caption{vector backSubstitution(matriz A, vector b)}
         \STATE{$x = vector(Cantidad_Columnas(A))$}\\
         \STATE{$x_{n} = a_{n,n+1}/a_{n,n}$}\\
         \STATE{para $i=n-1..1$}\\
         \STATE{\quad para $j=i+1..n$}\\
         \STATE{\quad\quad $ sum +=a_{i,j}*x_{j}$}\\
-        \STATE{\quad $x_i = (b_i -sum) /a_{i,i}$}
+        \STATE{\quad $x_i = \frac{(b_i -sum}{a_{i,i}}$}
         \STATE{\RETURN $x$}\\
     \end{algorithmic}
 \end{algorithm}
 
-Para este algoritmo como se puede observar es de complejidad O($n^3$) en el peor caso, con lo cual lo que esperamos en nuestros an\'alisis de cantidad de equipos
-sobre tiempos de en la secci\'on experimentaci\'on es encontrarnos con un grafico de una funci\'on cubica. 
+Este algoritmo tiene complejidad temporal de $O(n^{3})$ para la eliminacion Gaussiana y $O(n^{2})$ para el algoritmo de back substitution dando un total de $O(n^{3})$ como consto temporal para obtener una solucion a nuestro sistema de ecuaciones lineales.
 
 \newpage
 \subsubsection{Cholesky}
+La Matriz del sistema a resolver cuenta, como mencionamos anteriormente, tiene la propiedad de ser simétrica y definida positiva. Estas condiciones nos garantizan que la misma tenga otra factorización que represente un caso particular de la factorización $LU$, del tipo $C=LL^{t}$, esta se denomina la factorización de Cholesky, compuesta por una matriz Triangular inferior $L$ y la triangular superior $L^{t}$. Donde las posiciones de esta matriz están compuestas de esta manera
 
-La implementación del algoritmo de factorizaci\'on de cholesky que elegimos al igual que la eliminaci\'on gaussiana es la que se encuentra en el libro \textbf{Burden}.
-Agregandole los pasos que menciona en el libro (pagina 420) para resolver el sistema $Cr$$=$$b$.
+$l_{ji} =
+\left\{
+    \begin{array}{lcc}
+        \sqrt{c{_i}{_i} - \sum\limits_{k=1}^{i-1} (L_{ik})^2} & si & i = j \\
+        \\ \frac{c_{ji} - \sum\limits_{k=1}^{i-1} L_{jk}l_{ik}}{l_{ii}} & si & i \neq j \\
+    \end{array}
+\right.$ \\
 
-Este pseudocodigo representa nuestra implementaci\'on sobre la factorizaci\'on de cholesky.
+Una vez obtenido el sistema $LL^tx=b$ se procede a hacer back substituion para resolver $L^tx=y$, luego mediante forward substitution se obtiene la solución de $Ly=b$.
+
+La implementación de la factorización de Cholesky que elegimos, al igual que la eliminación gaussiana, se encuentra en el libro \textbf{Burden}.
+Este seudocódigo representa nuestra implementación sobre la factorización de Cholesky.
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
@@ -130,23 +148,25 @@ Este pseudocodigo representa nuestra implementaci\'on sobre la factorizaci\'on d
         \STATE{\quad Para $j = i+1,...n1$}\\
         \STATE{\quad\quad $l_{j,i}  = (a_{j,i} - \sum_{k=1}^{i-1}{l_{j,k} l_{i,k}} / l_{i,i})$}\\
         \STATE{$l_{n,n}  = (a_{n,n} - \sum_{k=1}^{n-1}{l^2_{n,k}}$)}\\
-        \STATE{$y_1=b_1 l_{1,1}$}\\
+        \STATE{y $=$ backSubstitution(L,b)}
+        \STATE{x = forwardSubstitution(L,y)}
+        \STATE{return x}
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{vector forwardSubstitution(matriz L, vector b)}
+        \STATE{$y_1=\frac{b_1}{l_{1,1}}$}\\ 
         \STATE{Para i$=$2..n}\\
         \STATE{\quad Para j$=$1..i-1}\\
         \STATE{\quad\quad sum=$l_{i,j}*y_j$}\\
-        \STATE{\quad\quad $y_i=(b_i-sum) \ l_{i,i}$}\\
-        \STATE{$x_n=y_n \ l_{n,n}$}\\
-        \STATE{Para i$=$n-1..1}\\
-        \STATE{\quad Para j$=$i+1..n}\\
-        \STATE{\quad\quad sum$=l_{i,j}*x_j$}\\
-        \STATE{\quad\quad $x_i=(y_i-sum)\ l_{i,i}$}
-        \STATE{\RETURN x}
-    \end{algorithmic}
+        \STATE{\quad\quad $y_i=\frac{b_i-sum}{l_{i,i}}$}\\
+        \STATE{return y}
+      \end{algorithmic}
 \end{algorithm}
-Para las l\'ineas 2-3 se puede ver que se ejecuta n veces.
-Dentro de esta algoritmo en las l\'ineas 4-7 se realizan 3 ciclos donde en el peor caso se obtienen $n^3 $ ciclos.
-Por \'ultimo para las l\'ineas 10 - 13 y 15 -18 se realizan 2 ciclos de n iteracines cada uno teniendo como total $n^2$ iteraci\'ones.
-Con lo cual lo que esperamos en nuestros an\'alisis de tiempos por cantidad de equipos es que obtengamos una cubica.
+
+Este algoritmo tiene complejidad temporal de $O(n^3)$ para Cholesky y $O(n^2)$ para los métodos de forward substitution y back substitution, quedando un total de $O(n^3)$.
 
 \newpage
 

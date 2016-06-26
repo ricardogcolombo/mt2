@@ -29,7 +29,8 @@
 
 % Paquetes para tablas
 \usepackage[table]{xcolor}
-
+% keywords
+\providecommand{\keywords}[1]{\textbf{\textit{Palabras Claves---}} #1}
 % Se pueden sacar?
 \usepackage{url}
 \usepackage{float}
@@ -85,14 +86,14 @@
 
 \maketitle
 \pagebreak
-  
+
+\input{abstract}
+
 \tableofcontents
 
 \pagebreak
 
-\input{abstract}
 \section{Introducción teórica}
-
 \input{introduccion}
 
 \pagebreak
@@ -124,5 +125,5 @@
 \input{bibliografia}
 \pagebreak
 \section{Codigo}
-\input{codigo}
+%\input{codigo} 
 \end{document}
