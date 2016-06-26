@@ -52,8 +52,8 @@ def getSolution(anioInicial,cantAniosArchivos):
 
 anioInicial = 2004
 cantAniosArchivos = 4
-a = getSolution(anioInicial,cantAniosArchivos-1)
-print a
+#  a = getSolution(anioInicial,cantAniosArchivos-1)
+#  print a
 datosFiles = fm.getDataDelayProcesada(anioInicial,cantAniosArchivos)
 ejeXMeses= []
 for i in range(0,(cantAniosArchivos+1)*12):
@@ -73,7 +73,6 @@ for i in range(0,len(datosFiles)):
     #  val = getCalculadaPolinomio(i,a)
     #  val = getCalculadaPolinomioPar(i,a)
     val = getCalculadaPolinomioSC(i,a)
-    print "mes i - " + str(val)
 
     res.append(val)
 
@@ -84,12 +83,11 @@ font = {'family': 'serif',
         'size': 9,
         }
 
-plt.title('Prediccion con funcion que combina senos y polinomios para la cantidad\n'
-             'de delays por mes en los vuelos (2008)', fontsize=11, ha='center')
+plt.title('Datos Reales demoras por clima (2004-2008)', fontsize=11, ha='center')
 
 plt.xlabel('meses', fontdict=font)
 plt.ylabel('Cantidad de Delays', fontdict=font)
 lineAproximacion = plt.plot(ejeXMeses,res)
 lineAproximacion[0].set_label("Aproximacion con una combinacion de senos y polinomio") 
-plt.legend(handles=[lineReal[0],lineAproximacion[0]])
+plt.legend(handles=[lineReal[0]])
 plt.show()

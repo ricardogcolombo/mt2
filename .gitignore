@@ -9,6 +9,16 @@ src/scripts/settings.pyc
 src/scripts/utils.pyc
 src/tp
 tp3/data/
+tp3/src/webTest/
+
+tp3/airportjfk/
+tp3/informe/template.aux
+tp3/informe/template.log
+tp3/informe/template.out
+tp3/src/aproximacionesEmpresas.pyc
+tp3/src/fileManagment.pyc
+tp3/src/filterEmpresa.pyc
+
 tp1/informe/main.aux
 tp1/informe/main.log
 tp1/informe/main.out
