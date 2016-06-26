@@ -24,6 +24,7 @@ tp1/informe/main.log
 tp1/informe/main.out
 tp1/informe/main.pdf
 tp1/informe/main.toc
+tp1/src/.deps
 
 
 tp2/src/knn/knn.o
@@ -42,3 +43,5 @@ tp2/informe/main.aux
 tp2/informe/main.log
 tp2/informe/main.out
 tp2/informe/main.toc
+tp2/informe/main.pdf
+tp2/src/.deps
