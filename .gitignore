@@ -38,6 +38,9 @@ tp2/src/scripts/fabricate.pyc
 tp2/src/scripts/settings.pyc
 tp2/src/scripts/utils.pyc
 tp2/src/commons/commons.o
+tp2/src/vector/vectorNum.o
+
+tp2/informe/main.pdf
 
 tp2/informe/main.aux
 tp2/informe/main.log
