@@ -130,6 +130,34 @@ void instancia::generarVectorB(){
 }
 
 
+int instancia::getEquipoPerdido(int equipo1){
+    int totalEquipos = this->getTotalEquipos();
+    int equipo = -1;
+    for(int i =0;i< totalEquipos;i++){
+        if(i!= equipo1 && this->ganados->getVal(i,equipo1)>0){
+            equipo = i;
+            break;
+        }
+    }
+
+    return equipo;
+};
+// esta funcion lo que hace es darle un partido mas ganado al equipo1
+void instancia::modificarPartido(int equipo1,int equipo2){
+    // modifico el partido perdido en el otro
+    int totalganadose2e1 = this->ganados->getVal(equipo2,equipo1);
+    this->ganados->setVal(equipo2,equipo1,totalganadose2e1-1);
+
+    // en la matriz de partidos ganados le sumo uno al primero
+    int totalganadose1e2 = this->ganados->getVal(equipo1,equipo2);
+    this->ganados->setVal(equipo1,equipo2,totalganadose1e2+1);
+
+    // genero la nueva CMM
+    this->generarCMM();
+    // genero el nuevo vector B
+    this->generarVectorB();
+};
+
 // esta funcion lo que hace es darle un partido mas ganado al equipo1
 void instancia::ganaPartidoContra(int equipo1,int equipo2){
     int totalJugados1 = this->getTotalJugados(equipo1);

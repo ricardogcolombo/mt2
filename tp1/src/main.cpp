@@ -37,8 +37,6 @@ int main(int argc, char *argv[]) {
     long elapsed_seconds; /* diff between seconds counter */
     long elapsed_useconds; /* diff between microseconds counter */
 
-
-
     int i;
     // argumentos
     // 0 - main
@@ -103,7 +101,7 @@ int main(int argc, char *argv[]) {
     }
     // metodo Metodo CMM Con CHOLESKY
 
-    if (strcmp(argv[3], "1") == 0  ||strcmp(argv[3], "3") == 0|| strcmp(argv[3],"4")==0 || strcmp(argv[3],"5")==0   ) {
+    if (strcmp(argv[3], "1") == 0  ||strcmp(argv[3], "3") == 0|| strcmp(argv[3],"4")==0 || strcmp(argv[3],"5")==0 || strcmp(argv[3],"6")==0  ) {
         cout << "Corriendo Metodo Cholesky..." << endl;
         gettimeofday(&startCholesky, NULL);
 
@@ -179,7 +177,6 @@ int main(int argc, char *argv[]) {
         }
         archivoModificadoCHOLESKY.close();
     }
-
     if (strcmp(argv[3], "4") == 0 || strcmp(argv[3], "5") == 0) {
         int t;
 
@@ -250,6 +247,83 @@ int main(int argc, char *argv[]) {
             archivoModificadoCHOLESKY.close();
             // ejecuto cholesky para el nuevo partido
             respuesta= cholesky(ins->getCMM(),ins->getVectorB());
+        }
+    }
+
+    if (strcmp(argv[3], "6") == 0 ) {
+        int t;
+
+        const char* salida;
+        salida= "tests/rankingSTEPS_6.out";
+
+        ofstream archivoModificadoCHOLESKY;
+
+        double min  =INT_MAX +0.0;
+        int minPOS  =0;
+        int actPOS  =0;
+        bool esPrimero = false;
+        // busco el minimo;
+        for (i = 0; i < totalEquipos; i++) {
+            if(min>respuesta[i] && ins->getTotalJugados(i)>0){
+                minPOS = i;
+                min = respuesta[i];
+            }
+        }
+
+        // cout << "MINIMO " << intToString(minPOS)<< endl;
+
+
+
+        // obtengo la cantidad de partidos jugados
+        int todosLosPartidos = ins->getTotalJugados(minPOS);
+
+        // esto se va a ejecutar mientras el jugador no este en el primer puesto
+        // o mientras no sse hayan modificado todos los partidos
+        for (t = 0; !esPrimero && t< todosLosPartidos ; t++) {
+            vector<pair<int,double> > rankSorted;
+            
+            // armo pares numero equipo valor ranking
+            for (i = 0; i < totalEquipos;i++) {
+                pair<int,double> p(i,respuesta[i]);
+                rankSorted.push_back(p);
+            }
+
+            // ordeno el ranking actual
+            std::sort(rankSorted.begin(),rankSorted.end(),pairCompare);
+            for (i = 0; i < totalEquipos; i++) {
+                if(rankSorted[i].first==minPOS){
+                    actPOS = i;
+                }
+            }
+            // obtengo el que voy a modificar
+            // imprimo el ranking y numero de partido
+            archivoModificadoCHOLESKY.open(salida, std::ofstream::out | std::ofstream::app);
+            archivoModificadoCHOLESKY<<"Imprimo Cholesky en el  paso "<< intToString(t)<< endl;
+            for (int w = 0; w < totalEquipos; w++) {
+                archivoModificadoCHOLESKY<< intToString(t) << " " <<rankSorted[w].first << " " << rankSorted[w].second<< endl;
+            }
+            archivoModificadoCHOLESKY<< endl;
+
+            int equipo2= ins->getEquipoPerdido(minPOS);
+
+            if(equipo2==-1){
+                cout<< "NO LLEGUE AL PRIMER PUESTO"<<endl;
+                break;
+            }
+            //esta funcion hace ganar un partido al primero contra el segundo
+            ins->modificarPartido(minPOS,equipo2);
+            if(actPOS==totalEquipos-1){
+                esPrimero = true;
+                archivoModificadoCHOLESKY<<"Cantidad total de partidos "<< t << endl;
+                cout <<"Cantidad total de partidos "<< t-1 << endl;
+                break;
+            }
+            archivoModificadoCHOLESKY.close();
+            // ejecuto cholesky para el nuevo partido
+            respuesta= cholesky(ins->getCMM(),ins->getVectorB());
+        }
+        if(t==todosLosPartidos){
+            cout<< "NO LLEGUE AL PRIMER PUESTO"<<endl;
         }
 
         return 0;

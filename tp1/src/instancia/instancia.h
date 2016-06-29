@@ -31,8 +31,10 @@ class instancia{
         int getTotalPartidos();
         // el primero siempre es el que gana el partido
         bool ganaPartido(int);
+        void modificarPartido(int,int);
         void ganaPartidoContra(int,int);
         void setTotalPartidos(int);
+        int getEquipoPerdido(int);
         // esta funcion te dice cuantos partidos GANADOS tiene el equipo q recibe por parametro
         double getTotalGanados(int);
 
