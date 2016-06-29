@@ -11,8 +11,13 @@ En este caso el score de un equipo no es afectado por la cantidad de partidos y 
 Mostremos esto con un ejemplo entre 3 equipos para ver como se ve afectado:
 Supongamos que tenemos 3 equipos \textbf{A}, \textbf{B} y \textbf{C} al principio, como ninguno disputo ningún partido todos tienen valor 0 en la tabla de posiciones.
 
-Ahora supongamos que el equipo \textbf{A} juegua contra el equipo \textbf{B} y gana, luego el equipo \textbf{C} juega contra el equipo \textbf{A} y gana el \textbf{C}, con lo cual la tabla de posiciones se ve como la siguiente:
+Ahora supongamos la siguiente de partidos y veamos como queda la talba de posiciones
 
+\begin{itemize}
+\item \textbf{A} vs \textbf{B} $=>$ GANA \textbf{A} 
+\item \textbf{A} vs \textbf{C} $=>$ GANA \textbf{C} 
+\end{itemize}
+\\
 \begin{center}
     \begin{tabular}{| 1 | 1 | 1 |}
     \hline
@@ -24,7 +29,8 @@ Ahora supongamos que el equipo \textbf{A} juegua contra el equipo \textbf{B} y g
     \end{tabular}
 \end{center}
 
-Como puede observarse en el ejemplo este método no es muy justo ya que si bien el equipo A jugo mas partidos tiene la misma cantidad de partidos ganados que el equipo C, si en el partido siguiente juegan el equipo \textbf{B} vs equipo \textbf{C} y gana el equipo \textbf{B}, entonces en la tabla de posiciones quedan todos con el mismo ranking.
+Como puede observarse en la tabla el equipo \textbf{B} quedo ultimo ya que no gano ningun partido y la diferencia entre el equipo \textbf{A} y el equipo \textbf{C} es la cantidad de partidos jugados, ya que ambos ganaron la misma cantidad pero como mencionamos anteriormente como el dividendo es mas grande hace que el equipo \textbf{C} quede mejor posicionado.
+Veamos que sucede si juegan el equipo \textbf{B} vs equipo \textbf{C} y gana el equipo \textbf{B}.
 
 \begin{center}
     \begin{tabular}{| 1 | 1 | 1 |}
@@ -37,57 +43,53 @@ Como puede observarse en el ejemplo este método no es muy justo ya que si bien 
     \end{tabular}
 \end{center}
 
-Con este ejemplo se puede observar lo que mencionamos anteriormente, que si bien los partidos de los demás no afectan a cambiar el valor de un equipo dentro del ranking si puede afectar su posición, a su vez esta técnica no aporta mucha información respecto a la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado, con lo cual la posición del equipo en el ranking depende de los resultados de victorias del equipo.
+Como podemos observar todos quedan con igual ranking y esto es ya que todos jugaron la misma cantidad de partidos y ganaron la misma cantidad de partidos.
+
+Con este ejemplo se puede observar lo que mencionamos anteriormente, que si bien los partidos de los demás no afectan a cambiar el valor de un equipo dentro del ranking si puede afectar su posición, a su vez esta técnica no aporta mucha información respecto a la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado, con lo cual la posición del equipo en el ranking depende de los resultados de victorias del equipo. Por otro lado podemos ver que nunca mensionamos los empates con este metodo, por ende podriamos analizar como podriamos modelarlos y como afectaria el ranking.
 
 \subsection{Sistema a resolver}
-Debido a que el sistema anterior no parece ser muy justo ya que los partidos perdidos influyen en la posicion final, analizaremos el otro metodo que mencionamos en la introducción. Para comenzar armamos el sistema de la Matriz de Colley basados en el paper de Colley\footnote{''\textbf{The Colley Matrix Explained}:Wesley N. Colley''}, este método está basado en la Regla de Laplace de sucesos y solo se requiere conocer un historial de partidos. 
-El método de \textbf{CMM} propone construir una matriz C $\in$ $ R^{nxn}$ , un vector b $\in$ $ R^n$ tal que el ranking r $\in$ $R^n$ buscado sea la solución al sistema Cr=b.
-Para esto utiliza, que dado un equipo $i$, la cantidad total de partidos jugados por este equipo como $n_i$, sabiendo que tuvo $w_i$ victorias el equipo, análogamente $l_i$ los partidos perdidos y $n_{i,j}$ la cantidad de partidos jugados entre el equipo $i$ y $j$, para finalmente definir a la matriz C como: 
+Veamos que pasa con el con el otro metodo para obtener rankings para poder comparar y ver cual nos parece mas justo a la hora de utilizarlos para competencias reales.
+Comenzemos armando el sistema de la Matriz de Colley basados en el paper de Colley\footnote{''\textbf{The Colley Matrix Explained}:Wesley N. Colley''}, este método está basado en la Regla de Laplace de sucesos y solo se requiere conocer un historial de partidos. 
+El método de \textbf{CMM} propone construir una matriz C $\in$ $ R^{nxn}$ , un vector b $\in$ $ R^n$ tal que el ranking r $\in$ $R^n$ buscado sea la solución al sistema :
+
+\hfill $Cr=b$ \hfill \stackon{}{\textbf{(1)}}
+
+\\
+Construyamos la matriz $C$ del sistema, primero hagamos algunas definiciones, sea un equipo $i$, definamos como la cantidad total de partidos jugados por este equipo como $n_i$, por otro lado $w_i$ como la cantidad victorias el equipo, análogamente $l_i$ los partidos perdidos y por ultimo $n_{i,j}$ la cantidad de partidos jugados entre el equipo $i$ y $j$, finalmente las posiciones de la matriz $C$ se completan con: 
 
 \[ C_{i,j} =
     \begin{cases}
-        -n_{i,j}       & \quad \text{si }  \text{$i$ $\neq$ $j$}\\
+        -n_{i,j}       & \quad \text{si }  \text{$i$ $\neq$ $j$} \\
         2+n_i & \quad \text{si } \text{$i$ $=$ $j$ }\\
-    \end{cases}
+    \end{cases}\hfill \stackon{}{\textbf{(2)}}
 $$
   $$  \]
                     
-y $b_i$ = 1 +  ($w_i$ - $l_i$) / 2.
+y para el vector resultante $b$ definimos para el equipo $i$, $b_i$ = 1 +  ($w_i$ - $l_i$) / 2.
 
-Esta matriz tiene la particularidad de ser simétrica y definida positiva, siendo condición necesaria para encontrar la factorización de cholesky sobre esta matriz, además de factorización LU, por lo que con ambos métodos, Eliminación gaussiana y Factorización de cholesky, combinadas con otras técnicas de remplazo nos permitirán resolver el sistema presentado previamente.
-
-La principal fortaleza de este método es que es útil para obtener rankings en torneos donde los participantes no juegan la misma cantidad de partidos, lo cual 
-podríamos hacer una análisis más exhaustivo sobre cada uno de los partidos jugados y como afecta esto en todo un torneo,
-además de que al armar el sistema en base a los resultados pasados, da relevancia al calendario de juegos de cada participante. 
-Luego se intentará demostrar en la sección de experimentos, utilizando esta técnica que importa contra quien se gana y contra quien se pierde.
-
-Por otro lado las desventajas que notamos es que este método no es aplicable a muchos de los deportes ya que los empates no pueden ser modelados, además de que el ranking no toma en cuenta
-el margen de victoria de los equipos, lo cual cuando surjan empates en cuanto a cantidad de victorias podrían utilizarse los empates como forma de desempate, por otro lado como es mencionado en el paper de Colley, este metodo mantiene en todo momento que el promedio del ranking sea 1/2, con lo cual al jugar dos equipos se vera afectado un tercero en el ranking total, demostremos esto con el siguiente ejemplo.
-
-\begin{center}
-    \begin{tabular}{| 1 | 1 | 1 |}
-    \hline
-    Posición & Equipo & Ranking \\ \hline
-    1 & C & 1 \\ \hline
-    2 & A & 1/2  \\ \hline
-    3 & B & 0 \\ 
-    \hline
-    \end{tabular}
-\end{center}
-
-
-En cuanto a cómo podría un participante subir posiciones en el ranking con en este método no parece ser muy intuitivo mirando la matriz a simple vista. Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero
-y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante.
-Para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que el , para esto utilizaremos 2 heurísticas distintas
+Esta matriz, tiene la particularidad de ser simétrica y definida positiva, siendo esta una condición suficiente para poder obtener la factorizacion de cholesky, esta factorizacion se trata del producto de una matriz inferior por la traspuesta de dicha matriz inferior. Por lo tanto podremos utilizar este metodo para la resolucion del sistema \textbf{(1)} que planteamos arriba. A su vez sabemos que esta matriz no necesita pivoteo si aplicamos el alogirtmo de eliminacion gaussiana, ya que todos sus elementos en la diagonal son positivos y distinto de cero, por lo que utilizaremos ambos metodos para la resolucion del sistema \textbf{(1)}. Estos temas los veremos mas en detalle en las siguientes subsecciones.
+    
+Volviendo a las caracteristicas del metodo de CMM, a simple vista podemos ver que al igual que en $WP$ no se tiene en cuenta el margen de victoria, no modela los empates y tampoco nos da indicio de como impactara en el ranking cada uno de los resultados de los partidos, en la sección de experimentos, veremos si con este metodo importa contra quien se gana y contra quien se pierde basandonos en las posiciones. Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante, para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que el, utilizaremos 2 heurísticas distintas
 con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
+
 
 \subsubsection{Eliminación Gaussiana}
 
 El algoritmo de Eliminación Gaussiana es útil para la resolución de sistemas lineales, con el cual mediante combinaciones lineales entre filas e intercambio cuando se encuentran ceros diagonal de la matriz, llegando así a una matriz escalonada por reglones con ceros debajo de los elementos de la diagonal.\\
-Finalmente, dado que la matriz esta triangulada, mediante el algoritmo denominado back substitution se realiza el cálculo para obtener el valor de las incógnitas tomando cada elemento como
-$x_i = (b_i - \sum\limits_{j = i + 1}^n c_{ij}x_i) / c_{ii}$ con el fin de obtener la solución al sistema $Cr=b$, donde $C$ es la Matriz de Colley, con el fin de obtener el vector $r$ mostrado anteriormente en la ecuación del sistema a resolver. 
+Finalmente, dado que la matriz esta triangulada, mediante el algoritmo denominado back substitution se realiza el cálculo para obtener el valor de las incógnitas tomando cada elemento como\\
 
-Dado que la matriz no contiene ninguna característica especifica que nos pueda acelerar la ejecución del mismo, con esto nos referimos a que no puede contener ceros debajo de la diagonal dado a que esta matriz es definida positiva como mencionamos anteriormente sabemos que en la diagonal nunca nos vamos a encontrar con un 0, para demostrar esto basta con tomar un vector canónico y ver si se cumple la definición de definida positiva.
+\begin{center}
+$x_i = (b_i - \sum\limits_{j = i + 1}^n c_{ij}x_i) / c_{ii}$ \\
+\end{center}
+
+Con el fin de obtener la solución al sistema \\
+\begin{center}
+$Cr=b$
+\end{begin}
+
+Donde $C$ es la Matriz de Colley, con el fin de obtener el vector $r$ mostrado anteriormente en la ecuación del sistema a resolver. 
+
+Dado que la matriz no contiene ninguna característica especifica que nos pueda acelerar la ejecución del mismo, con esto nos referimos a que puede no contener ceros debajo de la diagonal dado a que esta matriz es definida positiva como mencionamos anteriormente sabemos que en la diagonal nunca nos vamos a encontrar con un 0, para demostrar esto basta con tomar un vector canónico y ver si se cumple la definición de definida positiva.
 
 A continuación presentamos un pseudo código del algoritmo de eliminación gaussiana que utilizamos en nuestra implementación, para el mismo tomamos como base el seudocódigo del libro de Burden \footnote{''\textbf{Análisis Numérico }:Richard L. Burden & J. Douglas Faires''},
 
