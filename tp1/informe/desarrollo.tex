@@ -69,13 +69,14 @@ y para el vector resultante $b$ definimos para el equipo $i$, $b_i$ = 1 +  ($w_i
 
 Esta matriz, tiene la particularidad de ser simétrica y definida positiva, siendo esta una condición suficiente para poder obtener la factorizacion de cholesky, esta factorizacion se trata del producto de una matriz inferior por la traspuesta de dicha matriz inferior. Por lo tanto podremos utilizar este metodo para la resolucion del sistema \textbf{(1)} que planteamos arriba. A su vez sabemos que esta matriz no necesita pivoteo si aplicamos el alogirtmo de eliminacion gaussiana, ya que todos sus elementos en la diagonal son positivos y distinto de cero, por lo que utilizaremos ambos metodos para la resolucion del sistema \textbf{(1)}. Estos temas los veremos mas en detalle en las siguientes subsecciones.
     
-Volviendo a las caracteristicas del metodo de CMM, a simple vista podemos ver que al igual que en $WP$ no se tiene en cuenta el margen de victoria, no modela los empates y tampoco nos da indicio de como impactara en el ranking cada uno de los resultados de los partidos, en la sección de experimentos, veremos si con este metodo importa contra quien se gana y contra quien se pierde basandonos en las posiciones. Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante, para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que el, utilizaremos 2 heurísticas distintas
-con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
+Volviendo a las caracteristicas del metodo de CMM, a simple vista podemos ver que al igual que en $WP$ no se tiene en cuenta el margen de victoria, no modela los empates y tampoco nos da indicio de como impactara en el ranking cada uno de los resultados de los partidos.Por lo que en la sección de experimentos, veremos si con este metodo importa contra quien se gana y contra quien se pierde basandonos en las posiciones y analizaremos que pasara con los empates.
+
+Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante, para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que el, utilizaremos 2 heurísticas distintas con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
 
 
 \subsubsection{Eliminación Gaussiana}
 
-El algoritmo de Eliminación Gaussiana es útil para la resolución de sistemas lineales, con el cual mediante combinaciones lineales entre filas e intercambio cuando se encuentran ceros diagonal de la matriz, llegando así a una matriz escalonada por reglones con ceros debajo de los elementos de la diagonal.\\
+El algoritmo de Eliminación Gaussiana es útil para la resolución de sistemas lineales, con el cual mediante combinaciones lineales entre filas e intercambio  llegar a una matriz escalonada por reglones con ceros debajo de los elementos de la diagonal.\\
 Finalmente, dado que la matriz esta triangulada, mediante el algoritmo denominado back substitution se realiza el cálculo para obtener el valor de las incógnitas tomando cada elemento como\\
 
 \begin{center}
@@ -85,11 +86,12 @@ $x_i = (b_i - \sum\limits_{j = i + 1}^n c_{ij}x_i) / c_{ii}$ \\
 Con el fin de obtener la solución al sistema \\
 \begin{center}
 $Cr=b$
-\end{begin}
+\end{center}
 
 Donde $C$ es la Matriz de Colley, con el fin de obtener el vector $r$ mostrado anteriormente en la ecuación del sistema a resolver. 
 
-Dado que la matriz no contiene ninguna característica especifica que nos pueda acelerar la ejecución del mismo, con esto nos referimos a que puede no contener ceros debajo de la diagonal dado a que esta matriz es definida positiva como mencionamos anteriormente sabemos que en la diagonal nunca nos vamos a encontrar con un 0, para demostrar esto basta con tomar un vector canónico y ver si se cumple la definición de definida positiva.
+Dado que la matriz no contiene ninguna característica especifica que nos pueda acelerar la ejecución del mismo, con esto nos referimos a que puede no contener ceros debajo de la diagonal, y dado a que esta matriz es definida positiva como mencionamos anteriormente sabemos que en la diagonal nunca nos vamos a encontrar con un 0, por lo que en el algoritmo nos vmaos a saltear esa validacion,
+si quisieramos validar esto basta con tomar un vector canónico y ver si se cumple la definición de definida positiva.
 
 A continuación presentamos un pseudo código del algoritmo de eliminación gaussiana que utilizamos en nuestra implementación, para el mismo tomamos como base el seudocódigo del libro de Burden \footnote{''\textbf{Análisis Numérico }:Richard L. Burden & J. Douglas Faires''},
 
@@ -124,7 +126,7 @@ Este algoritmo tiene complejidad temporal de $O(n^{3})$ para la eliminacion Gaus
 
 \newpage
 \subsubsection{Cholesky}
-La Matriz del sistema a resolver cuenta, como mencionamos anteriormente, tiene la propiedad de ser simétrica y definida positiva. Estas condiciones nos garantizan que la misma tenga otra factorización que represente un caso particular de la factorización $LU$, del tipo $C=LL^{t}$, esta se denomina la factorización de Cholesky, compuesta por una matriz Triangular inferior $L$ y la triangular superior $L^{t}$. Donde las posiciones de esta matriz están compuestas de esta manera
+La Matriz del sistema a resolver cuenta, como mencionamos anteriormente, tiene la propiedad de ser simétrica y definida positiva. Estas condiciones nos garantizan que la misma tenga otra factorización que represente un caso particular de la factorización $LU$, del tipo $C=LL^{t}$, esta se denomina la factorización de Cholesky, compuesta por una matriz Triangular inferior $L$ y la transpuesta de la misma matriz $L^{t}$. Donde las posiciones de esta matriz están compuestas de esta manera
 
 $l_{ji} =
 \left\{

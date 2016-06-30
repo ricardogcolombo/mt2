@@ -9,7 +9,6 @@ Además realizaremos una comparación de los métodos de \textbf{Eliminación Ga
 En esta sección solo presentaremos los experimentos realizados y los resultados obtenidos. Las conclusiones de cada experimento
 las presentaremos en la seguiente sección. 
 
-
 \subsection{Ranking}
 
 Vamos a comparar la tabla de ranking obtenida a partir de un set de datos de la \textbf{ATP 2007}. Es decir calculamos el ranking a partir de la técnica \textbf{WP}, considerando 
@@ -57,7 +56,6 @@ En el grafico se resalta el jugador fnisk y se muestra informacion adicional.
 
 \subsection{¿Importa a quien se le gana?}
 
-
 En el escenario que se utilize \textbf{WP} realmente no importa a que equipo se le gane, ya que todos los partidos tienen la misma importancia y se les asigna el mismo puntaje. Pero en el caso de \textbf{CMM} resulta mas interesante plantearse esta pregunta. \\
 
 La hipótesis que tenemos es que tomando un equipo de mitad de tabla, que denominamos \textbf{medio} el hecho de que le gane al lider de la tabla va a mejorar mucho mas el ranking que derrotando al que ocupe la última posición. \\
@@ -68,30 +66,26 @@ Presentamos los resultados obtenidos.
 
 \\
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Posicion Inicial}
 \centering
 \begin{tabular}{c c c}
 \hline \hline
     Posición & Jugador & Ranking \\ 
     \hline
-
     1 & Federer & 1,131919 \\ 
     164 & Vasallo Arguello & 0,474265 \\ 
     334 & Vicente F. & 0,198425 \\ 
-  
     \end{tabular}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[H]
         \caption{Ganandole al Primero}
-
 \centering
 \begin{tabular}{c c c}
 \hline \hline
     Posición & Jugador & Ranking \\ 
     \hline
-
     1 & Federer & 1,117437 \\ 
     141 & Vasallo Arguello & 0,508447 \\ 
     334 & Vicente F. & 0,198271 \\ 
@@ -99,7 +93,7 @@ Presentamos los resultados obtenidos.
     \end{tabular}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[H]
 \caption{Ganandole al Ultimo}
 \centering
 \begin{tabular}{c c c}
@@ -115,11 +109,8 @@ Presentamos los resultados obtenidos.
 
 \newline
 
-
 Se observa una mejoria en el ranking luego de haber ganado contra el primero.
 \\
-
-
 
 \subsection{Racha ganadora}
 
@@ -185,12 +176,25 @@ A continuacion se observa un zoom dentro del grafico para observar este comporta
 
 El ultimo jugador del ranking se llama Verkerk M., sus partidos fueron los siguientes:
 \\
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{IMG/partidos jugados vs verkerk.png}
+\begin{table}[H]
 \caption{Partidos jugados por Verkerk}
-\label{fig:Partidos jugados por Verkerk}
-\end{figure}
+\centering
+\begin{tabular}{| c | c | c | c | c |}
+\hline \hline
+    Nro Partido & Ganador & Sets Ganados & Perdedor & sets Perdidos \\ 
+    \hline
+    535 & de Voest R. & 2 & Verkerk M. & 0 \\ 
+    757 & Grosjean S. & 2 & Verkerk M. & 0 \\ 
+    832 & Hanescu V. & 2 & Verkerk M. & 0 \\ 
+    902 & Chela J.I. & 2 & Verkerk M. & 0 \\ 
+    1063 & Brands D. & 2 & Verkerk M. & 0 \\ 
+    1092 & Acasuso J. & 2 & Verkerk M. & 0 \\ 
+    1145 & Almagro N. & 2 & Verkerk M. & 0 \\ 
+    1212 & Lapentti N. & 2 & Verkerk M. & 0 \\ 
+    1234 & Bolelli S. & 3 & Verkerk M. & 0 \\ 
+    \hline
+    \end{tabular}
+\end{table}
 
 \\
 En el siguiente grafico se observa el movimiento de ranking de los que le ganaron partidos a Verkerk, teniendo en cuenta la escalada al primer puesto de este jugador.
@@ -204,16 +208,13 @@ En el siguiente grafico se observa el movimiento de ranking de los que le ganaro
 
 \subsection{Escalando Posiciones}
 
-Una de las consignas del trabajo era encontrar una tecnica para hacer escalar en el ranking a un \textbf{equipo}, pensamos en 2 tacticas. 
+Una de las consignas del trabajo era encontrar una tecnica para hacer escalar en el ranking a un \textbf{equipo}, pensamos en 2 tecnicas asumiendo que el torneo se encuentra en un punto donde todavia quedan partidos por jugar para saber cuantos partidos debe jugar para llegar al primer puesto y otra para variar los partidos hacia atras viendo si es posible que llegue al primer puesto. 
 \\
-Ambas se basan en, dado un schedule ya definido donde existe un jugador que esta ultimo en el ranking, hacerlo jugar y ganar vs 'el que siempre esta primero en la fecha correspondiente' y 'contra el que tiene inmediatamente arriba de el en el rank'
+Las primeras dos se basan en, dado un schedule ya definido donde existe un jugador que esta ultimo en el ranking, hacerlo jugar y ganar, en primer lugar,con el que siempre esta primero partido a partido y en otro experimento contra el que tiene inmediatamente arriba en el ranking. Para la otra tecnica se realizo un experimento variando tomando al jugador que este en menor posicion habiendo jugado partidos y por ultimo compararemos estas tecnicas entre ellas.
 \\
-Pensamos en una primera instancia era que tenia que ascender mas pronto aquel jugador que juega y gana contra el que ocupa el primer puesto que aquel que juega y gana contra cualquier otro jugador.
-\\
-Los algoritmos realizados cortan la ejecucion al llegar al primer puesto, arrojando la cantidad de partidos en total que debio jugar, y ganar, ese jugador.
+Los algoritmos realizados cortan la ejecucion al llegar al primer puesto, arrojando la cantidad de partidos en total que debio jugar, y ganar, ese jugador para las dos primeras tecnicas y para la ultima cuando se modificaron todos los partidos.
 
-A continuacion se muestran los graficos.
-
+A continuacion se muestran los analisis.
 
 \subsubsection{Ganarle siempre al primero}
 
@@ -247,6 +248,162 @@ En este grafico se observa que el crecimiento es lento y que se necesitan aproxi
 
 Se observa tambien una linea de referencia que indica cuando llega el jugador a superar al primero del ranking.\\
 
+\subsubsection{Modificando los resultados}
+
+Para esta tecnica lo que se realizo fue elegir un equipo que se encuentre en la ultima posicion e intentar hacer que suba las posiciones modificando los resultados de sus partidos perdidos.
+
+\textbf{Porque esto es posible?}
+
+Esto es posible porque el resultado del partido, ya sea ganado o perdido, se encuentra en el vector b, con lo cual basta con modificar ese vector para poder ejecutar otra vez el ranking.
+
+Si bien no se utilzo en esta experimentacion, podriamos utilizar la ventaja de tener una matriz factorizada para realizar solamente los algoritmos de backgward substitution y forward substitution para obtener los resultados mas rapido.
+De igual manera para implementar esto lo que se hizo fue ejecutar una cantidad de veces igual a la cantidad de partidos ganados del equipo elegido y terminar cuando no tenga mas resultados que cambiar o cuando haya llegado a la primera posicion.En cada iteracion lo que se hizo fue modificar el resultado del partido contra el equipo que perdio y luego volver a calcular el ranking.
+\newpage
+\textbf{Porque elegimos experimentar con el ultimo?}
+
+Debido a que con la prueba queremos ver si es posible llegar a la primera posicion y  empezamos planteando que no es posible para equipos que jugaron pocos partidos.
+
+\textbf{Los resultados fueron los esperados?}
+
+Realemente como planteamos en anteriormente esperabamos que no llegue a la primera posicion, de igual manera el salto que hizo al ganar sus partidos no fue el esperado, llego a mitad de tabla como se puede ver en el siguiente grafico.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{IMG/modificandob.jpg}
+\caption{Modificando el vector b}
+\label{fig:Modificando partidos perdidos}
+\end{figure}
+
+Si analizamos el grafico anterior podemos ver que se modifican 5 partidos que son contra equipos que estan delante de el en el ranking y el equipo llega a mitad de tabla.
+\subsubsection{comparacion de tecnicas}
+Si nos pusieramos a analizar las tecnicas anteriores con el fin de encontrar similitudes y diferencias, podemos notar que en cuanto a tiempos de ejecucion o resolucion del sistema tardarian lo mismo, debido a que como mencionaremos en el analisis cuantitativo la cantidad de partidos no afecta el tiempo de resolucion del mismo.
+Por otro lado, la principal diferencia entre una tecnica y la otra es que si agregamos partidos a un ranking, siempre llegariamos a una cantidad de partidos finita para terminar en primera posicion, sea la cantidad que sea, diferente es en la tecnica de cambiar resultados que podriamos no llegar a estar en primera posicion como se ve en el ejemplo anterior, como lo pudimos ver en los graficos anteriores.
+
+\subsection{Justicia}
+
+A la hora de hablar de justicia de los rankings primero debemos preguntarnos, justicia respecto a que o cual objetivo. Si observamos las pruebas para el ranking de CMM notamos ciertos movimientos de algunos equipos que no jugaban.
+Estos movimientos no eran esperados por nosotros por lo que realizamos una prueba para un campeonato pequeño con el fin de replicar este problema.
+
+Supongamos que tenemos un campeonato de 5 equipos si vemos el metodo de CMM, la matriz $C$ y el vector $b$ que obtendriamos en un momento inicial serian\\
+
+\[\left C = \begin{pmatrix}
+    2 & 0 & 0 & 0 & 0\\ 
+    0 & 2 & 0 & 0 & 0\\ 
+    0 & 0 & 2 & 0 & 0\\ 
+    0 & 0 & 0 & 2 & 0\\ 
+    0 & 0 & 0 & 0 & 2\\ 
+ \end{pmatrix}\,\,
+b =
+ \begin{pmatrix}
+    1 \\ 
+    1 \\
+    1 \\
+    1 \\
+    1 \\
+ \end{pmatrix}\right
+\]
+
+
+
+Donde cada posicion $c_{i,j}$ representa lo que mensionamos en la seccion desarrollo de como se construye la matriz.
+
+Si resolvemos el sistema \textbf{(1)} con esta matriz y este vector obtendremos como vector de rankings inicial.
+\begin{center}
+r =
+ \begin{pmatrix}
+    1/2 \\ 
+    1/2 \\
+    1/2 \\
+    1/2 \\
+    1/2 \\
+ \end{pmatrix}
+\end{center}
+
+Si vemos el vector solucion son los valores iniciales del ranking, ahora, supongamos que juega el equipo \textbf{0} y gana en el partido contra el equipo \textbf{1}, Que sucede con el ranking y los valores de cada una de las partes del sistema luego de modificarlo y buscar la solucion para el ranking?
+
+\[\left  C = 
+    \begin{pmatrix}
+    3 & -1 & 0 & 0 & 0\\ 
+    -1 & 3 & 0 & 0 & 0\\ 
+    0 & 0 & 2 & 0 & 0\\ 
+    0 & 0 & 0 & 2 & 0\\ 
+    0 & 0 & 0 & 0 & 2\\ 
+ \end{pmatrix}
+b =
+ \begin{pmatrix}
+    1,500 \\ 
+    0,500 \\
+    1 \\
+    1 \\
+    1 \\
+ \end{pmatrix}
+r =
+ \begin{pmatrix}
+    1.1667 \\
+    0.8333 \\
+    0.5000 \\
+    0.5000 \\
+    0.5000 \\
+ \end{pmatrix}\right
+\]
+Como se ve en el resultado cambian los valores de los equipos correspondientes y el ranking se modificaria haciendo que el equipo $0$ quede en primera posicion y el equipo $1$ en segunda, los otros no tendrian modificaciones con lo cual hasta el momento no notamos nada que no esperabamos y no podemos replicar lo que suponemos como \'error\' visto en el grafico.
+Si repetimos los pasos pero esta vez hacemos jugar al equipo $0$ contra el $2$,para que gane el $0$, luego volvemos a calcular el ranking danondonos lo siguiente.
+\newline
+\[\left C = 
+    \begin{pmatrix}
+    4 & -1 & -1 & 0 & 0\\ 
+    -1 & 3 & 0 & 0 & 0\\ 
+    -1 & 0 & 3 & 0 & 0\\ 
+    0 & 0 & 0 & 2 & 0\\ 
+    0 & 0 & 0 & 0 & 2\\ 
+ \end{pmatrix}
+b = 
+\begin{pmatrix}
+    2.0000 \\ 
+    0.5000 \\
+    0.5000 \\
+    1.0000 \\
+    1.0000 \\
+ \end{pmatrix}
+r = 
+\begin{pmatrix}
+    0.7000 \\
+    0.4000 \\
+    0.4000 \\
+    0.5000 \\
+    0.5000 \\
+ \end{pmatrix}\right
+\]
+
+Si vemos estos resultados, notamos que no solo se modificaron los puntajes de los equipos que perdieron, si no que a su vez se modificaron los puntajes de un equipo que no jugo que en este caso es el puntaje del equipo $1$, no solo eso, si no que a su vez notamos que esta manteniendo en cada una de las partidas jugadas el valor de 1/2 como promedio del ranking.
+Si vemos el paper donde se detalla el metodo todo se deriva de como se construye la matriz C en \textbf{(2)}, esta misma matriz, puede ser representada como \\
+\begin{center}
+$C = 2I+\displaystyle\sum_{i=1}^{total\ partidos}G_k$
+\end{center}
+
+Donde $I$, es la matriz identidad y $G_k$ tiene 0 en todas las posiciones excepto en las posiciones $G_{i,j}^k = G_{j,i}^k = -1$ y en la posiciones $G_{i,i}^k = G_{j,j}^k = 1$. Luego si a esta matriz $G$, la multiplicamos por $r$ quedandonos $r'=G_k*r$  obtendriamos que en las posiciones $i$ e $j$ nos queda $r_i-r_j$ y $r_j-r_i$ respectivamente y cero para las demas.Luego 
+ 
+\begin{center}
+$\displaystyle\sum_{i=1}^{N}C*r = \displaystyle\sum_{i=1}^{N}(2*I*r) = 2*\displaystyle\sum_{i=1}^{N} r_i$
+\end{center}
+
+A su vez, del otro lado del sistema, para b, podemos ver que resulta
+
+\begin{center}
+$\displaystyle\sum_{i=1}^{N}b_i = N$
+\end{center}
+
+Finalmente si igualamos ambos resultados obtenemos
+
+\begin{center}
+$\displaystyle\sum_{i=1}^{N}C*r = \displaystyle\sum_{i=1}^{N}b_i = N$\\
+$2*\displaystyle\sum_{i=1}^{N} r_i = N$\\
+$\implies \frac{\displaystyle\sum_{i=1}^{N} r_i}{N} = \frac{1}{2}$\\
+\end{center}
+
+Por lo que vemos que el promedio es siempre $\frac{1}{2}$ y eso explica de porque se modifican un tercero en los rankings cuando juegan dos equipos, lo que esta haciendo es que como el metodo iterativo conserva este valor con un intercambio de puntos con el resto de los equipos.
+
+Por otro lado, que sucede con el metodo de $WP$, como marcamos durante el analisis del mismo solo importa la cantidad de partidos totales y la cantidad de partidos que ganaste, pero no el resultado del partido entre otros equipos/jugadores.
 
 \subsection{Analisis Cuantitativo}
 
