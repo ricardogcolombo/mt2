@@ -11,7 +11,7 @@ En este caso el score de un equipo no es afectado por la cantidad de partidos y 
 Mostremos esto con un ejemplo entre 3 equipos para ver como se ve afectado:
 Supongamos que tenemos 3 equipos \textbf{A}, \textbf{B} y \textbf{C} al principio, como ninguno disputo ningún partido todos tienen valor 0 en la tabla de posiciones.
 
-Ahora supongamos la siguiente de partidos y veamos como queda la talba de posiciones
+Ahora supongamos la siguiente de partidos y veamos cómo queda la tabla de posiciones
 
 \begin{itemize}
 \item \textbf{A} vs \textbf{B} $=>$ GANA \textbf{A} 
@@ -29,7 +29,7 @@ Ahora supongamos la siguiente de partidos y veamos como queda la talba de posici
     \end{tabular}
 \end{center}
 
-Como puede observarse en la tabla el equipo \textbf{B} quedo ultimo ya que no gano ningun partido y la diferencia entre el equipo \textbf{A} y el equipo \textbf{C} es la cantidad de partidos jugados, ya que ambos ganaron la misma cantidad pero como mencionamos anteriormente como el dividendo es mas grande hace que el equipo \textbf{C} quede mejor posicionado.
+Como puede observarse en la tabla el equipo \textbf{B} quedo ultimo ya que no gano ningún partido y la diferencia entre el equipo \textbf{A} y el equipo \textbf{C} es la cantidad de partidos jugados, ya que ambos ganaron la misma cantidad pero como mencionamos anteriormente como el dividendo es más grande hace que el equipo \textbf{C} quede mejor posicionado.
 Veamos que sucede si juegan el equipo \textbf{B} vs equipo \textbf{C} y gana el equipo \textbf{B}.
 
 \begin{center}
@@ -45,11 +45,11 @@ Veamos que sucede si juegan el equipo \textbf{B} vs equipo \textbf{C} y gana el 
 
 Como podemos observar todos quedan con igual ranking y esto es ya que todos jugaron la misma cantidad de partidos y ganaron la misma cantidad de partidos.
 
-Con este ejemplo se puede observar lo que mencionamos anteriormente, que si bien los partidos de los demás no afectan a cambiar el valor de un equipo dentro del ranking si puede afectar su posición, a su vez esta técnica no aporta mucha información respecto a la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado, con lo cual la posición del equipo en el ranking depende de los resultados de victorias del equipo. Por otro lado podemos ver que nunca mensionamos los empates con este metodo, por ende podriamos analizar como podriamos modelarlos y como afectaria el ranking.
+Con este ejemplo se puede observar lo que mencionamos anteriormente, que si bien los partidos de los demás no afectan a cambiar el valor de un equipo dentro del ranking si puede afectar su posición, a su vez esta técnica no aporta mucha información respecto a la posibilidad de victoria en el siguiente encuentro y tampoco considera el ranking del rival enfrentado, con lo cual la posición del equipo en el ranking depende de los resultados de victorias del equipo. Por otro lado podemos ver que nunca mencionamos los empates con este método, por ende podríamos analizar como podríamos modelarlos y como afectaría el ranking.
 
 \subsection{Sistema a resolver}
-Veamos que pasa con el con el otro metodo para obtener rankings para poder comparar y ver cual nos parece mas justo a la hora de utilizarlos para competencias reales.
-Comenzemos armando el sistema de la Matriz de Colley basados en el paper de Colley\footnote{''\textbf{The Colley Matrix Explained}:Wesley N. Colley''}, este método está basado en la Regla de Laplace de sucesos y solo se requiere conocer un historial de partidos. 
+Veamos qué pasa con él con el otro método para obtener rankings para poder comparar y ver cual nos parece más justo a la hora de utilizarlos para competencias reales.
+Comencemos armando el sistema de la Matriz de Colley basados en el paper de Colley\footnote{''\textbf{The Colley Matrix Explained}:Wesley N. Colley''}, este método está basado en la Regla de Laplace de sucesos y solo se requiere conocer un historial de partidos. 
 El método de \textbf{CMM} propone construir una matriz C $\in$ $ R^{nxn}$ , un vector b $\in$ $ R^n$ tal que el ranking r $\in$ $R^n$ buscado sea la solución al sistema :
 
 \hfill $Cr=b$ \hfill \stackon{}{\textbf{(1)}}
@@ -67,11 +67,11 @@ $$
                     
 y para el vector resultante $b$ definimos para el equipo $i$, $b_i$ = 1 +  ($w_i$ - $l_i$) / 2.
 
-Esta matriz, tiene la particularidad de ser simétrica y definida positiva, siendo esta una condición suficiente para poder obtener la factorizacion de cholesky, esta factorizacion se trata del producto de una matriz inferior por la traspuesta de dicha matriz inferior. Por lo tanto podremos utilizar este metodo para la resolucion del sistema \textbf{(1)} que planteamos arriba. A su vez sabemos que esta matriz no necesita pivoteo si aplicamos el alogirtmo de eliminacion gaussiana, ya que todos sus elementos en la diagonal son positivos y distinto de cero, por lo que utilizaremos ambos metodos para la resolucion del sistema \textbf{(1)}. Estos temas los veremos mas en detalle en las siguientes subsecciones.
+Esta matriz, tiene la particularidad de ser simétrica y definida positiva, siendo esta una condición suficiente para poder obtener la factorización de Cholesky, esta factorización se trata del producto de una matriz inferior por la traspuesta de dicha matriz inferior. Por lo tanto podremos utilizar este método para la resolución del sistema \textbf{(1)} que planteamos arriba. A su vez sabemos que esta matriz no necesita pivoteo si aplicamos el algoritmo de eliminación gaussiana, ya que todos sus elementos en la diagonal son positivos y distinto de cero, por lo que utilizaremos ambos métodos para la resolución del sistema \textbf{(1)}. Estos temas los veremos más en detalle en las siguientes subsecciones.
     
-Volviendo a las caracteristicas del metodo de CMM, a simple vista podemos ver que al igual que en $WP$ no se tiene en cuenta el margen de victoria, no modela los empates y tampoco nos da indicio de como impactara en el ranking cada uno de los resultados de los partidos.Por lo que en la sección de experimentos, veremos si con este metodo importa contra quien se gana y contra quien se pierde basandonos en las posiciones y analizaremos que pasara con los empates.
+Volviendo a las características del método de CMM, a simple vista podemos ver que al igual que en $WP$ no se tiene en cuenta el margen de victoria, no modela los empates y tampoco nos da indicio de como impactara en el ranking cada uno de los resultados de los partidos. Por lo que en la sección de experimentos, veremos si con este método importa contra quien se gana y contra quien se pierde basándonos en las posiciones y analizaremos que pasara con los empates.
 
-Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante, para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que el, utilizaremos 2 heurísticas distintas con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
+Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante, para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que él, utilizaremos 2 heurísticas distintas con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
 
 
 \subsubsection{Eliminación Gaussiana}
@@ -90,8 +90,8 @@ $Cr=b$
 
 Donde $C$ es la Matriz de Colley, con el fin de obtener el vector $r$ mostrado anteriormente en la ecuación del sistema a resolver. 
 
-Dado que la matriz no contiene ninguna característica especifica que nos pueda acelerar la ejecución del mismo, con esto nos referimos a que puede no contener ceros debajo de la diagonal, y dado a que esta matriz es definida positiva como mencionamos anteriormente sabemos que en la diagonal nunca nos vamos a encontrar con un 0, por lo que en el algoritmo nos vmaos a saltear esa validacion,
-si quisieramos validar esto basta con tomar un vector canónico y ver si se cumple la definición de definida positiva.
+Dado que la matriz no contiene ninguna característica especifica que nos pueda acelerar la ejecución del mismo, con esto nos referimos a que puede no contener ceros debajo de la diagonal, y dado a que esta matriz es definida positiva como mencionamos anteriormente sabemos que en la diagonal nunca nos vamos a encontrar con un 0, por lo que en el algoritmo nos vamos a saltear esa validación,
+si quisiéramos validar esto basta con tomar un vector canónico y ver si se cumple la definición de definida positiva.
 
 A continuación presentamos un pseudo código del algoritmo de eliminación gaussiana que utilizamos en nuestra implementación, para el mismo tomamos como base el seudocódigo del libro de Burden \footnote{''\textbf{Análisis Numérico }:Richard L. Burden & J. Douglas Faires''},
 
@@ -122,7 +122,7 @@ A continuación presentamos un pseudo código del algoritmo de eliminación gaus
     \end{algorithmic}
 \end{algorithm}
 
-Este algoritmo tiene complejidad temporal de $O(n^{3})$ para la eliminacion Gaussiana y $O(n^{2})$ para el algoritmo de back substitution dando un total de $O(n^{3})$ como consto temporal para obtener una solucion a nuestro sistema de ecuaciones lineales.
+Este algoritmo tiene complejidad temporal de $O(n^{3})$ para la eliminación Gaussiana y $O(n^{2})$ para el algoritmo de back substitution dando un total de $O(n^{3})$ como consto temporal para obtener una solución a nuestro sistema de ecuaciones lineales.
 
 \newpage
 \subsubsection{Cholesky}
@@ -173,4 +173,3 @@ Este seudocódigo representa nuestra implementación sobre la factorización de 
 Este algoritmo tiene complejidad temporal de $O(n^3)$ para Cholesky y $O(n^2)$ para los métodos de forward substitution y back substitution, quedando un total de $O(n^3)$.
 
 \newpage
-

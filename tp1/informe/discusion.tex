@@ -6,7 +6,7 @@ De los resultados obtenidos podemos ver que el ranking obtenido con \textbf{WP} 
 
 El ranking obtenido por \textbf{CMM} refleja de forma mucho m\'as realista el desempeño de cada jugador en el torneo. \\
 
-En un escenario donde tenemos participantes que jugaron una cantidad distinta de partidos pensamos que refleja mejor la realidad del torneo el metodo de \textbf{CMM}. \\
+En un escenario donde tenemos participantes que jugaron una cantidad distinta de partidos pensamos que refleja mejor la realidad del torneo el método de \textbf{CMM}. \\
 
 
 \subsection{\¿Importa a quien se le gana\?}
@@ -19,23 +19,23 @@ La hipótesis con la que calculamos el experimento resulto ser verdadera.  \\
 
 \subsection{Racha ganadora}
 
-Por lo visto el jugador escalo rapidamente desde el último puesto en la tabla de posici\'ones a casi la mitad de tabla. Si bien mejoro su posición, no alcanzo el top ten, y en las últim\'as victorias su ascenso fue m\'as lento. Esto nos hace concluir que solo haciendo jugar y ganar a un participante, la capacidad que tiene para crecer en el ranking esta limitada por la falta de juego de sus rivales.
+Por lo visto el jugador escalo rápidamente desde el último puesto en la tabla de posiciones a casi la mitad de tabla. Si bien mejoro su posición, no alcanzo el top ten, y en las últimas victorias su ascenso fue m\'as lento. Esto nos hace concluir que solo haciendo jugar y ganar a un participante, la capacidad que tiene para crecer en el ranking está limitada por la falta de juego de sus rivales.
 
 \\
 Además sus victorias representaron una mejoría en el ranking de los participantes que lo vencieron a el. De esta forma podemos comprobar que la racha de un jugador afecta al ranking global.\\
 
 
-\subsection{Escalando Posici\'ones}
-Como mensionamos al principio y confirmamos con estos experimentos es que si importa a quien hay que ganarle ya que como se demostro no es lo mismo ganarle al inmediato en el 
+\subsection{Escalando Posiciones}
+Como mencionamos al principio y confirmamos con estos experimentos es que si importa a quien hay que ganarle ya que como se demostró no es lo mismo ganarle al inmediato en el 
 ranking que al que se encuentra primero,
-de esta manera la forma m\'as rapida de llegar al primer puesto es ganandole siempre al que se encuentre primero.
+de esta manera la forma más rápida de llegar al primer puesto es ganándole siempre al que se encuentre primero.
 
 \subsection{Análisis Cuantitativo}
 
-Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecian los datos de la instancia fue l\'ineal.
+Como era de esperar en el caso de \textbf{WP} para instancias el tiempo de ejecución fue el mismo, y el tiempo demorado a medida que crecían los datos de la instancia fue lineal.
 
-En el caso de \textbf{CMM}, no podemos decir que fue m\'as eficiente la implementacion de \textbf{Cholesky} que \textbf{Eliminación Gaussiana}, porque los tiempo observados son parecidos entre si. 
-Pero en este caso esperabamos una mejoria dado que los algoritmos se implementaron basadas en el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume 1/3 $n^3$ flops y 
+En el caso de \textbf{CMM}, no podemos decir que fue m\'as eficiente la implementación de \textbf{Cholesky} que \textbf{Eliminación Gaussiana}, porque los tiempo observados son parecidos entre sí. 
+Pero en este caso esperábamos una mejoría dado que los algoritmos se implementaron basadas en el libro \textbf{Burden}, que afirma que \textbf{Cholesky} consume 1/3 $n^3$ flops y 
 \textbf{Eliminación Gaussiana} 2\/3 $n^3$ flops.
 
 
@@ -45,34 +45,18 @@ De los experimentos realizados notamos que es importante el tipo de datos utiliz
 \\
 
 Los errores de redondeo pueden derivar en un mal cálculo del ranking. Es decir, no considerar los suficientes decimales puede derivar en que un participante con un ranking
-decimalmente menor quede mejor rankeado que otro con mayor puntaje.\\
+decimalmente menor quede mejor posicionado que otro con mayor puntaje.\\
 
-Por ejemplo: El participante A con ranking 0,5819 y el participante B con ranking 0,5816 si se consideran solo dos decimales ambos tienen 0,58 y esto podria afectar su orden 
+Por ejemplo: El participante A con ranking 0,5819 y el participante B con ranking 0,5816 si se consideran solo dos decimales ambos tienen 0,58 y esto podría afectar su orden 
 en el ranking global. \\
 
-Para evitar esta situaci\'on nuestra implementación usa el tipo de datos float con con 5 decimales despues de la coma.\\
+Para evitar esta situación nuestra implementación usa el tipo de datos float con con 5 decimales después de la coma.\\
 
 
 \subsection{Empates}
 
 Encontramos que los empates pueden modelarse en el caso de \textbf{WP}, asignando un puntaje al partido empatado y continuando con el procedimiento normal.
 
-En el caso de \textbf{CMM} nos resulto muy díficil tratar de modelarlo , como alternativa pensamos que una buena idea seria, en el caso de existir un empate entre el 
-jugador A y el jugador B, podriamos dar un partido ganado y otro perdido a cada uno de los jugadores. 
+En el caso de \textbf{CMM} nos resultó muy difícil tratar de modelarlo , como alternativa pensamos que una buena idea sería, en el caso de existir un empate entre el 
+jugador A y el jugador B, podríamos dar un partido ganado y otro perdido a cada uno de los jugadores. 
 Esto nos permite reutilizar el método y de alguna forma penar y premiar a ambos equipos por haber empatado su partido.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
