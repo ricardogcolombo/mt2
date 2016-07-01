@@ -556,25 +556,9 @@ Ejecutamos los test para nuestra implementación de WP. A continuación se muest
 \end{figure}
 
 \\
-
 Cuando leímos el enunciado encontramos una frase que nos llamó la atención y era la siguiente: \\
 
 Se pide comparar, para distintos tamaños de matrices, el tiempo de computo requerido para cada método en el contexto donde la información de la matriz del sistema $C$ se mantiene invariante,
 pero varia el termino independiente $b$ \\
 
-Entendimos que nuestros tiempos de cálculo no debían variar con la modificación del termino independiente, pero para resolver esta incógnita decidimos realizar la prueba.
-
-Lo que hicimos fue tomar una matriz C, calcularle CMM, luego modificar algunos partidos de la matriz y cambiarlos (esto significa cambiar el resultado de ganados\/perdidos) y calculamos
-nuevamente CMM. \\
-
-Nuestra experimentación intenta demostrar que el tiempo de cálculo no cambia, aunque se varíe el termino independiente.
-A continuación se grafican ambos tiempos.\\
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{IMG/Cholesky con otro termino independiente.png}
-    \caption{Cholesky con otro termino independiente}
-    \label{fig:Cholesky con otro termino independiente}
-\end{figure}
-
-
+Como marcamos anteriormente, no hicimos uso de tener factorizada la matriz con el fin de acelerar los cálculos cuando modificamos el termino independiente, dado a que solamente hariamos uso del back substitution y forward substitution, ya que el cálculo de la factorización de Cholesky no requiere del termino independiente como si lo utiliza la eliminación gaussiana. Esto se puede apreciar mirando los algoritmos, donde Eliminación Gaussiana si hace uso del término independiente a diferencia de Cholesky que lo utiliza solo para los algoritmos de reemplazo. De haber realizado esto notaríamos cambios significativos en los tiempos de Cholesky para estas pruebas.
