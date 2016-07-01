@@ -21,7 +21,7 @@
 using namespace std;
 
 string intToString(int pNumber);
-instancia * generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada);
+instancia * generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada,bool contarEmpates);
 instancia * generarInstanciaVacia(ifstream &archivoDeEntrada);
 void printVector(double * ,int );
 bool pairCompare(const std::pair<int, double>& firstElem, const std::pair<int, double>& secondElem);
@@ -48,6 +48,14 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    // agregado para contar empates;
+    int contarEmpates;
+    if(argc ==4 ){
+        contarEmpates  = 0;
+    }else{
+
+        contarEmpates  = atoi(argv[4]);
+    }
     //leo archivo entrada
     ifstream archivoDeEntrada (argv[1]);
 
@@ -62,7 +70,7 @@ int main(int argc, char *argv[]) {
 
 
     // genero una instancia Matriz de resultados Ganadores y vector de totales
-    instancia *ins= generarInstanciaDesdeArchivo(archivoDeEntrada);
+    instancia *ins= generarInstanciaDesdeArchivo(archivoDeEntrada,contarEmpates);
 
     totalEquipos = ins->getTotalEquipos();
     // base para el resultado
@@ -270,7 +278,6 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        // cout << "MINIMO " << intToString(minPOS)<< endl;
 
 
 
@@ -281,7 +288,7 @@ int main(int argc, char *argv[]) {
         // o mientras no sse hayan modificado todos los partidos
         for (t = 0; !esPrimero && t< todosLosPartidos ; t++) {
             vector<pair<int,double> > rankSorted;
-            
+
             // armo pares numero equipo valor ranking
             for (i = 0; i < totalEquipos;i++) {
                 pair<int,double> p(i,respuesta[i]);
@@ -348,7 +355,7 @@ string intToString(int pNumber)
     return oOStrStream.str();
 }
 
-instancia *generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada){
+instancia *generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada,bool contarEmpates){
     int n,k,i,fecha;
     int equipo1,equipo2,goles1,goles2;
 
@@ -379,18 +386,37 @@ instancia *generarInstanciaDesdeArchivo(ifstream &archivoDeEntrada){
             // quinta linea es la cantidad de goles del segundo equipo
             archivoDeEntrada >> goles2;
 
-            totales[equipo1-1]++;
-            totales[equipo2-1]++;
-
             if(goles1>goles2){
+                totales[equipo1-1]++;
+                totales[equipo2-1]++;
                 int actual = tablaResultados->getVal(equipo1-1,equipo2-1);
 
                 tablaResultados->setVal(equipo1-1,equipo2-1,actual+1);
 
             }else{
-                int actual = tablaResultados->getVal(equipo2-1,equipo1-1);
+                if(goles2<goles1){
+                    totales[equipo1-1]++;
+                    totales[equipo2-1]++;
+                    int actual = tablaResultados->getVal(equipo2-1,equipo1-1);
 
-                tablaResultados->setVal(equipo2-1,equipo1-1,actual+1);
+                    tablaResultados->setVal(equipo2-1,equipo1-1,actual+1);
+                }else{
+                    if(contarEmpates && goles1==goles2){
+                        totales[equipo1-1]++;
+                        totales[equipo2-1]++;
+                        cout << "CONTE EMPATE" << endl;
+                        cout << fecha << endl;
+                        cout << goles1<< endl;
+                        cout << goles2<< endl;
+                        int actual = tablaResultados->getVal(equipo2-1,equipo1-1);
+
+                        tablaResultados->setVal(equipo2-1,equipo1-1,actual+1);
+
+                        actual = tablaResultados->getVal(equipo1-1,equipo2-1);
+
+                        tablaResultados->setVal(equipo1-1,equipo2-1,actual+1);
+                    }
+                }
             }
         }
         archivoDeEntrada.close();
