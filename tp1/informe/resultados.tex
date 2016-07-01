@@ -178,7 +178,7 @@ Finalmente si igualamos ambos resultados obtenemos
     $\implies \frac{\displaystyle\sum_{i=1}^{N} r_i}{N} = \frac{1}{2}$\\
 \end{center}
 
-Por lo que vemos que el promedio es siempre $\frac{1}{2}$ y eso explica de porque se modifican un tercero en los rankings cuando juegan dos equipos, lo que está haciendo es que como el método iterativo conserva este valor con un intercambio de puntos con el resto de los equipos.
+Por lo que vemos que este promedio es siempre $\frac{1}{2}$ y esto explica de porque se modifican un tercero en los rankings cuando juegan dos equipos, esto no es lo que esperabamos nosotros en cuanto al metodo y tampoco parece ser muy intuitivo cuando se lo implementa. En caso de querer mas detalles sobre este metodo recomendamos leer el paper de Colley mensionado en la bibliografia.
 
 Por otro lado, que sucede con el método de $WP$, como marcamos durante el análisis del mismo solo importa la cantidad de partidos totales y la cantidad de partidos que ganaste, pero no el resultado del partido entre otros equipos/jugadores.
 
@@ -342,9 +342,9 @@ En el siguiente grafico se observa el movimiento de ranking de los que le ganaro
 
 Una de las consignas del trabajo era encontrar una técnica para hacer escalar en el ranking a un \textbf{equipo}, pensamos en 2 técnicas asumiendo que el torneo se encuentra en un punto donde todavía quedan partidos por jugar para saber cuántos partidos debe jugar para llegar al primer puesto y otra para variar los partidos hacia atrás viendo si es posible que llegue al primer puesto.
 \\
-Las primeras dos se basan en, dado un historial de partidos ya definido donde existe un jugador que esta último en el ranking, hacerlo jugar y ganar, en primer lugar, con el que siempre esta primero partido a partido y en otro experimento contra el que tiene inmediatamente arriba en el ranking. Para la otra técnica se realizó un experimento variando tomando al jugador que este en menor posición habiendo jugado partidos y por ultimo compararemos estas técnicas entre ellas.
+Las primeras dos se basan en, dado un historial de partidos ya definido donde existe un jugador que esta último en el ranking, hacerlo jugar y ganar, en primer lugar con el que siempre esta primero partido a partido y en otro experimento contra el que tiene inmediatamente arriba en el ranking. Para la otra técnica se realizó un experimento tomando al jugador que este en menor posición con almenos un partido jugado e iremos variando sus partidos para tratar de ver como se modifica el ranking, por ultimo compararemos todas estas etrategias.
 \\
-Los algoritmos realizados cortan la ejecución al llegar al primer puesto, arrojando la cantidad de partidos en total que debió jugar, y ganar, ese jugador para las dos primeras técnicas y para la última cuando se modificaron todos los partidos.
+Las siguientes estrategias fueron implementadas de manera que los algoritmos terminen la ejecución al llegar al primer puesto, arrojando la cantidad de partidos en total que debió jugar, y ganar, ese jugador para las dos primeras técnicas y para la última cuando se modificaron todos los partidos.
 
 A continuación se muestran los análisis.
 
@@ -394,10 +394,11 @@ De igual manera para implementar esto lo que se hizo fue ejecutar una cantidad d
 \textbf{Porque elegimos experimentar con el ultimo?}
 
 Debido a que con la prueba queremos ver si es posible llegar a la primera posición y  empezamos planteando que no es posible para equipos que jugaron pocos partidos.
+De igual manera estos experimentos podrian realizarse para cualquiera de los equipos, siempre esperando que sucedan cualquiera de los tres escenarios que pensamos que pueden suceder. En primer lugar, si es el equipo que se encuentra primero, va a seguir primero. En segundo lugar, para el equipo que se encuentre en cualquier otra posicion pueden pasar dos cosas, que pase a la primera posicion, o que no peuda llegar nunca que es lo que vamos a ver que puede suceder.
 
 \textbf{Los resultados fueron los esperados?}
 
-Realmente como planteamos en anteriormente esperábamos que no llegue a la primera posición, de igual manera el salto que hizo al ganar sus partidos no fue el esperado, llego a mitad de tabla como se puede ver en el siguiente gráfico.
+Realmente como planteamos anteriormente esperábamos que no llegue a la primera posición, de igual manera el salto que hizo al ganar sus partidos no fue el esperado, llego a mitad de tabla como se puede ver en el siguiente gráfico.
 
 \begin{figure}[H]
     \centering
@@ -406,7 +407,8 @@ Realmente como planteamos en anteriormente esperábamos que no llegue a la prime
     \label{fig:Modificando partidos perdidos}
 \end{figure}
 
-Si analizamos el grafico anterior podemos ver que se modifican 5 partidos que son contra equipos que están delante de el en el ranking y el equipo llega a mitad de tabla.
+Si analizamos el grafico anterior podemos ver que se modifican 5 partidos,estos son contra equipos que están delante del equipo seleccionado en el ranking y este llega a mitad de tabla.
+
 \subsubsection{Comparación de Estrategias}
 Si nos pusiéramos a analizar las estrategias anteriores con el fin de encontrar similitudes y diferencias, podemos notar que en cuanto a tiempos de ejecución o resolución del sistema tardarían lo mismo, debido a que como mencionaremos en el análisis cuantitativo la cantidad de partidos no afecta el tiempo de resolución del mismo.
 Por otro lado, la principal diferencia entre una técnica y la otra es que si agregamos partidos a un ranking, siempre llegaríamos a una cantidad de partidos finita para terminar en primera posición, sea la cantidad que sea, diferente es en la técnica de cambiar resultados que podríamos no llegar a estar en primera posición como se ve en el ejemplo anterior, como lo pudimos ver en los gráficos anteriores.
@@ -557,8 +559,8 @@ Ejecutamos los test para nuestra implementación de WP. A continuación se muest
 
 Cuando leímos el enunciado encontramos una frase que nos llamó la atención y era la siguiente: \\
 
-\"Se pide comparar, para distintos tamaños de matrices, el tiempo de computo requerido para cada método en el contexto donde la información de la matriz del sistema (C) se mantiene invariante,
-pero varia el termino independiente (b)\"\\
+Se pide comparar, para distintos tamaños de matrices, el tiempo de computo requerido para cada método en el contexto donde la información de la matriz del sistema $C$ se mantiene invariante,
+pero varia el termino independiente $b$ \\
 
 Entendimos que nuestros tiempos de cálculo no debían variar con la modificación del termino independiente, pero para resolver esta incógnita decidimos realizar la prueba.
 
