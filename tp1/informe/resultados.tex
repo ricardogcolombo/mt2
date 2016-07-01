@@ -491,7 +491,7 @@ Para esta prueba se generaron diferentes historiales de partidos variando la can
 Adicionalmente se varió la cantidad de partidos jugados por cada equipo. Dado el análisis de complejidad de los algoritmos implementados, solo varían el tiempo de calculo en
 función del tamaño de la matriz definida por la cantidad de equipos, por lo cual al variar la cantidad de partidos no esperamos encontrarnos con variaciones en el tiempo. \\
 
-Ejecutamos los test para nuestra implementación de Eliminación Gaussiana.A continuación se muestran los resultados de tiempos de ejecución dependiendo la cantidad de equipos.
+Ejecutamos los test para nuestra implementación de Eliminación Gaussiana, a continuación se muestran los resultados de tiempos de ejecución dependiendo la cantidad de equipos.
 Para evidenciar la complejidad cubica del algoritmo lo hemos encerrado entre 2 funciones cuadráticas que evidencian que no pueden contener la curva de tiempos de nuestro algoritmo. \\
 
 \begin{figure}[H]
@@ -514,8 +514,7 @@ Luego observamos la misma gráfica pero con líneas de referencia de 2 funciones
 
 \\
 Ejecutamos los test para nuestra implementación de Cholesky. A continuación se muestran los resultados de tiempos de ejecución dependiendo la cantidad de equipos.
-Para mostrar la complejidad cúbica del algoritmo lo hemos encerrado entre 2 funciones cuadráticas que evidencian que no pueden contener la curva de tiempos de nuestro algoritmo.\\
-
+Para mostrar la complejidad cúbica del algoritmo lo hemos encerrado entre 2 funciones cuadráticas que evidencian que no pueden contener la curva de tiempos de nuestro algoritmo, pero si en la cúbica como evidenciamos en los algoritmos cuando presentamos la complejidad de los mismos.\\
 
 \begin{figure}[H]
     \centering
@@ -561,4 +560,5 @@ Cuando leímos el enunciado encontramos una frase que nos llamó la atención y 
 Se pide comparar, para distintos tamaños de matrices, el tiempo de computo requerido para cada método en el contexto donde la información de la matriz del sistema $C$ se mantiene invariante,
 pero varia el termino independiente $b$ \\
 
-Como marcamos anteriormente, no hicimos uso de tener factorizada la matriz con el fin de acelerar los cálculos cuando modificamos el termino independiente, dado a que solamente hariamos uso del back substitution y forward substitution, ya que el cálculo de la factorización de Cholesky no requiere del termino independiente como si lo utiliza la eliminación gaussiana. Esto se puede apreciar mirando los algoritmos, donde Eliminación Gaussiana si hace uso del término independiente a diferencia de Cholesky que lo utiliza solo para los algoritmos de reemplazo. De haber realizado esto notaríamos cambios significativos en los tiempos de Cholesky para estas pruebas.
+Como marcamos anteriormente, para Cholesky no aprovechamos la ventaja de tener factorizada la matriz con el fin de acelerar los cálculos cuando modificamos el termino independiente, dado a que solamente hariamos uso del back substitution y forward substitution, ya que el cálculo de la factorización no requiere del termino independiente como si lo utiliza la eliminación gaussiana. Esto se puede apreciar mirando los algoritmos, donde Eliminación Gaussiana si hace uso del término independiente para el calculo de las filas de la matriz factorizada, a diferencia de Cholesky que lo utiliza solo para los algoritmos de reemplazo. De haber realizado esto notaríamos cambios significativos en los tiempos de Cholesky para estas pruebas.
+
