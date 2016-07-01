@@ -1,33 +1,35 @@
 \subsection{Entrada y salida de los algoritmos}
 
-Dados los requerimientos de la c\'atedra el programa toma como parametros 3 argumentos, el primero es el archivo de entrada, luego el archivo de salida y
-por \'ultimo el modo.  La c\'atedra solicitaba 3 modos el modo 0,1 y 2 para los 3 m\'etodos solicitados para ejecutar sobre la matriz Colley, luego agregamos 3 modos m\'as utilizados durante la etapa 
-de experimentaci\'on.
+Dados los requerimientos de la catedra el programa toma como parámetros 3 argumentos, el primero es el archivo de entrada, luego el archivo de salida y
+por \'ultimo el modo.  La catedra solicitaba 3 modos el modo 0,1 y 2 para los 3 métodos solicitados para ejecutar sobre la matriz Colley, luego agregamos 3 modos m\'as utilizados durante la etapa de experimentación.
 \\
 \begin{enumerate}
     \item Eliminaci\'on Gaussiana(EG)
     \item Factorizaci\'on de Cholesky(CL)
     \item WP
-    \item Cholesky con modificaci\'on de partidos jugados
+    \item Cholesky con modificación de partidos jugados
     \item Cholesky haciendo ganar al \'ultimo con el siguiente reiteradas veces hasta quedar primero
     \item Cholesky haciendo ganar al \'ultimo con el primero del ranking hasta quedar primero
 \end{enumerate}
-En todos los modos como paso previo a la realizaci\'on de algunos de los m\'etodos arma la matriz de Colley, explicada en la secci\'on siguiente , para luego utilizando los m\'etodos 0-1 en el programa (1 o 2 en la lista) resolver el sistema pedido.
+En todos los modos como paso previo a la realización de algunos de los métodos arma la matriz de Colley, explicada en la sección siguiente , para luego utilizando los métodos 0-1 en el programa (1 o 2 en la lista) resolver el sistema pedido.
+
+Se agregó un parámetro más que puede ser enviado de manera opcional en caso de probar los resultados con empates y sin empates, 1 y 0 respectivamente a los parámetros anteriores.
+
 \\
 
-El modo 3 corre cholesky, como paso siguiente busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar cholesky,
-Este modo contiene un ciclo para repetir esta operaci\'on 100 veces.
+El modo 3 corre Cholesky, como paso siguiente busca 2 equipos que hayan jugado previamente para cambiar su resultado y luego volver a ejecutar Cholesky,
+Este modo contiene un ciclo para repetir esta operación 100 veces.
 \\
-Para el modo 4 corre cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido \'ultimo luego de obtener el ranking de cholesky llegue al primer puesto ganandole
-al que tiene por arriba inmediato en el ranking. En cada paso agrega un partido m\'as y vuelve a calcular cholesky para la nueva matriz, asi obtenemos un nuevo ranking y continuamos iterando hasta quedar en la primera posici\'on,
-siempre utilizando al que salio \'ultimo en la primera utilizaci\'on del metodo de cholesky.
+Para el modo 4 corre Cholesky y luego ejecuta un ciclo donde el objetivo es lograr que el que haya salido \'ultimo luego de obtener el ranking de Cholesky llegue al primer puesto ganándole
+al que tiene por arriba inmediato en el ranking. En cada paso agrega un partido m\'as y vuelve a calcular Cholesky para la nueva matriz, así obtenemos un nuevo ranking y continuamos iterando hasta quedar en la primera posición,
+siempre utilizando al que salió último en la primera utilización del método de Cholesky.
 
-Una vez finalizado por stdout devuelve la cantidad de partidos jugados, adem\'as de que en el archivo  rankingSTEPS\_4.out dentro de la carpeta test se encuentran los rankings en cada iteraci\'on y como es la evoluci\'on.
-El modo 5 es similar al anterior con la sutil diferencia que el participante que salio \'ultimo la primera vez que corrio cholesky llegue al primer puesto jugandole al que se encuentra en el primer puesto en cada iteraci\'on.
+Una vez finalizado por stdout devuelve la cantidad de partidos jugados, además de que en el archivo  rankingSTEPS\_4.out dentro de la carpeta test se encuentran los rankings en cada iteraci\'on y como es la evolucion.
+El modo 5 es similar al anterior con la sutil diferencia que el participante que salió ultimo la primera vez que corrió cholesky llegue al primer puesto jugándole al que se encuentra en el primer puesto en cada iteración.
 
 \newline
-Tanto el formato de entrada y de salida del programa son los solicitados por la c\'atedra.
-Para todos los m\'etodos el archivo de entrada es el mismo, que contiene el siguiente formato:\\
+Tanto el formato de entrada y de salida del programa son los solicitados por la catedra.
+Para todos los métodos el archivo de entrada es el mismo, que contiene el siguiente formato:\\
 \newline
 
 \begin{pmatrix}
@@ -39,24 +41,29 @@ Para todos los m\'etodos el archivo de entrada es el mismo, que contiene el sigu
 \end{pmatrix}\\
 
 \newline
-La primer l\'inea tiene 2 valores $n$ representa la cantidad de equipos y $k$ representa la cantidad de partidos, seguido k l\'ineas que representa cada partido, donde
-$x1$ representa una fecha que en nuestro caso no utilizamos, luego $ei$ y $ti$ representan los numeros de los equipos, y por \'ultimo $ri$ y $si$ representan las anotaci\'ones de cada equipo respectivamente.\\
-en nuestra experimentaci\'on con fines de no complejizar a\'un m\'as el problema no utilizamos en campo que representa la fecha si no que asumimos que dado el orden que venian los resultados era el orden de los partidos.
+La primer línea tiene 2 valores $n$ representa la cantidad de equipos y $k$ representa la cantidad de partidos, seguido k líneas que representa cada partido, donde
+$x1$ representa una fecha que en nuestro caso no utilizamos, luego $ei$ y $ti$ representan los números de los equipos, y por \'ultimo $ri$ y $si$ representan las anotaciones de cada equipo respectivamente.\\
+en nuestra experimentación con fines de no complejizar a\'un m\'as el problema no utilizamos en campo que representa la fecha si no que asumimos que dado el orden que venían los resultados era el orden de los partidos.
 
-Luego una vez se ejecutan los m\'etodos 0-4 (1 a 4 en la lista)  devuelven un archivo de n l\'ineas donde en la l\'inea se obtiene el ranking del equipo i.
+Luego una vez se ejecutan los métodos 0-4 (1 a 4 en la lista)  devuelven un archivo de n líneas donde en la línea se obtiene el ranking del equipo i.
 
-Para los m\'etodos 4 y 5 se devuelve el ranking para cada iteraci\'on antes de jugar el partido, estas se repiten hasta que el que comenzo \'ultimo termine primero utilizando dos m\'etodos descriptos anteriormente, en la ultima l\'inea se obtiene la cantidad total de partidos,
-estos dos m\'etodos adem\'as devuelven por stdout la cantidad de partidos jugados hasta que termino en la primer posici\'on el que comenzo \'ultimo.
-
-
+Para los métodos 4 y 5 se devuelve el ranking para cada iteración antes de jugar el partido, estas se repiten hasta que el que comenzó ultimo termine primero utilizando dos métodos descriptos anteriormente, en la última línea se obtiene la cantidad total de partidos,
+estos dos métodos además devuelven por stdout la cantidad de partidos jugados hasta que termino en la primer posición el que comenzó último.
 
 \subsection{Archivos de test usados}
-Dentro de la carpeta /src/tests se encuentran los siguientes archivos usados en la experimentaci\'on
+Dentro de la carpeta /src/testsPropios se encuentran los siguientes archivos usados en la experimentaci\'on
 \begin{itemize}
  \item ATP2007.in este archivo es usado en la experimentaci\'on de escalar posici\'ones gandandole al siguiente o al primero del ranking
  \item ATP2007\_100.in este archivo se utilizo en el analisis de salto de posici\'ones en cuanto a 100 partidos jugados para obtener una cota
+ \item carpeta random test tiene todos los archivos de test que se utilizaron para la medici\'on de tiempos
+ \item carpeta empate con resultados de los tests utilizados para la seccion de empates
+ \end{itemize}
+
+Dentro de la carpeta /src/test se encuentran los provistos por la materia para verificar funcionalidad.
+ \begin{itemize}
  \item test1.in archivo provisto por la materia
  \item test2.ina archivo de prueba provisto por la materia
- \item carpeta random test tiene todos los archivos de test que se utilizaron para la medici\'on de tiempos
 \end{itemize}
+
+
 
