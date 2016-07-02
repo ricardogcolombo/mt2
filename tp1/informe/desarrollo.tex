@@ -1,19 +1,20 @@
 \subsection{Porcentaje de Victorias}
+Comenzamos con este método y a lo largo del informe por cuestiones practicas lo denominaremos \textbf{WP}.
 
-Primero analizaremos la técnica que se basa a el \textbf{Porcentaje de Victorias}, que a lo largo del análisis denominaremos \textbf{WP},la misma analiza la performance de un equipo o participante en base a los partidos ganados sobre el total de sus partidos jugados para el armado del ranking.
-
-La implementación consiste en calcular el ranking $r_i$ de un equipo $i$, en base a sus partidos ganados, denominemosolo $w_i$, sobre los partidos totales. Dado a que los empates no se cuentan, los partidos totales los tomamos como la suma de partidos ganados mas los partidos perdidos, estos ultimos denominemoslos $l_i$.
+Tal como habíamos comentado anteriormente, la implementación consitirá en calcular el ranking $r_i$ de un equipo $i$ en base a sus partidos ganados ($w_i$) sobre los partidos totales. Debido a que los empates no son tenidos en cuenta en dicho método consideraremos los partidos totales como la suma de los ganados más los perdidos ($l_i$).
 
 \begin{center}
     r_i = \frac{w_i}{w_i + l_i}. 
 \end{center}
 
-En este caso el puntaje de un equipo no es afectado por los resultados de los demás participante, si afecta su posición final en el ranking. Otra observacion que se puede hacer es que cada partido perdido para el equipo le hace perder valor en el ranking ya que el dividendo es mayor.
+En este caso, el puntaje de un equipo no es afectado por los resultados de los demás participantes pero si influye directamente en que posición del ranking finalizara. 
+Adicionalmente, podemos afirmar que cada partido perdido incrementa la variable $l_i$ (partidos totales), la cual actua como divisor, generando en consecuencia un score inferior; siendo así también un modificador de la posición sobre el ranking.
 
-Mostremos esto con un ejemplo entre 3 equipos para ver como se ve afectado:
-Supongamos que tenemos 3 equipos \textbf{A}, \textbf{B} y \textbf{C} al principio, como ninguno disputo ningún partido todos tienen valor 0 en la tabla de posiciones.
+A continuación mostraremos esto con un ejemplo:
 
-Ahora supongamos la siguiente de partidos y veamos cómo queda la tabla de posiciones
+Supongamos que arrancamos un torneo con 3 equipos \textbf{A}, \textbf{B} y \textbf{C}, como ninguno disputo ningún partido tendrán 0 en la tabla de posiciones.
+
+Supongamos los siguientes partidos y observemos como quedan posicionados:
 
 \begin{itemize}
 \item \textbf{A} vs \textbf{B} $=>$ GANA \textbf{A} 
@@ -31,7 +32,8 @@ Ahora supongamos la siguiente de partidos y veamos cómo queda la tabla de posic
     \end{tabular}
 \end{center}
 
-Como puede observarse en la tabla, el equipo \textbf{B} quedo ultimo ya que no gano ningún partido. La diferencia entre el equipo \textbf{A} y el equipo \textbf{C} es la cantidad de partidos jugados, ya que ambos ganaron la misma cantidad pero como mencionamos anteriormente como el dividendo es más grande hace que el equipo \textbf{C} quede mejor posicionado.
+Como puede observarse en la tabla, el equipo \textbf{B} quedo último ya que no gano ningún partido. La diferencia entre el equipo \textbf{A} y el equipo \textbf{C} es la cantidad de partidos jugados, ya que ambos ganaron la misma cantidad pero como mencionamos anteriormente como el divisor es más grande hace que el equipo \textbf{C} quede mejor posicionado.
+
 Veamos que sucede si juegan el equipo \textbf{B} vs equipo \textbf{C} y gana el equipo \textbf{B}.
 
 \begin{center}
@@ -69,11 +71,14 @@ y para cada posición correspondiente al equipo $i$, el $b_i$ = 1 +  ($w_i$ - $l
 
 Si vemos la definición de la matriz, podemos notar que es estrictamente diagonal dominante ya que la suma de todas las posiciones de la fila, excepto el elemento correspondiente a la diagonal, suman la cantidad de partidos totales $n_i$, siendo este es el valor de la posición en la diagonal menos 2. 
 Por otro lado, tiene la particularidad de ser simétrica y definida positiva y, y como consecuencia de todas estas propiedades podemos decir que la matriz es no singular, permitiéndonos utilizar la eliminación gaussiana sin pivoteo y obtener la factorización de Cholesky de dicha matriz.
+
 Nos centraremos en ambos métodos para la resolución del sistema \textbf{}\textbf{(1)} que planteamos arriba, combinándolo con algoritmos de sustitución como son el back substitution y forward substitution.
 
 Volviendo a las características del método de CMM, a simple vista podemos ver que al igual que en $WP$ no se tiene en cuenta el margen de victoria, no modela los empates y tampoco nos da indicio de como impactara en el ranking cada uno de los resultados de los partidos.
 
-En la sección de experimentos, veremos si con este método importa contra quien se gana y contra quien se pierde basándonos en las posiciones y analizaremos que pasara con los empates. Nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante, para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que él, utilizaremos 2 heurísticas distintas con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
+En la sección de experimentos, veremos si con este método importa contra quien se gana y contra quien se pierde basándonos en las posiciones y analizaremos que pasara con los empates. 
+
+A priori nuestra intuición nos dice que importa más a quien se le gana, pensamos que no es lo mismo ganarle al que esta último que ganarle al que esta primero y en esto nos vamos a basar para realizar nuestras experimentaciones en las secciones de más adelante, para esto utilizaremos un algoritmo greedy tomando al equipo que salga último en el ranking y haciéndolo jugar con otro equipo que este mejor posicionado que él. Utilizaremos 2 heurísticas distintas con el fin de obtener una mejor posición, la primera será contra el inmediato siguiente en el ranking y la otra contra el que este primero, siempre tomando el ranking que resulta luego de cada partido.
 
 \subsubsection{Eliminación Gaussiana}
 Sea $C$ es la Matriz de Colley y $c_i$ los elementos de la misma , buscamos obtener el vector $r$ mostrado en la ecuación del sistema a resolver. 
