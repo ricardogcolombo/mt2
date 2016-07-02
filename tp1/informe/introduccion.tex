@@ -1,28 +1,22 @@
-Las Competencias deportivas, de cualquier índole, requieren la comparación de equipos mediante la confección de tablas de Posiciones y ranking en base a los 
-resultados obtenidos durante un cierto periodo de tiempo.\\
-Algunos de los métodos de ordenamiento utilizados normalmente se basan en proporción de victorias 
-sobre partidos jugados, aunque no todos, sin embargo estos no logran mostrar las dificultades presentadas en estas competencias. A su vez este tipo de 
-rankings son utilizados para clasificaciones de otras competencias o el fin de un equipo dentro de las categorías en las cuales algunas de estas se encuentran divididas estas 
-competencias, teniendo impactos económicos en los clubes, demostrando que no son del todo justas estos métodos utilizados.\\
-En este trabajo practico, intentaremos modelar y resolver el problema de generar un ranking de equipos a partir de los resultados, exceptuando en un principio los empates,
-luego discutiremos como podríamos modelar esto.
-Para confeccionar dicho ranking presentaremos los siguientes métodos:
+
+
+En las Competencias deportivas de cualquier índole, siempre nos encontramos comparando equipos o atletas a través de ciertos tipos de Rankings o Tablas de Posición. Los mismos utilizan diferentes criterios de evaluación y además suelen tener al tiempo como un factor vinculante. Un ejemplo de dicho vinculo sería el Torneo Clausura de Fútbol Argentino 2012 (10 de febrero - 24 de junio); el mismo tuvo una tabla posición que plasmó la calidad de los equipos con una validez igual a la duración del torneo.\\
+Como ya comentábamos, existen diferentes métodos para posicionar a los deportistas o equipos; siendo uno de los más sencillos el de proporción de victorias sobre partidos jugados. Aunque efectivo, dicho método no logra reflejar la complejidad de las competencias dado que deja muchos detalles y características de las mismas fuera. Por ello diremos que es útil hasta cierto punto y esto es importante de tener en cuenta debido al impacto en el prestigio y la economía del atleta o club que queda muy abajo en la tabla de posición. En el caso del fútbol argentino, los equipos pueden descender de categorías y en consecuencia recibir menos dinero por la participación en los torneos de menor categoría (caer de 1ra A Nacional a 1ra B Nacional) - este impacto económico puede ser muy dañino para una institución.\\
+
+El foco de este trabajo practico es el de modelar y resolver la problemática de generar un ranking de equipos a partir de los resultados, exceptuando los empates. Posteriormente discutiremos como podríamos incluirlos.
+Para la confección de dicho ranking presentaremos los siguientes métodos:
 \begin{itemize}  
-\item El Porcentaje de Victorias \textbf{WP} : Este método básicamente es el que nombramos anteriormente, se basa en armar el ranking en base al porcentaje de victorias sobre partidos totales.
-\item Colley Matrix Method \textbf{CMM} :Este es un método matricial se basa en el armado de un ranking en base a los partidos ganados, perdidos y los partidos totales entre equipos.
+\item Porcentaje de Victorias \textbf{WP} : Nombrado anteriormente, se basa calcular porcentajes basado en Victorias sobre Partidos Totales.
+\item Colley Matrix Method \textbf{CMM} : Método matricial basado en los partidos ganados, perdidos y partidos totales entre equipos.
 \end{itemize}
 
-Como mencionamos anteriormente el método de Colley, es un método matricial, por lo que para la resolución de este sistema utilizaremos los métodos vistos en
-la catedra para encontrar los valores del ranking a la solucion Ax=b dichos métodos son:
+Dado que se trabaja con matrices en el método de Colley, utilizaremos diferentes técnicas (vistas en la catedra) para resolver los sistemas matriciales y así dar con los valores del ranking a la solución Ax=b.  Los mismos son:
 
 \begin{itemize}  
 \item La Eliminación Gaussiana \textbf{EG}
 \item La Factorización de Cholesky \textbf{CL}
 \end{itemize}
 
-Luego se procederá a un análisis de los distintos métodos de resolución de sistemas lineales, EG y CL, en base a tiempos y tamaños de sistema a resolver,
-por otro lado estaremos analizando los resultados obtenidos del método de Colley, haremos una comparativa contra el método de porcentajes de victorias para 
-finalizar realizando algún tipo de conclusión respecto a la justicia de dichos métodos frente a los resultados. Todos estos resultados serán representados 
-mediante gráficos comparativos con sus respectivos detalles.
-
+Por otro lado, se procederá a un análisis de los distintos métodos de resolución de sistemas lineales (EG y CL) en base a tiempos y tamaños de sistema a resolver. Adicionalmente, estaremos analizando los resultados obtenidos del método de Colley y haremos una comparativa contra el método de porcentajes de victorias. 
+Finalmente, llegaremos a una conclusión respecto de la justicia de dichos métodos frente a los resultados. Cabe aclarar que todos estos resultados serán representados mediante gráficos comparativos con sus respectivos detalles.
 
