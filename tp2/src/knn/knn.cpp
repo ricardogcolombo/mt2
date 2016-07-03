@@ -1,6 +1,6 @@
 #include "knn.h"
 
-void calcularknn(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, int cantidadDeVecinosMasCercanos) {
+int calcularknn(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, int cantidadDeVecinosMasCercanos) {
     fstream myfile("Resultados.csv",ios::out | ios::app);
     fstream experimentos("experimentos.txt",ios::out | ios::app);
     experimentos.precision(3);
@@ -48,6 +48,7 @@ void calcularknn(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, in
     myfile.close();
     experimentos.close();
     cout << "Cantidad De Aciertos " << lepegue << endl;
+    return lepegue;
 }
 
 class mycomparison

@@ -16,9 +16,9 @@
 #include <sys/time.h>
 using namespace std;
 
-void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile);
+void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile,int cantidadDeTests);
 int **kfolds(string archivo, int &cantidadDePruebas, int &lamda,int& gamma, int &vecinos);
-void arreglarEntrada(vector<entrada> entradaOriginal, vector<entrada> &entradaNueva, vector<entrada> &testeo, int *kfold);
+int arreglarEntrada(vector<entrada> entradaOriginal, vector<entrada> &entradaNueva, vector<entrada> &testeo, int *kfold);
 
 int main(int argc, char *argv[]) {
 
@@ -68,8 +68,8 @@ int main(int argc, char *argv[]) {
         vector<entrada> entrenamiento;
 
         cout << "Corriendo test: " << i + 1 << endl;
-        arreglarEntrada(entradas, entrenamiento, testeo, kfold[i]);
-        ejecutar(atoi(metodo.c_str()), entrenamiento, testeo, lamda, vecinos,gamma, myfile);
+        int cantidadDeTests = arreglarEntrada(entradas, entrenamiento, testeo, kfold[i]);
+        ejecutar(atoi(metodo.c_str()), entrenamiento, testeo, lamda, vecinos,gamma, myfile,cantidadDeTests);
 
         //Elimino todos los vectores creados
         entradas.erase(entradas.begin(), entradas.end());
@@ -89,15 +89,17 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile) {
+void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile,int cantidadDeTests) {
     //knn
-
+    int aciertos = 0;
+    fstream experimentos;
     /*tiempos*/
     timeval startGauss, endGauss;
     if (metodo == 0) {
+        fstream experimentos("experimentosknn.out", ios::out | ios::app);
         cout << "Ejecutando metodo KNN..." << endl;
         gettimeofday(&startGauss, NULL);
-        calcularknn(entradas, test, vecinos);
+        aciertos = calcularknn(entradas, test, vecinos);
     }
     //pca + knn
     // Matriz de Covarianza de X
@@ -109,18 +111,20 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
 
     if (metodo == 1 ) {
         cout << "Ejecutando metodo PCA..." << endl;
+        fstream experimentos("experimentospca.out", ios::out | ios::app);
         calcularPca(entradas, test, myfile, lamda,X_t);
         cout << "Ejecutando KNN sobre el PCA..." << endl;
         gettimeofday(&startGauss, NULL);
-        calcularknn(entradas, test, vecinos);
+        aciertos = calcularknn(entradas, test, vecinos);
     }
     // plsda + knn
     if(metodo==2 ){
         cout << "Ejecutando metodo PLSDA..." << endl;
+        fstream experimentos("experimentosplsda.out", ios::out | ios::app);
         calcularPLSDA(entradas, test, myfile, gamma,X_t);
         cout << "Ejecutando KNN sobre el PLSDA..." << endl;
         gettimeofday(&startGauss, NULL);
-        calcularknn(entradas, test, vecinos);
+        aciertos  = calcularknn(entradas, test, vecinos);
     }
     delete X_t;
     long elapsed_seconds; /* diff between seconds counter */
@@ -129,16 +133,17 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
     gettimeofday(&endGauss, NULL);
     elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
     double timeGauss =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
-    cerr << timeGauss << " "<<endl;
+    experimentos << vecinos << " " << lamda <<" "<<gamma << " tiempo: ";
+    experimentos << timeGauss <<" aciertos : "<<aciertos<< " / "<< cantidadDeTests << endl;
 }
 
 
 int **kfolds(string archivo, int &cantidadDePruebas, int &lamda, int & gamma,int &vecinos ) {
     int **kfold;
-    string hola;
+    string entry;
     fstream myfile(archivo.c_str(), ios_base::in);
     //fix
-    myfile >> hola;
+    myfile >> entry;
     myfile >> vecinos;
     myfile >> lamda;
     myfile >> gamma;
@@ -155,15 +160,18 @@ int **kfolds(string archivo, int &cantidadDePruebas, int &lamda, int & gamma,int
     return kfold;
 }
 
-void arreglarEntrada(vector<entrada> entradaOriginal, vector<entrada> &entradaNueva, vector<entrada> &testeo, int *kfold) {
+int arreglarEntrada(vector<entrada> entradaOriginal, vector<entrada> &entradaNueva, vector<entrada> &testeo, int *kfold) {
     int cantidadDeTests = 0;
     for (int i = 0; i < 42000; i++) {
+        // si es 1 es entrenamiento
         if (kfold[i] == 1) {
             entradaNueva.push_back(entradaOriginal[i]);
         } else {
+            // si es 0 es test
             cantidadDeTests++;
             testeo.push_back(entradaOriginal[i]);
         }
     }
     cout << "Cantidad De imagenes a reconocer: " << cantidadDeTests << endl;
+    return cantidadDeTests;
 }
