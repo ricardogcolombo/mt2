@@ -53,21 +53,21 @@ int main(int argc, char *argv[]) {
     //Esto es para hacer el K folds
     int cantidadDePruebas, lamda, vecinos,gamma;
     int **kfold = kfolds(archivoDeEntrada, cantidadDePruebas, lamda, gamma,vecinos);
-    cout << "Iniciando Kfolds...." << endl;
-    cout << "Cantidad De Pruebas: " << cantidadDePruebas << endl;
-    cout << "Vecinos para el KNN: " << vecinos << endl;
-    cout << "Lamda Para PCA: " << lamda << endl;
-    cout << "gamma Para PLSDA: " << gamma << endl;
+    // cout << "Iniciando Kfolds...." << endl;
+    // cout << "Cantidad De Pruebas: " << cantidadDePruebas << endl;
+    // cout << "Vecinos para el KNN: " << vecinos << endl;
+    // cout << "Lamda Para PCA: " << lamda << endl;
+    // cout << "gamma Para PLSDA: " << gamma << endl;
 
     fstream myfile(archivoDeSalida.c_str(), ios::out | ios::trunc);
 
     for (int i = 0; i < cantidadDePruebas; i++) {
-        cout << "Cargando Base de datos..." << endl;
+        // cout << "Cargando Base de datos..." << endl;
         vector<entrada> entradas = procesarEntrada("train.csv", false);
         vector<entrada> testeo;
         vector<entrada> entrenamiento;
 
-        cout << "Corriendo test: " << i + 1 << endl;
+        // cout << "Corriendo test: " << i + 1 << endl;
         int cantidadDeTests = arreglarEntrada(entradas, entrenamiento, testeo, kfold[i]);
         ejecutar(atoi(metodo.c_str()), entrenamiento, testeo, lamda, vecinos,gamma, myfile,cantidadDeTests);
 
@@ -85,19 +85,18 @@ int main(int argc, char *argv[]) {
     myfile.close();
     //Esto es para hacer el K folds
     cerr << endl;
-    cout << "Fin!" << endl;
+    // cout << "Fin!" << endl;
     return 0;
 }
 
 void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int lamda, int vecinos,int gamma, fstream& myfile,int cantidadDeTests) {
     //knn
     int aciertos = 0;
-    fstream experimentos;
+    // fstream experimentos;
     /*tiempos*/
     timeval startGauss, endGauss;
     if (metodo == 0) {
-        fstream experimentos("experimentosknn.out", ios::out | ios::app);
-        cout << "Ejecutando metodo KNN..." << endl;
+        // cout << "Ejecutando metodo KNN..." << endl;
         gettimeofday(&startGauss, NULL);
         aciertos = calcularknn(entradas, test, vecinos);
     }
@@ -110,19 +109,17 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
 
 
     if (metodo == 1 ) {
-        cout << "Ejecutando metodo PCA..." << endl;
-        fstream experimentos("experimentospca.out", ios::out | ios::app);
+        // cout << "Ejecutando metodo PCA..." << endl;
         calcularPca(entradas, test, myfile, lamda,X_t);
-        cout << "Ejecutando KNN sobre el PCA..." << endl;
+        // cout << "Ejecutando KNN sobre el PCA..." << endl;
         gettimeofday(&startGauss, NULL);
         aciertos = calcularknn(entradas, test, vecinos);
     }
     // plsda + knn
     if(metodo==2 ){
-        cout << "Ejecutando metodo PLSDA..." << endl;
-        fstream experimentos("experimentosplsda.out", ios::out | ios::app);
+        // cout << "Ejecutando metodo PLSDA..." << endl;
         calcularPLSDA(entradas, test, myfile, gamma,X_t);
-        cout << "Ejecutando KNN sobre el PLSDA..." << endl;
+        // cout << "Ejecutando KNN sobre el PLSDA..." << endl;
         gettimeofday(&startGauss, NULL);
         aciertos  = calcularknn(entradas, test, vecinos);
     }
@@ -133,8 +130,8 @@ void ejecutar(int metodo, vector<entrada> &entradas, vector<entrada> &test, int 
     gettimeofday(&endGauss, NULL);
     elapsed_seconds = endGauss.tv_sec - startGauss.tv_sec;
     double timeGauss =  ((elapsed_seconds) * 1000 + elapsed_useconds / 1000.0) + 0.5;
-    experimentos << vecinos << " " << lamda <<" "<<gamma << " tiempo: ";
-    experimentos << timeGauss <<" aciertos : "<<aciertos<< " / "<< cantidadDeTests << endl;
+    cout << vecinos << " " << lamda <<" "<<gamma << " tiempo: ";
+    cout << timeGauss <<" aciertos : "<<aciertos<< " / "<< cantidadDeTests << endl;
 }
 
 
@@ -172,6 +169,6 @@ int arreglarEntrada(vector<entrada> entradaOriginal, vector<entrada> &entradaNue
             testeo.push_back(entradaOriginal[i]);
         }
     }
-    cout << "Cantidad De imagenes a reconocer: " << cantidadDeTests << endl;
+    // cout << "Cantidad De imagenes a reconocer: " << cantidadDeTests << endl;
     return cantidadDeTests;
 }

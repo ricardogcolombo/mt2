@@ -47,7 +47,7 @@ int calcularknn(vector<entrada> &etiquetados, vector<entrada> &sinEtiquetar, int
     experimentos<< endl;
     myfile.close();
     experimentos.close();
-    cout << "Cantidad De Aciertos " << lepegue << endl;
+    // cout << "Cantidad De Aciertos " << lepegue << endl;
     return lepegue;
 }
 
