@@ -10,8 +10,8 @@ print("GENERANDO CASOS DE TEST...")
 k = 30
 alfa = 10
 gamma = 10
-K = 10
-totalTest = 7000
+K = 15
+totalTest = 4200
 for j in range(1,k+1):
     fo = open("knn/test"+str(j)+".in", "wb")
 
