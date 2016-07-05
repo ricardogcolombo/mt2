@@ -1,0 +1,268 @@
+corriendo test  1
+4 1 10 tiempo: 295000 aciertos : 4069 / 4200
+4 1 10 tiempo: 291000 aciertos : 4051 / 4200
+4 1 10 tiempo: 292000 aciertos : 4066 / 4200
+4 1 10 tiempo: 296000 aciertos : 4086 / 4200
+4 1 10 tiempo: 295000 aciertos : 4059 / 4200
+corriendo test  2
+4 2 10 tiempo: 295000 aciertos : 4071 / 4200
+4 2 10 tiempo: 291000 aciertos : 4050 / 4200
+4 2 10 tiempo: 292000 aciertos : 4065 / 4200
+4 2 10 tiempo: 296000 aciertos : 4043 / 4200
+4 2 10 tiempo: 295000 aciertos : 4058 / 4200
+corriendo test  3
+4 3 10 tiempo: 295000 aciertos : 4068 / 4200
+4 3 10 tiempo: 291000 aciertos : 4055 / 4200
+4 3 10 tiempo: 291000 aciertos : 4073 / 4200
+4 3 10 tiempo: 296000 aciertos : 4059 / 4200
+4 3 10 tiempo: 295000 aciertos : 4062 / 4200
+corriendo test  4
+4 4 10 tiempo: 295000 aciertos : 4073 / 4200
+4 4 10 tiempo: 292000 aciertos : 4057 / 4200
+4 4 10 tiempo: 292000 aciertos : 4035 / 4200
+4 4 10 tiempo: 295000 aciertos : 4073 / 4200
+4 4 10 tiempo: 296000 aciertos : 4064 / 4200
+corriendo test  5
+4 5 10 tiempo: 295000 aciertos : 4073 / 4200
+4 5 10 tiempo: 292000 aciertos : 4063 / 4200
+4 5 10 tiempo: 292000 aciertos : 4058 / 4200
+4 5 10 tiempo: 295000 aciertos : 4076 / 4200
+4 5 10 tiempo: 298000 aciertos : 4053 / 4200
+corriendo test  6
+4 6 10 tiempo: 295000 aciertos : 4065 / 4200
+4 6 10 tiempo: 291000 aciertos : 4065 / 4200
+4 6 10 tiempo: 292000 aciertos : 4080 / 4200
+4 6 10 tiempo: 295000 aciertos : 4057 / 4200
+4 6 10 tiempo: 295000 aciertos : 4062 / 4200
+corriendo test  7
+4 7 10 tiempo: 295000 aciertos : 4052 / 4200
+4 7 10 tiempo: 291000 aciertos : 4066 / 4200
+4 7 10 tiempo: 291000 aciertos : 4043 / 4200
+4 7 10 tiempo: 295000 aciertos : 4039 / 4200
+4 7 10 tiempo: 295000 aciertos : 4060 / 4200
+corriendo test  8
+4 8 10 tiempo: 298000 aciertos : 4066 / 4200
+4 8 10 tiempo: 294000 aciertos : 4072 / 4200
+4 8 10 tiempo: 294000 aciertos : 4064 / 4200
+4 8 10 tiempo: 298000 aciertos : 4060 / 4200
+4 8 10 tiempo: 298000 aciertos : 4089 / 4200
+corriendo test  9
+4 9 10 tiempo: 297000 aciertos : 4066 / 4200
+4 9 10 tiempo: 293000 aciertos : 4068 / 4200
+4 9 10 tiempo: 293000 aciertos : 4063 / 4200
+4 9 10 tiempo: 298000 aciertos : 4071 / 4200
+4 9 10 tiempo: 298000 aciertos : 4071 / 4200
+corriendo test  10
+4 10 10 tiempo: 295000 aciertos : 4057 / 4200
+4 10 10 tiempo: 291000 aciertos : 4057 / 4200
+4 10 10 tiempo: 291000 aciertos : 4042 / 4200
+4 10 10 tiempo: 295000 aciertos : 4069 / 4200
+4 10 10 tiempo: 295000 aciertos : 4058 / 4200
+corriendo test  1
+5 1 10 tiempo: 294000 aciertos : 4060 / 4200
+5 1 10 tiempo: 291000 aciertos : 4080 / 4200
+5 1 10 tiempo: 291000 aciertos : 4078 / 4200
+5 1 10 tiempo: 295000 aciertos : 4072 / 4200
+5 1 10 tiempo: 295000 aciertos : 4069 / 4200
+corriendo test  2
+5 2 10 tiempo: 297000 aciertos : 4063 / 4200
+5 2 10 tiempo: 293000 aciertos : 4050 / 4200
+5 2 10 tiempo: 294000 aciertos : 4072 / 4200
+5 2 10 tiempo: 298000 aciertos : 4078 / 4200
+5 2 10 tiempo: 298000 aciertos : 4069 / 4200
+corriendo test  3
+5 3 10 tiempo: 295000 aciertos : 4070 / 4200
+5 3 10 tiempo: 291000 aciertos : 4074 / 4200
+5 3 10 tiempo: 291000 aciertos : 4076 / 4200
+5 3 10 tiempo: 295000 aciertos : 4073 / 4200
+5 3 10 tiempo: 295000 aciertos : 4090 / 4200
+corriendo test  4
+5 4 10 tiempo: 294000 aciertos : 4058 / 4200
+5 4 10 tiempo: 290000 aciertos : 4050 / 4200
+5 4 10 tiempo: 291000 aciertos : 4060 / 4200
+5 4 10 tiempo: 295000 aciertos : 4070 / 4200
+5 4 10 tiempo: 294000 aciertos : 4044 / 4200
+corriendo test  5
+5 5 10 tiempo: 297000 aciertos : 4074 / 4200
+5 5 10 tiempo: 293000 aciertos : 4050 / 4200
+5 5 10 tiempo: 293000 aciertos : 4055 / 4200
+5 5 10 tiempo: 298000 aciertos : 4055 / 4200
+5 5 10 tiempo: 298000 aciertos : 4056 / 4200
+corriendo test  6
+5 6 10 tiempo: 294000 aciertos : 4064 / 4200
+5 6 10 tiempo: 291000 aciertos : 4073 / 4200
+5 6 10 tiempo: 291000 aciertos : 4053 / 4200
+5 6 10 tiempo: 295000 aciertos : 4046 / 4200
+5 6 10 tiempo: 295000 aciertos : 4080 / 4200
+corriendo test  7
+5 7 10 tiempo: 298000 aciertos : 4079 / 4200
+5 7 10 tiempo: 299000 aciertos : 4068 / 4200
+5 7 10 tiempo: 299000 aciertos : 4054 / 4200
+5 7 10 tiempo: 303000 aciertos : 4060 / 4200
+5 7 10 tiempo: 303000 aciertos : 4063 / 4200
+corriendo test  8
+5 8 10 tiempo: 301000 aciertos : 4066 / 4200
+5 8 10 tiempo: 299000 aciertos : 4056 / 4200
+5 8 10 tiempo: 300000 aciertos : 4090 / 4200
+5 8 10 tiempo: 308000 aciertos : 4078 / 4200
+5 8 10 tiempo: 309000 aciertos : 4090 / 4200
+corriendo test  9
+5 9 10 tiempo: 305000 aciertos : 4050 / 4200
+5 9 10 tiempo: 300000 aciertos : 4082 / 4200
+5 9 10 tiempo: 294000 aciertos : 4065 / 4200
+5 9 10 tiempo: 295000 aciertos : 4078 / 4200
+5 9 10 tiempo: 298000 aciertos : 4069 / 4200
+corriendo test  10
+5 10 10 tiempo: 303000 aciertos : 4085 / 4200
+5 10 10 tiempo: 293000 aciertos : 4064 / 4200
+5 10 10 tiempo: 293000 aciertos : 4053 / 4200
+5 10 10 tiempo: 297000 aciertos : 4053 / 4200
+5 10 10 tiempo: 298000 aciertos : 4051 / 4200
+corriendo test  1
+6 1 10 tiempo: 294000 aciertos : 4065 / 4200
+6 1 10 tiempo: 291000 aciertos : 4036 / 4200
+6 1 10 tiempo: 290000 aciertos : 4054 / 4200
+6 1 10 tiempo: 295000 aciertos : 4071 / 4200
+6 1 10 tiempo: 295000 aciertos : 4064 / 4200
+corriendo test  2
+6 2 10 tiempo: 294000 aciertos : 4046 / 4200
+6 2 10 tiempo: 291000 aciertos : 4048 / 4200
+6 2 10 tiempo: 291000 aciertos : 4037 / 4200
+6 2 10 tiempo: 295000 aciertos : 4061 / 4200
+6 2 10 tiempo: 295000 aciertos : 4042 / 4200
+corriendo test  3
+6 3 10 tiempo: 294000 aciertos : 4070 / 4200
+6 3 10 tiempo: 291000 aciertos : 4048 / 4200
+6 3 10 tiempo: 291000 aciertos : 4084 / 4200
+6 3 10 tiempo: 295000 aciertos : 4065 / 4200
+6 3 10 tiempo: 295000 aciertos : 4066 / 4200
+corriendo test  4
+6 4 10 tiempo: 302000 aciertos : 4063 / 4200
+6 4 10 tiempo: 291000 aciertos : 4055 / 4200
+6 4 10 tiempo: 296000 aciertos : 4070 / 4200
+6 4 10 tiempo: 299000 aciertos : 4067 / 4200
+6 4 10 tiempo: 303000 aciertos : 4056 / 4200
+corriendo test  5
+6 5 10 tiempo: 296000 aciertos : 4051 / 4200
+6 5 10 tiempo: 297000 aciertos : 4085 / 4200
+6 5 10 tiempo: 291000 aciertos : 4063 / 4200
+6 5 10 tiempo: 295000 aciertos : 4074 / 4200
+6 5 10 tiempo: 304000 aciertos : 4078 / 4200
+corriendo test  6
+6 6 10 tiempo: 301000 aciertos : 4046 / 4200
+6 6 10 tiempo: 294000 aciertos : 4049 / 4200
+6 6 10 tiempo: 295000 aciertos : 4048 / 4200
+6 6 10 tiempo: 299000 aciertos : 4049 / 4200
+6 6 10 tiempo: 299000 aciertos : 4075 / 4200
+corriendo test  7
+6 7 10 tiempo: 298000 aciertos : 4047 / 4200
+6 7 10 tiempo: 296000 aciertos : 4037 / 4200
+6 7 10 tiempo: 300000 aciertos : 4058 / 4200
+6 7 10 tiempo: 300000 aciertos : 4076 / 4200
+6 7 10 tiempo: 299000 aciertos : 4055 / 4200
+corriendo test  8
+6 8 10 tiempo: 298000 aciertos : 4050 / 4200
+6 8 10 tiempo: 294000 aciertos : 4052 / 4200
+6 8 10 tiempo: 295000 aciertos : 4055 / 4200
+6 8 10 tiempo: 300000 aciertos : 4061 / 4200
+6 8 10 tiempo: 299000 aciertos : 4071 / 4200
+corriendo test  9
+6 9 10 tiempo: 297000 aciertos : 4048 / 4200
+6 9 10 tiempo: 295000 aciertos : 4064 / 4200
+6 9 10 tiempo: 293000 aciertos : 4084 / 4200
+6 9 10 tiempo: 293000 aciertos : 4058 / 4200
+6 9 10 tiempo: 289000 aciertos : 4066 / 4200
+corriendo test  10
+6 10 10 tiempo: 289000 aciertos : 4090 / 4200
+6 10 10 tiempo: 286000 aciertos : 4050 / 4200
+6 10 10 tiempo: 286000 aciertos : 4045 / 4200
+6 10 10 tiempo: 290000 aciertos : 4070 / 4200
+6 10 10 tiempo: 290000 aciertos : 4048 / 4200
+corriendo test  1
+7 1 10 tiempo: 289000 aciertos : 4067 / 4200
+7 1 10 tiempo: 286000 aciertos : 4061 / 4200
+7 1 10 tiempo: 285000 aciertos : 4065 / 4200
+7 1 10 tiempo: 289000 aciertos : 4032 / 4200
+7 1 10 tiempo: 289000 aciertos : 4035 / 4200
+corriendo test  2
+7 2 10 tiempo: 289000 aciertos : 4059 / 4200
+7 2 10 tiempo: 285000 aciertos : 4065 / 4200
+7 2 10 tiempo: 285000 aciertos : 4069 / 4200
+7 2 10 tiempo: 290000 aciertos : 4060 / 4200
+7 2 10 tiempo: 290000 aciertos : 4073 / 4200
+corriendo test  3
+7 3 10 tiempo: 289000 aciertos : 4051 / 4200
+7 3 10 tiempo: 286000 aciertos : 4058 / 4200
+7 3 10 tiempo: 286000 aciertos : 4050 / 4200
+7 3 10 tiempo: 289000 aciertos : 4078 / 4200
+7 3 10 tiempo: 289000 aciertos : 4049 / 4200
+corriendo test  4
+7 4 10 tiempo: 289000 aciertos : 4071 / 4200
+7 4 10 tiempo: 286000 aciertos : 4063 / 4200
+7 4 10 tiempo: 286000 aciertos : 4046 / 4200
+7 4 10 tiempo: 299000 aciertos : 4045 / 4200
+7 4 10 tiempo: 300000 aciertos : 4065 / 4200
+corriendo test  5
+7 5 10 tiempo: 300000 aciertos : 4058 / 4200
+7 5 10 tiempo: 298000 aciertos : 4075 / 4200
+7 5 10 tiempo: 295000 aciertos : 4050 / 4200
+7 5 10 tiempo: 300000 aciertos : 4074 / 4200
+7 5 10 tiempo: 302000 aciertos : 4072 / 4200
+corriendo test  6
+7 6 10 tiempo: 297000 aciertos : 4066 / 4200
+7 6 10 tiempo: 294000 aciertos : 4054 / 4200
+7 6 10 tiempo: 296000 aciertos : 4046 / 4200
+7 6 10 tiempo: 301000 aciertos : 4061 / 4200
+7 6 10 tiempo: 301000 aciertos : 4046 / 4200
+corriendo test  7
+7 7 10 tiempo: 302000 aciertos : 4074 / 4200
+7 7 10 tiempo: 298000 aciertos : 4033 / 4200
+7 7 10 tiempo: 301000 aciertos : 4046 / 4200
+7 7 10 tiempo: 306000 aciertos : 4068 / 4200
+7 7 10 tiempo: 305000 aciertos : 4068 / 4200
+corriendo test  8
+7 8 10 tiempo: 298000 aciertos : 4046 / 4200
+7 8 10 tiempo: 296000 aciertos : 4054 / 4200
+7 8 10 tiempo: 298000 aciertos : 4055 / 4200
+7 8 10 tiempo: 299000 aciertos : 4052 / 4200
+7 8 10 tiempo: 299000 aciertos : 4058 / 4200
+corriendo test  9
+7 9 10 tiempo: 300000 aciertos : 4069 / 4200
+7 9 10 tiempo: 294000 aciertos : 4052 / 4200
+7 9 10 tiempo: 294000 aciertos : 4076 / 4200
+7 9 10 tiempo: 296000 aciertos : 4070 / 4200
+7 9 10 tiempo: 293000 aciertos : 4065 / 4200
+corriendo test  10
+7 10 10 tiempo: 288000 aciertos : 4064 / 4200
+7 10 10 tiempo: 283000 aciertos : 4083 / 4200
+7 10 10 tiempo: 283000 aciertos : 4055 / 4200
+7 10 10 tiempo: 287000 aciertos : 4059 / 4200
+7 10 10 tiempo: 287000 aciertos : 4068 / 4200
+corriendo test  1
+8 1 10 tiempo: 288000 aciertos : 4069 / 4200
+8 1 10 tiempo: 290000 aciertos : 4033 / 4200
+8 1 10 tiempo: 292000 aciertos : 4051 / 4200
+8 1 10 tiempo: 291000 aciertos : 4061 / 4200
+8 1 10 tiempo: 289000 aciertos : 4035 / 4200
+corriendo test  2
+8 2 10 tiempo: 287000 aciertos : 4060 / 4200
+8 2 10 tiempo: 284000 aciertos : 4047 / 4200
+8 2 10 tiempo: 283000 aciertos : 4047 / 4200
+8 2 10 tiempo: 287000 aciertos : 4045 / 4200
+8 2 10 tiempo: 287000 aciertos : 4076 / 4200
+corriendo test  3
+8 3 10 tiempo: 287000 aciertos : 4060 / 4200
+8 3 10 tiempo: 283000 aciertos : 4060 / 4200
+8 3 10 tiempo: 290000 aciertos : 4039 / 4200
+8 3 10 tiempo: 295000 aciertos : 4065 / 4200
+8 3 10 tiempo: 295000 aciertos : 4057 / 4200
+corriendo test  4
+8 4 10 tiempo: 287000 aciertos : 4071 / 4200
+8 4 10 tiempo: 284000 aciertos : 4049 / 4200
+8 4 10 tiempo: 283000 aciertos : 4036 / 4200
+8 4 10 tiempo: 287000 aciertos : 4058 / 4200
+8 4 10 tiempo: 288000 aciertos : 4061 / 4200
+corriendo test  5
+8 5 10 tiempo: 287000 aciertos : 4070 / 4200
+8 5 10 tiempo: 285000 aciertos : 4076 / 4200
+8 5 10 tiempo: 291000 aciertos : 4047 / 4200
