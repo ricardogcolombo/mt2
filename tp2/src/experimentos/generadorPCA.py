@@ -11,7 +11,7 @@ k = 3
 alfa = 10
 gamma = 10
 K = 5
-totalTest = 7000
+totalTest = 4200
 
 for j in range(1,alfa+1):
     fo = open("pca/test"+str(j)+".in", "wb")
