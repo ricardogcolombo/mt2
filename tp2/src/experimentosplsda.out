@@ -330,3 +330,111 @@ corriendo test  10
 3 15 10 tiempo: 206000 aciertos : 4080 / 4200
 corriendo test  1
 4 15 1 tiempo: 207000 aciertos : 4082 / 4200
+4 15 1 tiempo: 204000 aciertos : 4055 / 4200
+4 15 1 tiempo: 221000 aciertos : 4055 / 4200
+4 15 1 tiempo: 233000 aciertos : 4046 / 4200
+4 15 1 tiempo: 228000 aciertos : 4075 / 4200
+4 15 1 tiempo: 223000 aciertos : 4078 / 4200
+4 15 1 tiempo: 232000 aciertos : 4065 / 4200
+4 15 1 tiempo: 229000 aciertos : 4064 / 4200
+4 15 1 tiempo: 215000 aciertos : 4043 / 4200
+4 15 1 tiempo: 215000 aciertos : 4076 / 4200
+corriendo test  2
+4 15 2 tiempo: 210000 aciertos : 4042 / 4200
+4 15 2 tiempo: 207000 aciertos : 4055 / 4200
+4 15 2 tiempo: 207000 aciertos : 4052 / 4200
+4 15 2 tiempo: 211000 aciertos : 4054 / 4200
+4 15 2 tiempo: 208000 aciertos : 4060 / 4200
+4 15 2 tiempo: 209000 aciertos : 4033 / 4200
+4 15 2 tiempo: 208000 aciertos : 4068 / 4200
+4 15 2 tiempo: 207000 aciertos : 4051 / 4200
+4 15 2 tiempo: 207000 aciertos : 4057 / 4200
+4 15 2 tiempo: 207000 aciertos : 4074 / 4200
+corriendo test  3
+4 15 3 tiempo: 206000 aciertos : 4066 / 4200
+4 15 3 tiempo: 204000 aciertos : 4046 / 4200
+4 15 3 tiempo: 211000 aciertos : 4043 / 4200
+4 15 3 tiempo: 213000 aciertos : 4044 / 4200
+4 15 3 tiempo: 216000 aciertos : 4049 / 4200
+4 15 3 tiempo: 224000 aciertos : 4064 / 4200
+4 15 3 tiempo: 223000 aciertos : 4069 / 4200
+4 15 3 tiempo: 216000 aciertos : 4080 / 4200
+4 15 3 tiempo: 206000 aciertos : 4052 / 4200
+4 15 3 tiempo: 207000 aciertos : 4045 / 4200
+corriendo test  4
+4 15 4 tiempo: 209000 aciertos : 4055 / 4200
+4 15 4 tiempo: 206000 aciertos : 4070 / 4200
+4 15 4 tiempo: 209000 aciertos : 4058 / 4200
+4 15 4 tiempo: 229000 aciertos : 4059 / 4200
+4 15 4 tiempo: 231000 aciertos : 4056 / 4200
+4 15 4 tiempo: 232000 aciertos : 4078 / 4200
+4 15 4 tiempo: 224000 aciertos : 4081 / 4200
+4 15 4 tiempo: 219000 aciertos : 4081 / 4200
+4 15 4 tiempo: 212000 aciertos : 4059 / 4200
+4 15 4 tiempo: 212000 aciertos : 4079 / 4200
+corriendo test  5
+4 15 5 tiempo: 214000 aciertos : 4051 / 4200
+4 15 5 tiempo: 214000 aciertos : 4059 / 4200
+4 15 5 tiempo: 215000 aciertos : 4053 / 4200
+4 15 5 tiempo: 212000 aciertos : 4070 / 4200
+4 15 5 tiempo: 208000 aciertos : 4065 / 4200
+4 15 5 tiempo: 209000 aciertos : 4059 / 4200
+4 15 5 tiempo: 207000 aciertos : 4066 / 4200
+4 15 5 tiempo: 207000 aciertos : 4048 / 4200
+4 15 5 tiempo: 207000 aciertos : 4073 / 4200
+4 15 5 tiempo: 206000 aciertos : 4056 / 4200
+corriendo test  6
+4 15 6 tiempo: 206000 aciertos : 4074 / 4200
+4 15 6 tiempo: 209000 aciertos : 4057 / 4200
+4 15 6 tiempo: 223000 aciertos : 4048 / 4200
+4 15 6 tiempo: 223000 aciertos : 4070 / 4200
+4 15 6 tiempo: 213000 aciertos : 4053 / 4200
+4 15 6 tiempo: 218000 aciertos : 4068 / 4200
+4 15 6 tiempo: 218000 aciertos : 4050 / 4200
+4 15 6 tiempo: 223000 aciertos : 4061 / 4200
+4 15 6 tiempo: 217000 aciertos : 4090 / 4200
+4 15 6 tiempo: 215000 aciertos : 4063 / 4200
+corriendo test  7
+4 15 7 tiempo: 209000 aciertos : 4070 / 4200
+4 15 7 tiempo: 204000 aciertos : 4051 / 4200
+4 15 7 tiempo: 204000 aciertos : 4046 / 4200
+4 15 7 tiempo: 219000 aciertos : 4068 / 4200
+4 15 7 tiempo: 222000 aciertos : 4072 / 4200
+4 15 7 tiempo: 222000 aciertos : 4049 / 4200
+4 15 7 tiempo: 209000 aciertos : 4066 / 4200
+4 15 7 tiempo: 209000 aciertos : 4059 / 4200
+4 15 7 tiempo: 209000 aciertos : 4051 / 4200
+4 15 7 tiempo: 208000 aciertos : 4077 / 4200
+corriendo test  8
+4 15 8 tiempo: 209000 aciertos : 4059 / 4200
+4 15 8 tiempo: 205000 aciertos : 4060 / 4200
+4 15 8 tiempo: 205000 aciertos : 4069 / 4200
+4 15 8 tiempo: 206000 aciertos : 4069 / 4200
+4 15 8 tiempo: 209000 aciertos : 4057 / 4200
+4 15 8 tiempo: 211000 aciertos : 4069 / 4200
+4 15 8 tiempo: 211000 aciertos : 4074 / 4200
+4 15 8 tiempo: 206000 aciertos : 4065 / 4200
+4 15 8 tiempo: 205000 aciertos : 4076 / 4200
+4 15 8 tiempo: 210000 aciertos : 4068 / 4200
+corriendo test  9
+4 15 9 tiempo: 220000 aciertos : 4058 / 4200
+4 15 9 tiempo: 217000 aciertos : 4079 / 4200
+4 15 9 tiempo: 209000 aciertos : 4045 / 4200
+4 15 9 tiempo: 206000 aciertos : 4057 / 4200
+4 15 9 tiempo: 207000 aciertos : 4073 / 4200
+4 15 9 tiempo: 211000 aciertos : 4052 / 4200
+4 15 9 tiempo: 212000 aciertos : 4053 / 4200
+4 15 9 tiempo: 210000 aciertos : 4080 / 4200
+4 15 9 tiempo: 206000 aciertos : 4085 / 4200
+4 15 9 tiempo: 205000 aciertos : 4055 / 4200
+corriendo test  10
+4 15 10 tiempo: 207000 aciertos : 4060 / 4200
+4 15 10 tiempo: 209000 aciertos : 4071 / 4200
+4 15 10 tiempo: 209000 aciertos : 4061 / 4200
+4 15 10 tiempo: 211000 aciertos : 4055 / 4200
+4 15 10 tiempo: 211000 aciertos : 4061 / 4200
+4 15 10 tiempo: 211000 aciertos : 4038 / 4200
+4 15 10 tiempo: 211000 aciertos : 4054 / 4200
+4 15 10 tiempo: 208000 aciertos : 4066 / 4200
+4 15 10 tiempo: 207000 aciertos : 4059 / 4200
+4 15 10 tiempo: 208000 aciertos : 4062 / 4200
