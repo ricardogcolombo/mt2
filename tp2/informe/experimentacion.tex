@@ -68,7 +68,29 @@ Habiendo fijado k = 3 , corremos el test1.in variando el gamma utilizando los va
 
 Vemos que si aumenta el gamma , mejora la precision pero si gamma aumenta demasiado , en algun momento empeora tu hit rate , suponemos que eso se debe a que si bien tenemos bastante informacion , la cantidad de vecinos no permite aprovecharla . Eso hace suponer que para que tengamos un buen hit rate , debe haber algun tipo de relacion entre el k y el gamma . Eso se va a poner a prueba usando el test2.in
 
-\subsection {Algoritmo de K-NN con Optimización de PSL-DA}
+\subsection {Precision, recall y F1 Score para los mejores resultados obtenidos}
 
+El ultimo de los puntos pedidos con el fin de analizar la calidad de los resultados obtenidos era la utilizacion de 2 metricas de las presentadas en el enunciado. Para nuestros experimentos decidimos usar Presicion y Recall.
 
+Presicion se basa en la cantidad de aciertos relativos dentro de una clase particular. Osea, dada una clase $i$, definimos a los verdaderos positivos como $tp_i$ y los falsos positivos como $fp_i$, estos son aquellos que fueron definidos como una clase a la cual no pertencian.
+Con lo cual la presicion de dicha clase se define como \\
+\frac{$tp_i$}{$tp_i$+$fp_i$} 
+
+Recall es una medida para saber que tan bueno es un clasificador para identificar a los que pertenecen a una clase, asumiendo que $fn_i$ son aquellos falsos negativos.
+El Recall de una clase esta definido como \\
+\frac{$tp_i$}{$tp_i$+$fn_i$} 
+
+Luego para la mejor cantidad de vecinos obtenida (k=5); buscamos los valores de las metricas obtenidas para PCA.
+
+\includegraphics[scale=1]{imagenes/pcaPresicion.png}\\
+\includegraphics[scale=1]{imagenes/pcaRecall.png}
+
+Como podemos ver los resultados para las metricas dieron muy parecidos en cuanto al lambda elegido para obtener el maximo dentro de la metrica. Sin embargo, esto esta basado en que la cantidad de vecinos que tomamos es 5 dado a que en los experimentos de KNN+PCA demostrados con anterioridad fue con la cantidad de vecinos el cual obtuvimos los mejores resultados.
+
+Por otro lado repetimos el analisis para PLSDA con el fin e analizar las mismas metricas
+
+\includegraphics[scale=1]{imagenes/plsdaPresicion.png}\\
+\includegraphics[scale=1]{imagenes/plsdaRecall.png}
+
+En este caso podemos sacar la misma conclusion que en el caso anterior en cuanto a que las metricas para la combinacion de \gamma y $k$ con la cual se maximiza es la misma que para la cantidad de aciertos. 
 
