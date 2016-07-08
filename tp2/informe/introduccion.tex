@@ -1,22 +1,13 @@
-El objetivo de este trabajo práctico es desarollarar un clasificador que permita reconocer dígitos manuscritos.
-Par llevarlo a cabo analizaremos técnicas de reconocimiento óptico de caracteres (OCR). Es un proceso dirigido a la digitalización de caracteres manuscritos, los cuales identifican automáticamente a partir de una imagen símbolos o caracteres que pertenecen a un determinado alfabeto, para luego almacenarlos en forma de datos.
+Dada las ultimas tecnologías presentadas en el mundo de las redes sociales y ambiente de sistemas en general, se ha incrementado el auge de aquellas que tienen el manejo de imágenes de por medio, dentro de las más conocidas (Facebook) se utiliza el reconocimiento de caras dentro de una imagen para poner etiquetas a aquellas caras ya conocidas o aquellos sistemas de validación como los conocidos CAPTCHA para el reconocimiento de textos manuscritos. Sin ir más lejos, estas grandes compañías utilizan distintos métodos numéricos para poder implementar este tipo de clasificaciones a la hora de poner etiquetas a imágenes ya conocidas, y sin que los usuarios se dieran cuenta estuvieron entrenando estos algoritmos con el fin de mejorar su taza de acierto. 
 
-Exploraremos la técnica de reconocimiento K-NN, K vecinos más próximos, además experimentaremos con distintas variantes de clasificación:
+En el contexto de la materia de métodos numéricos intentaremos ir con un enfoque no muy diferente pero un dominio de cantidad de etiquetas y tamaño de imágenes un poco más reducido ,pero no muy alejados de la realidad, utilizando este tipo de técnicas de machine learning con el fin de poder dar con la clasificación de dígitos manuscritos. Dada una base de datos provista por la catedra con una gran cantidad de imágenes etiquetadas, intentaremos dar con estas utilizando dichas técnicas explicadas en los siguientes párrafos y detalladas con mayor profundidad en las sección de desarrollo. 
 
-\begin{itemize}
-\item PCA
-\item PLSDA
-\end{itemize}
+En primer lugar Exploraremos la técnica de clasificación por \textbf{K vecinos más cercanos} (\textbf{kNN} dado las sigla en ingles). Este método a grandes rasgos se basa en dado el dominio de datos conocidos (etiquetados), se intenta de dar con aquellos que no tengan etiqueta basándonos en los que estén más próximos a él en el espacio vectorial mediante la función de distancia, donde las dimensiones del espacio están atadas al tamaño de la imagen, en nuestro caso $R^784$ dado a que las imágenes son de 28*28 y cada pixel representa una coordenada del vector con el que se representa la misma.
 
+Siguiendo por esta línea continuaremos con dos método de reducción de dimensiones: Análisis de componentes principales (PCA) y Análisis discriminante con cuadrados mínimos parciales (PLS-DA). Estos métodos son similares en cuanto a que realizan una transformación característica pero difieren en cuanto a la información original que se utiliza para dicha transformación. 
 
-Luego analizaremos la performance de cada una de estas técnicas mediante un set de experimentos, para evaluar las fortalezas y deficiencias de cada una de ellas. \\
+A diferencia de \textbf{KNN}, estos métodos no son de clasificación, si no que sirven para hacer una clasificación de nuestros datos de entrada. Por consecuente utilizaremos una combinación de estos métodos \textbf{KNN}+\textbf{PCA} y \textbf{KNN}+\textbf{PLSDA} para cumplir con nuestro objetivo.
 
+Finalmente, realizaremos un análisis de dichas técnicas. A diferencia de estas grandes compañías, nuestro conjunto de datos es acotado, reduciendo así los tiempos de computo pero agregando una complejidad en cuanto a que imágenes vamos a reconocer. 
 
-\subsection{Introducción Teórica}
-
-
-
-
-
-
-
+Para esto utilizaremos un método denominado Cross validation. Este procedimiento se basa en que, dado el conjunto de imágenes realizaremos una partición con el fin de entrenar nuestro algoritmo. Esta división del conjunto se utilizara como entrenamiento, una parte, y el restante como test con el fin de corroborar la predicción realizada.
