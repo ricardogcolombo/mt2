@@ -41,6 +41,7 @@ tp2/src/vector/vectorNum.o
 
 
 tp2/src/experimentos/knn/
+tp2/src/experimentos/pca/
 tp2/src/experimentos/plsda/
 tp2/informe/main.aux
 tp2/informe/main.log
