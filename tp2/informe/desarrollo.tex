@@ -173,8 +173,7 @@ Esta técnica, que es una mejora de la técnica de holdout donde simplemente se 
 La única desventaja que presenta es la necesidad esperable de correr los algoritmos en varias iteraciones, situación que puede tener un peso significativo si el método de predicción tiene un costo computacional muy alto durante el entrenamiento. 
 
 \\
-En primera instancia hicimos  es decir, siempre experimentamos en $10$ particiones distintas y nunca variamos el $K$. Tomamos la primer partición de las 10 y utilizamos las otras 9 para entrenar, luego tomamos la segunda partición y utilizamos la primer partición y las otras $8$ particiones para entrenar, y así sucesivamente, hasta poder testear con todas las distintas particiones.
-
+En primera instancia para probar el algoritmo de Knn utilizamos dos valores para K para analizar el comportamiento, esto lo veremos en mas detalle en la seccion de experimentacion.
 
 \subsubsection{¿Qué pasaría si variamos la cantidad de particiones del k-fold?}
 
