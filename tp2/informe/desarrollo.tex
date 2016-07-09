@@ -76,7 +76,7 @@ Un hecho importante que debemos recordar: PCA devuelve una nueva base que es una
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
         \caption{void PCA(matriz etiquetados, matriz sinetiquetar,int cantidadAutovectores)}
-        \STATE{matriz covarianza = obtenerCovarianza(etiquetados)}\\
+        \STATE{matriz covarianza = obtenerCovarianza(etiquetados,medias(etiquetados))}\\
         \STATE{vector(vector) autovectores}\\
         \STATE{for 1 to cantidadAutovectores do}\\
         \STATE{\quad vector autovector=metodoDeLasPotencias(covarianza)}\\
@@ -85,10 +85,8 @@ Un hecho importante que debemos recordar: PCA devuelve una nueva base que es una
         \STATE{\quad multiplicarXEscalar(auovector,lamda)}\\
         \STATE{\quad restaMatrizVector(covarianza,auovector,lamda)}\\
         \STATE{end for}\\
-        \STATE{\RETURN maximo(numeros)}
     \end{algorithmic}
 \end{algorithm}
-
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
@@ -163,6 +161,49 @@ Definimos Y como la matriz resultante de tomar la matriz Y' $\in$ $R^{n×10}$ co
 
 \subsubsection {Algoritmos para Optimización con PLS-DA}
 
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{void PLSDA(matriz etiquetados, matriz sinetiquetar,int $\gamma$)}
+        \STATE{matriz X = matX(etiquetados)}\\
+        \STATE{matriz Xt = traspuesta(X)}\\
+        \STATE{matriz Y = preY(etiquetados)}\\
+        \STATE{matriz Yt = traspuesta(Y)}\\
+        \STATE{for 1 to $\gamma$ do}\\
+        \STATE{\quad vector w=metodoDeLasPotencias($X*Y*Yt*Xt$)}\\
+        \STATE{\quad agregar(autovectores,w)}\\       
+        \STATE{\quad t_i  = multiplcarMatrizVector(X,normalizar(w)}\\ 
+        \STATE{\quad X  = X - t_i * traspuesta(t_i) * X}\\
+        \STATE{\quad Y  = Y - t_i * traspuesta(t_i) * Y}\\
+        \STATE{end for}\\
+        \STATE{\RETURN maximo(numeros)}
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{Matriz X(vector<entrada> &v,vector medias, int n)}
+        \STATE{matriz X = nueva MatrizCuadrada(n)}\\
+        \STATE{para i de 1 a n}\\
+        \STATE{\quad para j de 1 a size(v)}
+        \STATE{\quad \quad X(i,j)=v[j].vect[i] -  medias[i]) \/ \sqrt(v.size()-1)}
+        \STATE{\RETURN X}
+    \end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+    \begin{algorithmic}[1]\parskip=2mm
+        \caption{Matriz preY(vector<entrada> &v)}
+        \STATE{matriz Y = nueva MatrizCuadrada(n)}\\
+        \STATE{para i de 1 a n}\\
+        \STATE{\quad para j de 1 a 10}
+        \STATE{\quad \quad si v[i].label-1 = j-1}
+        \STATE{\quad \quad\quad Y[i][j]=1}
+        \STATE{\quad \quad si no}
+        \STATE{\quad \quad\quad Y[i][j]=-1}
+        \STATE{\RETURN Y}
+    \end{algorithmic}
+\end{algorithm}
 
 \subsubsection {Cross-Validation}
 
