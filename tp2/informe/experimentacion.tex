@@ -77,16 +77,16 @@ En cuanto a los mejores valores para la ejecución de PLSDA, sigue sucediendo qu
 
 Por otro lado tenemos diferencias en cuanto a el tiempo de ejecución entre PCA y PLSDA, el segundo parece ser un poco mas estable a la variación de componentes. A su vez es menor en cuanto a la de PCA, pero aquí es donde debemos analizar como podemos encontrar un balance en cuanto a tiempo de ejecución y cantidad de aciertos.
 
-\subsection {Precision, recall y F1 Score para los mejores resultados obtenidos}
+\subsection {Metricas Precision, Recall y F1 Score para los mejores resultados obtenidos}
 
 El ultimo de los puntos pedidos con el fin de analizar la calidad de los resultados obtenidos era la utilización de 2 métricas de las presentadas en el enunciado. Para nuestros experimentos decidimos usar Precisión y Recall.
 
-Precisión se basa en la cantidad de aciertos relativos dentro de una clase particular. Ósea, dada una clase $i$, definimos a los verdaderos positivos como $tp_i$ y los falsos positivos como $fp_i$, estos son aquellos que fueron definidos como una clase a la cual no pertenecían.
+\textbf{Precisión} se basa en la cantidad de aciertos relativos dentro de una clase particular. Ósea, dada una clase $i$, definimos a los verdaderos positivos como $tp_i$ y los falsos positivos como $fp_i$, estos son aquellos que fueron definidos como una clase a la cual no pertenecían.
 Con lo cual la precisión de dicha clase se define como 
 
 tp_i / (tp_i + fp_i)
 
-Recall es una medida para saber qué tan bueno es un clasificador para identificar a los que pertenecen a una clase, asumiendo que $fn_i$ son aquellos falsos negativos.
+\textbf{Recall} es una medida para saber qué tan bueno es un clasificador para identificar a los que pertenecen a una clase, asumiendo que $fn_i$ son aquellos falsos negativos.
 El Recall de una clase está definido como \\
 tp_i / (tp_i + fn_i )
 
@@ -97,11 +97,13 @@ Luego para la mejor cantidad de vecinos obtenida (k=5); buscamos los valores de 
 
 Como podemos ver los resultados para las métricas dieron muy parecidos en cuanto al lambda elegido para obtener el máximo dentro de la métrica. Sin embargo, esto está basado en que la cantidad de vecinos que tomamos es 5 dado a que en los experimentos de KNN+PCA demostrados con anterioridad fue con la cantidad de vecinos el cual obtuvimos los mejores resultados.
 
-Por otro lado repetimos el análisis para PLSDA con el fin e analizar las mismas métricas
+Por otro lado repetimos el análisis para PLSDA con el fin e analizar las mismas métricas y poder comparar
 
 \includegraphics[scale=1]{imagenes/plsdaPresicion.png}\\
 \includegraphics[scale=1]{imagenes/plsdaRecall.png}
 
-En este caso podemos sacar la misma conclusión que en el caso anterior en cuanto a que las métricas para la combinación de $\gamma$ y $k$ con la cual se maximiza es la misma que para la cantidad de aciertos. 
+En este caso podemos sacar la misma conclusión que en el caso anterior en cuanto a que las métricas para la combinación de $\gamma$ y $k$ con la cual se maximiza es la misma que para la cantidad de aciertos probados en los apartados anteriores.
 
-Por lo que podemos definir como que las mejores combinaciones de parámetros para $PCA$ y $PLS-DA$ son las dadas en este apartado.
+Al momento de comparar basandonos en estos resultados podemos notar que $PLS-DA$ parece ser mas parejo en cuanto a la presicion, pero todo depende de los parametros elegidos. De igual manera en general parece no haber muchas diferencias entre ambos metodos, a excepcion del costo temporal de los algoritmos.
+
+Por lo que podemos definir como que las mejores combinaciones de parámetros para $PCA$ y $PLS-DA$ son las dadas en este apartado. 
