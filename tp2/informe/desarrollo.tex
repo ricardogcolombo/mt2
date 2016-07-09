@@ -1,10 +1,10 @@
 \section{Desarrollo}
 \subsection{K vecinos mas cercanos}
-Como primera aproximacion para el problema de identificacion de digitos utilizaremos el la de \textbf{K vecinos más cercanos} (\textbf{kNN} dada la sigla en ingles).La cual asume que las instancias son puntos en el espacio \mathbb{R}^n.
+Como primera aproximacion para el problema de identificacion de digitos utilizaremos la de \textbf{K vecinos más cercanos} (\textbf{kNN} dada la sigla en ingles).La cual asume que las instancias son puntos en el espacio \mathbb{R}^n.
 
-Dada una instancia se definen a los vecinos mas cercanos como los elementos que tienen menor distancia a el, basandonos en la distancia euclediana. Sea un instancia representado como un vector $x= (x_1,x_2....x_n)$ , donde $x_i$ es un atributo en especial, la distancia entre dos instancias esta dada por: $d(x,y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}$ para luego quedarse con los $k$ menores. Siendo estos los mas "parecidos" a nuestra instancia.
+Dada una instancia se definen a los vecinos mas cercanos como los elementos que tienen menor distancia a el, basandonos en la distancia euclediana. Cada instancia esta representado como un vector $x= (x_1,x_2....x_n)$ , donde $x_i$ es un atributo en especial, la distancia entre dos instancias esta dada por: $d(x,y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}$ para luego quedarse con los $k$ menores. Siendo estos los mas \"parecidos\" a nuestra instancia.
 
-Para realizar esto utilizaremos una funcion que nos nos dara la cantidad de apariciones que tiene una instancia dentro de un conjunto.
+Para realizar esto utilizaremos una funcion que nos dara la cantidad de apariciones que tiene una instancia dentro de un conjunto.
 
 \begin{center}
 $f(x)= argmax_{c \in C} (\sum_{i=1}^{n} \delta(v,f(x_i))$
@@ -13,10 +13,12 @@ $f(x)= argmax_{c \in C} (\sum_{i=1}^{n} \delta(v,f(x_i))$
 donde $\delta$(a,b) devuelve 1 si a$=$b y 0 caso contrario. 
 
 \subsubsection{Identificacion de vecinos}
-Para este trabajo en particular tomamos las imágenes como vectores numéricos $x=$ $\in$  $R^{784}$ debido a que cada imagen esta representada por una matriz de 28 pixeles de largo y 28 de alto(28 columnas y 28 filas). 
-definimos que dos imágenes son "parecidas" si la norma dos entre ellas es pequeña. Luego la idea del $knn$ será tomar todas las imágenes etiquetadas, compararlas contra la nueva imagen a reconocer, ver cuales son las $k$ imágenes cuya norma es la menor posible y, entre esos k vecinos, ver a que clase pertenecen. La etiqueta para esta imagen vendrá dada por la moda.
+Para este trabajo en particular tomaremos las imágenes como vectores numéricos $x$ $\in$ $R^{784}$ debido a que cada imagen esta representada por una matriz de 28 pixeles de largo y 28 de alto(28 columnas y 28 filas). 
+Decimos que dos imágenes son \"parecidas\"  de la misma forma que la definimos anteriormente, osea, si la norma dos entre ellas es pequeña.
 
-Para los siguientes pseudocódigos será necesario asumir que todas las estructuras utilizadas almacenan datos enteros a menos que se indique lo contrario, esto se indica agregando entre paréntesis el tipo de dato que almacena.
+Luego la idea del $knn$ será tomar todas las imágenes etiquetadas, compararlas contra la nueva imagen a reconocer, ver cuales son las $k$ imágenes cuya norma es la menor posible y, entre esos k vecinos, ver a que clase pertenecen.
+
+Para los siguientes pseudocódigos será necesario asumir que todas las estructuras utilizadas almacenan datos de punto flotante a menos que se indique lo contrario, esto se indica agregando entre paréntesis el tipo de dato que almacena.
 
 \begin{algorithm}
 \begin{algorithmic}[1]\parskip=1mm
@@ -46,16 +48,18 @@ Para los siguientes pseudocódigos será necesario asumir que todas las estructu
 \end{algorithmic}
 \end{algorithm}
 
-A priori podemos suponer que al ir incrementando la cantidad de vecinos (o sea, $k$) menor va a ser la cantidad de aciertos, ya que se empiezan a mirar los elementos de menor prioridad de la cola, eso significa, que se cuentan primero las imágenes que más difieren y eso puede hacer que las chances de acertar el dígito correcto disminuyan. Ahondaremos mas en detalle en la siguiente sección, cuando pongamos a prueba cual es la mejor cantidad de vecinos para este algoritmo.
+A priori podemos suponer que al ir incrementando la cantidad de vecinos ($k$) menor va a ser la cantidad de aciertos, ya que se empiezan a mirar los elementos de menor prioridad de la cola, eso significa, que se cuentan primero las imágenes que más difieren y eso puede hacer que las chances de acertar el dígito correcto disminuyan. Ahondaremos mas en detalle en la siguiente sección, cuando pongamos a prueba cual es la mejor cantidad de vecinos para este algoritmo.
 \\
 Al comienzo del desarrollo de los experimentos pensamos en diferentes maneras de mejorar el procesamiento de las imágenes, ya sea pasandolas a blanco y negro para no tener que lidiar con escala de grises o recortar los bordes de las imágenes, ya que en ellos no hay demasiada información útil (en todas las imágenes vale 0).
 \\
 Sin embargo, y mas allá de las mejoras que puedan realizarse sobre los datos en crudo, este algoritmo es muy sensible a la variabilidad de los datos. Un conjunto de datos con un cierto grado de dispersión entre las distintas clases de clasificación hace empeorar rápidamente los resultados.
 
 \subsection {Optimización mediante el analisis de componentes principales}
+
 El Análisis de Componentes Principales o $PCA$ es un procedimiento probabilístico que utiliza una transformación lineal ortogonal de los datos para convertir un conjunto de variables, posiblemente correlacionadas, a un nuevo sistema de coordenadas conocidas estas como componentes principales tal que la mayor varianza de cualquier proyección de los datos queda ubicada como la primer coordenada (llamado el primer componente principal, aquella que explica la mayor varianza de los datos), la segunda mayor varianza en la segunda posición, etc. En este sentido, PCA calcula la base más significativa para expresar nuestros datos. Recordemos que una base es un conjunto de vectores linealmente independientes tal que en una combinación lineal, puede representar cualquier vector del sistema de coordenadas.
 \\
 De esta manera entonces, será fácil quedarnos con los $\lambda$ componentes principales que concentran la mayor varianza y quitar el resto. En la sección de experimentación, uno de los objetivos principales será buscar cual es el $\lambda$ que concentra la mayor varianza de manera tal de optimizar el número de predicciones. 
+
 A fines prácticos, lo que haremos es, a partir de nuestra base de datos de elementos etiquetados, será construir la matriz de covarianza $M$ de tal manera que en la coordenada $M_ij$ se obtenga el valor de la covarianza del pixel $i$ contra el píxel $j$.
 Luego, utilizando el método de la potencia, procederemos a calcular los primeros $\lambda$ autovectores de esta matriz. Una vez obtenidos los autovectores, multiplicando cada elemento por los $\lambda$ autovectores, obtendremos un nuevo set de datos.
 Sobre este set de datos, ahora aplicaremos el algoritmo $KNN$ nuevamente y lo que esperamos ver es un mayor número de aciertos, ya que hemos quitado ruido del set de datos (mediante esta base que mencionamos al principio). Esto se suma a mejores tiempos de ejecución, ya que hemos reducido la dimensionalidad del problema.
@@ -107,7 +111,7 @@ Un hecho importante que debemos recordar: PCA devuelve una nueva base que es una
     \end{algorithmic}
 \end{algorithm}
 
-Además implementamos los métodos auxiliares
+Además implementamos los métodos auxiliares para el metodod e las potencias como para obtener el vector de medias.
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
@@ -140,12 +144,12 @@ Además implementamos los métodos auxiliares
 
 \subsection {Optimización mediante la regresion por Cuadrados Minimos Parciales}
 Por ultimo analizaremos la otra transformacion, que si bien es similar al anterior (\textbf{PCA}), la principal distincion entre ambos es que este utiliza las clases para influenciar el traspaso al nuevo espacio de variables, conviritiendolo asi en un metodo supervisado.
-El metodo PLS-DA consiste en una regresion clasica PLS, que permite el manejo de datos multicategoricos a diferencia de PLS que es bilineal.
+El metodo PLS-DA consiste en una regresion clasica PLS, que permite el manejo de datos multi categoricos a diferencia de PLS que es bilineal.
 
-Si estuvieramos definiendo el PLS clasico deberiamos definir X de igual manera que se hizo en el punto anterior, osea una matriz donde tenemos en cada fila una muestra, centradas respecto de la media, queremos buscar transformar las matrices con el fin de maximizar la covarianca entre las muestras y las clases en el nuevo espacio quedandonos de esta manera.
+Si estuvieramos definiendo el PLS clasico deberiamos definir X de igual manera que se hizo en el algoritmo anterior, osea una matriz donde tenemos en cada fila una muestra, centradas respecto de la media, queremos buscar transformar las matrices con el fin de maximizar la covarianca entre las muestras y las clases en el nuevo espacio quedandonos de esta manera.
 
 \begin{center}
-X=TP+E
+X=TP+E\\
 Y=UQ+F
 \end{center}
 
