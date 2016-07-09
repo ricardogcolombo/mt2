@@ -185,11 +185,11 @@ Definimos Y como la matriz resultante de tomar la matriz Y' $\in$ $R^{n×10}$ co
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
-        \caption{Matriz X(vector<entrada> &v,vector medias, int n)}
+        \caption{Matriz X(matriz etiquetados,vector medias, int n)}
         \STATE{matriz X = nueva MatrizCuadrada(n)}\\
         \STATE{para i de 1 a n}\\
-        \STATE{\quad para j de 1 a size(v)}
-        \STATE{\quad \quad X(i,j)=v[j].vect[i] -  medias[i]) \/ \sqrt(v.size()-1)}
+        \STATE{\quad para j de 1 a size(etiquetados)}
+        \STATE{\quad \quad X(i,j)=etiquetados[j].vect[i] -  medias[i]) \/ \sqrt(n-1)}
         \STATE{\RETURN X}
     \end{algorithmic}
 \end{algorithm}
@@ -197,11 +197,11 @@ Definimos Y como la matriz resultante de tomar la matriz Y' $\in$ $R^{n×10}$ co
 
 \begin{algorithm}
     \begin{algorithmic}[1]\parskip=2mm
-        \caption{Matriz preY(vector<entrada> &v)}
-        \STATE{matriz Y = nueva MatrizCuadrada(n)}\\
+        \caption{Matriz preY(matriz etiquetados)}
+        \STATE{matriz Y = nueva Matriz(1,10)}\\
         \STATE{para i de 1 a n}\\
         \STATE{\quad para j de 1 a 10}
-        \STATE{\quad \quad si v[i].label-1 = j-1}
+        \STATE{\quad \quad si etiquetados[i].label-1 = j-1}
         \STATE{\quad \quad\quad Y[i][j]=1}
         \STATE{\quad \quad si no}
         \STATE{\quad \quad\quad Y[i][j]=-1}
