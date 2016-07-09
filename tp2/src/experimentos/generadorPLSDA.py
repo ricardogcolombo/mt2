@@ -8,13 +8,12 @@ print("GENERANDO CASOS DE TEST...")
 
 
 k = 30
-alfa =15
+alfa =10
 gamma = 50
-K = 10
+K = 3
 totalTest = 4200
-for n in range (1,15):
+for n in range (5,7):
 	for j in range(1,alfa+1):
-
 	    fo = open("plsda/plsda"+str(n)+"/test"+str(j)+".in", "wb")
 
 	    print "Generando archivo " + str(j)
