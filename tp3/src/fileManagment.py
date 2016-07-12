@@ -1,6 +1,6 @@
 import csv
 import numpy as np
-
+import classEmpresa as emp
 
 #  esta funcion obtiene los datos ya filtrados
 #  anioInicial es el nombre del archivo +.csv que se agrega en la funcion para obtener los datos
@@ -108,4 +108,53 @@ def getDataEmpresaProcesada(anioInicial,cantAnios,empresa):
     countAnios= 0
     #  print result
     return result
+
+def getDataByEmpresa(anioInicial,empresa,airport):
+    result= []
+    filename = anioInicial
+    ifile  = open("../data/"+str(filename)+".csv", "rb")
+    reader = csv.reader(ifile)
+
+    for row in reader:
+        if row[8]==empresa and row[16]==airport:
+            result.append(list(row))
+    ifile.close()
+
+    datosFiles= np.zeros(12, dtype=np.int)
+    for item in result:
+        datosFiles[int(item[1])-1]+=1
+
+    return datosFiles
+
+def getTotalMarket(anioInicial,cantAnios):
+    empresas = []
+    filename = anioInicial
+    ifile  = open("../data/"+str(filename)+".csv", "rb")
+    reader = csv.reader(ifile)
+
+    for i in range (0,cantAnios+1):
+        #  print "Abriendo base " + str(filename) + ".."
+        #  leo archivo, los archivos se nombran por anio.csv
+        ifile  = open("../data/"+str(filename)+".csv", "rb")
+        reader = csv.reader(ifile)
+        #  esto es horrendo
+        line = 0
+        for row in reader:
+            if line != 0:
+                isInList = 0
+                for empresa in empresas:
+                    if empresa.name == row[8]:
+                        isInList = 1
+                        emp.empresa.addVenta(empresa,row)
+
+                if(not isInList):
+                    empresa =emp.empresa()
+                    emp.empresa.setName(empresa,row[8])
+                    emp.empresa.addVenta(empresa,row)
+                    empresas.append(empresa)
+            line+=1
+        filename+=1
+    
+
+    return empresas;
 

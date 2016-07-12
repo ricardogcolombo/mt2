@@ -4,6 +4,7 @@ import matplotlib as mp
 import matplotlib.pyplot as plt
 import math
 import json
+import classEmpresa
 from aproximacionesEmpresas import *
 
 def getSolution(anioInicial,cantAniosArchivos):
