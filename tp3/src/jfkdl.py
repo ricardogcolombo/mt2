@@ -4,19 +4,12 @@ import matplotlib as mp
 import matplotlib.pyplot as plt
 import math
 import json
-from sys import argv
-import classEmpresa
-#  from aproximacionesEmpresas import *
-from aproximacionesDelay import *
-from fileManagment import *
+from aproximacionesEmpresas  import *
 
-def getSolution(anioInicial,cantAniosArchivos):
+def getSolutionEmpresa(anioInicial,cantAniosArchivos,empresa):
     metodo = 1
-    #  cantAniosArchivos =0
-    #  cantMesesTrain = 6
-    #  anioInicial = 2004
     #  creo el array con todos los meses que voy a graficar
-    datosFiles= fm.getDataDelayProcesada(anioInicial,cantAniosArchivos)
+    datosFiles= fm.getDataEmpresaProcesada(anioInicial,cantAniosArchivos,empresa)
     errores = []
     a=0
     a1=0
@@ -48,8 +41,8 @@ def getSolution(anioInicial,cantAniosArchivos):
         #  print error
         error=error/(finMesesTrain-initMesesTrain)
         #  print error
-        print a,error
-
+        #  print a
+        print a, error
         initMesesTrain =(initMesesTrain+k)
         finMesesTrain =(finMesesTrain+k)
         #  corrijo set a agarrar
@@ -61,31 +54,32 @@ def getSolution(anioInicial,cantAniosArchivos):
     #  print a1
     return a1,errores
 
-anioInicial = 2004
-cantAniosArchivos = 4
+
+
+
+anioInicial = 2005
+cantAniosArchivos = 3
+
+b = getSolutionEmpresa(anioInicial,cantAniosArchivos-1,"DL")
+#  print a
+datosDL= fm.getDataEmpresaProcesada(anioInicial,cantAniosArchivos,"DL")
+
+
 labels = []
 meses = ["Ene","Feb","Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-
-a,errores = getSolution(anioInicial,cantAniosArchivos-1)
-#  print a
-#  print errores
-datosFiles = fm.getDataDelayProcesada(anioInicial,cantAniosArchivos)
 ejeXMeses= []
 for i in range(0,(cantAniosArchivos+1)*12):
     ejeXMeses.append(i)
     labels.append(meses[i%12])
 
 
-#  print "Ahora ploteo"
-res = []
-for i in range(0,len(datosFiles)):
-    val = getCalculadaSeno(i,a)
-    #  val = getCalculadaPolinomio(i,a)
-    #  val = getCalculadaPolinomioPar(i,a)
-    #  val = getCalculadaPolinomioSC(i,a)
+fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+#  #  print "Ahora ploteo"
+res2 = []
+for i in range(0,len(datosDL)):
+    val = getCalculadaSeno(i,b[0])
 
-    res.append(val)
-
+    res2.append(val)
 
 font = {'family': 'serif',
         'color':  'darkred',
@@ -93,32 +87,29 @@ font = {'family': 'serif',
         'size': 9,
         }
 
-#  ploteo
-fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+plt.title('Grafico de vuelos que parten desde el aeropuerto JFK de la compania DL (2004-2008)', fontsize=11, ha='center')
 
-plt.xlim(-0.1, 12*(cantAniosArchivos+1))
-# Remove the plot frame lines. They are unnecessary here.
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
+plt.xlabel('meses', fontdict=font)
+plt.ylabel('Cantidad de vuelos desde JFK', fontdict=font)
 
-fig.set_size_inches(18.5, 10.5)
 #  #  dibujo los datos reales
 #  #  datos len tiene los datos mes a mes
-lineReal = plt.plot(ejeXMeses,datosFiles,"r")
-lineReal[0].set_label("Datos Reales")
-lineAproximacion = plt.plot(ejeXMeses,res)
+#  plt.subplot(3, 1, 1)
+#  lineTOTALES = plt.plot(ejeXMeses,datosTOTALES,"yo")
+#  plt.subplot(2, 1, 1)
+#  lineAA = plt.plot(ejeXMeses,datosAA,"r")
+#  lineAproximacion = plt.plot(ejeXMeses,res,'b')
+#  plt.subplot(2, 1, 2)
+lineDL = plt.plot(ejeXMeses,datosDL,"g")
+lineAproximacion = plt.plot(ejeXMeses,res2,'r')
+lineDL[0].set_label("Datos Reales de la aerolinea DL")
 
-# labels ,legend and title
-plt.title('Datos Reales demoras por clima (2004-2008)', fontsize=11, ha='center')
-plt.xlabel('meses', fontdict=font)
-plt.ylabel('Cantidad de Delays', fontdict=font)
-
-lineAproximacion[0].set_label("Aproximacion con una suma de senos ")
-plt.legend(handles=[lineReal[0],lineAproximacion[0]])
+fig.set_size_inches(8.5, 6.5)
 
 ax.set_xticks(range(len(labels)))
 ax.set_xticklabels(labels,rotation='vertical')
 
-#  save image
-plt.savefig('delaySeno.png')
-#  plt.sho()
+lineAproximacion[0].set_label("Aproximacion con una combinacion de senos") 
+plt.legend(handles=[lineDL[0],lineAproximacion[0]])
+#  plt.show()
+plt.savefig('DLCantSeno.png')

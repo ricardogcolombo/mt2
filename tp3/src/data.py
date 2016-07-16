@@ -1,17 +1,10 @@
-import fileManagment as fm
-import filterEmpresa as fe
-from filterEmpresa import *
+from fileManagment import *
 import numpy
 import csv
 
-anio =2008
-cant = 0
+anio =2004
+cant = 4
 final = anio+cant
-airport = "JFK"
-empresa = "DL"
-for i in range(0,cant+1):
-    print "Procesando archivo: "+ str(anio)
-    ofile  = str(anio)+ '-' + str(empresa) + '.csv'
-    data = fe.getDataByEmpresa(anio,empresa,airport)
-    numpy.savetxt(ofile, data, fmt="%d" ,delimiter=",")
-    anio +=1
+airport = "MIA"
+empresa = "AA"
+procesarDataEmpresaAirport(anio,cant,empresa,airport)

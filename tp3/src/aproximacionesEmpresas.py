@@ -1,22 +1,13 @@
 import math
 import numpy as np
 import random as rd
+from fileManagment import *
 
-
-def getTrainSet(datos,cantMesesTrain):
-    mesesTrain = np.zeros(len(datos), dtype=np.int)
-    rd.seed(rd.randint(0,99999))
-    countMeses = 0
-    while countMeses<cantMesesTrain:
-        mes = rd.randint(0,len(datos)-1)
-        if(not mesesTrain[mes]==1):
-            countMeses+=1
-            mesesTrain[mes]=1
-
-    return mesesTrain
+#  JFK DL 
 
 def getCalculadaSeno(mes,coef):
-    return   coef[0]*((math.sin(mes)*math.cos(mes))**4)+coef[1]*mes+coef[2]
+    #  return  coef[0]*math.sin(2*math.pi*mes/12)+coef[1]*math.cos(2*math.pi*mes/6)+coef[2]*(mes)+coef[3]*(mes**2)
+    return  coef[0]*math.cos(2*math.pi*mes/36)+coef[1]*math.cos(2*math.pi*mes/6)+coef[2]*math.sin(2*math.pi*mes/11)+coef[3]
 
 def prediccionSeno(datosFiles,mesesParaTrain):
     x = []
@@ -28,23 +19,26 @@ def prediccionSeno(datosFiles,mesesParaTrain):
     for i in range(0, len(datosFiles)):
         if(mesesParaTrain[i]==1):
             b.append(datosFiles[i])
-            x.append(i)
-            x1.append((math.sin(i)*math.cos(i))**2)
-            #  x2.append(math.sin(2*i))
-            #  x3.append(math.sin(3*i))
-            #  x4.append(math.cos(2*i))
-
+            x.append(math.cos(2*math.pi*i/36))
+            x1.append(math.cos(2*math.pi*i/6))
+            x2.append(math.sin(2*math.pi*i/11))
     #  aca obtengo una matriz A ( funcion(x), 1)
-    A = np.vstack([x1,x, np.ones(len(x))]).T
+    #  A = np.vstack([x,x1,x2,x3,x4, np.ones(len(x))]).T
+    A = np.vstack([x,x1,x2,np.ones(len(x))]).T
     #  llamo a cuadrados minimos con la matriz A y los meses de datos que yo cnozco
     a= np.linalg.lstsq(A, b)[0]
     #  devuelvo los valores que me sirven para mi prediccion
     return a
 
-def getCalculadaPolinomio(mes,coef):
-    return  coef[0]*(mes**5)+coef[1]*(mes**4)+coef[2]*(mes**3)+coef[3]*(mes**2)+coef[4]*mes+coef[5]
+#  JFK AA
+p1 = 36
+p2 = 5
+p3 =5 
+def getCalculadaaa(mes,coef):
+    #  return  coef[0]*math.sin(2*math.pi*mes/12)+coef[1]*math.cos(2*math.pi*mes/6)+coef[2]*(mes)+coef[3]*(mes**2)
+    return  coef[0]*math.cos(2*math.pi*mes/p1)+coef[1]*math.cos(2*math.pi*mes/p2)+coef[2]*math.cos(2*math.pi*mes/p3)+coef[3]
 
-def prediccionPolinomio(datosFiles,mesesParaTrain):
+def prediccionSenoaa(datosFiles,mesesParaTrain):
     x = []
     x1 = []
     x2 = []
@@ -54,56 +48,26 @@ def prediccionPolinomio(datosFiles,mesesParaTrain):
     for i in range(0, len(datosFiles)):
         if(mesesParaTrain[i]==1):
             b.append(datosFiles[i])
-            x.append(i)
-            x1.append(i**2)
-            x2.append(i**3)
-            x3.append(i**4)
-            x4.append(i**5)
-            #  x5.append(i**6)
-            #  x6.append(i**7)
-            #  x7.append(i**8)
-
+            x.append(math.cos(2*math.pi*i/p1))
+            x1.append(math.cos(2*math.pi*i/p2))
+            x2.append(math.cos(2*math.pi*i/p3))
     #  aca obtengo una matriz A ( funcion(x), 1)
-    A = np.vstack([x4,x3,x2,x1,x, np.ones(len(x))]).T
+    #  A = np.vstack([x,x1,x2,x3,x4, np.ones(len(x))]).T
+    A = np.vstack([x,x1,x2,np.ones(len(x))]).T
     #  llamo a cuadrados minimos con la matriz A y los meses de datos que yo cnozco
     a= np.linalg.lstsq(A, b)[0]
     #  devuelvo los valores que me sirven para mi prediccion
     return a
 
-def getCalculadaPolinomioPar(mes,coef):
-    return  coef[0]*(mes**6)+coef[1]*(mes**5)+coef[2]*(mes**4)+coef[3]*(mes**3)+coef[4]*(mes**2)+coef[5]*mes+coef[6]
+#  MIA AA
+miaaap1 = 12
+miaaap2 = 6
 
-def prediccionPolinomioPar(datosFiles,mesesParaTrain):
-    x = []
-    x1 = []
-    x2 = []
-    x3 = []
-    x4 = []
-    x5 = []
-    b= []
-    for i in range(0, len(datosFiles)):
-        if(mesesParaTrain[i]==1):
-            b.append(datosFiles[i])
-            x.append(i)
-            x1.append(i**2)
-            x2.append(i**3)
-            x3.append(i**4)
-            x4.append(i**5)
-            x5.append(i**6)
-            #  x6.append(i**7)
-            #  x7.append(i**8)
+def getCalculadaaaMIA(mes,coef):
+    #  return  coef[0]*math.sin(2*math.pi*mes/12)+coef[1]*math.cos(2*math.pi*mes/6)+coef[2]*(mes)+coef[3]*(mes**2)
+    return  coef[0]*math.cos(2*math.pi*mes/miaaap1)+coef[1]*math.cos(2*math.pi*mes/miaaap2)+coef[2]
 
-    #  aca obtengo una matriz A ( funcion(x), 1)
-    A = np.vstack([x5,x4,x3,x2,x1,x, np.ones(len(x))]).T
-    #  llamo a cuadrados minimos con la matriz A y los meses de datos que yo cnozco
-    a= np.linalg.lstsq(A, b)[0]
-    #  devuelvo los valores que me sirven para mi prediccion
-    return a
-
-def getCalculadaPolinomioSCAA(mes,coef):
-    return  coef[0]*(math.sin(mes)**5)+coef[1]*(math.sin(mes**2)**4)+coef[2]*(math.sin(mes**2)**3)+coef[3]*(math.sin(mes**2)**2)+coef[4]*mes+coef[5]
-
-def prediccionPolinomioSCAA(datosFiles,mesesParaTrain):
+def prediccionSenoaaMIA(datosFiles,mesesParaTrain):
     x = []
     x1 = []
     x2 = []
@@ -113,25 +77,25 @@ def prediccionPolinomioSCAA(datosFiles,mesesParaTrain):
     for i in range(0, len(datosFiles)):
         if(mesesParaTrain[i]==1):
             b.append(datosFiles[i])
-            x.append(i)
-            x1.append(math.sin(i**2)**2)
-            x2.append(math.sin(i**2)**3)
-            x3.append(math.sin(i**2)**4)
-            x4.append(math.sin(i**2)**5)
-
+            x.append(math.cos(2*math.pi*i/miaaap1))
+            x1.append(math.cos(2*math.pi*i/miaaap2))
     #  aca obtengo una matriz A ( funcion(x), 1)
-    A = np.vstack([x4,x3,x2,x1,x, np.ones(len(x))]).T
+    #  A = np.vstack([x,x1,x2,x3,x4, np.ones(len(x))]).T
+    A = np.vstack([x,x1,np.ones(len(x))]).T
     #  llamo a cuadrados minimos con la matriz A y los meses de datos que yo cnozco
     a= np.linalg.lstsq(A, b)[0]
     #  devuelvo los valores que me sirven para mi prediccion
     return a
 
+miadlp1 = 3
+miadlp2 = 3
 
-def getCalculadaPolinomioSCDL(mes,coef):
-    return  coef[0]*(math.atan(mes**6)**4)+coef[1]*(math.sin(mes**8))+coef[2]*(math.sin(mes)**2)+coef[3]*(mes)+coef[4]
+#  MIA dl
+def getCalculadadlMIA(mes,coef):
+    #  return  coef[0]*math.sin(2*math.pi*mes/12)+coef[1]*math.cos(2*math.pi*mes/6)+coef[2]*(mes)+coef[3]*(mes**2)
+    return  coef[0]*math.cos(2*math.pi*mes/miadlp1)+coef[1]*math.cos(2*math.pi*mes/miadlp2)+coef[2]
 
-
-def prediccionPolinomioSCDL(datosFiles,mesesParaTrain):
+def prediccionSenodlMIA(datosFiles,mesesParaTrain):
     x = []
     x1 = []
     x2 = []
@@ -141,15 +105,12 @@ def prediccionPolinomioSCDL(datosFiles,mesesParaTrain):
     for i in range(0, len(datosFiles)):
         if(mesesParaTrain[i]==1):
             b.append(datosFiles[i])
-            x.append(i)
-            x1.append(math.sin(i)**2)
-            x2.append(math.sin(i**8))
-            x3.append(math.atan(i**6)**4)
-
+            x.append(math.cos(2*math.pi*i/miadlp1))
+            x1.append(math.cos(2*math.pi*i/miadlp2))
     #  aca obtengo una matriz A ( funcion(x), 1)
-    A = np.vstack([x3,x2,x1,x, np.ones(len(x))]).T
+    #  A = np.vstack([x,x1,x2,x3,x4, np.ones(len(x))]).T
+    A = np.vstack([x,x1,np.ones(len(x))]).T
     #  llamo a cuadrados minimos con la matriz A y los meses de datos que yo cnozco
     a= np.linalg.lstsq(A, b)[0]
     #  devuelvo los valores que me sirven para mi prediccion
     return a
-
